@@ -4,8 +4,8 @@ require 'mina/git'
 require 'mina/rvm'    # for rvm support. (http://rvm.io)
 
 set :domain, '61.153.100.122'
-set :deploy_to, '/home/ubuntu/jiankanghj'
-set :repository, 'git@github.com:daisy-syso/jiankanghj.git'
+set :deploy_to, '/home/ubuntu/yiliaohj'
+set :repository, 'git@github.com:daisy-syso/yiliaohj.git'
 set :branch, 'master'
 set :keep_releases, 5
 set :rails_env, 'production'
@@ -58,8 +58,8 @@ task :deploy => :environment do
     invoke :'deploy:cleanup'
 
     to :launch do
-      queue "bundle exec thin stop"
-      queue "bundle exec thin start -p 5000 -e production -d"
+      # queue "bundle exec thin stop"
+      queue "bundle exec thin start -p 6000 -e production -d"
       # queue "whenever -w"
     end
   end
