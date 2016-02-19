@@ -3,8 +3,9 @@ source 'https://ruby.taobao.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
-# Use mysql as the database for Active Record
-gem 'mysql2', '>= 0.3.13', '< 0.5'
+
+gem 'mongoid'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -29,6 +30,8 @@ gem 'kaminari-bootstrap'
 
 gem 'simple_form'
 
+gem 'rack-cors'
+
 gem 'hiredis'
 gem 'redis', require: %w[ redis redis/connection/hiredis ]
 gem 'redis-objects'
@@ -36,8 +39,6 @@ gem 'redis-objects'
 gem 'config'
 
 gem 'devise'
-
-gem 'bcrypt'
 
 gem 'mina'
 
@@ -50,6 +51,12 @@ gem 'whenever', :require => false
 
 gem 'faraday'
 gem 'typhoeus', require: 'typhoeus/adapters/faraday'
+
+gem 'qiniu'
+gem 'carrierwave'
+gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+# gem 'mongoid-grid_fs', github: 'ahoward/mongoid-grid_fs'
+gem 'carrierwave-qiniu', '~> 0.1.5'
 
 group :development, :test do
   gem 'byebug'
