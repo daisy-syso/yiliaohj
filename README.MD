@@ -9,3 +9,9 @@
 ```
 mina deploy
 ```
+
+## 域名
+```
+test.yiliaohj.com
+admin.yiliaohj.com
+```
