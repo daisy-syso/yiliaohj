@@ -37,8 +37,6 @@ gem 'config'
 
 gem 'devise'
 
-gem 'bcrypt'
-
 gem 'mina'
 
 gem 'thin'
@@ -47,6 +45,10 @@ gem 'sidekiq'
 gem 'sinatra', require: false
 
 gem 'whenever', :require => false
+
+gem 'qiniu'
+gem 'carrierwave'
+gem 'carrierwave-qiniu'
 
 gem 'faraday'
 gem 'typhoeus', require: 'typhoeus/adapters/faraday'
