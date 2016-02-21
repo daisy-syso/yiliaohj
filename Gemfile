@@ -4,7 +4,7 @@ source 'https://ruby.taobao.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
 
-gem 'mongoid'
+gem 'mysql2', '>= 0.3.13', '< 0.5'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -54,9 +54,7 @@ gem 'typhoeus', require: 'typhoeus/adapters/faraday'
 
 gem 'qiniu'
 gem 'carrierwave'
-gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
-# gem 'mongoid-grid_fs', github: 'ahoward/mongoid-grid_fs'
-gem 'carrierwave-qiniu', '~> 0.1.5'
+gem 'carrierwave-qiniu'
 
 group :development, :test do
   gem 'byebug'
@@ -67,6 +65,8 @@ group :development, :test do
 
   gem 'bullet'
   gem 'quiet_assets'
+
+  gem "uniform_notifier"
 end
 
 group :development do
