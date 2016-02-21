@@ -40,6 +40,8 @@ gem 'config'
 
 gem 'devise'
 
+gem 'bcrypt'
+
 gem 'mina'
 
 gem 'thin'

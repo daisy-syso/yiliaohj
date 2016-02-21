@@ -1,14 +1,23 @@
 Rails.application.routes.draw do
 
-  constraints :subdomain => /^(admin(.*))$/i  do
+  # constraints :subdomain => /^(admin(.*))$/i  do
     namespace :admin, path: '/' do
 
-      root 'users#login'
-    end
-  end
+      root 'editors_session#login'
 
-  namespace :frontend, path: '/' do
-    root 'main#index'
-  end
+      resources :editors_session do
+        collection do
+          get 'login'
+          get 'logout'
+        end
+      end
+
+    end
+  # end
+
+  # namespace :frontend, path: '/' do
+
+  #   root 'main#index'
+  # end
 
 end
