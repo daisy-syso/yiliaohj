@@ -1,5 +1,5 @@
+# 编辑
 require 'bcrypt'
-
 class Editor
   include Mongoid::Document
   include Mongoid::Timestamps
@@ -13,7 +13,10 @@ class Editor
   field :email, type: String
   field :telephone, type: String
   field :password_hash, type: String
-  field :authentication_token, type: String
+
+  index username: 1
+  index email: 1
+  index telephone: 1
 
   def password
     @password ||= Password.new(password_hash)
