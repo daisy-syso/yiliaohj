@@ -13,7 +13,7 @@ set :rvm_path, '/home/ubuntu/.rvm/bin/rvm'
 
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
 # They will be linked in the 'deploy:link_shared_paths' step.
-set :shared_paths, ['log', 'tmp/pids','config/database.yml']
+set :shared_paths, ['log', 'tmp/pids','config/database.yml', 'config/mongoid.yml']
 
 # Optional settings:
 set :user, 'ubuntu'    # Username in the server to SSH to.
@@ -44,6 +44,9 @@ task :setup => :environment do
 
   queue! %(touch "#{deploy_to}/#{shared_path}/config/database.yml")
   queue  %(echo "-----> Be sure to edit '#{deploy_to}/#{shared_path}/config/database.yml'.")
+
+  queue! %(touch "#{deploy_to}/#{shared_path}/config/mongoid.yml")
+  queue  %(echo "-----> Be sure to edit '#{deploy_to}/#{shared_path}/config/mongoid.yml'.")
 end
 
 desc "Deploys the current version to the server."
@@ -52,8 +55,6 @@ task :deploy => :environment do
     invoke :'git:clone'
     invoke :'deploy:link_shared_paths'
     invoke :'bundle:install'
-    invoke :'rails:db_create'
-    invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
     invoke :'deploy:cleanup'
 

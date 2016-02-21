@@ -6,6 +6,8 @@ gem 'rails', '4.2.5.1'
 
 gem 'mysql2', '>= 0.3.13', '< 0.5'
 
+gem 'mongoid'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -56,7 +58,9 @@ gem 'typhoeus', require: 'typhoeus/adapters/faraday'
 
 gem 'qiniu'
 gem 'carrierwave'
-gem 'carrierwave-qiniu'
+gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+# gem 'mongoid-grid_fs', github: 'ahoward/mongoid-grid_fs'
+gem 'carrierwave-qiniu', '~> 0.1.5'
 
 group :development, :test do
   gem 'byebug'
