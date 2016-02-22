@@ -16,13 +16,13 @@ Rails.application.routes.draw do
     end
   end
 
-  constraints :subdomain => /^(test(.*))$/i  do
+  # constraints :subdomain => /^(test(.*))$/i  do
     namespace :frontend, path: '/' do
 
       devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations", passwords: "users/passwords", confirmations: "users/confirmations" }
 
       root 'main#index'
     end
-  end
+  # end
 
 end

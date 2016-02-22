@@ -5,7 +5,7 @@ class Editor
   include Mongoid::Timestamps
   
   validates :username, uniqueness: true, length: { in: 3..14 }
-  validates :password, presence: true, length: {minimum: 6}
+  validates :password, presence: true, length: { minimum: 6 }
 
   include BCrypt
 
