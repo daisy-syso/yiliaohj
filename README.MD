@@ -15,3 +15,6 @@ mina deploy
 test.yiliaohj.com
 admin.yiliaohj.com
 ```
+
+
+rails generate devise:install
