@@ -12,13 +12,13 @@
 !/log/.keep
 /tmp
 
-config/settings.local.yml
-config/settings/*.local.yml
-config/environments/*.local.yml
+config/settings/*.yml
 
 database.yml
 
 
 .byebug_history
 
-/public/uploads/*
+public/assets
+public/uploads
+.DS_Store
