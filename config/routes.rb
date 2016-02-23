@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
   
-  constraints :subdomain => /^(admin(.*))$/i  do
+  get 'banner/index'
+
+  # constraints :subdomain => /^(admin(.*))$/i  do
     namespace :admin, path: '/' do
 
       root 'editors_session#login'
@@ -13,16 +15,18 @@ Rails.application.routes.draw do
         end
       end
 
-    end
-  end
+      resources :banners
 
-  # constraints :subdomain => /^(test(.*))$/i  do
+    end
+  # end
+
+  constraints :subdomain => /^(test(.*))$/i  do
     namespace :frontend, path: '/' do
 
       devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations", passwords: "users/passwords", confirmations: "users/confirmations" }
 
       root 'main#index'
     end
-  # end
+  end
 
 end

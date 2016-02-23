@@ -2,7 +2,7 @@ class AdminController < ApplicationController
   layout 'admin/application'
 
   def check_auth
-    if session[:user] == nil
+    if session[:editor] == nil
       redirect_to '/'
     end
   end

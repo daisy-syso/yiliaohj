@@ -1,0 +1,22 @@
+= link_to '新增', new_admin_banner_path, class: "btn btn-info"
+table.table.table-striped.table-bordered.table-hover.table-condensed
+  thead
+    tr
+      th 标题
+      th 图片
+      th 跳转链接
+      th 创建时间
+      th 操作
+  tbody
+    - @banners.each do |banner|
+      tr
+        td = banner.title
+        td 
+          img src== banner.image_url width="120px"
+        td = banner.link
+        td 
+          = banner.created_at.strftime("%F %T")
+        td 
+          = link_to '详细', admin_banner_path(banner), class: "btn btn-warning"
+          = link_to '删除', admin_banner_path(banner), data: {:confirm => 'Are you sure?'}, :method => :delete, class: "btn btn-danger"
+= paginate @banners
