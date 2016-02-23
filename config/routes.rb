@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       end
 
       resources :banners
+      resources :hot_actions
 
     end
   end

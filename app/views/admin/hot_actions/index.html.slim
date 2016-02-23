@@ -1,0 +1,23 @@
+= link_to '新增', new_admin_hot_action_path, class: "btn btn-info"
+table.table.table-striped.table-bordered.table-hover.table-condensed
+  thead
+    tr
+      th 标题
+      th 图片
+      th 跳转链接
+      th 创建时间
+      th 操作
+  tbody
+    - @hot_actions.each do |hot_action|
+      tr
+        td = hot_action.title
+        td 
+          img src== hot_action.image_url width="120px"
+        td = hot_action.link
+        td 
+          = hot_action.created_at.strftime("%F %T")
+        td 
+          = link_to '详细', admin_hot_action_path(hot_action), class: "btn btn-warning"
+          = link_to '编辑', edit_admin_hot_action_path(hot_action), class: "btn btn-info"
+          = link_to '删除', admin_hot_action_path(hot_action), data: {:confirm => '确定要删除吗?'}, :method => :delete, class: "btn btn-danger"
+= paginate @hot_actions
