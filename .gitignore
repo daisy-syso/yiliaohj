@@ -15,7 +15,7 @@
 config/settings/*.yml
 
 database.yml
-
+mongoid.yml
 
 .byebug_history
 
