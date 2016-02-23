@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  
-  get 'banner/index'
-
   constraints :subdomain => /^(admin(.*))$/i  do
     namespace :admin, path: '/' do
 
