@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   
   get 'banner/index'
 
-  # constraints :subdomain => /^(admin(.*))$/i  do
+  constraints :subdomain => /^(admin(.*))$/i  do
     namespace :admin, path: '/' do
 
       root 'editors_session#login'
@@ -18,7 +18,7 @@ Rails.application.routes.draw do
       resources :banners
 
     end
-  # end
+  end
 
   constraints :subdomain => /^(test(.*))$/i  do
     namespace :frontend, path: '/' do
