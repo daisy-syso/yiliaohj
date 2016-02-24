@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     devise_for :admins#, controllers: { sessions: "users/sessions" }
     mount RailsAdmin::Engine => '/', as: 'rails_admin'
 
-    # namespace :admin, path: '/' do
+    namespace :admin, path: '/' do
 
     #   root 'editors_session#login'
       resources :banners
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
     #   resources :banners
 
-    # end
+    end
   end
 
   constraints :subdomain => /^(test(.*))$/i  do
