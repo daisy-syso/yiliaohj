@@ -1,0 +1,9 @@
+= simple_form_for [:admin, @hot_action], wrapper: :common_form do |f|
+  = f.error_notification
+  = f.input :title, label: '标题', required: false
+  = f.input :image_url, as: :file, label: '封面（尺寸小于1M）'
+  img src== @hot_action.image_url
+  br
+  = f.input :link, label: '活动链接'
+  = f.button :submit, '更新'
+  = link_to '返回', admin_hot_actions_path, class: 'btn btn-info'

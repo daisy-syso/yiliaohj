@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     # namespace :admin, path: '/' do
 
     #   root 'editors_session#login'
+      resources :banners
+      resources :hot_actions
 
     #   resources :editors_session do
     #     collection do

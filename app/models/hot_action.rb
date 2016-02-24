@@ -8,4 +8,6 @@ class HotAction
   field :title, type: String
   field :image_url, type: String
   field :link, type: String
+
+  validates :title, uniqueness: true, presence: true
 end

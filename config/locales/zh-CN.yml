@@ -1,0 +1,9 @@
+
+zh-CN:
+  mongoid:
+    errors:
+      models:
+        hot_action:
+          attributes:
+            title:
+              taken: 标题重复了

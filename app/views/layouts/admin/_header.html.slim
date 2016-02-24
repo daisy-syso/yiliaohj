@@ -11,5 +11,7 @@ nav.navbar.navbar-default
       ul.nav.navbar-nav
         li#banners class="#{params[:controller] == 'admin/banners' ? 'active' : ''}"
           =link_to '轮播图', admin_banners_path
+        li#hot_actions class="#{params[:controller] == 'admin/hot_actions' ? 'active' : ''}"
+          =link_to '热门活动', admin_hot_actions_path
         li
           = link_to "退出", logout_admin_editors_session_index_path

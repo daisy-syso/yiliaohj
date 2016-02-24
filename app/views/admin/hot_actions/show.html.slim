@@ -1,0 +1,8 @@
+h3 
+  = @hot_action.title
+img src==@hot_action.image_url
+br
+= @hot_action.link
+br
+= link_to '编辑', edit_admin_hot_action_path(@hot_action), class: "btn btn-info"
+= link_to '返回', admin_hot_actions_path, class: 'btn btn-primary'
