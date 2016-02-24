@@ -1,7 +1,9 @@
 # 热门活动
 class HotAction
   include Mongoid::Document
-  include Mongoid::Timestamps  
+  include Mongoid::Timestamps
+
+  mount_uploader :image_url, PictureUploader
 
   field :title, type: String
   field :image_url, type: String

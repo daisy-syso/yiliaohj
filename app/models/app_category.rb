@@ -5,5 +5,5 @@ class AppCategory
 
   field :name, type: String
   
-  embeds_many :apps
+  has_many :apps, dependent: :destroy
 end

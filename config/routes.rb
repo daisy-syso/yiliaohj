@@ -1,20 +1,24 @@
 Rails.application.routes.draw do
 
   constraints :subdomain => /^(admin(.*))$/i  do
-    namespace :admin, path: '/' do
 
-      root 'editors_session#login'
+    devise_for :admins#, controllers: { sessions: "users/sessions" }
+    mount RailsAdmin::Engine => '/', as: 'rails_admin'
 
-      resources :editors_session do
-        collection do
-          get 'login'
-          get 'logout'
-        end
-      end
+    # namespace :admin, path: '/' do
 
-      resources :banners
+    #   root 'editors_session#login'
 
-    end
+    #   resources :editors_session do
+    #     collection do
+    #       get 'login'
+    #       get 'logout'
+    #     end
+    #   end
+
+    #   resources :banners
+
+    # end
   end
 
   constraints :subdomain => /^(test(.*))$/i  do

@@ -7,6 +7,9 @@ gem 'mysql2', '>= 0.3.13', '< 0.5'
 
 gem 'mongoid'
 
+# jquery.remotipart.fixed.js   注释64行。
+gem 'rails_admin', '~> 0.8.1'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 
@@ -22,7 +25,7 @@ gem 'bootstrap-sass'
 # gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails'
+gem 'jquery-rails'#, '~> 2.3.0'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 gem 'jquery-turbolinks'
@@ -43,6 +46,7 @@ gem 'redis-objects'
 gem 'config'
 
 gem 'devise'
+gem 'devise-bootstrap-views'
 
 gem 'bcrypt'
 

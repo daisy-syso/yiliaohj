@@ -5,7 +5,7 @@ class City
 
   field :name, type: String
 
-  embeds_many :counties
+  has_many :counties
   belongs_to :provience
 
   has_many :hospitals

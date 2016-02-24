@@ -3,6 +3,8 @@ class Hospital
   include Mongoid::Document
   include Mongoid::Timestamps
 
+  mount_uploader :image_url, PictureUploader
+
   field :name, type: String
   field :summary, type: String
   field :description, type: String

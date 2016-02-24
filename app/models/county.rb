@@ -5,7 +5,7 @@ class County
 
   field :name, type: String
 
-  embedded_in :city
+  belongs_to :city
 
   has_many :hospitals
 end
