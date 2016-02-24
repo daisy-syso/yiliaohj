@@ -8,9 +8,9 @@ gem 'mysql2', '>= 0.3.13', '< 0.5'
 gem 'mongoid'
 
 # jquery.remotipart.fixed.js   注释64行。
-# gem 'rails_admin', '~> 0.8.1'
+gem 'rails_admin'
 
-gem 'rails_admin', github: 'menghuanwd/rails_admin'
+# gem 'rails_admin', github: 'menghuanwd/rails_admin'
 # gem 'rails_admin', github: 'menghuanwd/rails_admin_stash_bug'
 
 # gem 'rails_admin', git: 'git@github.com:menghuanwd/rails_admin_stash_bug.git'
