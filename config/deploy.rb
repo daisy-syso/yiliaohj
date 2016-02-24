@@ -65,7 +65,7 @@ task :deploy => :environment do
     invoke :'deploy:cleanup'
 
     to :launch do
-      # queue "bundle exec thin stop"
+      queue "bundle exec thin stop"
       queue "bundle exec thin start -p 6000 -e production -d"
       # queue "whenever -w"
     end
