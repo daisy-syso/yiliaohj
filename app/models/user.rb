@@ -38,4 +38,7 @@ class User
 
   field :avatar, type: String
   field :gender, type: String
+
+  has_many :feedbacks
+  has_many :comments
 end

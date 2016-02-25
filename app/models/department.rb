@@ -6,6 +6,7 @@ class Department
   field :name, type: String
 
   has_many :doctors
+  has_many :diseases
 
   belongs_to :hospital
 end

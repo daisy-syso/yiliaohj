@@ -1,29 +1,34 @@
-# 医生
-class Doctor
+# 药店
+class DrugStore
   include Mongoid::Document
   include Mongoid::Timestamps
 
   mount_uploader :image_url, PictureUploader
   
   field :name, type: String
-  field :summary, type: String
-  field :nationality, type: String
+  field :address, type: String
   field :description, type: String
   field :position, type: String
+  field :drug_category, type: String
+  field :lon, type: Float
+  field :lat, type: Float
   field :telephone, type: String
   field :image_url, type: String
   field :url, type: String
   field :click_count, type: String
   field :star, type: Integer
-  field :room, type: String
   field :status, type: Boolean
 
-  belongs_to :hospital
-  belongs_to :department
+  field :open_time, type: String
+  field :license, type: String
+  field :business_license, type: String
+  field :gsp, type: String
 
-  has_many :comments, as: :commentable
+  belongs_to :city
+  belongs_to :county
 
   validates :name, presence: true
 
   index name: 1
+
 end

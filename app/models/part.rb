@@ -1,10 +1,10 @@
-# 省份
-class Provience
+# 部位
+class Part
   include Mongoid::Document
   include Mongoid::Timestamps
 
   field :name, type: String
-
-  belongs_to :country
-  has_many :cities
+  
+  has_many :symptoms
 end
+
