@@ -8,4 +8,7 @@ class County
   belongs_to :city
 
   has_many :hospitals
+  has_many :maternals
+  has_many :drug_stores
+  has_many :nursing_rooms
 end
