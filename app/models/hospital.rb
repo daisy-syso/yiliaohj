@@ -30,6 +30,7 @@ class Hospital
   has_many :doctors
 
   has_many :comments, as: :commentable
+  has_many :examinations, as: :examinationable
 
   validates :name, presence: true
   validates :telephone, presence: true

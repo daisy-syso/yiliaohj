@@ -33,4 +33,3 @@ class Maternal
 
   index name: 1
 end
-

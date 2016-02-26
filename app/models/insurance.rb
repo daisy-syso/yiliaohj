@@ -13,7 +13,7 @@ class Insurance
   field :expiry_date, type: String
   field :url, type: String
   field :image_url, type: String
-  
+
   field :star, type: Integer
   field :status, type: Boolean
 
@@ -25,4 +25,3 @@ class Insurance
 
   index name: 1
 end
-
