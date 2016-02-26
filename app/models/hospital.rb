@@ -36,5 +36,4 @@ class Hospital
   validates :address, presence: true
 
   index name: 1
-
 end

@@ -11,4 +11,3 @@ class SymptomDetail
 
   belongs_to :symptom
 end
-

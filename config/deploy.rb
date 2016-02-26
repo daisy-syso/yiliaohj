@@ -1,7 +1,7 @@
 require 'mina/bundler'
 require 'mina/rails'
 require 'mina/git'
-require 'mina/rvm'    # for rvm support. (http://rvm.io)
+require 'mina/rvm' # for rvm support. (http://rvm.io)
 
 set :domain, '61.153.100.122'
 set :deploy_to, '/home/ubuntu/yiliaohj'
@@ -16,7 +16,7 @@ set :rvm_path, '/home/ubuntu/.rvm/bin/rvm'
 set :shared_paths, ['log', 'tmp/pids', 'config/database.yml', 'config/mongoid.yml', 'config/settings/production.yml']
 
 # Optional settings:
-set :user, 'ubuntu'    # Username in the server to SSH to.
+set :user, 'ubuntu' # Username in the server to SSH to.
 #   set :forward_agent, true     # SSH forward_agent.
 
 # This task is the environment that is loaded for most commands, such as
@@ -29,15 +29,15 @@ end
 # Put any custom mkdir's in here for when `mina setup` is ran.
 # For Rails apps, we'll make some of the shared paths that are shared between
 # all releases.
-task :setup => :environment do
-  queue! %[mkdir -p "#{deploy_to}/shared/tmp"]
-  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/tmp"]
+task setup: :environment do
+  queue! %(mkdir -p "#{deploy_to}/shared/tmp")
+  queue! %(chmod g+rx,u+rwx "#{deploy_to}/shared/tmp")
 
-  queue! %[mkdir -p "#{deploy_to}/#{shared_path}/tmp/pids"]
-  queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/tmp/pids"]
+  queue! %(mkdir -p "#{deploy_to}/#{shared_path}/tmp/pids")
+  queue! %(chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/tmp/pids")
 
-  queue! %[mkdir -p "#{deploy_to}/#{shared_path}/log"]
-  queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/log"]
+  queue! %(mkdir -p "#{deploy_to}/#{shared_path}/log")
+  queue! %(chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/log")
 
   queue! %(mkdir -p "#{deploy_to}/#{shared_path}/config")
   queue! %(chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/config")
@@ -48,15 +48,15 @@ task :setup => :environment do
   queue! %(touch "#{deploy_to}/#{shared_path}/config/mongoid.yml")
   queue  %(echo "-----> Be sure to edit '#{deploy_to}/#{shared_path}/config/mongoid.yml'.")
 
-  queue! %[mkdir -p "#{deploy_to}/#{shared_path}/config/settings"]
-  queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/config/settings"]
+  queue! %(mkdir -p "#{deploy_to}/#{shared_path}/config/settings")
+  queue! %(chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/config/settings")
 
-  queue! %[touch "#{deploy_to}/#{shared_path}/config/settings/production.yml"]
-  queue  %[echo "-----> Be sure to edit '#{deploy_to}/#{shared_path}/config/settings/production.yml'."]
+  queue! %(touch "#{deploy_to}/#{shared_path}/config/settings/production.yml")
+  queue  %(echo "-----> Be sure to edit '#{deploy_to}/#{shared_path}/config/settings/production.yml'.")
 end
 
-desc "Deploys the current version to the server."
-task :deploy => :environment do
+desc 'Deploys the current version to the server.'
+task deploy: :environment do
   deploy do
     invoke :'git:clone'
     invoke :'deploy:link_shared_paths'
@@ -65,8 +65,8 @@ task :deploy => :environment do
     invoke :'deploy:cleanup'
 
     to :launch do
-      queue "bundle exec thin stop"
-      queue "bundle exec thin start -p 6000 -e production -d"
+      queue 'bundle exec thin stop'
+      queue 'bundle exec thin start -p 6000 -e production -d'
       # queue "whenever -w"
     end
   end

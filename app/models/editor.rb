@@ -3,7 +3,7 @@ require 'bcrypt'
 class Editor
   include Mongoid::Document
   include Mongoid::Timestamps
-  
+
   validates :username, uniqueness: true, length: { in: 3..14 }
   validates :password, presence: true, length: { minimum: 6 }
 

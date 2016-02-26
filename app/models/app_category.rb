@@ -4,6 +4,6 @@ class AppCategory
   include Mongoid::Timestamps
 
   field :name, type: String
-  
+
   has_many :apps, dependent: :destroy
 end

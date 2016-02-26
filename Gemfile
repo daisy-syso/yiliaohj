@@ -30,7 +30,7 @@ gem 'bootstrap-sass'
 # gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails'#, '~> 2.3.0'
+gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 gem 'jquery-turbolinks'
@@ -45,7 +45,7 @@ gem 'simple_form'
 gem 'rack-cors'
 
 gem 'hiredis'
-gem 'redis', require: %w[ redis redis/connection/hiredis ]
+gem 'redis', require: %w(redis redis/connection/hiredis)
 gem 'redis-objects'
 
 gem 'config'
@@ -62,14 +62,14 @@ gem 'thin'
 gem 'sidekiq'
 gem 'sinatra', require: false
 
-gem 'whenever', :require => false
+gem 'whenever', require: false
 
 gem 'faraday'
 gem 'typhoeus', require: 'typhoeus/adapters/faraday'
 
 gem 'qiniu'
 gem 'carrierwave'
-gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+gem 'carrierwave-mongoid', require: 'carrierwave/mongoid'
 # gem 'mongoid-grid_fs', github: 'ahoward/mongoid-grid_fs'
 gem 'carrierwave-qiniu', '~> 0.1.5'
 
@@ -83,7 +83,9 @@ group :development, :test do
   gem 'bullet'
   gem 'quiet_assets'
 
-  gem "uniform_notifier"
+  gem 'rubocop', require: false
+
+  gem 'uniform_notifier'
 end
 
 group :development do
@@ -93,4 +95,3 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
-

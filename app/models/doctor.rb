@@ -4,7 +4,7 @@ class Doctor
   include Mongoid::Timestamps
 
   mount_uploader :image_url, PictureUploader
-  
+
   field :name, type: String
   field :summary, type: String
   field :nationality, type: String

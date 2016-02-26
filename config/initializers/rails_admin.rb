@@ -1,5 +1,5 @@
 RailsAdmin.config do |config|
-  config.main_app_name = ["团购", "管理"]
+  config.main_app_name = %w(团购 管理)
   # config.main_app_name = Proc.new { |controller| [ "团购", "#{controller.params[:action].try(:titleize)}" ] }
 
   ### Popular gems integration
@@ -26,7 +26,7 @@ RailsAdmin.config do |config|
     dashboard do
       i18n_key :dash
     end
-    index                         # mandatory
+    index # mandatory
     new
     export
     bulk_delete

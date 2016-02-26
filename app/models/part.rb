@@ -4,7 +4,6 @@ class Part
   include Mongoid::Timestamps
 
   field :name, type: String
-  
+
   has_many :symptoms
 end
-

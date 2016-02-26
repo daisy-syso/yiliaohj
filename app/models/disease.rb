@@ -4,7 +4,7 @@ class Disease
   include Mongoid::Timestamps
 
   mount_uploader :image_url, PictureUploader
-  
+
   field :name, type: String
   field :etiology, type: String
   field :symptom, type: String
@@ -20,7 +20,4 @@ class Disease
   validates :name, presence: true
 
   index name: 1
-
 end
-
-

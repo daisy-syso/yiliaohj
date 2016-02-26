@@ -9,6 +9,6 @@ class App
   field :image_url, type: String
   field :link, type: String
   field :detail, type: String
-  
+
   belongs_to :app_category
 end

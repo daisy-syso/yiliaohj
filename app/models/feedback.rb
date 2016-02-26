@@ -4,7 +4,6 @@ class Feedback
   include Mongoid::Timestamps
 
   field :content, type: String
-  
+
   belongs_to :user
 end
-

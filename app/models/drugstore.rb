@@ -4,7 +4,7 @@ class DrugStore
   include Mongoid::Timestamps
 
   mount_uploader :image_url, PictureUploader
-  
+
   field :name, type: String
   field :address, type: String
   field :description, type: String
@@ -30,5 +30,4 @@ class DrugStore
   validates :name, presence: true
 
   index name: 1
-
 end
