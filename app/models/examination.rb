@@ -15,5 +15,6 @@ class Examination
   belongs_to :examination_category
   belongs_to :examinationable, polymorphic: true
 
-  has_many :commoditiable, as: :commentable
+  has_many :comments, as: :commentable
+  has_many :commodities, as: :commoditiable
 end

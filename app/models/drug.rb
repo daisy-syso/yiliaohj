@@ -27,7 +27,7 @@ class Drug
 
   has_many :drug_detail
   has_many :comments, as: :commentable
-  has_many :commoditiable, as: :commentable
+  has_many :commodities, as: :commoditiable
 
   validates :name, presence: true
 
