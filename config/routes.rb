@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  constraints subdomain: /^(admin(.*))$/i do
+  # constraints subdomain: /^(admin(.*))$/i do
     devise_for :admins # , controllers: { sessions: "users/sessions" }
     mount RailsAdmin::Engine => '/', as: 'rails_admin'
 
@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
       #   resources :banners
     end
-  end
+  # end
 
   constraints subdomain: /^(test(.*))$/i do
     namespace :frontend, path: '/' do

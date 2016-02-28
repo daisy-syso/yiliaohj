@@ -12,6 +12,8 @@ class Examination
   field :feature, type: String
   field :applicable, type: String
 
-  belongs_to :examination_type
+  belongs_to :examination_category
   belongs_to :examinationable, polymorphic: true
+
+  has_many :commoditiable, as: :commentable
 end

@@ -26,6 +26,8 @@ class Drug
   field :diseases, type: Array, default: -> { [] }
 
   has_many :drug_detail
+  has_many :comments, as: :commentable
+  has_many :commoditiable, as: :commentable
 
   validates :name, presence: true
 

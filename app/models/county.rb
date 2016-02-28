@@ -11,3 +11,4 @@ class County
   has_many :maternals
   has_many :drug_stores
   has_many :nursing_rooms
+end

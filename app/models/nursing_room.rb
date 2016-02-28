@@ -33,6 +33,7 @@ class NursingRoom
   belongs_to :county
 
   has_many :comments, as: :commentable
+  has_many :commoditiable, as: :commentable
 
   validates :name, presence: true
   validates :telephone, presence: true

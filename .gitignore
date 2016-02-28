@@ -12,8 +12,6 @@
 !/log/.keep
 /tmp
 
-config/settings/*.yml
-
 database.yml
 mongoid.yml
 

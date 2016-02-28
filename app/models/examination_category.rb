@@ -1,5 +1,5 @@
 # 体检类别
-class ExaminationType
+class ExaminationCategory
   include Mongoid::Document
   include Mongoid::Timestamps
 

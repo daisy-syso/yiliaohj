@@ -20,6 +20,7 @@ class Insurance
   belongs_to :insurance_company
 
   has_many :comments, as: :commentable
+  has_many :commoditiable, as: :commentable
 
   validates :name, presence: true
 

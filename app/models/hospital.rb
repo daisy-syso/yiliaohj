@@ -12,7 +12,7 @@ class Hospital
   field :address, type: String
   field :image_url, type: String
   field :url, type: String
-  field :medical_insurance, type: String
+  
   field :characteristic_departments, type: String
   field :level, type: String
   field :lon, type: Float
@@ -20,8 +20,10 @@ class Hospital
 
   field :click_count, type: String
 
-  field :star, type: Integer
-  field :status, type: Boolean
+  field :star, type: Integer, default: 3
+  field :status, type: Boolean, default: true
+
+  field :is_medical_insurance, type: Boolean
 
   belongs_to :city
   belongs_to :county

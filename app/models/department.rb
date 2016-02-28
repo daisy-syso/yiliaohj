@@ -5,6 +5,9 @@ class Department
 
   field :name, type: String
 
+  belongs_to :parent, class_name: "Department"
+  has_many :children, class_name: "Department"
+
   has_many :doctors
   has_many :diseases
 
