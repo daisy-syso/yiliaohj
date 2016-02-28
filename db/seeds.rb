@@ -2,7 +2,7 @@
 # editor.password = 'Daisy1234'
 # editor.save
 
-a = Admin.new
-a.email = '651019063@qq.com'
-a.password = 'password'
-a.save
+# a = Admin.new
+# a.email = '651019063@qq.com'
+# a.password = 'password'
+# a.save
