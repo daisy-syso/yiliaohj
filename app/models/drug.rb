@@ -23,10 +23,11 @@ class Drug
 
   field :status, type: Boolean, default: true
 
-  field :diseases, type: Array, default: -> { [] }
+  field :diseases, type: Array
 
   has_many :drug_detail
   has_many :comments, as: :commentable
+
   has_many :commodities, as: :commoditiable
 
   validates :name, presence: true
