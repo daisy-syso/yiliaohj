@@ -1,0 +1,6 @@
+qiniu:
+  bucket: syso
+  domain: syso.qiniudn.com
+  ak: yRXGIzOvJBBfMOelm4O3vqasPGXj_lAuVTso4qul
+  sk: ijola0yT9Gymxh7bw9ZPfQSfGZ09aHvyzWK4PRvD
+  expires_in: 1576800000
