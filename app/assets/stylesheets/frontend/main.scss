@@ -1,0 +1,154 @@
+@import "variables";
+
+#main-index {
+  // common class
+  .accurate-search-section,
+  .health-headlines-section,
+  .activities-section {
+    border-bottom: 10px solid #f0f1f2;
+    padding: 0 13px;
+  }
+
+  .section-title {
+    font-size: 15px;
+    color: $black;
+    margin: 0px;
+    padding: 15px 0;
+    span {
+      border-left: 6px solid $purple;
+      margin-right: 6px;
+    }
+  }
+
+  .section-content {
+    padding-left: 12px;
+  }
+
+  // advertisement section
+  .ads-section {
+    height: 115px;
+    div {
+      height: 100%;
+    }
+    .adsCarousel {
+      height: 100%;
+    }
+    .slider-picture{
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  // accurate query section
+  .accurate-search-section {
+    height: 220px;
+    .accurate-search-list {
+      li {
+        width: 24%;
+        p {
+          font-size: 12px;
+          color: $middle-gray;
+        }
+      }
+      .category-icon {
+        width: 45px;
+        height: 45px;
+      }
+    }
+  }
+
+  // health headlines section
+  .health-headlines-section {
+    .check-more {
+      font-size: 14px;
+      color: $gray;
+      img {
+        width: 12px;
+        vertical-align: text-top;
+      }
+    }
+    #healthHeadlinesCarousel {
+      margin-right: 24px;
+      margin-bottom: 20px;
+      height: 126px;
+      div {
+        height: 100%;
+      }
+      .item {
+        img {
+          border-radius: 8px;
+          height: 126px;
+          width: 100%;
+        }
+      }
+    }
+    .health-headlines-list {
+      .health-headlines-item {
+
+      }
+      .health-headlines-image {
+        width: 150px;
+        height: 78px;
+        border-radius: 8px;
+      }
+    }
+  }
+
+  // activities section
+  .activities-section {
+    height: 174px;
+    .activities-list {
+      margin-top: 10px;
+      .activities-item {
+        width: 49%;
+      }
+      .activity-flag {
+        width: 32px;
+        margin-right: 10px;
+      }
+      .activity-title-wrapper {
+        display: inline-block;
+        .title {
+          font-size: 15px;
+          color: $middle-gray;
+        }
+        .subtitle {
+          font-size: 12px;
+          color: $gray;
+        }
+      }
+    }
+  }
+
+  // guess what you like section
+  .guess-section {
+    .section-title {
+      margin-left: 13px;
+    }
+    .guess-list {
+      .guess-item {
+        height: 128px;
+        padding: 10px;
+        border-top: 1px solid #cccccc;
+        img {
+          float: left;
+          width: 30%;
+          margin-right: 10px;
+        }
+        .content {
+          float: left;
+          width: 63%;
+          margin-top: 2%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        p {
+          margin: 0px;
+          font-size: 12px;
+          color: #999999;
+        }
+      }
+    }
+  }
+}
