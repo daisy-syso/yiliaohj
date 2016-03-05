@@ -1,0 +1,132 @@
+<div id="main-index">
+  <div class="ads-section">
+    <div id="adsCarousel" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#adsCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#adsCarousel" data-slide-to="1"></li>
+        <li data-target="#adsCarousel" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <img class="slider-picture" src="http://lorempixel.com/375/115/sports/1">
+        </div>
+        <div class="item">
+          <img class="slider-picture" src="http://lorempixel.com/375/115/sports/1">
+        </div>
+        <div class="item">
+          <img class="slider-picture" src="http://lorempixel.com/375/115/sports/1">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="accurate-search-section">
+    <div class="section-title"><span></span> 精确查询</div>
+    <div id="queriesCarousel" class="carousel slide section-content" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#queriesCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#queriesCarousel" data-slide-to="1"></li>
+        <li data-target="#queriesCarousel" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <ul class="list-unstyled list-inline accurate-search-list">
+            <% 8.times do %>
+              <li class="accurate-search-item">
+                <a href="#">
+                  <%= image_tag "frontend/hospital.png", class: "category-icon" %>
+                  <p>医院大全</p>
+                </a>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+        <!-- <div class="item">
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+  <div class="health-headlines-section">
+    <div class="section-title">
+      <span></span>
+      健康头条
+      <div class="check-more pull-right">
+        更多 <%= image_tag "frontend/more_icon.png" %>
+      </div>
+    </div>
+    <div class="section-content">
+      <ul class="list-unstyled list-inline health-headlines-list">
+        <li class="health-headlines-item">
+          <a href="#">
+            <%= image_tag "http://lorempixel.com/400/400/nature/1", class: "health-headlines-image" %>
+          </a>
+        </li>
+        <li>
+          <%= image_tag "http://lorempixel.com/400/400/nature/1", class: "health-headlines-image" %>
+        </li>
+      </ul>
+      <div id="healthHeadlinesCarousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#healthHeadlinesCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#healthHeadlinesCarousel" data-slide-to="1"></li>
+          <li data-target="#healthHeadlinesCarousel" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+          <div class="item active">
+            <%= image_tag "http://lorempixel.com/400/400/nature/1" %>
+          </div>
+          <div class="item">
+            <%= image_tag "http://lorempixel.com/400/400/nature/1" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="activities-section">
+    <ul class="list-unstyled list-inline activities-list section-content">
+      <% 6.times do %>
+        <li class="activities-item">
+          <a href="#">
+            <div class="activity-title-wrapper">
+              <div class="title">新用户专享</div>
+              <p class="subtitle">每周整形</p>
+            </div>
+            <%= image_tag "frontend/activity_low_price.png", class: "pull-right activity-flag" %>
+          </a>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+
+  <div class="guess-section">
+    <div class="section-title"><span></span>猜你喜欢的</div>
+    <ul class="list-unstyled guess-list">
+      <li class="guess-item">
+        <img src="http://lorempixel.com/105/105/animals/1" alt=""/>
+        <div class="content">
+          <div class="title">安徽合肥治疗白癜风专科医院</div>
+          <p class="grade">****** 5分</p>
+          <p class="distance">距离： 1.0千米</p>
+          <p class="peculiarity">特色科室： 皮肤科</p>
+          <p class="tel">电话： 0551-654922</p>
+        </div>
+      </li>
+      <li class="guess-item">
+        <img src="http://lorempixel.com/105/105/animals/1" alt=""/>
+        <div class="content">
+          <div class="title">安徽合肥治疗白癜风专科医院</div>
+          <p class="grade">****** 5分</p>
+          <p class="distance">距离： 1.0千米</p>
+          <p class="peculiarity">特色科室： 皮肤科</p>
+          <p class="tel">电话： 0551-654922</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+<footer>
+</footer>
