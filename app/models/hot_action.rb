@@ -6,6 +6,7 @@ class HotAction
   mount_uploader :image_url, PictureUploader
 
   field :title, type: String
+  field :summary, type: String
   field :image_url, type: String
   field :link, type: String
 

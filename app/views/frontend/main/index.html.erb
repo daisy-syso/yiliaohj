@@ -7,15 +7,11 @@
         <li data-target="#adsCarousel" data-slide-to="2"></li>
       </ol>
       <div class="carousel-inner" role="listbox">
-        <div class="item active">
-          <img class="slider-picture" src="http://lorempixel.com/375/115/sports/1">
-        </div>
-        <div class="item">
-          <img class="slider-picture" src="http://lorempixel.com/375/115/sports/1">
-        </div>
-        <div class="item">
-          <img class="slider-picture" src="http://lorempixel.com/375/115/sports/1">
-        </div>
+        <% @banners.each_with_index do |banner,index| %>
+          <div class="item <%= index == 0 ? "active" : "" %>">
+            <img class="slider-picture" src="<%= banner.image_url %>">
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
@@ -29,20 +25,20 @@
         <li data-target="#queriesCarousel" data-slide-to="2"></li>
       </ol>
       <div class="carousel-inner" role="listbox">
-        <div class="item active">
-          <ul class="list-unstyled list-inline accurate-search-list">
-            <% 8.times do %>
-              <li class="accurate-search-item">
-                <a href="#">
-                  <%= image_tag "frontend/hospital.png", class: "category-icon" %>
-                  <p>医院大全</p>
-                </a>
-              </li>
-            <% end %>
-          </ul>
-        </div>
-        <!-- <div class="item">
-        </div> -->
+        <% @categories.each_with_index do |category_obj, index| %>
+          <div class="item <%= index == 0 ? "active" : "" %>">
+            <ul class="list-unstyled list-inline accurate-search-list">
+              <% category_obj.each do |category| %>
+                <li class="accurate-search-item">
+                  <a href="#">
+                    <%= image_tag category.image_url, class: "category-icon" %>
+                    <p><%= category.title %></p>
+                  </a>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
@@ -57,14 +53,13 @@
     </div>
     <div class="section-content">
       <ul class="list-unstyled list-inline health-headlines-list">
-        <li class="health-headlines-item">
-          <a href="#">
-            <%= image_tag "http://lorempixel.com/400/400/nature/1", class: "health-headlines-image" %>
-          </a>
-        </li>
-        <li>
-          <%= image_tag "http://lorempixel.com/400/400/nature/1", class: "health-headlines-image" %>
-        </li>
+        <% @advertisements.each do |advertisement| %>
+          <li class="health-headlines-item">
+            <a href="#">
+              <%= image_tag advertisement.image_url, class: "health-headlines-image" %>
+            </a>
+          </li>
+        <% end %>
       </ul>
       <div id="healthHeadlinesCarousel" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -73,34 +68,31 @@
           <li data-target="#healthHeadlinesCarousel" data-slide-to="2"></li>
         </ol>
         <div class="carousel-inner" role="listbox">
-          <div class="item active">
-            <%= image_tag "http://lorempixel.com/400/400/nature/1" %>
-          </div>
-          <div class="item">
-            <%= image_tag "http://lorempixel.com/400/400/nature/1" %>
-          </div>
+          <% @import_drugs.each_with_index do |drug, index| %>
+            <div class="item <%= index == 0 ? "active" : "" %>">
+              <%= image_tag drug.image_url %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
 
-
   <div class="activities-section">
     <ul class="list-unstyled list-inline activities-list section-content">
-      <% 6.times do %>
+      <% @hot_actions.each do |action| %>
         <li class="activities-item">
           <a href="#">
             <div class="activity-title-wrapper">
-              <div class="title">新用户专享</div>
-              <p class="subtitle">每周整形</p>
+              <div class="title"><%= action.title %></div>
+              <p class="subtitle"><%= action.summary %></p>
             </div>
-            <%= image_tag "frontend/activity_low_price.png", class: "pull-right activity-flag" %>
+            <%= image_tag action.image_url, class: "pull-right activity-flag" %>
           </a>
         </li>
       <% end %>
     </ul>
   </div>
-
 
   <div class="guess-section">
     <div class="section-title"><span></span>猜你喜欢的</div>
