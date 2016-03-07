@@ -1,33 +1,33 @@
 Rails.application.routes.draw do
-  # constraints subdomain: /^(test(.*))$/i do
-  namespace :frontend, path: '/' do
-    devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations', passwords: 'users/passwords', confirmations: 'users/confirmations' }
+  constraints subdomain: /^(test(.*))$/i do
+    namespace :frontend, path: '/' do
+      devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations', passwords: 'users/passwords', confirmations: 'users/confirmations' }
 
-    root 'main#index'
+      root 'main#index'
 
-    resources :hospitals
-    # resources :upload_position
-    post 'upload_position',  to: 'main#upload_position'
+      resources :hospitals
+      
+      post 'upload_position',  to: 'main#upload_position'
+    end
   end
-  # end
 
-  # constraints subdomain: /^(admin(.*))$/i do
-  devise_for :admins # , controllers: { sessions: "users/sessions" }
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  constraints subdomain: /^(admin(.*))$/i do
+    devise_for :admins # , controllers: { sessions: "users/sessions" }
+    mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-  namespace :admin, path: '/admin' do
-    #   root 'editors_session#login'
-    resources :banners
-    resources :hot_actions
+    namespace :admin, path: '/admin' do
+      #   root 'editors_session#login'
+      resources :banners
+      resources :hot_actions
 
-    #   resources :editors_session do
-    #     collection do
-    #       get 'login'
-    #       get 'logout'
-    #     end
-    #   end
+      #   resources :editors_session do
+      #     collection do
+      #       get 'login'
+      #       get 'logout'
+      #     end
+      #   end
 
-    #   resources :banners
+      #   resources :banners
+    end
   end
-  # end
 end
