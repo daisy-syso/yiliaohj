@@ -30,7 +30,7 @@
             <ul class="list-unstyled list-inline accurate-search-list">
               <% category_obj.each do |category| %>
                 <li class="accurate-search-item">
-                  <a href="#">
+                  <a href="<%= category.link %>">
                     <%= image_tag category.image_url, class: "category-icon" %>
                     <p><%= category.title %></p>
                   </a>
@@ -53,10 +53,10 @@
     </div>
     <div class="section-content">
       <ul class="list-unstyled list-inline health-headlines-list">
-        <% @advertisements.each do |advertisement| %>
+        <% @health_information.each do |information| %>
           <li class="health-headlines-item">
             <a href="#">
-              <%= image_tag advertisement.image_url, class: "health-headlines-image" %>
+              <%= image_tag information.image_url, class: "health-headlines-image" %>
             </a>
           </li>
         <% end %>
@@ -97,6 +97,26 @@
   <div class="guess-section">
     <div class="section-title"><span></span>猜你喜欢的</div>
     <ul class="list-unstyled guess-list">
+      <% @advertisements.each do |information| %>
+        <% case information.type %>
+        <% when 'hospital' %>
+          <li class="guess-item">
+            <img src="<%= information.image_url %>" alt=""/>
+            <div class="content">
+              <div class="title">安徽合肥治疗白癜风专科医院</div>
+              <p class="grade">****** 5分</p>
+              <p class="distance">距离： 1.0千米</p>
+              <p class="peculiarity">特色科室： 皮肤科</p>
+              <p class="tel">电话： 0551-654922</p>
+            </div>
+          </li>
+        <% when 'doctor'%>
+
+        <% when 'other' %>
+          
+        <% end %>
+        
+      <% end %>
       <li class="guess-item">
         <img src="http://lorempixel.com/105/105/animals/1" alt=""/>
         <div class="content">

@@ -8,6 +8,8 @@ module Frontend
 
       @advertisements = Advertisement.all
 
+      @health_information = HealthInformation.all
+
       @import_drugs = ImportDrug.all
 
       @hot_actions = HotAction.all.desc(:created_at).limit(6)
