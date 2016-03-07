@@ -4,3 +4,10 @@ qiniu:
   ak: yRXGIzOvJBBfMOelm4O3vqasPGXj_lAuVTso4qul
   sk: ijola0yT9Gymxh7bw9ZPfQSfGZ09aHvyzWK4PRvD
   expires_in: 1576800000
+redis:
+  host: 127.0.0.1
+  port: 6379
+  queue: 0
+  sidekiq_db: 2
+  object_db: 3
+  position: 4

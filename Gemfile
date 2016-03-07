@@ -45,6 +45,10 @@ gem 'simple_form'
 
 gem 'rack-cors'
 
+gem 'lograge'
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
+
 gem 'hiredis'
 gem 'redis', require: %w(redis redis/connection/hiredis)
 gem 'redis-objects'

@@ -18,3 +18,10 @@ admin.yiliaohj.com
 
 
 rails generate devise:install
+
+
+## Usage
+```
+跑索引
+Hospital.__elasticsearch__.create_index! force: true
+```

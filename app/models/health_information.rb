@@ -8,6 +8,6 @@ class HealthInformation
   field :title, type: String
   field :image_url, type: String
   field :link, type: String
-  
+
   # field :information_id, type: String
 end

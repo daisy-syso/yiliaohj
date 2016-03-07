@@ -13,6 +13,14 @@ module Frontend
       @import_drugs = ImportDrug.all
 
       @hot_actions = HotAction.all.desc(:created_at).limit(6)
+
+      @recommendations = Recommendation.all.desc(:created_at).page(params[:page]).per(params[:per])
+    end
+
+    def upload_position
+      $redis_position.set(request.remote_ip, "#{params[:lat]},#{params[:lon]}")
+
+      render json: {mes: 'ok'}
     end
   end
 end

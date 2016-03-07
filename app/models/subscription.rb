@@ -8,6 +8,6 @@ class Subscription
   has_one :disease_info_category
 
   before_save do
-    self.top_name = DiseaseInfoCategory.find(DiseaseInfoCategory.find(self.disease_info_category_id).parent_id).name
+    self.top_name = DiseaseInfoCategory.find(DiseaseInfoCategory.find(disease_info_category_id).parent_id).name
   end
 end

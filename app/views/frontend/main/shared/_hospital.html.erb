@@ -1,10 +1,11 @@
+<% hospital = Hospital.find(recommendation.recommendationable_id) %>
 <li class="guess-item">
-  <img src="<%= information.image_url %>" alt=""/>
+  <img src="<%= hospital.image_url %>" alt=""/>
   <div class="content">
-    <div class="title">安徽合肥治疗白癜风专科医院</div>
+    <div class="title"><%= hospital.name %></div>
     <p class="grade">****** 5分</p>
-    <p class="distance">距离： 1.0千米</p>
-    <p class="peculiarity">特色科室： 皮肤科</p>
-    <p class="tel">电话： 0551-654922</p>
+    <p class="distance">距离： <%= get_disance_by_poinit_point(hospital.location) %>千米</p>
+    <p class="peculiarity">特色科室： <%= hospital.characteristic_departments %></p>
+    <p class="tel">电话： <%= hospital.telephone %></p>
   </div>
 </li>

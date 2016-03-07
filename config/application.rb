@@ -9,6 +9,9 @@ require 'action_mailer/railtie'
 require 'action_view/railtie'
 require 'sprockets/railtie'
 
+require 'elasticsearch/rails/instrumentation'
+require 'elasticsearch/rails/lograge'
+
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
@@ -34,5 +37,9 @@ module Yiliaohj
     config.i18n.default_locale = :"zh-CN"
 
     config.active_job.queue_adapter = :sidekiq
+
+    config.lograge.enabled = true
+    config.lograge.keep_original_rails_log = true
+    config.lograge.logger = ActiveSupport::Logger.new "#{Rails.root}/log/lograge_#{Rails.env}.log"
   end
 end
