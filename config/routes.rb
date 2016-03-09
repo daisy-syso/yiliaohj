@@ -4,9 +4,12 @@ Rails.application.routes.draw do
       devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations', passwords: 'users/passwords', confirmations: 'users/confirmations' }
 
       root 'main#index'
+      post 'upload_position',  to: 'main#upload_position'
 
       resources :hospitals
-      post 'upload_position',  to: 'main#upload_position'
+      resources :maternals
+      resources :medicals
+      resources :nursing_rooms
     end
   end
 

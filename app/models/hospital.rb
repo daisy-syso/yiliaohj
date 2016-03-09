@@ -40,38 +40,7 @@ class Hospital
   validates :address, presence: true
 
   index name: 1
-
-  def self.neighbour(lat, lon, distance)
-    query = {
-      query: {
-        filtered: {
-          filter: {
-            geo_distance: {
-              distance: distance,
-              location: {
-                lat: lat,
-                lon: lon
-              }
-            }
-          }
-        }
-      },
-      sort: [
-        {
-          _geo_distance: {
-            location: {
-              lat:  lat,
-              lon: lon
-            },
-            order: 'asc',
-            unit: 'km',
-            distance_type: 'plane'
-          }
-        }
-      ]
-    }
-    search query
-
-    # User.neighbour(31.018188,121.196511,'12000km').response
-  end
+  index level: 1
+  index click_count: 1
+  index star: 1
 end
