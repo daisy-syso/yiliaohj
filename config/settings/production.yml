@@ -11,3 +11,7 @@ redis:
   sidekiq_db: 2
   object_db: 3
   position: 4
+elasticsearch:
+  hosts:
+    - localhost:9200
+  log: log/production-elasticsearch.log

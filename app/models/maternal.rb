@@ -2,6 +2,7 @@
 class Maternal
   include Mongoid::Document
   include Mongoid::Timestamps
+  include ElasticsearchConfig::Maternal
 
   mount_uploader :image_url, PictureUploader
 
@@ -10,6 +11,7 @@ class Maternal
   field :telephone, type: String
   field :address, type: String
   field :image_url, type: String
+  field :location, type: String
 
   field :origin_price, type: Float
   field :price, type: Float

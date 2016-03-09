@@ -2,11 +2,14 @@
 class NursingRoom
   include Mongoid::Document
   include Mongoid::Timestamps
+  include ElasticsearchConfig::NursingRoom
 
   mount_uploader :image_url, PictureUploader
 
   field :name, type: String
   field :telephone, type: String
+  field :location, type: String
+
   field :image_url, type: String
   field :address, type: String
 
