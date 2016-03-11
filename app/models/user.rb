@@ -37,6 +37,7 @@ class User
 
   field :avatar, type: String
   field :gender, type: String
+  field :telephone,   type: String, default: ''
 
   has_many :feedbacks
   has_many :comments
