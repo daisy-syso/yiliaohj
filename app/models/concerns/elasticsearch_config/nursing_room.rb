@@ -1,5 +1,5 @@
 module ElasticsearchConfig
-  module NusringRoom
+  module NursingRoom
     extend ActiveSupport::Concern
 
     included do
