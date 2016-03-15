@@ -1,3 +1,9 @@
+mail:
+  url: http://sendcloud.sohu.com/webapi/mail.send.json
+  api_user: yiliaohj_mail
+  api_key: qMgh602Vx1zeL4kf
+  from: mail@yiliaohj.com
+  log: log/development-mail.log
 qiniu:
   bucket: syso
   domain: syso.qiniudn.com
@@ -8,9 +14,9 @@ redis:
   host: 127.0.0.1
   port: 6379
   queue: 0
-  sidekiq_db: 2
-  object_db: 3
-  position: 4
+  sidekiq_db: 1
+  object_db: 2
+  position: 3
 elasticsearch:
   hosts:
     - localhost:9200

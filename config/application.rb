@@ -37,6 +37,7 @@ module Yiliaohj
     config.i18n.default_locale = :"zh-CN"
 
     config.active_job.queue_adapter = :sidekiq
+    config.active_job.queue_name_prefix = Rails.env
 
     config.lograge.enabled = true
     config.lograge.keep_original_rails_log = true
