@@ -1,0 +1,71 @@
+#login {
+  .navbar-header {
+  }
+  .header{
+    background: #c579f2;
+  }
+  .member-login{
+    text-decoration: none;
+    font-size: 17px;
+  }
+  .member-register{
+    font-size: 15px;
+    margin: 15px;
+  }
+  a{
+    color: white;
+    img {
+      height: 45px;
+    }
+  }
+  input {
+    width: 326px;
+    height: 45px;
+  }
+
+  input[type='submit']{
+    background-color: #c579f2;
+    color: white;
+  }
+
+  .content {
+    margin: 40px 25px 0 25px;
+    .form-inputs {
+      position: relative;
+      input {
+        padding-left: 40px;
+      }
+      img {
+        position: absolute;
+        top: 8px;
+        left: 10px;
+        width: 22px;
+      }
+      .password-icon {
+        top: 70px;
+      }
+    }
+    .forget-password {
+      text-align: center;
+      margin-top: 10px;
+      a {
+        margin-top: 20px;
+        text-decoration: none;
+        color: #C579F2;
+      }
+    }
+    .login-tip {
+      color: gray;
+      text-align: Center;
+      margin-top: 90px;
+    }
+    .social-login {
+      margin: 0px;
+      padding: 22px;
+      li {
+        display: inline-block;
+        margin: 20px;
+      }
+    }
+  }
+}
