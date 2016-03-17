@@ -1,9 +1,3 @@
-mail:
-  url: http://sendcloud.sohu.com/webapi/mail.send.json
-  api_user: yiliaohj_mail
-  api_key: qMgh602Vx1zeL4kf
-  from: mail@yiliaohj.com
-  log: log/development-mail.log
 qiniu:
   bucket: syso
   domain: syso.qiniudn.com
@@ -21,3 +15,15 @@ elasticsearch:
   hosts:
     - localhost:9200
   log: log/development-elasticsearch.log
+sms:
+  log: log/development-sms.log
+  url: http://gw.api.taobao.com/router/rest
+  appkey: 23326967
+  appsecret: b8159118f21552197d73622a32d9ec54
+  method_str: alibaba.aliqin.fc.sms.num.send
+mail:
+  url: http://sendcloud.sohu.com/webapi/mail.send.json
+  api_user: yiliaohj_mail
+  api_key: qMgh602Vx1zeL4kf
+  from: mail@yiliaohj.com
+  log: log/development-mail.log

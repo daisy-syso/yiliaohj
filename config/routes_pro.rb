@@ -1,4 +1,7 @@
+require 'sidekiq/web'
 Rails.application.routes.draw do
+  mount Sidekiq::Web, at: '/sidekiq'
+
   constraints subdomain: /^(admin(.*))$/i do
     devise_for :admins # , controllers: { sessions: "users/sessions" }
     mount RailsAdmin::Engine => '/', as: 'rails_admin'
@@ -25,6 +28,7 @@ Rails.application.routes.draw do
 
       root 'main#index'
       post 'upload_position',  to: 'main#upload_position'
+      resources :sms
 
       resources :hospitals
       resources :maternals
