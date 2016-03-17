@@ -1,17 +1,39 @@
-<h2>Sign up</h2>
+<div id="register">
+  <nav class="navbar navbar-default header">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="#">
+          <%= image_tag "users/title_icon_back_normal.png" %>
+        </a>
+        <a href="#" class="member-login">注册</a>
+      </div>
+    </div>
+  </nav>
+  <div class="content">
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= f.error_notification %>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+      <div class="form-inputs">
+        <%= f.input :email, required: true, autofocus: true, placeholder: '请输手机号', label: false %>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-    <%= f.input :password_confirmation, required: true %>
+        <%#= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+        <%#= f.input :password_confirmation, required: true %>
+      </div>
+      <div>
+        <input placeholder='请输验证码' class="validation-code-input"/>
+        <button class="btn btn-default send-validate-code pull-right">发送验证</button>
+      </div>
+
+      <div class="check-item">
+        <input type="checkbox">
+        <p>我同意使用条款</p>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit, "下一步" %>
+      </div>
+    <% end %>
   </div>
+</div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+<%#= render "users/shared/links" %>
