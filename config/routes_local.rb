@@ -6,12 +6,28 @@ Rails.application.routes.draw do
       devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations', passwords: 'users/passwords', confirmations: 'users/confirmations' }
 
       root 'main#index'
+      post 'upload_position',  to: 'main#upload_position'
+      namespace :users do
+        resources :sms, only: [:create]
+        resources :registrations, only: [] do
+          collection do
+            get 'email_new'
+            get 'telephone_new'
+            get 'check_register_telephone'
+            get 'check_register_email'
+            post 'email'
+            post 'telephone'
+          end
+        end
+        resources :sessions, only: [:new, :create, :put]
+      end
 
       resources :hospitals
-
-      post 'upload_position',  to: 'main#upload_position'
-    end
-  # end
+      resources :maternals
+      resources :medicals
+      resources :nursing_rooms
+    # end
+  end
 
   # constraints subdomain: /^(admin(.*))$/i do
     devise_for :admins # , controllers: { sessions: "users/sessions" }
@@ -33,3 +49,4 @@ Rails.application.routes.draw do
     end
   # end
 end
+  

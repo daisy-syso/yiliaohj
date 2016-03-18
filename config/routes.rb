@@ -1,23 +1,25 @@
 require 'sidekiq/web'
 Rails.application.routes.draw do
   mount Sidekiq::Web, at: '/sidekiq'
-  # constraints subdomain: /^(test(.*))$/i do
+  constraints subdomain: /^(test(.*))$/i do
     namespace :frontend, path: '/' do
       devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations', passwords: 'users/passwords', confirmations: 'users/confirmations' }
 
       root 'main#index'
       post 'upload_position',  to: 'main#upload_position'
       namespace :users do
-        resources :sms
-        resources :registrations, only: [:new, :create] do
+        resources :sms, only: [:create]
+        resources :registrations, only: [] do
           collection do
+            get 'email_new'
+            get 'telephone_new'
             get 'check_register_telephone'
             get 'check_register_email'
             post 'email'
             post 'telephone'
           end
         end
-        resources :sessions, only: [:new, :create]
+        resources :sessions, only: [:new, :create, :put]
       end
 
       resources :hospitals
@@ -25,9 +27,9 @@ Rails.application.routes.draw do
       resources :medicals
       resources :nursing_rooms
     end
-  # end
+  end
 
-  # constraints subdomain: /^(admin(.*))$/i do
+  constraints subdomain: /^(admin(.*))$/i do
     devise_for :admins # , controllers: { sessions: "users/sessions" }
     mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
@@ -45,6 +47,6 @@ Rails.application.routes.draw do
 
       #   resources :banners
     end
-  # end
+  end
 end
   

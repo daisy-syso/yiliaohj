@@ -1,41 +1,41 @@
 module Frontend
   module Users
     class RegistrationsController < FrontendController
-      def new
-        
+      def email_new
+        @user = User.new
+      end
+
+      def telephone_new
+        @user = User.new
       end
 
       def email
-        
+        user = User.new user_email_params
+        if user.save
+          redirect_to new_frontend_users_session_path
+        else
+          render :email_new
+        end
       end
 
       def telephone
-        
+        @user = User.where(telephone: params[:telephone]).first
+        if @user.present?
+          render :telephone_new
+        end
+
+        @user = User.new user_telephone_params
+
+        telephone_code = $redis_sms.get "register_#{params[:user][:telephone]}_code"
+
+        puts telephone_code
+
+        if telephone_code != params[:code]
+          render :telephone_new
+        else
+          render :person
+        end
       end
-
-      # def create
-      #   case params[:register_type]
-      #   when 'telephone'
-      #     telephone_code = $redis_sms.get "#{params.user.telephone}_code"
-
-      #     user = User.where(telephone: params.user.telephone).first
-      #     if telephone_code != params.user.code
-      #       raise Errors::CustomMessageError.new '验证码无效', :unprocessable_entity
-      #     end
-
-      #     user = User.new user_telephone_params
-      #     if user.save
-      #       redirect_to new_frontend_users_session_path
-      #     end
-      #   when 'email'
-      #     user = User.new user_email_params
-      #     if user.save
-      #       redirect_to new_frontend_users_session_path
-      #     end
-      #   end
-
-      #   user = User.new new_user_params
-      # end
 
       def check_register_telephone
         user = User.where(telephone: params[:telephone]).first
@@ -62,7 +62,7 @@ module Frontend
       private
 
       def user_telephone_params
-        params.require(:user_telephone).permit(:telephone, :password, :code)
+        params.require(:user).permit(:telephone)
       end
 
       def user_email_params

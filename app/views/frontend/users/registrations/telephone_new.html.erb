@@ -1,0 +1,53 @@
+<div id="register">
+  <nav class="navbar navbar-default header">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="#">
+          <%= image_tag "users/title_icon_back_normal.png" %>
+        </a>
+        <a href="/users/sessions/new" class="member-login">登录</a>
+      </div>
+    </div>
+  </nav>
+  <div class="content">
+    <%= simple_form_for(@user, url: '/users/registrations/telephone') do |f| %>
+      <%= f.error_notification %>
+
+      <div class="form-inputs">
+        <%= f.input :telephone, required: true, autofocus: true, placeholder: '请输手机号', label: false %>
+
+        <%#= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+        <%#= f.input :password_confirmation, required: true %>
+      </div>
+      <div>
+        <input id="code" name="code" placeholder='请输验证码' class="validation-code-input"/>
+        <button id="send_code" class="btn btn-default send-validate-code pull-right">发送验证</button>
+      </div>
+
+      <div class="check-item">
+        <input type="checkbox">
+        <p>我同意使用条款</p>
+      </div>
+      <%= notice %>
+      <div class="form-actions">
+        <%= f.button :submit, "下一步" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<script type="text/javascript">
+  $(function(){
+    $("#send_code").click(function(e){
+      e.preventDefault();
+      var telephone = $("#user_telephone").val()
+      $.post('/users/sms', {
+        telephone: telephone,
+        event: 'register'
+      }, function(data){
+        if(data.status != 200){
+          alert(data.message)
+        }
+      })
+    })
+  })
+</script>

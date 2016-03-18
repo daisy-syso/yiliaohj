@@ -13,7 +13,9 @@ module Frontend
                     {status: 422, message: '号码还未被注册'}
                   elsif event == 'register' && user
                     {status: 422, message: '号码已经被注册'}
-                  elsif 
+                  elsif telephone.size != 11
+                    {status: 422, message: '号码不合法'}
+                  else
                     telephone_code = Utils::Random.digital_code(4)
 
                     $redis_sms.set "#{event}_#{params[:telephone]}_code", telephone_code
