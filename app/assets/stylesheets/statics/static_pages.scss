@@ -1,0 +1,39 @@
+@import "../variables";
+
+// register with email page
+.app-header {
+  .custom-header{
+    background: $purple;
+  }
+  a{
+    vertical-align: text-top;
+    color: $white ;
+    img {
+      height: 45px;
+    }
+  }
+}
+
+.content {
+  margin: 0 25px;
+  .register-with-email-form {
+    input[type='text'] {
+      width: 100%;
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid #cccccc;
+      height: 50px;
+    }
+    .check-item {
+      margin-top: 25px;
+    }
+    .btn {
+      width: 100%;
+      background-color: $purple;
+      font-size: 15px;
+      color: $white;
+      height: 50px;
+      margin-top: 50px;
+    }
+  }
+}

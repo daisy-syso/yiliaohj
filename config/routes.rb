@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  # for static html
+  get 'static_pages/register_with_email'
+
   constraints subdomain: /^(admin(.*))$/i do
     devise_for :admins # , controllers: { sessions: "users/sessions" }
     mount RailsAdmin::Engine => '/', as: 'rails_admin'
