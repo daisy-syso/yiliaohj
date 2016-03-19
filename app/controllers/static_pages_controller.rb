@@ -6,4 +6,6 @@ class StaticPagesController < ApplicationController
   end
   def finish_user_info_for_email_register
   end
+  def set_password_for_email_register
+  end
 end
