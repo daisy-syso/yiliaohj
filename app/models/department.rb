@@ -11,5 +11,5 @@ class Department
   has_many :doctors
   has_many :diseases
 
-  belongs_to :hospital
+  # belongs_to :hospital
 end

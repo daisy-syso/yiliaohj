@@ -18,7 +18,7 @@ class Hospital
   field :level, type: String
   field :location, type: String
 
-  field :click_count, type: String
+  field :click_count, type: Integer
 
   field :star, type: Integer, default: 3
   field :status, type: Boolean, default: true

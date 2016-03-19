@@ -8,10 +8,22 @@ redis:
   host: 127.0.0.1
   port: 6379
   queue: 0
-  sidekiq_db: 2
-  object_db: 3
-  position: 4
+  sidekiq_db: 1
+  object_db: 2
+  position: 3
 elasticsearch:
   hosts:
     - localhost:9200
   log: log/production-elasticsearch.log
+sms:
+  log: log/development-sms.log
+  url: http://gw.api.taobao.com/router/rest
+  appkey: 23326967
+  appsecret: b8159118f21552197d73622a32d9ec54
+  method_str: alibaba.aliqin.fc.sms.num.send
+mail:
+  url: http://sendcloud.sohu.com/webapi/mail.send.json
+  api_user: yiliaohj_mail
+  api_key: qMgh602Vx1zeL4kf
+  from: mail@yiliaohj.com
+  log: log/development-mail.log
