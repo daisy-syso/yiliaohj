@@ -1,6 +1,6 @@
 @import "../variables";
 
-// register with email page
+// common css
 .app-header {
   .custom-header{
     background: $purple;
@@ -16,6 +16,19 @@
 
 .content {
   margin: 0 25px;
+  .full-button {
+    width: 100%;
+    background-color: $purple;
+    font-size: 15px;
+    color: $white;
+    height: 50px;
+    margin-top: 50px;
+  }
+}
+
+
+// register with email page
+.register-content {
   .register-with-email-form {
     input[type='text'] {
       width: 100%;
@@ -27,13 +40,24 @@
     .check-item {
       margin-top: 25px;
     }
-    .btn {
-      width: 100%;
-      background-color: $purple;
-      font-size: 15px;
-      color: $white;
+  }
+}
+
+.user-info-content {
+  .user-info-form {
+    .info-item {
       height: 50px;
-      margin-top: 50px;
+      border-bottom: 1px solid #cccccc;
+    }
+    span {
+      font-size: 15px;
+      color: $middle-gray;
+    }
+    input {
+      height: 100%;
+      border: none;
+      margin-left: 25px;
+      min-width: 70%
     }
   }
 }

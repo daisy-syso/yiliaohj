@@ -2,6 +2,7 @@ require 'sidekiq/web'
 Rails.application.routes.draw do
   # for static html
   get 'static_pages/register_with_email'
+  get 'static_pages/finish_user_info'
 
   mount Sidekiq::Web, at: '/sidekiq'
   constraints subdomain: /^(test(.*))$/i do
