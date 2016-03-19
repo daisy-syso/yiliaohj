@@ -1,8 +1,9 @@
 require 'sidekiq/web'
 Rails.application.routes.draw do
   # for static html
-  get 'static_pages/register_with_email'
-  get 'static_pages/finish_user_info_for_phone_register'
+  %w{register_with_email finish_user_info_for_phone_register finish_user_info_for_email_register}.each do |page|
+    get "static_pages/#{page}"
+  end
 
   mount Sidekiq::Web, at: '/sidekiq'
   constraints subdomain: /^(test(.*))$/i do

@@ -45,6 +45,13 @@
 
 .user-info-content {
   .user-info-form {
+    .user-avatar {
+      margin: 46px 0 30px;
+      text-align: center;
+      img {
+        width: 90px;
+      }
+    }
     .info-item {
       height: 50px;
       border-bottom: 1px solid #cccccc;

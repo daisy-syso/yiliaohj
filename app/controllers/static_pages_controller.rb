@@ -4,4 +4,6 @@ class StaticPagesController < ApplicationController
   end
   def finish_user_info_for_phone_register
   end
+  def finish_user_info_for_email_register
+  end
 end
