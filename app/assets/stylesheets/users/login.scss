@@ -119,3 +119,28 @@
     }
   }
 }
+
+#selectRegisterWay {
+  top: 30%;
+  left: 50%;
+  margin-left: -150px;
+  .modal-content {
+    width: 294px;
+    height: 108px;
+    color: #222222;
+    font-size: 15px;
+    .modal-body {
+      height: 100%;
+    }
+    ul {
+      height: 100%;
+      li {
+        height: 50%;
+        line-height: 35px;
+        &:first-child {
+          border-bottom: 1px solid $light-gray;
+        }
+      }
+    }
+  }
+}

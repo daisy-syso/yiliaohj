@@ -6,7 +6,10 @@
           <%= image_tag "users/title_icon_back_normal.png" %>
         </a>
         <a href="#" class="member-login">会员登录</a>
-        <a href="#" class="pull-right member-register">注册</a>
+        <a href="#"
+          class="pull-right member-register"
+          data-toggle="modal"
+          data-target="#selectRegisterWay">注册</a>
       </div>
     </div>
   </nav>
@@ -42,6 +45,19 @@
     </ul>
   </div>
 </div>
+
+<div class="modal fade" id="selectRegisterWay" tabindex="-1" role="dialog"
+   aria-labelledby="myModalLabel" aria-hidden="true">
+ <div class="modal-dialog">
+    <div class="modal-content">
+       <div class="modal-body">
+          <ul class="list-unstyled">
+            <li>手机号注册</li>
+            <li>邮箱注册</li>
+          </ul>
+       </div>
+    </div><!-- /.modal-content -->
+</div><!-- /.modal -->
 
 <%#= render "users/shared/links" %>
 
