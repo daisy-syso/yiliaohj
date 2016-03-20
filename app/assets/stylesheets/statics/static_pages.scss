@@ -27,6 +27,105 @@
   }
 }
 
+// filter css
+.filter {
+  position: relative;
+  .active {
+    a {
+      color: $purple !important;
+      .filter-icon-down {
+        display: none;
+      }
+      .filter-icon-up {
+        display: inline-block !important;
+      }
+    }
+  }
+  .filter-type {
+    padding-left: 15px;
+    height: 45px;
+    border-bottom: 1px solid $light-gray;
+    margin-bottom: 0px;
+    color: #737373;
+    li {
+      padding: 10px 30px 10px 0;
+      display: inline-block;
+      a {
+        color: #737373;
+      }
+      .filter-icon-down,
+      .filter-icon-up {
+        width: 8px;
+      }
+      .filter-icon-up {
+        display: none;
+      }
+    }
+  }
+  .others-conditions,
+  .intelligent-order,
+  .general-hospital {
+    position: absolute;
+    width: 100%;
+    z-index: 99999;
+    .hospital-categories {
+      position: absolute;
+      top: 0px;
+      left: 50%;
+      list-style: none;
+      padding-left: 0px;
+      background-color: #f0f1f2;
+      width: 100%;
+      padding-left: 36px;
+    }
+    background-color: $white;
+    li {
+      height: 40px;
+      line-height: 40px;
+      padding-left: 15px;
+      a {
+        color: #737373;
+      }
+    }
+    li.active{
+      background-color: #f0f1f2;
+    }
+  }
+  .others-conditions {
+    padding: 15px;
+    .toggle {
+      margin: 10px;
+      width: 46px;
+      float: right;
+    }
+    .reset,
+    .done {
+      color: $purple;
+    }
+    .done {
+      float: right;
+      margin-right: 20px;
+    }
+    > li {
+      clear: both;
+      height: auto;
+      border-bottom: 1px solid $light-gray;
+    }
+    .subject-list {
+      width: 100%;
+      margin-bottom: 16px;
+      li {
+        padding-left: 0px;
+        clear: both;
+        &.active {
+          background-color: $purple;
+        }
+        display: inline-block;
+      }
+    }
+  }
+}
+
 // register with email page
 .register-content {
   .register-with-email-form {
