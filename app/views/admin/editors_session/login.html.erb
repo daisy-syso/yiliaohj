@@ -1,7 +1,7 @@
 <div align='center'>
   <h1>团购网管理后台</h1>
   <hr>
-  <%= simple_form_for @editor, url: admin_editors_session_index_path, method: 'post', wrapper: :editor_form, html: { class: 'form-horizontal' } do |f| %>
+  <%= simple_form_for @editor, url: admin_editors_session_index_path, method: 'post', html: { class: 'form-horizontal' } do |f| %>
     <%= f.input :username, label: '用户名' %>
     <%= f.input :password, label: '密码' %>
     <%= f.button :submit, '登录', class: "btn btn-info" %>

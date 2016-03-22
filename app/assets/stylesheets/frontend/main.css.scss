@@ -2,8 +2,6 @@
 
 #login,
 #register {
-  .navbar-header {
-  }
   .header{
     background: $purple;
   }
@@ -132,7 +130,6 @@
   .modal-content {
     width: 294px;
     height: 108px;
-    color: #222222;
     font-size: 15px;
     .modal-body {
       height: 100%;
@@ -140,11 +137,11 @@
     ul {
       height: 100%;
       li {
+        height: 50%;
         line-height: 35px;
         a {
           color: #222222;
         }
-        height: 50%;
         &:first-child {
           border-bottom: 1px solid $light-gray;
         }

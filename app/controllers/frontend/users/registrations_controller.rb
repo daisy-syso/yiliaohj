@@ -10,9 +10,15 @@ module Frontend
       end
 
       def email
-        user = User.new user_email_params
-        if user.save
-          redirect_to new_frontend_users_session_path
+        # debugger
+        @user = User.new user_email_params
+        
+        if params[:user][:password] == params[:user][:password_confirmation]
+          if @user.save
+            redirect_to sent_successful_frontend_users_registrations_path
+          else
+            render :email_new
+          end
         else
           render :email_new
         end
@@ -66,7 +72,7 @@ module Frontend
       end
 
       def user_email_params
-        params.require(:user_email).permit(:email, :password)
+        params.require(:user).permit(:email, :password, :password_confirmation)
       end
 
     end

@@ -1,1 +1,34 @@
-email_new.html.erb
+<div class="app-header">
+  <nav class="navbar navbar-default custom-header">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="#">
+          <%= image_tag "users/title_icon_back_normal.png" %>
+        </a>
+        <a href="#" class="member-login">注册</a>
+      </div>
+    </div>
+  </nav>
+</div>
+  <%# debugger %>
+  <%= simple_form_for(@user, url: '/users/registrations/email') do |f| %>
+    <%= f.error_notification %>
+    <%= f.input :email, placeholder: '请输入你的邮箱', label: false %>
+    <%= f.input :password, placeholder: '请输入你的密码', label: false %>
+    <%= f.input :password_confirmation, placeholder: '再次输入你的密码', label: false %>
+    <div class="check-item">
+      <input type="checkbox" ><span>我同意使用条款</span>
+    </div>
+    
+    <%= f.button :submit, '验证邮箱', class: "btn btn-default full-button"%>
+  <% end %>
+<!-- 
+= simple_form_for(@book) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :title
+    = f.input :content
+
+  .form-actions
+    = f.button :submit -->

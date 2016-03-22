@@ -155,6 +155,16 @@ SimpleForm.setup do |config|
     end
   end
 
+  config.wrappers :email_form, tag: 'div', class: '', error_class: 'error' do |b|
+    b.use :html5
+    b.use :placeholder
+    b.use :label
+    b.wrapper tag: 'div' do |ba|
+      ba.use :input
+      ba.use :checkbox
+    end
+  end
+
   # Wrappers for forms and inputs using the Bootstrap toolkit.
   # Check the Bootstrap docs (http://getbootstrap.com)
   # to learn about the different styles for forms and inputs,

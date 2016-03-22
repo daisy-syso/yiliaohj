@@ -21,6 +21,7 @@ Rails.application.routes.draw do
             get 'check_register_telephone'
             get 'check_register_email'
             post 'email'
+            get 'sent_successful'
             post 'telephone'
           end
         end

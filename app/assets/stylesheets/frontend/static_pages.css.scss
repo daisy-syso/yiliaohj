@@ -1,0 +1,244 @@
+@import "../variables";
+
+// common css
+.app-header {
+  .custom-header{
+    background: $purple;
+    margin-bottom: 0px;
+  }
+  a{
+    vertical-align: text-top;
+    color: $white ;
+    img {
+      height: 45px;
+    }
+  }
+}
+
+.content {
+  margin: 40px 25px 0px 25px;
+  .full-button {
+    width: 100%;
+    background-color: $purple;
+    font-size: 15px;
+    color: $white;
+    height: 50px;
+    margin-top: 50px;
+  }
+  .no-border-input {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #cccccc;
+    height: 50px;
+  }
+}
+
+// filter css
+.filter {
+  position: relative;
+  .active {
+    a {
+      color: $purple !important;
+      .filter-icon-down {
+        display: none;
+      }
+      .filter-icon-up {
+        display: inline-block !important;
+      }
+    }
+  }
+  .filter-type {
+    padding-left: 15px;
+    height: 45px;
+    border-bottom: 1px solid $light-gray;
+    margin-bottom: 0px;
+    color: #737373;
+    li {
+      padding: 10px 30px 10px 0;
+      display: inline-block;
+      a {
+        color: #737373;
+      }
+      .filter-icon-down,
+      .filter-icon-up {
+        width: 8px;
+      }
+      .filter-icon-up {
+        display: none;
+      }
+    }
+  }
+  .others-conditions,
+  .intelligent-order,
+  .general-hospital {
+    position: absolute;
+    width: 100%;
+    z-index: 99999;
+    .hospital-categories {
+      position: absolute;
+      top: 0px;
+      left: 50%;
+      list-style: none;
+      padding-left: 0px;
+      background-color: #f0f1f2;
+      width: 100%;
+      padding-left: 36px;
+    }
+    background-color: $white;
+    li {
+      height: 40px;
+      line-height: 40px;
+      padding-left: 15px;
+      a {
+        color: #737373;
+      }
+    }
+    li.active{
+      background-color: #f0f1f2;
+    }
+  }
+  .others-conditions {
+    padding: 15px;
+    .toggle {
+      margin: 10px;
+      width: 46px;
+      float: right;
+    }
+    .reset,
+    .done {
+      color: $purple;
+    }
+    .done {
+      float: right;
+      margin-right: 20px;
+    }
+    > li {
+      clear: both;
+      height: auto;
+      border-bottom: 1px solid $light-gray;
+    }
+    .subject-list {
+      width: 100%;
+      margin-bottom: 16px;
+      li {
+        padding-left: 0px;
+        clear: both;
+        &.active {
+          background-color: $purple;
+        }
+        display: inline-block;
+      }
+    }
+  }
+}
+
+// register with email page
+.register-content {
+  .register-with-email-form {
+    input[type='text'] {
+      width: 100%;
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid #cccccc;
+      height: 50px;
+    }
+    .check-item {
+      margin-top: 25px;
+    }
+  }
+}
+
+.user-info-content {
+  .user-info-form {
+    .user-avatar {
+      margin: 46px 0 30px;
+      text-align: center;
+      img {
+        width: 90px;
+      }
+    }
+    .info-item {
+      height: 50px;
+      border-bottom: 1px solid #cccccc;
+    }
+    span {
+      font-size: 15px;
+      color: $middle-gray;
+    }
+    input {
+      height: 100%;
+      border: none;
+      margin-left: 25px;
+      min-width: 70%
+    }
+  }
+}
+
+// forget password
+.forget-password {
+  text-align: center;
+  .validate-code {
+    width: 70%;
+  }
+  .send-validate-code {
+    margin-top: 10px;
+    background-color: $purple;
+    color: $white;
+  }
+  .sent-successful-tip {
+    text-align: center;
+    color: $gray;
+  }
+  .sent-successful-image {
+    width: 80px;
+    margin-bottom: 10px;
+  }
+}
+
+// hospital list
+.hospital-list-content {
+  .hospital-item:last-child {
+    border-bottom: 1px solid $light-gray;
+  }
+  .hospital-item {
+    height: 125px;
+    padding: 0 25px;
+    border-top: 1px solid $light-gray;
+    position: relative;
+    .hospital-avatar {
+      margin: 10px 0px;
+      height: 105px;
+      width: 105px;
+    }
+    .hospital-info {
+      position: absolute;
+      top: 10px;
+      left: 142px;
+    }
+    .title {
+      font-size: 15px;
+      color: #474747;
+    }
+
+    .peculiarity {
+      span {
+        border: 1px solid #C579F2;
+        color: #C579F2;
+        padding: 0px 2px;
+      }
+    }
+
+    .grade {
+      padding: 5px 0px;
+      .start {
+        width: 12px;
+        height: 12px;
+      }
+    }
+    p {
+      margin: 0px;
+      color: $gray;
+      font-size: 12px;
+    }
+  }
+}

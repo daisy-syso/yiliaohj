@@ -39,6 +39,7 @@ class User
   field :gender, type: String
   field :telephone,   type: String, default: ''
 
+  validates :email, uniqueness: true, format: {with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
   has_many :feedbacks
   has_many :comments
 end
