@@ -1,3 +1,4 @@
+require 'rest_client'
 module Frontend
   module Users
     class RegistrationsController < FrontendController
@@ -15,6 +16,10 @@ module Frontend
         
         if params[:user][:password] == params[:user][:password_confirmation]
           if @user.save
+            html = %Q(<p>Welcome <%= @user.email %>!</p><p>You can confirm your account email through the link below:</p><p><%= link_to 'Confirm my account', finish_user_info_for_email_register_frontend_users_mine_index(@user) %></p>)
+            # MailJob.perform_later(@user.email, '注册验证', html)
+            send_mail(@user.email, '注册验证', html)
+
             redirect_to sent_successful_frontend_users_registrations_path
           else
             render :email_new
@@ -73,6 +78,20 @@ module Frontend
 
       def user_email_params
         params.require(:user).permit(:email, :password, :password_confirmation)
+      end
+
+      def send_mail(to, subject, html)
+        response = RestClient.post Settings.mail.url,{
+          api_user: Settings.mail.api_user,
+          api_key: Settings.mail.api_key,
+          from: Settings.mail.from,
+          fromname: "搜医搜",
+          to: to,
+          subject: subject,
+          html: html
+        }
+
+        puts response
       end
 
     end

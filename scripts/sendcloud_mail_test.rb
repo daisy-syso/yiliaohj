@@ -1,5 +1,7 @@
 # http://sendcloud.sohu.com/webapi/template.get.json?api_user=yiliaohj_mail&api_key=qMgh602Vx1zeL4kf
 
+curl -d 'api_user=yiliaohj_mail&api_key=qMgh602Vx1zeL4kf&invoke_name=testtemplate&name=test&html=<p>add new template</p>&subject=test_subject&email_type=1' http://sendcloud.sohu.com/webapi/template.add.json
+
 to = '651019063@qq.com'
 subject = 'test'
 z = 'davedave'
@@ -16,3 +18,12 @@ response = RestClient.post Settings.mail.url, {
     
     puts response.code
     puts response.body
+
+    # finish_user_info_for_email_register_frontend_users_mine_index(@user)
+
+# http://sendcloud.sohu.com/webapi/template.get.json?api_user=yiliaohj_mail&api_key=qMgh602Vx1zeL4kf
+# http://sendcloud.sohu.com/webapi/template.add.json?api_user=yiliaohj_mail&api_key=qMgh602Vx1zeL4kf&invoke_name=syso_register_email&name=验证邮箱&html=<p>Welcome %email%!</p><p>You can confirm your account email through the link below:</p><p><a href="%url%" >Confirm my account</a></p>&email_type=1&subject=验证邮箱
+
+
+
+# curl -d 'api_user=yiliaohj_mail&api_key=qMgh602Vx1zeL4kf&invoke_name=syso_register_email&name=验证邮箱&html=<p>Welcome %email%!</p><p>You can confirm your account email through the link below:</p>&subject=test_subject&email_type=1' http://sendcloud.sohu.com/webapi/template.add.json

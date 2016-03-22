@@ -1,11 +1,14 @@
 require 'sidekiq/web'
 Rails.application.routes.draw do
+  mount Sidekiq::Web, at: '/sidekiq'
   # for static html
   %w{register_with_email finish_user_info_for_phone_register finish_user_info_for_email_register set_password_for_email_register find_password_by_phone find_password_by_email sent_successful hospital_list}.each do |page|
     get "static_pages/#{page}"
   end
 
-  mount Sidekiq::Web, at: '/sidekiq'
+  devise_for :admins
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  
   constraints subdomain: /^(test(.*))$/i do
     namespace :frontend, path: '/' do
       devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations', passwords: 'users/passwords', confirmations: 'users/confirmations' }
@@ -26,6 +29,11 @@ Rails.application.routes.draw do
           end
         end
         resources :sessions, only: [:new, :create, :put]
+        resources :mine, only: [] do
+          collection do
+            get 'finish_user_info_for_email_register'
+          end
+        end
       end
 
       resources :hospitals
@@ -35,24 +43,21 @@ Rails.application.routes.draw do
     end
   end
 
-  constraints subdomain: /^(admin(.*))$/i do
-    devise_for :admins # , controllers: { sessions: "users/sessions" }
-    mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  # constraints subdomain: /^(admin(.*))$/i do
+  #   devise_for :admins
+  #   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-    namespace :admin, path: '/admin' do
-      #   root 'editors_session#login'
-      resources :banners
-      resources :hot_actions
-
-      #   resources :editors_session do
-      #     collection do
-      #       get 'login'
-      #       get 'logout'
-      #     end
-      #   end
-
-      #   resources :banners
-    end
-  end
+  #   # namespace :admin, path: '/admin' do
+  #   #   resources :banners
+  #   #   resources :hot_actions
+  #   #   resources :editors_session do
+  #   #     collection do
+  #   #       get 'login'
+  #   #       get 'logout'
+  #   #     end
+  #   #   end
+  #   #   resources :banners
+  #   # end
+  # end
 end
 
