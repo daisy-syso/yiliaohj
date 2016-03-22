@@ -16,7 +16,7 @@
 }
 
 .content {
-  margin: 0 25px;
+  margin: 40px 25px 0px 25px;
   .full-button {
     width: 100%;
     background-color: $purple;
@@ -24,6 +24,12 @@
     color: $white;
     height: 50px;
     margin-top: 50px;
+  }
+  .no-border-input {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #cccccc;
+    height: 50px;
   }
 }
 
@@ -168,6 +174,26 @@
   }
 }
 
+// forget password
+.forget-password {
+  text-align: center;
+  .validate-code {
+    width: 70%;
+  }
+  .send-validate-code {
+    margin-top: 10px;
+    background-color: $purple;
+    color: $white;
+  }
+  .sent-successful-tip {
+    text-align: center;
+    color: $gray;
+  }
+  .sent-successful-image {
+    width: 80px;
+    margin-bottom: 10px;
+  }
+}
 
 // hospital list
 .hospital-list-content {

@@ -8,6 +8,10 @@ class StaticPagesController < ApplicationController
   end
   def set_password_for_email_register
   end
+  def find_password_by_phone
+  end
+  def find_password_by_email
+  end
   def hospital_list
   end
 end

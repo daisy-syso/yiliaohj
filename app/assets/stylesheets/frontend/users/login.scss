@@ -10,10 +10,12 @@
   .member-login{
     text-decoration: none;
     font-size: 17px;
+    outline: none;
   }
   .member-register{
     font-size: 15px;
     margin: 15px;
+    outline: none;
   }
   a{
     color: $white ;
@@ -55,6 +57,7 @@
         margin-top: 20px;
         text-decoration: none;
         color: #C579F2;
+        outline: none;
       }
     }
     .login-tip {
@@ -117,6 +120,34 @@
         color: $middle-gray;
         width: auto;
         height: auto;
+      }
+    }
+  }
+}
+
+.custom-modal {
+  top: 30% !important;
+  left: 50% !important;
+  margin-left: -150px;
+  .modal-content {
+    width: 294px;
+    height: 108px;
+    color: #222222;
+    font-size: 15px;
+    .modal-body {
+      height: 100%;
+    }
+    ul {
+      height: 100%;
+      li {
+        line-height: 35px;
+        a {
+          color: #222222;
+        }
+        height: 50%;
+        &:first-child {
+          border-bottom: 1px solid $light-gray;
+        }
       }
     }
   }

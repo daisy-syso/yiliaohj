@@ -1,7 +1,7 @@
 require 'sidekiq/web'
 Rails.application.routes.draw do
   # for static html
-  %w{register_with_email finish_user_info_for_phone_register finish_user_info_for_email_register set_password_for_email_register hospital_list}.each do |page|
+  %w{register_with_email finish_user_info_for_phone_register finish_user_info_for_email_register set_password_for_email_register find_password_by_phone find_password_by_email sent_successful hospital_list}.each do |page|
     get "static_pages/#{page}"
   end
 

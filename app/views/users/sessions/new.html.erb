@@ -28,7 +28,7 @@
         <%= f.button :submit, "登录" %>
       </div>
       <div class="form-actions forget-password">
-        <a href="#">忘记密码？<a>
+        <a href="#" data-toggle="modal" data-target="#forget_password">忘记密码？<a>
       </div>
     <% end %>
     <p class="login-tip">使用一下社交账号快速登录</p>
@@ -46,18 +46,33 @@
   </div>
 </div>
 
-<div class="modal fade" id="selectRegisterWay" tabindex="-1" role="dialog"
+<div class="custom-modal modal fade" id="selectRegisterWay" tabindex="-1" role="dialog"
    aria-labelledby="myModalLabel" aria-hidden="true">
- <div class="modal-dialog">
+  <div class="modal-dialog">
     <div class="modal-content">
-       <div class="modal-body">
-          <ul class="list-unstyled">
-            <li>手机号注册</li>
-            <li>邮箱注册</li>
-          </ul>
-       </div>
+      <div class="modal-body">
+        <ul class="list-unstyled">
+          <li><a href="/users/registrations/email_new">邮箱注册</a> </li>
+          <li> <a href="/users/registrations/telephone_new">手机号注册</a>  </li>
+        </ul>
+      </div>
     </div><!-- /.modal-content -->
-</div><!-- /.modal -->
+  </div><!-- /.modal -->
+</div>
+
+<div class="custom-modal modal fade" id="forget_password" tabindex="-1" role="dialog"
+   aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <ul class="list-unstyled">
+          <li> <a href="#">手机找回密码</a> </li>
+          <li> <a href="#">邮箱找回密码</a> </li>
+        </ul>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal -->
+</div>
 
 <%#= render "users/shared/links" %>
 
