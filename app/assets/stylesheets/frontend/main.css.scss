@@ -1,149 +1,152 @@
 @import "../variables";
 
-#login,
-#register {
-  .header{
-    background: $purple;
+#main-index {
+  // common class
+  .accurate-search-section,
+  .health-headlines-section,
+  .activities-section {
+    border-bottom: 10px solid #f0f1f2;
+    padding: 0 13px;
   }
-  .member-login{
-    text-decoration: none;
-    font-size: 17px;
-    outline: none;
-  }
-  .member-register{
+
+  .section-title {
     font-size: 15px;
-    margin: 15px;
-    outline: none;
-  }
-  a{
-    color: $white ;
-    img {
-      height: 45px;
+    color: $black;
+    margin: 0px;
+    padding: 15px 0;
+    span {
+      border-left: 6px solid $purple;
+      margin-right: 6px;
     }
-  }
-  input {
-    width: 326px;
-    height: 45px;
   }
 
-  input[type='submit']{
-    background-color: $purple;
-    color: $white ;
+  .section-content {
+    padding-left: 12px;
   }
 
-  .content {
-    margin: 40px 25px 0 25px;
-    .form-inputs {
-      position: relative;
-      input {
-        padding-left: 40px;
-      }
-      img {
-        position: absolute;
-        top: 8px;
-        left: 10px;
-        width: 22px;
-      }
-      .password-icon {
-        top: 70px;
-      }
-    }
-    .forget-password {
-      text-align: center;
-      margin-top: 10px;
-      a {
-        margin-top: 20px;
-        text-decoration: none;
-        color: #C579F2;
-        outline: none;
-      }
-    }
-    .login-tip {
-      color: gray;
-      text-align: Center;
-      margin-top: 90px;
-    }
-    .social-login {
-      margin: 0px;
-      padding: 22px;
-      li {
-        display: inline-block;
-        margin: 20px;
-      }
-    }
-  }
-}
-
-#register {
-  .send-validate-code {
-    background-color: $purple;
-    color: $white;
-  }
-  #new_frontend_user{
-    /* all */
-    ::-webkit-input-placeholder {
-      color:#bebebe;
-      font-size: 14px
-    }
-    ::-moz-placeholder {
-      color:#bebebe;
-      font-size: 14px
-    } /* firefox 19+ */
-    :-ms-input-placeholder {
-      color:#bebebe;
-      font-size: 14px
-    } /* ie */
-    input:-moz-placeholder {
-      color:#bebebe;
-      font-size: 14px
-    }
-
-    input {
-      padding: 10px;
-      border: none;
-      box-shadow: none;
-      border-bottom: 1px solid #cccccc;
-    }
-    .validation-code-input {
-      width: 68%;
-    }
-    .form-actions {
-      margin-top: 50px;
-    }
-    .check-item {
-      margin-top: 20px;
-      input, p{
-        display:inline-block;
-        font-size: 14px;
-        color: $middle-gray;
-        width: auto;
-        height: auto;
-      }
-    }
-  }
-}
-
-.custom-modal {
-  top: 30% !important;
-  left: 50% !important;
-  margin-left: -150px;
-  .modal-content {
-    width: 294px;
-    height: 108px;
-    font-size: 15px;
-    .modal-body {
+  // advertisement section
+  .ads-section {
+    height: 115px;
+    div {
       height: 100%;
     }
-    ul {
+    .adsCarousel {
       height: 100%;
+    }
+    .slider-picture{
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  // accurate query section
+  .accurate-search-section {
+    height: 220px;
+    .accurate-search-list {
       li {
-        height: 50%;
-        line-height: 35px;
-        a {
-          color: #222222;
+        width: 24%;
+        p {
+          font-size: 12px;
+          color: $middle-gray;
         }
-        &:first-child {
-          border-bottom: 1px solid $light-gray;
+      }
+      .category-icon {
+        width: 45px;
+        height: 45px;
+      }
+    }
+  }
+
+  // health headlines section
+  .health-headlines-section {
+    .check-more {
+      font-size: 14px;
+      color: $gray;
+      img {
+        width: 12px;
+        vertical-align: text-top;
+      }
+    }
+    #healthHeadlinesCarousel {
+      margin-right: 24px;
+      margin-bottom: 20px;
+      height: 126px;
+      div {
+        height: 100%;
+      }
+      .item {
+        img {
+          border-radius: 8px;
+          height: 126px;
+          width: 100%;
+        }
+      }
+    }
+    .health-headlines-list {
+      .health-headlines-item {
+
+      }
+      .health-headlines-image {
+        width: 150px;
+        height: 78px;
+        border-radius: 8px;
+      }
+    }
+  }
+
+  // activities section
+  .activities-section {
+    height: 174px;
+    .activities-list {
+      margin-top: 10px;
+      .activities-item {
+        width: 49%;
+      }
+      .activity-flag {
+        width: 32px;
+        margin-right: 10px;
+      }
+      .activity-title-wrapper {
+        display: inline-block;
+        .title {
+          font-size: 15px;
+          color: $middle-gray;
+        }
+        .subtitle {
+          font-size: 12px;
+          color: $gray;
+        }
+      }
+    }
+  }
+
+  // guess what you like section
+  .guess-section {
+    .section-title {
+      margin-left: 13px;
+    }
+    .guess-list {
+      .guess-item {
+        height: 128px;
+        padding: 10px;
+        border-top: 1px solid #cccccc;
+        img {
+          float: left;
+          width: 30%;
+          margin-right: 10px;
+        }
+        .content {
+          float: left;
+          width: 63%;
+          margin-top: 2%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        p {
+          margin: 0px;
+          font-size: 12px;
+          color: #999999;
         }
       }
     }
