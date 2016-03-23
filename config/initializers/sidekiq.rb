@@ -2,8 +2,7 @@
 redis_sidekiq_params = {
   host: Settings.redis.host,
   port: Settings.redis.port,
-  db: Settings.redis.sidekiq_db,
-  password: Settings.redis.password
+  db: Settings.redis.sidekiq_db
 }
 
 Sidekiq.configure_server do |config|

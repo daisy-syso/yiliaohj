@@ -68,6 +68,9 @@ task deploy: :environment do
       queue 'bundle exec thin stop'
       queue 'bundle exec thin start -p 6000 -e production -d'
       # queue "whenever -w"
+
+      queue! 'kill -9 `cat /home/ubuntu/yiliaohj/shared/tmp/pids/sidekiq.pid`'
+      queue! 'bundle exec sidekiq -C /home/ubuntu/yiliaohj/current/config/sidekiq.yml -e production'
     end
   end
 end

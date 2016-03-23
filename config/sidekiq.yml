@@ -2,8 +2,10 @@
 :logfile: ./log/sidekiq.log
 development:
   :concurrency: 1
+  :queues:
+  - [development_sms, 10]
 production:
   :concurrency: 1
   :daemon: true
-:queues:
-  - [mail, 10]
+  :queues:
+  - [production_sms, 10]
