@@ -15,7 +15,9 @@
     <%= f.error_notification %>
     <%= flash[:notice] %>
     <div class="user-avatar">
-      <%= image_tag "static_pages/user_icon_head.png" %>
+      <% avatar_url = @user.avatar.presence || "static_pages/user_icon_head.png" %>
+      <%= image_tag avatar_url, width: "150px;" %>
+      <%= f.input :avatar, as: :file, label: '图片（尺寸小于1M）' %>
     </div>
     <div class="info-item">
       <%= f.input :nickname, required: true, autofocus: true, placeholder: '昵称', label: false %>
