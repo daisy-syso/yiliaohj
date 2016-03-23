@@ -152,3 +152,30 @@
     }
   }
 }
+
+// footer navitation
+.footer-navitation {
+  .container-fluid {
+    height: 50px;
+    padding: 0px;
+  }
+  .navbar-inverse {
+    background-color: #ffffff;
+    margin: 0px;
+    border-color: $light-gray;
+  }
+  .navbar-nav {
+    text-align: Center;
+    margin: 0 auto;
+    li {
+      width: 24%;
+      display: inline-block;
+      img {
+        width: 20px;
+      }
+      p {
+        font-size: 11px
+      }
+    }
+  }
+}
