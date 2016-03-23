@@ -20,7 +20,7 @@ module Frontend
 
       def destroy
         session[:user_id] = nil
-        redirect_to new_frontend_user_session_path
+        redirect_to new_frontend_users_session_path
       end
     end
   end
