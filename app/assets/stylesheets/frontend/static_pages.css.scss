@@ -135,12 +135,15 @@
 // register with email page
 .register-content {
   .register-with-email-form {
-    input[type='text'] {
+    input[type='email'],
+    input[type='password']{
       width: 100%;
       width: 100%;
       border: none;
       border-bottom: 1px solid #cccccc;
       height: 50px;
+      box-shadow: none;
+      border-radius: 0px;
     }
     .check-item {
       margin-top: 25px;
