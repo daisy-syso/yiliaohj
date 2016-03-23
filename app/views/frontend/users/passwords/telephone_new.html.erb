@@ -1,0 +1,46 @@
+<div class="app-header">
+  <nav class="navbar navbar-default custom-header">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="#">
+          <%= image_tag "users/title_icon_back_normal.png" %>
+        </a>
+        <a href="#" >找回密码</a>
+      </div>
+    </div>
+  </nav>
+</div>
+<div class="content forget-password">
+  <%= simple_form_for(@user, url: '/users/passwords/telephone', method: 'post') do |f| %>
+    <%= f.error_notification %>
+    <%= flash[:notice] %>
+    <div class="form-inputs">
+      <%= f.input :telephone, required: true, autofocus: true, placeholder: '请输入你的手机号码', label: false %>
+      
+      <input id="code" name="code" placeholder='请输验证码' class="no-border-input validate-code"/>
+      <button id="send_code" class="btn btn-default send-validate-code pull-right">发送验证</button>
+
+      <br />
+      <%= f.input :password, required: true, placeholder: '请输新密码', label: false %>
+    </div>
+    <div class="form-actions">
+      <%= f.button :submit, "保存", class: 'btn btn-default full-button' %>
+    </div>
+  <% end %>
+</div>
+<script type="text/javascript">
+  $(function(){
+    $("#send_code").click(function(e){
+      e.preventDefault();
+      var telephone = $("#user_telephone").val()
+      $.post('/users/sms', {
+        telephone: telephone,
+        event: 'forget_password'
+      }, function(data){
+        if(data.status != 200){
+          alert(data.message)
+        }
+      })
+    })
+  })
+</script>

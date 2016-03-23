@@ -11,7 +11,6 @@ module Frontend
       end
 
       def email
-        # debugger
         @user = User.new user_email_params
         
         if params[:user][:password] == params[:user][:password_confirmation]
@@ -30,22 +29,31 @@ module Frontend
       end
 
       def telephone
-        @user = User.where(telephone: params[:telephone]).first
+        @user = User.where(telephone: params[:user][:telephone]).first
         if @user.present?
-          render :telephone_new
-        end
-
-        @user = User.new user_telephone_params
-
-        telephone_code = $redis_sms.get "register_#{params[:user][:telephone]}_code"
-
-        puts telephone_code
-
-        if telephone_code != params[:code]
+          flash[:notice] = '号码已经存在'
           render :telephone_new
         else
-          render :person
+          @user = User.new user_telephone_params
+          telephone_code = $redis_sms.get "register_#{params[:user][:telephone]}_code"
+          if telephone_code != params[:code]
+            flash[:notice] = '验证码错误'
+            render :telephone_new
+          else
+            if @user.save
+              $redis_sms.del "register_#{params[:user][:telephone]}_code"
+              # render :person
+              session[:user_id] = @user.id.to_s
+              redirect_to edit_frontend_users_me_path(@user)
+            else
+              render :telephone_new
+            end
+          end
         end
+      end
+
+      def update
+        
       end
 
       def check_register_telephone
@@ -73,7 +81,7 @@ module Frontend
       private
 
       def user_telephone_params
-        params.require(:user).permit(:telephone)
+        params.require(:user).permit(:telephone, :password)
       end
 
       def user_email_params

@@ -7,16 +7,20 @@ module Frontend
       end
 
       def create
-        account = params[:user][:account]
+        account = params[:user][:email]
         password = params[:user][:password]
-
         user = User.or(telephone: account).or(email: account).first
-        if user && user.password == password
-          session[:account_id] = user.id.to_s
+        if user && User.first.valid_password?(password)
+          session[:user_id] = user.id.to_s
           redirect_to '/'
         else
           redirect_to new_frontend_users_session_path, notice: '登录失败'
         end
+      end
+
+      def destroy
+        session[:user_id] = nil
+        redirect_to new_frontend_user_session_path
       end
     end
   end

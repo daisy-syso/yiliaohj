@@ -1,8 +1,15 @@
 # frozen_string_literal: true
+# 短信
 class SmsJob < ActiveJob::Base
   queue_as :sms
 
-  def perform(phone, telephone_code)
+  def perform(telephone, event)
+    telephone_code = Utils::Random.digital_code(4)
+
+    $redis_sms.set "#{event}_#{telephone}_code", telephone_code
+
+    $redis_sms.expire("#{event}_#{telephone}_code", 1800)
+
     logger = Logger.new(Rails.root.join(Settings.sms.log))
 
     timestamp = Time.zone.now.strftime('%F %T')
@@ -14,21 +21,21 @@ class SmsJob < ActiveJob::Base
       v: '2.0',
       sign_method: 'md5',
       sms_type: 'normal',
+      # sms_free_sign_name: '医了得',
       sms_free_sign_name: '身份验证',
-      rec_num: phone,
+      rec_num: telephone,
       format: 'json',
       simplify: true,
-      sms_template_code: 'SMS_5375100',
-      sms_param: "{product: 'Class Mart', code: \"#{telephone_code}\"}"
+      sms_template_code: 'SMS_6440281',
+      sms_param: "{code: \"#{telephone_code}\", product: \"医了得\"}"
     }
 
     params = sign_params.merge(sign: sign(sign_params))
 
     res = Net::HTTP.post_form(URI.parse(Settings.sms.url), params)
-    logger.info "#{phone}--#{telephone_code}---#{Oj.load(res.body)}"
 
-    result = Oj.load(res.body)['result']
-    logger.info "#{phone}--#{telephone_code}---#{result}"
+    result = Oj.load(res.body)
+    logger.info "#{telephone}--#{telephone_code}---#{result}"
   end
 
   private

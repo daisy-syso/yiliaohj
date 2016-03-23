@@ -1,0 +1,29 @@
+<div class="app-header">
+  <nav class="navbar navbar-default custom-header">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="#">
+          <%= image_tag "users/title_icon_back_normal.png" %>
+        </a>
+        <a href="#" >个人信息完善</a>
+      </div>
+    </div>
+  </nav>
+</div>
+<div class="user-info-content content">
+  <%= simple_form_for(@user, url: "/users/me/#{@user.id.to_s}") do |f| %>
+    <%= f.error_notification %>
+    <%= flash[:notice] %>
+    <div class="user-avatar">
+      <%= image_tag "static_pages/user_icon_head.png" %>
+    </div>
+    <div class="info-item">
+      <%= f.input :nickname, required: true, autofocus: true, placeholder: '昵称', label: false %>
+      <%= f.input :email, autofocus: true, placeholder: '请输入您的邮箱', label: false %>
+      <%= f.input :telephone, autofocus: true, placeholder: '请输入您的手机号', label: false %>
+    </div>
+    <div class="form-actions">
+      <%= f.button :submit, "完成", class: 'btn btn-default full-button' %>
+    </div>
+  <% end %>
+</div>

@@ -18,8 +18,8 @@ elasticsearch:
 sms:
   log: log/development-sms.log
   url: http://gw.api.taobao.com/router/rest
-  appkey: 23326967
-  appsecret: b8159118f21552197d73622a32d9ec54
+  appkey: 23330920
+  appsecret: a373185efbda27412395cc3bff8ba0ee
   method_str: alibaba.aliqin.fc.sms.num.send
 mail:
   url: http://sendcloud.sohu.com/webapi/mail.send.json

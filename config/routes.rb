@@ -17,7 +17,7 @@ Rails.application.routes.draw do
       post 'upload_position',  to: 'main#upload_position'
       namespace :users do
         resources :sms, only: [:create]
-        resources :registrations, only: [] do
+        resources :registrations do
           collection do
             get 'email_new'
             get 'telephone_new'
@@ -28,12 +28,14 @@ Rails.application.routes.draw do
             post 'telephone'
           end
         end
-        resources :sessions, only: [:new, :create, :put]
-        resources :mine, only: [] do
+        resources :me
+        resources :passwords do
           collection do
-            get 'finish_user_info_for_email_register'
+            get 'telephone_new'
+            post 'telephone'
           end
         end
+        resources :sessions
       end
 
       resources :hospitals

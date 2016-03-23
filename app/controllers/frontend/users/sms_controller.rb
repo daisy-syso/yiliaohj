@@ -16,13 +16,7 @@ module Frontend
                   elsif telephone.size != 11
                     {status: 422, message: '号码不合法'}
                   else
-                    telephone_code = Utils::Random.digital_code(4)
-
-                    $redis_sms.set "#{event}_#{params[:telephone]}_code", telephone_code
-
-                    $redis_sms.expire("#{event}_#{params[:telephone]}_code", 1800)
-
-                    SmsJob.perform_later(params[:telephone], telephone_code)
+                    SmsJob.perform_later(telephone, event)
 
                     {status: 200, message: 'OK'}
                   end
