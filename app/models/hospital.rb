@@ -36,8 +36,8 @@ class Hospital
   has_many :recommendations, as: :recommendationable
 
   validates :name, presence: true
-  validates :telephone, presence: true
-  validates :address, presence: true
+  # validates :telephone, presence: true
+  # validates :address, presence: true
 
   index name: 1
   index level: 1
