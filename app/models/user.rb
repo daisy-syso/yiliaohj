@@ -13,6 +13,9 @@ class User
   field :encrypted_password, type: String, default: ''
 
   ## Recoverable
+  field :reset_token,   type: String
+
+  ## Recoverable
   field :reset_password_token,   type: String
   field :reset_password_sent_at, type: Time
 
@@ -42,7 +45,18 @@ class User
   field :telephone, type: String
   field :nickname, type: String
 
-  # validates :email, format: {with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
+  validates :email, presence: true, uniqueness: true, format: {with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, if: :email_register?
+
+  validates :telephone, presence: true, uniqueness: true, if: :telephone_register?
+
+  def email_register?
+    telephone.blank? && email.present?
+  end
+
+  def telephone_register?
+    email.blank? && telephone.present?
+  end
+
   has_many :feedbacks
   has_many :comments
 end

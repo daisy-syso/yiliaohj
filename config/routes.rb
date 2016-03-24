@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   devise_for :admins
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   
-  constraints subdomain: /^(test(.*))$/i do
+  # constraints subdomain: /^(test(.*))$/i do
     namespace :frontend, path: '/' do
       devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations', passwords: 'users/passwords', confirmations: 'users/confirmations' }
 
@@ -17,6 +17,11 @@ Rails.application.routes.draw do
       post 'upload_position',  to: 'main#upload_position'
       namespace :users do
         resources :sms, only: [:create]
+        resources :confirmations do
+          member do
+            get 'reset_email_password'
+          end
+        end
         resources :registrations do
           collection do
             get 'email_new'
@@ -33,6 +38,11 @@ Rails.application.routes.draw do
           collection do
             get 'telephone_new'
             post 'telephone'
+
+            get 'email_new'
+            post 'email'
+
+            get 'email_edit'
           end
         end
         resources :sessions
@@ -43,7 +53,7 @@ Rails.application.routes.draw do
       resources :medicals
       resources :nursing_rooms
     end
-  end
+  # end
 
   # constraints subdomain: /^(admin(.*))$/i do
   #   devise_for :admins

@@ -22,7 +22,7 @@ sms:
   appsecret: a373185efbda27412395cc3bff8ba0ee
   method_str: alibaba.aliqin.fc.sms.num.send
 mail:
-  url: http://sendcloud.sohu.com/webapi/mail.send.json
+  url: http://sendcloud.sohu.com/webapi/mail.send_template.json
   api_user: yiliaohj_mail
   api_key: qMgh602Vx1zeL4kf
   from: mail@yiliaohj.com
