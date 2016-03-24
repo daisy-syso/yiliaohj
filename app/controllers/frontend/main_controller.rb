@@ -3,8 +3,8 @@ module Frontend
     def index
       @banners = Banner.all
 
-      @categories = Category.all.desc(:order)
-      @categories = [@categories.limit(16), @categories.offset(8).limit(8)]
+      @categories = Category.all.asc(:order)
+      @categories = [@categories.limit(8), @categories.offset(8).limit(8)]
 
       @advertisements = Advertisement.all
 
