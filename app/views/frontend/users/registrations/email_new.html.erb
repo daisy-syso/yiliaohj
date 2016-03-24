@@ -11,8 +11,9 @@
   </nav>
 </div>
 <div class="register-content content">
-  <%= simple_form_for(@user, url: '/users/registrations/email', :html=> { class: "register-with-email-form"})  do |f| %>
+  <%= simple_form_for(@user, url: '/users/registrations/email', :html=> { class: "register-with-email-form"}, method: 'post')  do |f| %>
     <%= f.error_notification %>
+    <%= flash[:notice] %>
     <%= f.input :email, placeholder: '请输入你的邮箱', label: false %>
     <%= f.input :password, placeholder: '请输入你的密码', label: false %>
     <%= f.input :password_confirmation, placeholder: '再次输入你的密码', label: false %>
