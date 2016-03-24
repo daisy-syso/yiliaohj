@@ -13,9 +13,8 @@ mina deploy
 ## 域名
 ```
 test.yiliaohj.com
-admin.yiliaohj.com
+test.yiliaohj.com/admin
 ```
-
 
 rails generate devise:install
 
@@ -24,4 +23,5 @@ rails generate devise:install
 ```
 跑索引
 Hospital.__elasticsearch__.create_index! force: true
+Hospital.import
 ```
