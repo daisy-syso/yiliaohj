@@ -50,6 +50,7 @@ Rails.application.routes.draw do
 
       resources :hospitals
       resources :maternals
+      resources :confinement_centers
       resources :medicals
       resources :nursing_rooms
     end

@@ -1,12 +1,12 @@
 module ElasticsearchConfig
-  module Maternal
+  module ConfinementCenter
     extend ActiveSupport::Concern
 
     included do
       include Elasticsearchable
 
-      index_name    "yiliao-maternals-#{Rails.env}"
-      document_type 'maternals'
+      index_name    "yiliao-confinement_centers-#{Rails.env}"
+      document_type 'confinement_centers'
 
       settings index: { number_of_shards: 5 } do
         mappings do
@@ -27,3 +27,4 @@ module ElasticsearchConfig
     end
   end
 end
+

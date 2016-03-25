@@ -13,8 +13,7 @@ class NursingRoom
   field :image_url, type: String
   field :address, type: String
 
-  field :lon, type: Float
-  field :lat, type: Float
+  field :location, type: String
 
   field :price, type: String
   field :url, type: String
@@ -28,7 +27,7 @@ class NursingRoom
 
   field :target, type: String
 
-  field :click_count, type: String
+  field :click_count, type: Integer
   field :star, type: Integer
   field :status, type: Boolean
 
