@@ -2,7 +2,7 @@
 class NursingRoom
   include Mongoid::Document
   include Mongoid::Timestamps
-  include ElasticsearchConfig::NursingRoom
+  # include ElasticsearchConfig::NursingRoom
 
   mount_uploader :image_url, PictureUploader
 

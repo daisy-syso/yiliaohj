@@ -2,6 +2,7 @@
 class Medical
   include Mongoid::Document
   include Mongoid::Timestamps
+  # include ElasticsearchConfig::Madical
 
   field :name, type: String
   field :summary, type: String

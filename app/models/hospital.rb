@@ -2,7 +2,7 @@
 class Hospital
   include Mongoid::Document
   include Mongoid::Timestamps
-  include ElasticsearchConfig::Hospital
+  # include ElasticsearchConfig::Hospital
 
   mount_uploader :image_url, PictureUploader
 

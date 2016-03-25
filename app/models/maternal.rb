@@ -2,7 +2,7 @@
 class Maternal
   include Mongoid::Document
   include Mongoid::Timestamps
-  include ElasticsearchConfig::Maternal
+  # include ElasticsearchConfig::Maternal
 
   mount_uploader :image_url, PictureUploader
 
