@@ -15,9 +15,9 @@
       <%= flash[:notice] %>
       <div class="form-inputs">
         <%= f.input :telephone, required: true, autofocus: true, placeholder: '请输手机号', label: false %>
-        <%#= f.input :password, required: true, placeholder: '请输密码', label: false %>
         <input id="code" name="code" placeholder='请输验证码' class="validation-code-input"/>
         <button id="send_code" class="btn btn-default send-validate-code pull-right">发送验证</button>
+        <%= f.input :password, required: true, placeholder: '请输密码', label: false %>
       </div>
 
       <div class="check-item">

@@ -38,10 +38,8 @@ Rails.application.routes.draw do
           collection do
             get 'telephone_new'
             post 'telephone'
-
             get 'email_new'
             post 'email'
-
             get 'email_edit'
           end
         end
@@ -57,22 +55,5 @@ Rails.application.routes.draw do
       resources :nursing_rooms
     end
   end
-
-  # constraints subdomain: /^(admin(.*))$/i do
-  #   devise_for :admins
-  #   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-
-  #   # namespace :admin, path: '/admin' do
-  #   #   resources :banners
-  #   #   resources :hot_actions
-  #   #   resources :editors_session do
-  #   #     collection do
-  #   #       get 'login'
-  #   #       get 'logout'
-  #   #     end
-  #   #   end
-  #   #   resources :banners
-  #   # end
-  # end
 end
 

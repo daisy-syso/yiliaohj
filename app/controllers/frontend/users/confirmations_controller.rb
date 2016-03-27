@@ -19,7 +19,7 @@ module Frontend
           session[:user_id] = @user.id.to_s
           @user.reset_token = nil
           @user.save
-          redirect_to frontend_users_me_index_path
+          redirect_to email_edit_frontend_users_passwords_url
         else
           redirect_to new_frontend_users_session_path
         end

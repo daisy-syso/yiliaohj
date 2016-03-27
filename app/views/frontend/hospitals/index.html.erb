@@ -20,7 +20,7 @@
         <a href="<%= frontend_hospital_path(hospital) %>">
           <img src="<%= hospital.image_url %>" class="hospital-avatar" alt=""/>
           <div class="hospital-info">
-            <div class="title"><%= hospital.name %><%= hospital.id.to_s%></div>
+            <div class="title"><%= hospital.name %></div>
             <p class="grade">
               <% hospital.star.times do |s| %>
                 <%= image_tag "static_pages/icon_star_selected.png", class: "start" %>

@@ -1,7 +1,7 @@
 module Frontend
   module Users
     class PasswordsController < FrontendController
-      before_action :get_user, only: [:edit, :update, :index]
+      before_action :auth_check, only: [:email_edit, :update]
       def new
         redirect_to new_frontend_users_session_path unless @user 
       end
@@ -15,12 +15,20 @@ module Frontend
       end
 
       def email_edit
-        @user = User.find(params[:id])
+        @user = @current_user
+      end
+
+      def update
+        @current_user.password = params[:user][:password]
+        if @current_user.save
+          redirect_to frontend_users_me_index_path
+        end
       end
 
       def email
         @user = User.where(email: params[:user][:email]).first
         if @user.blank?
+          @user = User.new
           flash[:notice] = '邮箱不存在'
           render :email_new
         else

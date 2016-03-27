@@ -2,7 +2,7 @@
   <%= f.error_notification %>
 
   <%= f.input :content, placeholder: '请输入内容', label: false %>
-  <%= f.input :rating, collection: 1..5, selected: 5 %>
+  <%= f.input :rating, collection: 1..5, selected: 5, label: false %>
 
   <%= f.button :submit, '提交', class: "btn btn-default full-button"%>
 <% end %>

@@ -19,7 +19,7 @@ module Frontend
       private
 
       def user_params
-        params.require(:user).permit(:email, :telephone, :nickname, :avatar)
+        params.require(:user).permit(:email, :telephone, :nickname, :avatar, :gender)
       end
 
       def get_user

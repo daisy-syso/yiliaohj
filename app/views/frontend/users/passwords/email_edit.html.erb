@@ -2,20 +2,16 @@
   <nav class="navbar navbar-default custom-header">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a href="#">
-          <%= image_tag "users/title_icon_back_normal.png" %>
-        </a>
-        <a href="#" >重置密码</a>
       </div>
     </div>
   </nav>
 </div>
 
 <div class="register-content content">
-  <%= simple_form_for(@user, url: '/users/passwords', :html=> { class: "register-with-email-form"})  do |f| %>
+  <% @user = User.find(session[:user_id]) %>
+  <%= simple_form_for(@user, url: '/users/passwords/email_create', :html=> { class: "register-with-email-form"})  do |f| %>
     <%= f.error_notification %>
     <%= f.input :password, placeholder: '请输入你的密码', label: false %>
-    <%= f.input :password_confirmation, placeholder: '再次输入你的密码', label: false %>
     <%= f.button :submit, '完成', class: "btn btn-default full-button"%>
   <% end %>
 </div>

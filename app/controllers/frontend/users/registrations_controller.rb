@@ -52,7 +52,6 @@ module Frontend
           else
             if @user.save
               $redis_sms.del "register_#{params[:user][:telephone]}_code"
-              # render :person
               session[:user_id] = @user.id.to_s
               redirect_to edit_frontend_users_me_path(@user)
             else

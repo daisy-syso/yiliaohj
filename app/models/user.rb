@@ -41,13 +41,13 @@ class User
   # field :locked_at,       type: Time
 
   field :avatar, type: String
-  field :gender, type: String
+  field :gender, type: String, default: '男'
   field :telephone, type: String
   field :nickname, type: String
 
   validates :email, presence: true, uniqueness: true, format: {with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, if: :email_register?
 
-  validates :telephone, presence: true, uniqueness: true, if: :telephone_register?
+  validates :telephone, presence: true, uniqueness: true, length: { is: 11 }, if: :telephone_register?
 
   def email_register?
     telephone.blank? && email.present?
@@ -57,6 +57,6 @@ class User
     email.blank? && telephone.present?
   end
 
-  has_many :feedbacks
-  has_many :comments
+  has_many :feedbacks, dependent: :destroy
+  has_many :comments, dependent: :destroy
 end
