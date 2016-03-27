@@ -48,7 +48,9 @@ Rails.application.routes.draw do
         resources :sessions
       end
 
-      resources :hospitals
+      resources :hospitals do
+        resources :comments
+      end
       resources :maternals
       resources :confinement_centers
       resources :medicals

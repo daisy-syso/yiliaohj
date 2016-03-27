@@ -27,6 +27,8 @@ module Frontend
 
     def show
       @hospital = Hospital.find(params[:id])
+
+      @comment = @hospital.comments.desc(:created_at).first
     end
   end
 end

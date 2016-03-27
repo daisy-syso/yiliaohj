@@ -1,9 +1,11 @@
 development:
   clients:
     default:
-      database: yiliao_development
+      # database: yiliao_development
+      database: yiliao_production
       hosts:
-        - localhost:27017
+        # - localhost:27017
+        - 61.153.100.122:27017
       options:
         max_pool_size: 25
         connect_timeout: 30

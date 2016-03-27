@@ -1,1 +1,49 @@
-医院详细
+<!-- <img src="<%= @hospital.image_url %>"> -->
+<img src="http://syso.qiniudn.com/nopicture/hospital.jpg ">
+<br />
+<%= @hospital.name %>
+<br />
+特色科室：<%= @hospital.characteristic_departments %>
+<br />
+医保：<%= @hospital.is_medical_insurance ? '医保定点' : '非医保定点' %>
+<br />
+<h2>医生列表</h2>
+<h4>内科</h4>
+<h4>外科</h4>
+
+<hr>
+<hr>
+<% @hospital.star.times do |s| %>
+  <%= image_tag "static_pages/icon_star_selected.png", class: "start" %>
+<% end %>
+<%= @hospital.comments.size%>人已经点评
+<br>
+<% if @comment %>
+  <%= @comment.user.nickname %>
+  <%= @comment.created_at.strftime("%F") %>
+  <% @comment.rating.times do |s| %>
+    <%= image_tag "static_pages/icon_star_selected.png", class: "start" %>
+  <% end %>
+  <br>
+  <%= @comment.content %>
+<% end %>
+<hr>
+<a href="<%= frontend_hospital_comments_path(@hospital) %>">查看全部评价</a>
+<hr>
+<hr>
+<a href="<%= new_frontend_hospital_comment_path(@hospital) %>">我要评价</a>
+
+<hr>
+
+<h3>商家位置</h3>
+<hr>
+<%= @hospital.name %>
+<br>
+联系电话<%= @hospital.telephone %>
+<br />
+地址：<%= @hospital.address %> <a href="">到这去</a>
+<br>
+<%= render partial: 'map', locals: { hospital: @hospital } %>
+<hr>
+<a href="">拨打电话</a>
+<a href="">查询挂号</a>

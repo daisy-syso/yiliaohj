@@ -1,1 +1,66 @@
-医院列表
+<div class="app-header">
+  <nav class="navbar navbar-default custom-header">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="#">
+          <%= image_tag "users/title_icon_back_normal.png" %>
+        </a>
+        <a href="#" >综合医院</a>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<%#= render "filter" %>
+
+<div class="hospital-list-content">
+  <ul class="list-unstyled hospital-list">
+    <% @hospitals.each do |hospital| %>
+      <li class="hospital-item">
+        <a href="<%= frontend_hospital_path(hospital) %>">
+          <img src="<%= hospital.image_url %>" class="hospital-avatar" alt=""/>
+          <div class="hospital-info">
+            <div class="title"><%= hospital.name %><%= hospital.id.to_s%></div>
+            <p class="grade">
+              <% hospital.star.times do |s| %>
+                <%= image_tag "static_pages/icon_star_selected.png", class: "start" %>
+              <% end %>
+            </p>
+            <p class="distance">距离： <%= get_disance_by_poinit_point(hospital.location) if hospital.location%>千米</p>
+            <p class="peculiarity">
+              特色科室： <% hospital.characteristic_departments.split(' ').each do |name| %>
+                <span><%= name %></span>
+              <% end %>
+            </p>
+            <p class="tel">电话： <%= hospital.telephone %></p>
+          </div>
+        </a>
+      </li>
+    <% end %>
+    
+    <li class="hospital-item">
+      <a href="#">
+        <img src="http://lorempixel.com/105/105/animals/1" class="hospital-avatar"  alt=""/>
+        <div class="hospital-info">
+          <div class="title">安徽合肥治疗白癜风专科医院</div>
+          <p class="grade">
+            <%= image_tag "static_pages/icon_star_selected.png", class: "start" %>
+            <%= image_tag "static_pages/icon_star_selected.png", class: "start" %>
+            <%= image_tag "static_pages/icon_star_selected.png", class: "start" %>
+            <%= image_tag "static_pages/icon_star_selected.png", class: "start" %>
+            <%= image_tag "static_pages/icon_star_selected.png", class: "start" %>
+            5 分
+          </p>
+          <p class="distance">距离： 1.0千米</p>
+          <p class="peculiarity">
+            特色科室：
+            <span>皮肤科</span>
+            <span>皮肤科</span>
+            <span>皮肤科</span>
+          </p>
+          <p class="tel">电话： 0551-654922</p>
+        </div>
+      </a>
+    </li>
+  </ul>
+</div>

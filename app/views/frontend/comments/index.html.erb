@@ -1,0 +1,13 @@
+评论
+<br />
+<% @comments.each do |comment|%>
+  <%= comment.user.nickname %>
+  <% comment.rating.times do |s| %>
+    <%= image_tag "static_pages/icon_star_selected.png", class: "start" %>
+  <% end %>
+  <br>
+  <%= comment.created_at.strftime("%F")%>
+  <%= comment.content%>
+  <hr >
+<% end %>
+<% paginate @comments %>

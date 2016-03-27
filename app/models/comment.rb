@@ -4,7 +4,7 @@ class Comment
   include Mongoid::Timestamps
 
   field :content, type: String
-  field :rating, type: Integer
+  field :rating, type: Integer, default: 1
 
   belongs_to :user
 

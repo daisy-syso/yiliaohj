@@ -1,9 +1,18 @@
-<img src="<%= @user.avatar %>" width="100px">
+头像  <img src="<%= @user.avatar %>" width="100px">
+<hr >
 <br />
-<%= @user.nickname %>
+性别 <%= @user.gender %>
+<hr >
 <br />
-<%= @user.email %>
+昵称 <%= @user.nickname %>
+<hr>
 <br />
-<%= @user.telephone %>
+邮箱 <%= @user.email %>
+<hr>
+<br />
+手机号码 <%= @user.telephone %>
+<br />
 <%= link_to '修改信息', edit_frontend_users_me_path(@user) %>
+<br/ >
+<hr>
 <%= link_to '退出', frontend_users_session_path(@user), method: 'delete' %>

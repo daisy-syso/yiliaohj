@@ -18,6 +18,9 @@ class Hospital
   field :level, type: String
   field :location, type: String
 
+  field :lat, type: Float
+  field :lon, type: Float
+
   field :click_count, type: Integer
 
   field :star, type: Integer, default: 3
@@ -43,4 +46,11 @@ class Hospital
   index level: 1
   index click_count: 1
   index star: 1
+
+  def category_star!
+    score = comments.pluck(:rating).compact.sum
+    member = comments.size
+    self.star = (score / member).to_i
+    save
+  end
 end
