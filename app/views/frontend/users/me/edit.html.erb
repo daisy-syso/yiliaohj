@@ -11,7 +11,7 @@
   </nav>
 </div>
 <div class="user-info-content content">
-  <%= simple_form_for(@user, url: "/users/me/#{@user.id.to_s}") do |f| %>
+  <%= simple_form_for(@user, url: "/users/me/#{@user.id.to_s}", html: {class: "user-info-form"}, :wrapper_html => {:class => 'good'}, :input_html => { :class => 'bad' }) do |f| %>
     <%= f.error_notification %>
     <%= flash[:notice] %>
     <div class="user-avatar">
@@ -19,11 +19,9 @@
       <%= image_tag avatar_url, width: "150px;" %>
       <%= f.input :avatar, as: :file, label: '图片（尺寸小于1M）' %>
     </div>
-    <div class="info-item">
-      <%= f.input :nickname, required: true, autofocus: true, placeholder: '昵称', label: false %>
-      <%= f.input :email, autofocus: true, placeholder: '请输入您的邮箱', label: false %>
-      <%= f.input :telephone, autofocus: true, placeholder: '请输入您的手机号', label: false %>
-    </div>
+    <%= f.input :nickname, required: true, autofocus: true, placeholder: '昵称', label: false %>
+    <%= f.input :email, autofocus: true, placeholder: '请输入您的邮箱', label: false %>
+    <%= f.input :telephone, autofocus: true, placeholder: '请输入您的手机号', label: false %>
     <div class="form-actions">
       <%= f.button :submit, "完成", class: 'btn btn-default full-button' %>
     </div>

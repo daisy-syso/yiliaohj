@@ -79,7 +79,8 @@
     background-color: $purple;
     color: $white;
   }
-  #new_frontend_user{
+  #new_user,
+  .edit_user{
     /* all */
     ::-webkit-input-placeholder {
       color:#bebebe;
@@ -97,9 +98,8 @@
       color:#bebebe;
       font-size: 14px
     }
-
     input {
-      padding: 10px;
+      padding: 10px !important;
       border: none;
       box-shadow: none;
       border-bottom: 1px solid #cccccc;
@@ -120,6 +120,27 @@
         height: auto;
       }
     }
+  }
+}
+
+// forget password
+.forget-password {
+  text-align: center;
+  .validate-code {
+    width: 70%;
+  }
+  .send-validate-code {
+    margin-top: 10px;
+    background-color: $purple;
+    color: $white;
+  }
+  .sent-successful-tip {
+    text-align: center;
+    color: $gray;
+  }
+  .sent-successful-image {
+    width: 80px;
+    margin-bottom: 10px;
   }
 }
 
