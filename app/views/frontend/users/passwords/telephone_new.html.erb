@@ -15,13 +15,13 @@
     <%= f.error_notification %>
     <%= flash[:notice] %>
     <div class="form-inputs">
-      <%= f.input :telephone, required: true, autofocus: true, placeholder: '请输入你的手机号码', label: false %>
-      
+      <%= f.input :telephone, required: true, autofocus: true, placeholder: '请输入你的手机号码', label: false, :input_html => { :class => 'no-border-input' } %>
+
       <input id="code" name="code" placeholder='请输验证码' class="no-border-input validate-code"/>
       <button id="send_code" class="btn btn-default send-validate-code pull-right">发送验证</button>
 
       <br />
-      <%= f.input :password, required: true, placeholder: '请输新密码', label: false %>
+      <%= f.input :password, required: true, placeholder: '请输新密码', label: false, :input_html => { :class => 'no-border-input' } %>
     </div>
     <div class="form-actions">
       <%= f.button :submit, "保存", class: 'btn btn-default full-button' %>
