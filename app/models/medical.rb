@@ -14,8 +14,6 @@ class Medical
   field :origin_price, type: Float
   field :price, type: Float
 
-  field :location, type: String
-
   field :click_count, type: Integer
 
   field :star, type: Integer

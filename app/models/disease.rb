@@ -17,6 +17,15 @@ class Disease
 
   belongs_to :department
 
+  has_many :doctor_diseases
+
+  def doctors
+    Doctor.in(id: doctor_diseases.pluck(:doctor_id))
+  end
+
+  # has_many :doctors, through: :doctor_diseases
+  # has_and_belongs_to_many :doctors
+
   validates :name, presence: true
 
   index name: 1

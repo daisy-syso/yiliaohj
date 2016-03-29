@@ -28,4 +28,14 @@ class Doctor
   validates :name, presence: true
 
   index name: 1
+
+  # has_many :doctor_diseases
+  # has_and_belongs_to_many :diseases
+  # has_many :diseases, through: :doctor_diseases
+
+  has_many :doctor_diseases
+
+  def diseases
+    Disease.in(id: doctor_diseases.pluck(:disease_id))
+  end
 end
