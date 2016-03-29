@@ -13,7 +13,7 @@
 
 <% @doctors.each do |doctor| %>
   <a href="<%= frontend_doctor_path(doctor) %>">
-    <img src="<%= doctor.image_url %>" alt=""/>
+    <img src="<%= fixed_image_url(doctor) %>" alt=""/>
     <%= doctor.name %>
     <br>
     <%= doctor.position %>

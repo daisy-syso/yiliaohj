@@ -11,14 +11,14 @@
   </nav>
 </div>
 
-<%#= render "filter" %>
+<%= render "filter" %>
 
 <div class="hospital-list-content">
   <ul class="list-unstyled hospital-list">
     <% @hospitals.each do |hospital| %>
       <li class="hospital-item">
         <a href="<%= frontend_hospital_path(hospital) %>">
-          <img src="<%= hospital.image_url %>" class="hospital-avatar" alt=""/>
+          <img src="<%= fixed_image_url(hospital) %>" class="hospital-avatar" alt=""/>
           <div class="hospital-info">
             <div class="title"><%= hospital.name %></div>
             <p class="grade">
@@ -38,4 +38,5 @@
       </li>
     <% end %>
   </ul>
+  <%= paginate @hospitals %>
 </div>
