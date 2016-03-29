@@ -7,7 +7,7 @@ class DoctorDisease
   belongs_to :disease
 
   field :votes, type: Integer, default: 0
-  field :voted_by, type: Array, default: []
+  field :voted_by, type: Array, default: -> {[]}
 
   def voted_by?(user)
     voted_by.include? user.try(:id).to_s

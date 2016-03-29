@@ -2,13 +2,13 @@ module Frontend
   class DoctorsController < FrontendController
     before_action :set_doctor_disease, only: [:like]
 
-    # 最近发布 人气最高 评价最好
+    # 人气最高 评价最好
     def index
       @doctors = case params[:type]
-                 when 'publish_near'
-                   Doctor.all.desc(:created_at).page(params[:page]).per(params[:per])
+                 when 'created_at'
+                   Doctor.includes(:hospital).desc(:created_at).page(params[:page]).per(params[:per])
                  when 'click_count'
-                   Doctor.all.desc(:click_count).page(params[:page]).per(params[:per])
+                   Doctor.includes(:hospital).desc(:click_count).page(params[:page]).per(params[:per])
                  else
                    Doctor.includes(:hospital).desc(:created_at).page(params[:page]).per(params[:per])
                   end
@@ -36,7 +36,7 @@ module Frontend
     private
 
     def set_doctor_disease
-      @doctor_disease = DoctorDisease.first # where(doctor_id: params[:doctor_id], disease_id: params[:disease_id]).first
+      @doctor_disease = DoctorDisease.where(doctor_id: params[:doctor_id], disease_id: params[:disease_id]).first
     end
   end
 end
