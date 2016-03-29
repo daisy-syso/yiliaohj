@@ -1,0 +1,35 @@
+<div class="app-header">
+  <nav class="navbar navbar-default custom-header">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="#">
+          <%= image_tag "users/title_icon_back_normal.png" %>
+        </a>
+        <a href="#" >找医生</a>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<% @doctors.each do |doctor| %>
+  <a href="<%= frontend_doctor_path(doctor) %>">
+    <img src="<%= doctor.image_url %>" alt=""/>
+    <%= doctor.name %>
+    <br>
+    <%= doctor.position %>
+    <br>
+    <p class="grade">
+      <% doctor.star.times do |s| %>
+        <%= image_tag "static_pages/icon_star_selected.png", class: "start" %>
+      <% end %>
+    </p>
+    科室： <%= doctor.room %>
+    <br>
+    特色科室： <%= doctor.summary %>
+    <br>
+    医院：<%= doctor.hospital.name %>
+    <br>
+    出诊：<%= doctor.is_home_visit ? '否' : '是' %>
+  </a>
+  <hr >
+<% end %>

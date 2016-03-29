@@ -13,8 +13,6 @@ class NursingRoom
   field :image_url, type: String
   field :address, type: String
 
-  field :location, type: String
-
   field :price, type: String
   field :url, type: String
   field :bed, type: Integer

@@ -31,5 +31,7 @@ class Medical
   validates :telephone, presence: true
   validates :address, presence: true
 
-  has_many :examinations, as: :examinationable
+  # has_many :examinations, as: :examinationable
+
+  has_many :examinations
 end

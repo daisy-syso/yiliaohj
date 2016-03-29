@@ -35,7 +35,7 @@ class Hospital
   has_many :doctors
 
   has_many :comments, as: :commentable
-  has_many :examinations, as: :examinationable
+  # has_many :examinations, as: :examinationable
   has_many :recommendations, as: :recommendationable
 
   validates :name, presence: true

@@ -13,8 +13,10 @@ class Examination
   field :applicable, type: String
 
   belongs_to :examination_category
-  belongs_to :examinationable, polymorphic: true
+  belongs_to :examination
+  # belongs_to :examinationable, polymorphic: true
 
   has_many :comments, as: :commentable
   has_many :commodities, as: :commoditiable
+  has_many :examination_details
 end

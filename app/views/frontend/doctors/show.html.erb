@@ -1,0 +1,41 @@
+<!-- <img src="<%= @doctor.image_url %>"> -->
+<img src="http://syso.qiniudn.com/nopicture/hospital.jpg ">
+<br />
+<%= @doctor.name %>
+<br />
+<%= @doctor.position %>
+<br />
+资讯
+<br />
+科室：<%= @doctor.department.name %>
+<br />
+医院：<%= @doctor.hospital.name %>
+<br />
+临床经验：<%= @doctor.summary %>
+<br />
+个人网站：<%= @doctor.person_website || 'http://www.yiliaohj.com' %>
+<br />
+门诊时刻表
+<br />
+
+<hr>
+满意度投票
+<hr>
+
+<% if @comment %>
+  <%= @comment.user.nickname %>
+  <%= @comment.created_at.strftime("%F") %>
+  <% @comment.rating.times do |s| %>
+    <%= image_tag "static_pages/icon_star_selected.png", class: "start" %>
+  <% end %>
+  <br>
+  <%= @comment.content %>
+<% end %>
+<hr>
+<a href="<%= frontend_doctor_comments_path(@doctor) %>">查看全部评价</a>
+<hr>
+<hr>
+<a href="<%= new_frontend_doctor_comment_path(@doctor) %>">我要评价</a>
+
+<hr>
+猜你喜欢
