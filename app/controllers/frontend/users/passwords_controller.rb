@@ -3,11 +3,10 @@ module Frontend
     class PasswordsController < FrontendController
       before_action :auth_check, only: [:email_edit, :update]
       def new
-        redirect_to new_frontend_users_session_path unless @user 
+        redirect_to new_frontend_users_session_path unless @user
       end
 
       def edit
-        
       end
 
       def email_new
@@ -20,9 +19,7 @@ module Frontend
 
       def update
         @current_user.password = params[:user][:password]
-        if @current_user.save
-          redirect_to frontend_users_me_index_path
-        end
+        redirect_to frontend_users_me_index_path if @current_user.save
       end
 
       def email
@@ -70,18 +67,16 @@ module Frontend
       end
 
       def send_mail(to, subject, url)
-        vars = JSON.dump({"to" => [to], "sub" => { "%url%" => [url]} })
-        response = RestClient.post Settings.mail.url,{
-          api_user: Settings.mail.api_user,
-          api_key: Settings.mail.api_key,
-          from: Settings.mail.from,
-          fromname: "搜医搜",
-          substitution_vars: vars,
-          template_invoke_name: 'test_template_active',
-          subject: subject,
-          resp_email_id: 'true'
-        }
-        puts "zzzzzzz"
+        vars = JSON.dump('to' => [to], 'sub' => { '%url%' => [url] })
+        response = RestClient.post Settings.mail.url, api_user: Settings.mail.api_user,
+                                                      api_key: Settings.mail.api_key,
+                                                      from: Settings.mail.from,
+                                                      fromname: "搜医搜",
+                                                      substitution_vars: vars,
+                                                      template_invoke_name: 'test_template_active',
+                                                      subject: subject,
+                                                      resp_email_id: 'true'
+        puts 'zzzzzzz'
         puts response
       end
     end

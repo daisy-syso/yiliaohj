@@ -15,11 +15,12 @@
 <br />
 个人网站：<%= @doctor.person_website || 'http://www.yiliaohj.com' %>
 <br />
-门诊时刻表
-<br />
 
 <hr>
 满意度投票
+<% @diseases.each do |disease| %>
+  <button id=""><%= disease.name %>(<%= get_vote(@doctor.id, disease.id) %>)</button>
+<% end %>
 <hr>
 
 <% if @comment %>
@@ -39,3 +40,15 @@
 
 <hr>
 猜你喜欢
+
+<!-- 易株强 投票js 这块我不会。。。-->
+<script type="text/javascript">
+  $("#like").click(function(e){
+    $.post('/doctors/like',{
+      doctor_id: '',
+      disease_id: ''
+    },function(data){
+
+    })
+  })
+</script>

@@ -3,11 +3,10 @@ module Frontend
     class MeController < FrontendController
       before_action :get_user, only: [:edit, :update, :index]
       def index
-        redirect_to new_frontend_users_session_path unless @user 
+        redirect_to new_frontend_users_session_path unless @user
       end
 
       def edit
-        
       end
 
       def update

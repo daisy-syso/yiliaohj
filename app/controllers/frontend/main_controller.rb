@@ -20,7 +20,7 @@ module Frontend
     def upload_position
       $redis_position.set(request.remote_ip, "#{params[:lat]},#{params[:lon]}")
 
-      render json: {mes: 'ok'}
+      render json: { mes: 'ok' }
     end
   end
 end

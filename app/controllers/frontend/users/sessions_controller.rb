@@ -1,7 +1,6 @@
 module Frontend
   module Users
     class SessionsController < FrontendController
-      
       def new
         @user = User.new
       end

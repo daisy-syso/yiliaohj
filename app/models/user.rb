@@ -4,7 +4,7 @@ class User
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable, :validatable
   mount_uploader :avatar, PictureUploader
-  
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable
 
@@ -45,7 +45,7 @@ class User
   field :telephone, type: String
   field :nickname, type: String
 
-  validates :email, presence: true, uniqueness: true, format: {with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, if: :email_register?
+  validates :email, presence: true, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, if: :email_register?
 
   validates :telephone, presence: true, uniqueness: true, length: { is: 11 }, if: :telephone_register?
 

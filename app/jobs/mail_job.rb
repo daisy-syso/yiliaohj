@@ -5,15 +5,13 @@ class MailJob < ActiveJob::Base
   def perform(to, subject, html)
     logger = Logger.new(Rails.root.join(Settings.mail.log))
 
-    response = RestClient.post Settings.mail.url,{
-      api_user: Settings.mail.api_user,
-      api_key: Settings.mail.api_key,
-      from: Settings.mail.from,
-      fromname: "搜医搜",
-      to: to,
-      subject: subject,
-      html: html
-    }
+    response = RestClient.post Settings.mail.url, api_user: Settings.mail.api_user,
+                                                  api_key: Settings.mail.api_key,
+                                                  from: Settings.mail.from,
+                                                  fromname: "搜医搜",
+                                                  to: to,
+                                                  subject: subject,
+                                                  html: html
 
     logger.info "#{to}--#{response.body}--#{Time.zone.now}"
   end

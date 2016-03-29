@@ -17,7 +17,7 @@ module Frontend
           render :email_new
         else
           @user = User.new user_email_params
-          
+
           if params[:user][:password] == params[:user][:password_confirmation]
             if @user.save
               # MailJob.perform_later(@user.email, '注册验证', html)
@@ -62,16 +62,15 @@ module Frontend
       end
 
       def update
-        
       end
 
       def check_register_telephone
         user = User.where(telephone: params[:telephone]).first
 
         results = if user.present?
-                    {status: 422, message: '号码已经被注册'}
+                    { status: 422, message: '号码已经被注册' }
                   else
-                    {status: 200, message: 'OK'}
+                    { status: 200, message: 'OK' }
                   end
         render json: results
       end
@@ -80,9 +79,9 @@ module Frontend
         user = User.where(email: params[:email]).first
 
         results = if user.present?
-                    {status: 422, message: '邮箱已经被注册'}
+                    { status: 422, message: '邮箱已经被注册' }
                   else
-                    {status: 200, message: 'OK'}
+                    { status: 200, message: 'OK' }
                   end
         render json: results
       end
@@ -98,21 +97,18 @@ module Frontend
       end
 
       def send_mail(to, subject, url)
-        vars = JSON.dump({"to" => [to], "sub" => { "%url%" => [url]} })
-        response = RestClient.post Settings.mail.url,{
-          api_user: Settings.mail.api_user,
-          api_key: Settings.mail.api_key,
-          from: Settings.mail.from,
-          fromname: "搜医搜",
-          substitution_vars: vars,
-          template_invoke_name: 'test_template_active',
-          subject: subject,
-          resp_email_id: 'true'
-        }
-        puts "zzzzzzz"
+        vars = JSON.dump({ 'to' => [to], 'sub' => { '%url%' => [url] } })
+        response = RestClient.post Settings.mail.url, api_user: Settings.mail.api_user,
+                                                      api_key: Settings.mail.api_key,
+                                                      from: Settings.mail.from,
+                                                      fromname: "搜医搜",
+                                                      substitution_vars: vars,
+                                                      template_invoke_name: 'test_template_active',
+                                                      subject: subject,
+                                                      resp_email_id: 'true'
+        puts 'zzzzzzz'
         puts response
       end
-
     end
   end
 end
