@@ -54,7 +54,7 @@ Rails.application.routes.draw do
         resources :comments
 
         collection do
-          get 'like'
+          post 'like'
         end
       end
       resources :maternals

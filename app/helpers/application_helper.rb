@@ -3,7 +3,7 @@ module ApplicationHelper
   end
 
   def get_vote(doctor_id, disease_id)
-    DoctorDisease.where(doctor_id: doctor_id, disease_id: disease_id).first.vote
+    DoctorDisease.where(doctor_id: doctor_id, disease_id: disease_id).first.votes
   end
 
   def get_distance(lat, lon)
