@@ -6,6 +6,18 @@ module ApplicationHelper
     DoctorDisease.where(doctor_id: doctor_id, disease_id: disease_id).first.votes
   end
 
+  def get_comment_origin
+    get_comment_url.second.singularize.classify.constantize
+  end
+
+  def get_comment_origin_id
+    get_comment_url.third
+  end
+
+  def get_comment_url
+    URI.parse(request.url).path.split('/')
+  end
+
   def get_distance(lat, lon)
     query = {
       query: {

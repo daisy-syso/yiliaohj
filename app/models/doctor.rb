@@ -38,4 +38,11 @@ class Doctor
   def diseases
     Disease.in(id: doctor_diseases.pluck(:disease_id))
   end
+
+  def category_star!
+    score = comments.pluck(:rating).compact.sum
+    member = comments.size
+    self.star = (score / member).to_i
+    save
+  end
 end

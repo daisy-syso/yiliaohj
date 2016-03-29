@@ -1,7 +1,7 @@
 评论
 <br />
 <% @comments.each do |comment|%>
-  <%= comment.user.nickname %>
+  <%= comment.user.try(:nickname) %>
   <% comment.rating.times do |s| %>
     <%= image_tag "static_pages/icon_star_selected.png", class: "start" %>
   <% end %>

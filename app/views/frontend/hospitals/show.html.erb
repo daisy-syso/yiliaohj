@@ -19,7 +19,7 @@
 <%= @hospital.comments.size%>人已经点评
 <br>
 <% if @comment %>
-  <%= @comment.user.nickname %>
+  <%= @comment.user.try(:nickname) %>
   <%= @comment.created_at.strftime("%F") %>
   <% @comment.rating.times do |s| %>
     <%= image_tag "static_pages/icon_star_selected.png", class: "start" %>
