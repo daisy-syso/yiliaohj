@@ -11,8 +11,12 @@
   </nav>
   <div class="content">
     <%= simple_form_for(@user, url: '/users/registrations/telephone', method: 'post') do |f| %>
-      <%= f.error_notification %>
-      <%= flash[:notice] %>
+      <% if f.error_notification %>
+        <div class="alert alert-warning" role="alert"><%= f.error_notification %></div>
+      <% end %>
+      <% if flash[:notice] %>
+        <div class="alert alert-info" role="alert"><%= flash[:notice] %></div>
+      <% end %>
       <div class="form-inputs">
         <%= f.input :telephone, required: true, autofocus: true, placeholder: '请输手机号', label: false %>
         <input id="code" name="code" placeholder='请输验证码' class="validation-code-input"/>

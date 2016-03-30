@@ -10,7 +10,9 @@
 <div class="register-content content">
   <% @user = User.find(session[:user_id]) %>
   <%= simple_form_for(@user, url: '/users/passwords/email_create', :html=> { class: "register-with-email-form"})  do |f| %>
-    <%= f.error_notification %>
+    <% if f.error_notification %>
+      <div class="alert alert-warning" role="alert"><%= f.error_notification %></div>
+    <% end %>
     <%= f.input :password, placeholder: '请输入你的密码', label: false %>
     <%= f.button :submit, '完成', class: "btn btn-default full-button"%>
   <% end %>

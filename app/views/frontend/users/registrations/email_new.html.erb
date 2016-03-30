@@ -12,8 +12,12 @@
 </div>
 <div class="register-content content">
   <%= simple_form_for(@user, url: '/users/registrations/email', :html=> { class: "register-with-email-form"}, method: 'post')  do |f| %>
-    <%= f.error_notification %>
-    <%= flash[:notice] %>
+    <% if f.error_notification %>
+      <div class="alert alert-warning" role="alert"><%= f.error_notification %></div>
+    <% end %>
+    <% if flash[:notice] %>
+      <div class="alert alert-info" role="alert"><%= flash[:notice] %></div>
+    <% end %>
     <%= f.input :email, placeholder: '请输入你的邮箱', label: false %>
     <%= f.input :password, placeholder: '请输入你的密码', label: false %>
     <%= f.input :password_confirmation, placeholder: '再次输入你的密码', label: false %>

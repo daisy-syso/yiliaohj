@@ -12,8 +12,8 @@
 </div>
 <div class="user-info-content content">
   <%= simple_form_for(@user, url: "/users/me/#{@user.id.to_s}", html: {class: "user-info-form"}, :wrapper_html => {:class => 'good'}, :input_html => { :class => 'bad' }) do |f| %>
-    <%= f.error_notification %>
-    <%= flash[:notice] %>
+    <div class="alert alert-warning" role="alert"><%= f.error_notification %></div>
+    <div class="alert alert-info" role="alert"><%= flash[:notice] %></div>
     <div class="user-avatar">
       <% avatar_url = @user.avatar.presence || "static_pages/user_icon_head.png" %>
       <%= image_tag avatar_url, width: "150px;" %>

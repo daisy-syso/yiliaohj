@@ -12,8 +12,12 @@
 </div>
 <div class="content forget-password">
   <%= simple_form_for(@user, url: '/users/passwords/telephone', method: 'post') do |f| %>
-    <%= f.error_notification %>
-    <%= flash[:notice] %>
+    <% if f.error_notification %>
+      <div class="alert alert-warning" role="alert"><%= f.error_notification %></div>
+    <% end %>
+    <% if flash[:notice] %>
+      <div class="alert alert-info" role="alert"><%= flash[:notice] %></div>
+    <% end %>
     <div class="form-inputs">
       <%= f.input :telephone, required: true, autofocus: true, placeholder: '请输入你的手机号码', label: false, :input_html => { :class => 'no-border-input' } %>
 
