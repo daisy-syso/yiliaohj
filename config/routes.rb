@@ -61,6 +61,8 @@ Rails.application.routes.draw do
       resources :confinement_centers
       resources :medicals
       resources :nursing_rooms
+
+      resources :searches
     end
   end
 end

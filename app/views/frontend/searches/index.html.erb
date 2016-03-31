@@ -1,0 +1,74 @@
+<input type="text" id="search" placeholder="搜索关键字" class="form-control">
+<button id="#">搜索</button>
+<hr>
+<ul >
+  <li><button id='hospital' class='search_type'>医院</button></li>
+  <li><button id='doctor' class='search_type'>医生</button></li>
+  <li><button id='symptom' class='search_type'>症状</button></li>
+  <li><button id='disease' class='search_type'>疾病</button></li>
+  <li><button id='drug' class='search_type'>药品</button></li>
+  <li><button id='drug_store' class='search_type'>药店</button></li>
+</ul>
+
+<div>
+  <ul id="result_list">
+  </ul>
+  <button id='more'>加载更多</button>
+</div>
+
+<script type="text/javascript">
+  var type = 'hospital';
+  var page = 1;
+  var all_page = 1;
+
+  $(function(){
+    $.post('/searches', {
+      type: type
+    },function(e){
+      $('#result_list').html('');
+      e.results.forEach(function(e){
+        $('#result_list').append("<li><a href='"+e.url+"'>"+e.name+"<li>")
+      })
+    })
+  })
+
+  $("#search").keyup(function(e){
+    $.post('/searches', {
+      type: type,
+      word: $('#search').val(),
+      page: all_page
+    },function(e){
+      $('#result_list').html('');
+      e.results.forEach(function(e){
+        $('#result_list').append("<li><a href='"+e.url+"'>"+e.name+"<li>")
+      })
+    })
+  })
+
+  $(".search_type").on('click', function(e){
+    type = e.target.id;
+    $.post('/searches', {
+      type: type,
+      word: $('#search').val()
+    },function(e){
+      page = 1;
+      $('#result_list').html('')
+      e.results.forEach(function(e){
+        $('#result_list').append("<li><a href='"+e.url+"'>"+e.name+"<li>")
+      })
+    })
+  })
+
+  $('#more').click(function(e){
+    ++page;
+    $.post('/searches', {
+      type: type,
+      word: $('#search').val(),
+      page: page
+    },function(e){
+      e.results.forEach(function(e){
+        $('#result_list').append("<li><a href='"+e.url+"'>"+e.name+"<li>")
+      })
+    })
+  })
+</script>
