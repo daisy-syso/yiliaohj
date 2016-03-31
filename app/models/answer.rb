@@ -5,5 +5,5 @@ class Answer
 
   field :content, type: String
 
-  belongs_to :question
+  belongs_to :question, index: true
 end

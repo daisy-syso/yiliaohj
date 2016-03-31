@@ -23,15 +23,13 @@ class ConfinementCenter
   field :star, type: Integer
   field :status, type: Boolean
 
-  belongs_to :city
-  belongs_to :county
+  belongs_to :city, index: true
+  belongs_to :county, index: true
 
   has_many :comments, as: :commentable
   has_many :commodities, as: :commoditiable
 
-  validates :name, presence: true
-  validates :telephone, presence: true
-  validates :address, presence: true
+  validates :name, :telephone, :address, presence: true
 
   index name: 1
 end

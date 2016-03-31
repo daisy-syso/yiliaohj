@@ -3,8 +3,8 @@ class DoctorDisease
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  belongs_to :doctor
-  belongs_to :disease
+  belongs_to :doctor, index: true
+  belongs_to :disease, index: true
 
   field :votes, type: Integer, default: 0
   field :voted_by, type: Array, default: -> {[]}
