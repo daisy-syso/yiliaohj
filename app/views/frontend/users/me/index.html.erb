@@ -1,18 +1,46 @@
-头像  <img src="<%= @user.avatar %>" width="100px">
-<hr >
-<br />
-性别 <%= @user.gender %>
-<hr >
-<br />
-昵称 <%= @user.nickname %>
-<hr>
-<br />
-邮箱 <%= @user.email %>
-<hr>
-<br />
-手机号码 <%= @user.telephone %>
-<br />
-<%= link_to '修改信息', edit_frontend_users_me_path(@user) %>
-<br/ >
-<hr>
-<%= link_to '退出', frontend_users_session_path(@user), method: 'delete' %>
+<div class="app-header">
+  <nav class="navbar navbar-default custom-header">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="#">
+          <%= image_tag "users/title_icon_back_normal.png" %>
+        </a>
+        <a href="#" >基本资料</a>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<div class="base-info">
+  <div class="user-avatar">
+    <span>头像</span>
+    <img src="<%= @user.avatar %>" class="pull-right">
+  </div>
+  <div class="user-gender info-item">
+    <span>性别</span>
+    <span class="pull-right"> <%= @user.gender %></span>
+  </div>
+
+  <div class="user-nickname info-item">
+    <span>昵称</span>
+    <span class="pull-right"><%= @user.nickname %></span>
+  </div>
+
+  <div class="user-email info-item">
+    <span>邮箱</span>
+    <span class="pull-right"><%= @user.email %></span>
+  </div>
+
+  <div class="user-celphone info-item">
+    <span>登录手机号</span>
+    <span class="pull-right"> <%= @user.telephone %></span>
+  </div>
+
+  <div class="info-item edit-password">
+    <%= link_to '登录密码', edit_frontend_users_me_path(@user) %>
+  </div>
+
+  <div class="info-item logout">
+   <%= link_to '退出登陆', frontend_users_session_path(@user), method: 'delete' %>
+  </div>
+</div>

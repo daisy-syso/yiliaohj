@@ -174,3 +174,44 @@
     }
   }
 }
+
+// base info
+.base-info {
+  margin-top:0px;
+  font-size: 16px;
+  color: #474747;
+  background-color: #E6E6E6;
+  .info-item {
+    height: 56px;
+    line-height: 56px;
+    padding: 0 25px;
+    border-bottom: 1px solid $light-gray;
+    background-color: white;
+  }
+  .user-avatar {
+    background-color: white;
+    height: 104px;
+    padding: 14px 14px 14px 25px;
+    line-height: 104px;
+    border-bottom: 1px solid $light-gray;
+    img {
+      width: 78px;
+    }
+  }
+  .user-nickname {
+    margin-bottom: 46px;
+  }
+  .user-email {
+    border-top: 1px solid $light-gray;
+  }
+  .logout {
+    margin-top: 46px;
+    a {
+      color: $purple;
+    }
+  }
+  .edit-password a {
+    color: #474747;
+  }
+}
+
