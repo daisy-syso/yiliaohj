@@ -15,7 +15,7 @@ class Disease
   field :image_url, type: String
   field :description, type: String
 
-  belongs_to :department
+  belongs_to :department, index: true
 
   has_many :doctor_diseases
 

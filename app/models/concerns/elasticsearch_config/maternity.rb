@@ -1,12 +1,12 @@
 module ElasticsearchConfig
-  module Maternal
+  module Maternity
     extend ActiveSupport::Concern
 
     included do
       include Elasticsearchable
 
-      index_name    "yiliao-maternals-#{Rails.env}"
-      document_type 'maternals'
+      index_name    "yiliao-maternities-#{Rails.env}"
+      document_type 'maternities'
 
       settings index: { number_of_shards: 5 } do
         mappings do
@@ -15,15 +15,15 @@ module ElasticsearchConfig
           indexes :location, type: 'geo_point'
         end
       end
+    end
 
-      def as_indexed_json(option = {})
-        {
+    def as_indexed_json(option = {})
+      {
           id: id.to_s,
           name: name,
           telephone: telephone,
           location: location
-        }.as_json(option)
-      end
+      }.as_json(option)
     end
   end
 end

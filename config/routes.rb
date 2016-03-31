@@ -57,7 +57,7 @@ Rails.application.routes.draw do
           post 'like'
         end
       end
-      resources :maternals
+      resources :maternities
       resources :confinement_centers
       resources :medicals
       resources :nursing_rooms
