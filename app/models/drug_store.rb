@@ -10,6 +10,7 @@ class DrugStore
   field :description, type: String
   field :position, type: String
   field :drug_category, type: String
+  field :location, type: String
   field :lon, type: Float
   field :lat, type: Float
   field :telephone, type: String

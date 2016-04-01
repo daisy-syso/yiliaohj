@@ -9,7 +9,7 @@ class Disease
   field :etiology, type: String
   field :symptom, type: String
   field :examination, type: String
-  field :treatent, type: String
+  field :treatment, type: String
   field :prevention, type: String
   field :diet, type: String
   field :image_url, type: String
