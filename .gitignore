@@ -20,3 +20,4 @@ mongoid.yml
 public/assets
 public/uploads
 .DS_Store
+.idea

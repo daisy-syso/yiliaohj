@@ -9,13 +9,13 @@ class Disease
   field :etiology, type: String
   field :symptom, type: String
   field :examination, type: String
-  field :treatent, type: String
+  field :treatment, type: String
   field :prevention, type: String
   field :diet, type: String
   field :image_url, type: String
   field :description, type: String
 
-  belongs_to :department
+  belongs_to :department, index: true
 
   has_many :doctor_diseases
 

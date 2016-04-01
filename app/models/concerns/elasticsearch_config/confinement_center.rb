@@ -15,15 +15,15 @@ module ElasticsearchConfig
           indexes :location, type: 'geo_point'
         end
       end
+    end
 
-      def as_indexed_json(option = {})
-        {
+    def as_indexed_json(option = {})
+      {
           id: id.to_s,
           name: name,
           telephone: telephone,
           location: location
-        }.as_json(option)
-      end
+      }.as_json(option)
     end
   end
 end

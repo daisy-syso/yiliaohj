@@ -5,12 +5,12 @@ class City
 
   field :name, type: String
 
-  belongs_to :provience
+  belongs_to :province, index: true
 
   has_many :counties
   has_many :hospitals
 
-  has_many :maternals
+  has_many :maternities
   has_many :drug_stores
   has_many :nursing_rooms
 end

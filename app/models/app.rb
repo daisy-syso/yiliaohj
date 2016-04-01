@@ -10,5 +10,5 @@ class App
   field :link, type: String
   field :detail, type: String
 
-  belongs_to :app_category
+  belongs_to :app_category, index: true
 end

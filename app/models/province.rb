@@ -1,5 +1,5 @@
 # 省份
-class Provience
+class Province
   include Mongoid::Document
   include Mongoid::Timestamps
 

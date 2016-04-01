@@ -5,10 +5,10 @@ class County
 
   field :name, type: String
 
-  belongs_to :city
+  belongs_to :city, index: true
 
   has_many :hospitals
-  has_many :maternals
+  has_many :maternities
   has_many :drug_stores
   has_many :nursing_rooms
 end

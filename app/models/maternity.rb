@@ -1,5 +1,5 @@
 # 母婴会所
-class Maternal
+class Maternity
   include Mongoid::Document
   include Mongoid::Timestamps
   # include ElasticsearchConfig::Maternal
