@@ -27,6 +27,9 @@ class DrugStore
 
   belongs_to :city
   belongs_to :county
+  belongs_to :drug_store_admin
+
+  has_and_belongs_to_many :drugs
 
   validates :name, presence: true
 

@@ -8,5 +8,5 @@ class DrugCategory
 
   field :name, type: String
 
-  belongs_to :drug
+  has_many :drug_names
 end

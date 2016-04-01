@@ -23,12 +23,12 @@ class Drug
 
   field :status, type: Boolean, default: true
 
-  field :diseases, type: Array
-
-  has_many :drug_detail
   has_many :comments, as: :commentable
-
   has_many :commodities, as: :commoditiable
+
+  has_and_belongs_to_many :drug_stores
+  has_and_belongs_to_many :manufactories
+  belongs_to :drug_names
 
   validates :name, presence: true
 

@@ -6,5 +6,5 @@ class DrugDetail
   field :title, type: String
   field :detail, type: String
 
-  belongs_to :drug
+  belongs_to :drug_name
 end
