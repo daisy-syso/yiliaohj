@@ -5,5 +5,8 @@ class ExaminationCategory
 
   field :name, type: String
 
+  belongs_to :parent, class_name: 'ExaminationCategory', inverse_of: :children, index: true
+  has_many :children, class_name: 'ExaminationCategory', inverse_of: :parent
+
   has_many :examinations
 end
