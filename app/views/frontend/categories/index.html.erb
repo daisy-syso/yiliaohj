@@ -1,0 +1,22 @@
+热门
+<hr>
+医院大全
+<% @hospital_categories.each do |hospital_category| %>
+  <%= hospital_category.name %>
+  <% hospital_category.children.each do |category| %>
+    <a href="#"><%= category.name %></a> 
+  <% end %>
+  <br>
+<% end %>
+<hr>
+疾病查询
+<hr>
+找医生
+<hr>
+身边药房
+<hr>
+药品团购
+<hr>
+医疗团购
+<hr>
+最新优惠

@@ -63,6 +63,8 @@ Rails.application.routes.draw do
       resources :nursing_rooms
 
       resources :searches
+
+      resources :categories
     end
   end
 end

@@ -32,11 +32,14 @@ class Hospital
   belongs_to :county
 
   has_many :departments
+
   has_many :doctors
 
   has_many :comments, as: :commentable
   # has_many :examinations, as: :examinationable
   has_many :recommendations, as: :recommendationable
+
+  has_and_belongs_to_many :departments
 
   validates :name, presence: true
   # validates :telephone, presence: true

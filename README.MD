@@ -25,3 +25,8 @@ rails generate devise:install
 Hospital.__elasticsearch__.create_index! force: true
 Hospital.import
 ```
+
+## 图
+```
+rake diagram:all
+```
