@@ -30,3 +30,6 @@ Hospital.import
 ```
 rake diagram:all
 ```
+
+发布需求
+添加关注等（登录情况）

@@ -3,8 +3,13 @@ class Information
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  field :name, type: String
-  field :content, type: String
+  mount_uploader :image_url, PictureUploader
 
-  belongs_to :disease_info_category
+  field :title, type: String
+  field :content, type: String
+  field :source, type: String
+  field :image_url, type: String
+  field :click_count, type: Integer
+
+  belongs_to :information_category
 end

@@ -1,0 +1,10 @@
+<% @information_categories.each do |information_category| %>
+  <%= information_category.name %>||| 已关注
+  <ul>
+    <% information_category.information.each do |information| %>
+      <li>
+        <a href="/information/<%= information.id.to_s %>"><%= information.title %></a>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

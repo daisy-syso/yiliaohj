@@ -65,6 +65,16 @@ Rails.application.routes.draw do
       resources :searches
 
       resources :categories
+
+      resources :subscriptions
+
+      resources :information
+
+      resources :person_customs do 
+        collection do
+          get 'question'
+        end
+      end
     end
   end
 end

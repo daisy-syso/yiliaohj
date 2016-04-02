@@ -1,0 +1,12 @@
+精准疾病咨询推送
+<br>
+<% @information_categories.each do |information_category| %>
+  <%= information_category.name %>
+  <br>
+  <% information_category.children.each do |category| %>
+    <%= category.name %>
+  <% end %>
+  <br>
+<% end %>
+<hr>
+<a href="<%= question_frontend_person_customs_path %>"> 提出医疗健康服务需求</a>

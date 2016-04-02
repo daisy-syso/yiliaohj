@@ -1,6 +1,7 @@
 热门
 <hr>
 医院大全
+<br>
 <% @hospital_categories.each do |hospital_category| %>
   <%= hospital_category.name %>
   <% hospital_category.children.each do |category| %>
@@ -10,10 +11,26 @@
 <% end %>
 <hr>
 疾病查询
+<br>
+<% @disease_categories.each do |disease_category| %>
+  <%= disease_category.name %>
+  <% disease_category.children.each do |category| %>
+    <a href="#"><%= category.name %></a> 
+  <% end %>
+  <br>
+<% end %>
 <hr>
 找医生
+<br>
+<% @doctor_categories.each do |doctor_category| %>
+  <%= doctor_category.name %>
+  <% doctor_category.children.each do |category| %>
+    <a href="#"><%= category.name %></a> 
+  <% end %>
+  <br>
+<% end %>
 <hr>
-身边药房
+<a href="#">身边药房</a>
 <hr>
 药品团购
 <hr>

@@ -3,11 +3,12 @@ class Subscription
   include Mongoid::Document
   include Mongoid::Timestamps
 
+  # field :name, type: String
+
   belongs_to :user
+  has_and_belongs_to_many :information_categories
 
-  has_one :disease_info_category
-
-  before_save do
-    self.top_name = DiseaseInfoCategory.find(DiseaseInfoCategory.find(disease_info_category_id).parent_id).name
-  end
+  # before_save do
+  #   self.name = InformationCategory.find(InformationCategory.find(information_category_id).parent_id).name
+  # end
 end

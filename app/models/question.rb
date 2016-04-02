@@ -4,7 +4,10 @@ class Question
   include Mongoid::Timestamps
 
   field :content, type: String
+  field :category, type: String
+  field :telephone, type: String
+  field :email, type: String
 
   belongs_to :user
-  belongs_to :answers
+  has_many :answers
 end
