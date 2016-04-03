@@ -20,6 +20,7 @@ module Yiliaohj
   class Application < Rails::Application
     config.autoload_paths << Rails.root.join('app/api')
     config.autoload_paths << Rails.root.join('lib')
+    config.autoload_paths << Rails.root.join('app/services')
 
     config.middleware.use Rack::Cors do
       allow do

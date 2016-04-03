@@ -30,6 +30,7 @@ class Hospital
 
   belongs_to :city
   belongs_to :county
+  belongs_to :hospital_category
 
   has_many :departments
 
