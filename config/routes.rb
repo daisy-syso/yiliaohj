@@ -70,11 +70,9 @@ Rails.application.routes.draw do
 
       resources :information
 
-      resources :person_customs do 
-        collection do
-          get 'question'
-        end
-      end
+      resources :person_customs
+
+      resources :questions
     end
   end
 end

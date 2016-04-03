@@ -1,12 +1,58 @@
-精准疾病咨询推送
+<h2>咨询推送</h2>
 <br>
 <% @information_categories.each do |information_category| %>
   <%= information_category.name %>
   <br>
-  <% information_category.children.each do |category| %>
-    <%= category.name %>
-  <% end %>
+
+  <!-- 私人定制02 页面-->
+  <div>
+    全选
+    <br >
+    <% information_category.children.each do |category| %>
+      <input type="checkbox" name="category_name" value="<%= category.id.to_s %>" <%= @information_category_ids.include?(category.id) ? "" : "checked" %>checked><%= category.name %></input>
+    <% end %>  
+  </div>
   <br>
 <% end %>
 <hr>
-<a href="<%= question_frontend_person_customs_path %>"> 提出医疗健康服务需求</a>
+<button id="submit">确认订阅</button>
+<h2>
+<h2>咨询推送</h2>
+<div>
+  <a href="<%= new_frontend_question_path %>"> 提出医疗健康服务需求</a></h2>  
+  <br>
+  <h3>历史提问</h3>
+  <ul>
+  <% @questions.each do |question| %>
+    <li>
+      <a href="<%= frontend_question_path(question) %>"><%= question.content.slice(0,20) %></a>
+    <li>
+  <% end %>
+  </ul>
+  
+</div>
+
+
+<script type="text/javascript">
+  $("#submit").click(function(data){
+    var category_name_ids = [];
+    var all_category_name_ids = [];
+
+    $("input[name='category_name']").each(function () {
+      all_category_name_ids.push(this.value);
+    });
+
+    $("input[name='category_name']:checked").each(function () {
+      category_name_ids.push(this.value);
+    });
+
+    $.post('/subscriptions', {
+      all_category_name_ids: all_category_name_ids,
+      category_name_ids: category_name_ids
+    },function(data){
+      console.log(data);
+    })
+  });
+  
+</script>
+

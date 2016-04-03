@@ -1,3 +1,7 @@
+<% if @information_categories.empty? %>
+  暂无订阅<a href="<%= frontend_person_customs_path %>">去订阅相关健康资讯</a>
+<% end %>
+<br>
 <% @information_categories.each do |information_category| %>
   <%= information_category.name %>||| 已关注
   <ul>
