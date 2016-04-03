@@ -46,6 +46,9 @@
         display: inline-block !important;
       }
     }
+    a:hover {
+      text-decoration: none;
+    }
   }
   .filter-type {
     padding-left: 15px;
