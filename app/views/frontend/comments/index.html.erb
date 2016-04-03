@@ -2,10 +2,10 @@
   <nav class="navbar navbar-default custom-header">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a href="#">
+        <a href="<%= frontend_hospital_path(@comment_origin) %>">
           <%= image_tag "users/title_icon_back_normal.png" %>
         </a>
-        <a href="#">评论</a>
+        <a href="#"><%= @comment_origin.name %></a>
       </div>
     </div>
   </nav>

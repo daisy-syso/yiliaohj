@@ -33,7 +33,6 @@
     </div>
   </div>
 
-
   <div class="hospital-comments">
     <p class="comments-header">
       <span>
@@ -78,13 +77,17 @@
     <div class="position-detail">
       <h5><%= @hospital.name %></h5>
       <p>联系电话<%= @hospital.telephone %></p>
-      <p>地址：<%= @hospital.address %> <a class="pull-right" href="">到这去</a></p>
+      <p>地址：<%= @hospital.address %> 
+        <!-- <a class="pull-right" href="">到这去</a> -->
+      </p>
       <div class="map">
         <%= render partial: 'map', locals: { hospital: @hospital } %>
       </div>
       <div class="operating-button">
-        <a href="">拨打电话</a>
-        <a href="">查询/挂号</a>
+        <% if @hospital.telephone.present? %>
+          <a href="tel:<%= @hospital.telephone %>15201991025">拨打电话</a>
+          <a href="#">查询/挂号</a>
+        <% end %>
       </div>
     </div>
   </div>
