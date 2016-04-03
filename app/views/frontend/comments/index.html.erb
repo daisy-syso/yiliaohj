@@ -1,13 +1,41 @@
-评论
-<br />
-<% @comments.each do |comment|%>
-  <%= comment.user.try(:nickname) %>
-  <% comment.rating.times do |s| %>
-    <%= image_tag "static_pages/icon_star_selected.png", class: "start" %>
-  <% end %>
-  <br>
-  <%= comment.created_at.strftime("%F")%>
-  <%= comment.content%>
-  <hr >
-<% end %>
-<% paginate @comments %>
+<div class="app-header">
+  <nav class="navbar navbar-default custom-header">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="#">
+          <%= image_tag "users/title_icon_back_normal.png" %>
+        </a>
+        <a href="#">评论</a>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<div class="comments-wrapper">
+  <h3 class="title">
+    评论
+  </h3>
+  <p class="comment-count pull-right">共 <%= @comments.count %>条 </span></p>
+  <ul>
+    <% @comments.each do |comment|%>
+      <ul class="comment-list list-unstyled">
+        <li class="comment-item">
+          <div class="user-info">
+            <div class="comment-user-name"><%= @comment.user.try(:nickname) %></div>
+            <div class="comment-time"><%= @comment.created_at.strftime("%F") %></div>
+          </div>
+          <div class="comment-rate pull-right">
+            <% @comment.rating.times do |s| %>
+              <%= image_tag "static_pages/icon_star_selected.png", class: "star" %>
+            <% end %>
+          </div>
+          <div class="comment-content"><%= @comment.content %></div>
+        </li>
+      </ul>
+    <% end %>
+  </ul>
+  <div class="check-all-comments">
+    <a href="">查看全部评价</a>
+  </div>
+  <% paginate @comments %>
+</div>

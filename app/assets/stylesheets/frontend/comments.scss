@@ -1,3 +1,65 @@
-// Place all the styles related to the frontend/comments controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "../variables";
+
+.comments-wrapper {
+  margin-top: 50px;
+  .title,
+  .comment-count {
+    height: 50px;
+    line-height: 50px;
+  }
+  .title {
+    font-size: 15px;
+    color: #474747;
+    margin: 0 12px;
+    font-weight: bold;
+    display: inline-block;
+  }
+  .comment-count {
+    font-size: 12px;
+    color: #cccccc;
+    margin-right: 12px;
+  }
+  .comments-header {
+    height: 44px;
+    line-height: 44px;
+    margin: 0px;
+  }
+  .comment-list {
+    border-top: 1px solid $border-gray;
+    padding-top: 16px;
+    margin: 0 12px;
+    .comment-item {
+      padding-top: 6px;
+      height: 105px;
+      border-bottom: 1px solid $border-gray;
+      .comment-time {
+        font-size: 12px;
+        color: $light-gray;
+      }
+      .user-info {
+        display: inline-block;
+      }
+      .comment-rate {
+        display: inline-block;
+        margin-top: 2px;
+        .star {
+          width: 13px;
+        }
+      }
+      .comment-content {
+        margin: 20px 0;
+        font-size: 14px;
+        color: #474747;
+      }
+    }
+  }
+  .check-all-comments {
+    font-size: 14px;
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+    a {
+      color: $gray;
+    }
+  }
+}
