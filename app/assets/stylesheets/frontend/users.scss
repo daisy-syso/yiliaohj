@@ -9,6 +9,8 @@
     text-decoration: none;
     font-size: 17px;
     outline: none;
+    position: relative;
+    top: 4px;
   }
   .member-register{
     font-size: 15px;
@@ -177,7 +179,7 @@
 
 // base info
 .base-info {
-  margin-top:0px;
+  margin-top: 56px;
   font-size: 16px;
   color: #474747;
   background-color: #E6E6E6;
