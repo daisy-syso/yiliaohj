@@ -1,26 +1,63 @@
-<script type="text/javascript" src='http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js'></script>
-<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=0495ed2f088bdb55e65dbfa6431dff9c"></script>
+<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=<%= Settings.amap.key %>&plugin=AMap.Driving"></script>
+<script type="text/javascript" src="http://cache.amap.com/lbs/static/addToolbar.js"></script>
 
-
-<div id="container"></div>
+<link rel="stylesheet" href="http://cache.amap.com/lbs/static/main1119.css"/>
 
 <style type="text/css">
-#container {width:300px; height: 180px; }  
+    #panel {
+        position: fixed;
+        background-color: white;
+        max-height: 90%;
+        overflow-y: auto;
+        top: 10px;
+        right: 10px;
+        width: 280px;
+    }
+</style>
+
+<div id="container"></div>
+<div id="panel"></div>
+<script type="text/javascript">
+    //基本地图加载
+    var map = new AMap.Map("container", {
+        resizeEnable: true,
+        center: [116.397428, 39.90923],//地图中心点
+        zoom: 13 //地图显示的缩放级别
+    });
+    //构造路线导航类
+    var driving = new AMap.Driving({
+        map: map,
+        panel: "panel"
+    }); 
+    // 根据起终点经纬度规划驾车导航路线
+    driving.search(new AMap.LngLat(116.379028, 39.865042), new AMap.LngLat(116.427281, 39.903719));
+</script>
+
+<style type="text/css">
+  #container {width:300px; height: 280px; }  
 </style>
 
 <script>
-  var lng = "<%= hospital.location.split(',')[1] %>";
-  var lat = "<%= hospital.location.split(',')[0] %>";
+  // var lng = "<%= hospital.location.split(',')[1] %>";
+  // var lat = "<%= hospital.location.split(',')[0] %>";
 
-  var map = new AMap.Map('container', {
-      resizeEnable: true,
-      zoom:14,
-      center: [lng, lat]
-  });
+  // var map = new AMap.Map('container', {
+  //     resizeEnable: true,
+  //     zoom:13,
+  //     // center: [lng, lat]
+  //     center: [116.397428, 39.90923]
+  // });
 
-  var marker = new AMap.Marker({
-    position: map.getCenter()
-  });
-  marker.setMap(map);
+  // var driving = new AMap.Driving({
+  //     map: map,
+  //     panel: "panel"
+  // }); 
+  // // 根据起终点经纬度规划驾车导航路线
+  // driving.search(new AMap.LngLat(116.379028, 39.865042), new AMap.LngLat(116.427281, 39.903719));
+
+  // var marker = new AMap.Marker({
+  //   position: map.getCenter()
+  // });
+  // marker.setMap(map);
   
 </script>

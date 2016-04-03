@@ -27,3 +27,5 @@ mail:
   api_key: qMgh602Vx1zeL4kf
   from: mail@yiliaohj.com
   log: log/development-mail.log
+amap:
+  key: d03250bc8374092bf69ef4687f4a46af

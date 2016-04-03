@@ -4,3 +4,5 @@ qiniu:
   ak: yRXGIzOvJBBfMOelm4O3vqasPGXj_lAuVTso4qul
   sk: ijola0yT9Gymxh7bw9ZPfQSfGZ09aHvyzWK4PRvD
   expires_in: 1576800000
+amap:
+  key: d03250bc8374092bf69ef4687f4a46af
