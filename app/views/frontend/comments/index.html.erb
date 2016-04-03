@@ -16,22 +16,20 @@
     评论
   </h3>
   <p class="comment-count pull-right">共 <%= @comments.count %>条 </span></p>
-  <ul>
+  <ul class="comment-list list-unstyled">
     <% @comments.each do |comment|%>
-      <ul class="comment-list list-unstyled">
-        <li class="comment-item">
-          <div class="user-info">
-            <div class="comment-user-name"><%= @comment.user.try(:nickname) %></div>
-            <div class="comment-time"><%= @comment.created_at.strftime("%F") %></div>
-          </div>
-          <div class="comment-rate pull-right">
-            <% @comment.rating.times do |s| %>
-              <%= image_tag "static_pages/icon_star_selected.png", class: "star" %>
-            <% end %>
-          </div>
-          <div class="comment-content"><%= @comment.content %></div>
-        </li>
-      </ul>
+      <li class="comment-item">
+        <div class="user-info">
+          <div class="comment-user-name"><%= comment.user.try(:nickname) %></div>
+          <div class="comment-time"><%= comment.created_at.strftime("%F") %></div>
+        </div>
+        <div class="comment-rate pull-right">
+          <% comment.rating.times do |s| %>
+            <%= image_tag "static_pages/icon_star_selected.png", class: "star" %>
+          <% end %>
+        </div>
+        <div class="comment-content"><%= comment.content %></div>
+      </li>
     <% end %>
   </ul>
   <div class="check-all-comments">
