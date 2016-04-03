@@ -3,7 +3,7 @@ module HospitalService
     attr_reader :filter_criteria, :filters
 
     def initialize(filter_criteria)
-      @filter_criteria = filter_criteria
+      @filter_criteria = filter_criteria || {}
       @filters = []
       generate_filters
     end
