@@ -1,0 +1,11 @@
+您的需求
+<hr>
+<%= simple_form_for([:frontend, @question]) do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :content, as: :text, placeholder: '请描述您的具体需求。。', label: false %>
+  您的联系方式
+  <br>
+  <%= f.input :telephone, placeholder: '请输入您的手机号码', label: false, input_html: { value: @current_user.telephone }  %>
+  <%= f.input :email, placeholder: '请输入您的邮箱', label: false, input_html: { value: @current_user.email }  %>
+  <%= f.button :submit, '提交', class: "btn btn-default full-button"%>
+<% end %>

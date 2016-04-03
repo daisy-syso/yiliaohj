@@ -3,39 +3,41 @@ module Frontend
     before_action :auth_check, only: [:index, :create, :destroy]
 
     def index
-      # @subscriptions = @current_user.subscriptions.map(&:information_category_ids).flatten
-      subscription_ids = Subscription.all.map(&:information_category_ids).flatten
+      @information_category_ids = @current_user.subscriptions.map(&:information_category_ids).flatten
 
-      @information_categories = InformationCategory.where(:id.in => Subscription.all.map(&:information_category_ids).flatten)
+      @information_categories = InformationCategory.includes(:information).where(:id.in => @information_category_ids)
     end
 
     def create
-      subscription = @current_user.subscriptions.new
-      subscription.information_categories << @information_category
-      subscription.save
+      @information_category_ids = @current_user.subscriptions.map(&:information_category_ids).flatten
 
-      # subscription = @current_user.subscriptions.find_or_initialize_by(information_category_id: params[:information_category_id])
-      # if subscription.new_record?
-      #   # name = InformationCategory.find(params[:information_category_id]).name
+      category_name_ids = params[:category_name_ids] || []
 
-      #   subscription.save
-      #   message = "#{name} 关注成功"
-      # end
+      all_category_name_ids = params[:all_category_name_ids] || []
 
-      # flash[:alert] = message
+      delete_category_name_ids = all_category_name_ids - category_name_ids
 
-      # redirect_to frontend_subscriptions_path
+      category_name_ids.each do |category_name_id|
+        ic = InformationCategory.where(id: category_name_id).first
+        
+        if ic.present? && !@information_category_ids.include?(ic.id)
+          subscription = @current_user.subscriptions.new
+          subscription.information_categories << ic
+          subscription.save
+        end
+      end
+
+      delete_category_name_ids.each do |category_name_id|
+        ic = InformationCategory.where(id: category_name_id).first
+
+        if ic.present? && @information_category_ids.include?(ic.id)
+          information_category = @current_user.subscriptions.where(information_category_ids: ic.id).first
+          information_category.destroy
+        end
+      end
+
+      render json: {message: 'ok'}
     end
-
-    def destroy
-
-    end
-
-    private
-
-    def set_information_category
-      @information_category = InformationCategory.find(params[:id])
-    end
-
+    
   end
 end
