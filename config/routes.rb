@@ -73,6 +73,12 @@ Rails.application.routes.draw do
       resources :person_customs
 
       resources :questions
+
+      resources :insurances
+
+      resources :examinations
+
+      resources :drug_stores
     end
   end
 end

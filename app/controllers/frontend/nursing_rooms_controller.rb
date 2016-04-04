@@ -6,7 +6,8 @@ module Frontend
     end
 
     def show
-      @nursing_rooms = NursingRoom.find(params[:id])
+      @nursing_rooms = NursingRoom.includes(:comments).find(params[:id])
+      @comments = @nursing_room.comments
     end
   end
 end
