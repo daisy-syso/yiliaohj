@@ -64,6 +64,8 @@ gem 'mina'
 
 gem 'thin'
 
+gem 'jbuilder'
+
 gem 'sidekiq'
 gem 'sinatra', require: false
 
