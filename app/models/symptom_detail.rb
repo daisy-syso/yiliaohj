@@ -3,11 +3,12 @@ class SymptomDetail
   include Mongoid::Document
   include Mongoid::Timestamps
 
+  embedded_in :symptom
+
   mount_uploader :image_url, PictureUploader
 
   field :title, type: String
   field :descripton, type: String
   field :image_url, type: String
-
-  belongs_to :symptom
+  
 end

@@ -3,6 +3,10 @@ class Examination
   include Mongoid::Document
   include Mongoid::Timestamps
 
+  embeds_many :examination_details
+  has_many :comments, as: :commentable
+  has_many :commodities, as: :commoditiable
+
   mount_uploader :image_url, PictureUploader
 
   field :name, type: String
@@ -11,12 +15,6 @@ class Examination
   field :image_url, type: String
   field :feature, type: String
   field :applicable, type: String
+  field :category, type: String
 
-  belongs_to :examination_category, index: true
-  # belongs_to :examination, index: true
-  # belongs_to :examinationable, polymorphic: true
-
-  has_many :comments, as: :commentable
-  has_many :commodities, as: :commoditiable
-  has_many :examination_details
 end
