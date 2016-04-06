@@ -7,6 +7,4 @@ class DrugCategory
   has_many :children, class_name: 'DrugCategory'
 
   field :name, type: String
-
-  has_many :drug_names
 end

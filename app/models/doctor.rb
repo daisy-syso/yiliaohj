@@ -3,6 +3,11 @@ class Doctor
   include Mongoid::Document
   include Mongoid::Timestamps
 
+  belongs_to :hospital
+  belongs_to :department
+  has_many :comments, as: :commentable
+  has_many :doctor_diseases
+
   mount_uploader :image_url, PictureUploader
 
   field :name, type: String
@@ -20,20 +25,9 @@ class Doctor
   field :person_website, type: String
   field :is_home_visit, type: Boolean, default: false
 
-  belongs_to :hospital
-  belongs_to :department
-
-  has_many :comments, as: :commentable
-
   validates :name, presence: true
 
   index name: 1
-
-  # has_many :doctor_diseases
-  # has_and_belongs_to_many :diseases
-  # has_many :diseases, through: :doctor_diseases
-
-  has_many :doctor_diseases
 
   def diseases
     Disease.in(id: doctor_diseases.pluck(:disease_id))

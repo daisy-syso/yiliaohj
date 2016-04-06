@@ -3,6 +3,9 @@ class Disease
   include Mongoid::Document
   include Mongoid::Timestamps
 
+  belongs_to :department, index: true
+  has_many :doctor_diseases
+
   mount_uploader :image_url, PictureUploader
 
   field :name, type: String
@@ -14,12 +17,7 @@ class Disease
   field :diet, type: String
   field :image_url, type: String
   field :description, type: String
-
-  belongs_to :department, index: true
-
-  has_many :doctor_diseases
-
-  has_and_belongs_to_many :drug_names
+  field :drug_names, type: Array, default: -> { [] }
 
   def doctors
     Doctor.in(id: doctor_diseases.pluck(:doctor_id))

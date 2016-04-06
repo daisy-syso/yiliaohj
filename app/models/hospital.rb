@@ -4,6 +4,13 @@ class Hospital
   include Mongoid::Timestamps
   # include ElasticsearchConfig::Hospital
 
+  belongs_to :city
+  belongs_to :county
+  has_many :doctors
+  has_many :comments, as: :commentable
+  has_many :recommendations, as: :recommendationable
+  has_and_belongs_to_many :departments
+
   mount_uploader :image_url, PictureUploader
 
   field :name, type: String
@@ -13,34 +20,16 @@ class Hospital
   field :address, type: String
   field :image_url, type: String
   field :url, type: String
-
   field :characteristic_departments, type: String
   field :level, type: String
   field :location, type: String
-
   field :lat, type: Float
   field :lon, type: Float
-
   field :click_count, type: Integer
-
   field :star, type: Integer, default: 3
   field :status, type: Boolean, default: true
-
   field :is_medical_insurance, type: Boolean
-
-  belongs_to :city
-  belongs_to :county
-  belongs_to :hospital_category
-
-  has_many :departments
-
-  has_many :doctors
-
-  has_many :comments, as: :commentable
-  # has_many :examinations, as: :examinationable
-  has_many :recommendations, as: :recommendationable
-
-  has_and_belongs_to_many :departments
+  field :category, type: String
 
   validates :name, presence: true
   # validates :telephone, presence: true

@@ -8,5 +8,5 @@ class HospitalCategory
   belongs_to :parent, class_name: 'HospitalCategory', inverse_of: :children, index: true
   has_many :children, class_name: 'HospitalCategory', inverse_of: :parent
 
-  has_many :hospitals
+  # has_many :hospitals
 end

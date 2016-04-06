@@ -17,12 +17,12 @@ class Insurance
   field :star, type: Integer
   field :status, type: Boolean
 
-  belongs_to :insurance_company
+  field :company_name, type: String
+  field :company_url, type: String
+  field :category, type: String
 
   has_many :comments, as: :commentable
   has_many :commodities, as: :commoditiable
-
-  validates :name, presence: true
 
   index name: 1
 end

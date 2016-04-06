@@ -5,6 +5,4 @@ class InsuranceCompany
 
   field :name, type: String
   field :url, type: String
-
-  has_many :insurances
 end

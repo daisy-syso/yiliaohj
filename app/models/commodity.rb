@@ -1,4 +1,4 @@
-# 商品
+# 商品订单
 class Commodity
   include Mongoid::Document
   include Mongoid::Timestamps
