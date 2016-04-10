@@ -20,16 +20,22 @@
     <p class="hospital-characteristic-departments">
       特色科室：<%= @hospital.characteristic_departments %>
     </p>
-    <p class="medical-type"><%= @hospital.is_medical_insurance ? '医保定点' : '非医保定点' %>
+    <p class="medical-type">医保：<%= @hospital.is_medical_insurance ? '医保定点' : '非医保定点' %>
     </p>
-    <p class="hospital-website">网址：</p>
+    <p class="hospital-website">网址：<%= @hospital.url %></p>
   </div>
 
   <div class="doctor-list-wrapper">
     <div class="doctor-list">
       <h2>医生列表</h2>
-      <h4 class="section-office">内科</h4>
-      <h4 class="section-office">外科</h4>
+      <% @doctor_categories.each do |category| %>
+        <h4 class="section-office"><%= category.name %></h4>
+        <% @doctors.each do |doctor| %>
+          <% if doctor.department.parent.try(:name) == category.name %>
+            <%= doctor.name %>
+          <% end %>
+        <% end %>
+      <% end %>
     </div>
   </div>
 

@@ -81,6 +81,8 @@ Rails.application.routes.draw do
       resources :drug_stores
 
       resources :maps
+
+      resources :diseases
     end
   end
 end

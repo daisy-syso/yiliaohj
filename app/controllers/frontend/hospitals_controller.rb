@@ -11,6 +11,22 @@ module Frontend
       @hospital = Hospital.find(params[:id])
 
       @comment = @hospital.comments.desc(:created_at).first
+
+      @doctors = @hospital.doctors.includes(:department)
+
+      @doctor_categories = @doctors.collect do |d|
+        d.department.parent
+      end.uniq.compact
     end
   end
 end
+
+
+# (&:department).uniq#.includes(:parent).map(&:parent).compact
+# doctors.map(&:department).map(&:parent)
+
+# doctors = Hospital.find('56f633b4e8f1112870ccc010').doctors
+
+# doctors.map(&:department).map(&:parent).compact.map(&:name).uniq
+
+# includes(:parent)
