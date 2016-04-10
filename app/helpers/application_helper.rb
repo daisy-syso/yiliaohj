@@ -7,7 +7,7 @@ module ApplicationHelper
   end
 
   def get_vote(doctor_id, disease_id)
-    DoctorDisease.where(doctor_id: doctor_id, disease_id: disease_id).first.votes
+    DoctorDisease.where(doctor_id: doctor_id, disease_id: disease_id).first.voters_count
   end
 
   def get_comment_origin
