@@ -1,39 +1,157 @@
-热门
-<hr>
-医院大全
-<br>
-<% @hospital_categories.each do |hospital_category| %>
-  <%= hospital_category.name %>
-  <% hospital_category.children.each do |category| %>
-    <a href="#"><%= category.name %></a> 
-  <% end %>
-  <br>
-<% end %>
-<hr>
-疾病查询
-<br>
-<% @disease_categories.each do |disease_category| %>
-  <%= disease_category.name %>
-  <% disease_category.children.each do |category| %>
-    <a href="#"><%= category.name %></a> 
-  <% end %>
-  <br>
-<% end %>
-<hr>
-找医生
-<br>
-<% @doctor_categories.each do |doctor_category| %>
-  <%= doctor_category.name %>
-  <% doctor_category.children.each do |category| %>
-    <a href="#"><%= category.name %></a> 
-  <% end %>
-  <br>
-<% end %>
-<hr>
-<a href="#">身边药房</a>
-<hr>
-药品团购
-<hr>
-医疗团购
-<hr>
-最新优惠
+<div class="app-header">
+  <nav class="navbar navbar-default custom-header">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="javascript:;">
+          <%= image_tag "users/title_icon_back_normal.png" %>
+        </a>
+        <a href="#">全部类别</a>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<div class="all-categories">
+  <div class="left">
+    <div class="left-category hot-categories-title" data-class="hot-categories-wrapper">
+      <p>热门</p>
+    </div>
+    <div class="left-category hospital-categories-title" data-class="hospital-categories-wrapper">
+      <p>医院大全</p>
+    </div>
+    <div class="left-category disease-categories-title active" data-class="disease-categories-wrapper">
+      <p>疾病查询</p>
+    </div>
+    <div class="left-category doctor-categories-title" data-class="doctor-categories-wrapper">
+      <p>找医生</p>
+    </div>
+    <div class="left-category drugstore-categories-title" data-class="drugstore-categories-wrapper">
+      <p>身边药房</p>
+    </div>
+    <div class="left-category drug-categories-title" data-class="drug-categories-wrapper">
+      <p>药品团购</p>
+    </div>
+    <div class="left-category treatment-categories-title" data-class="treatment-categories-wrapper">
+      <p>医疗团购</p>
+    </div>
+    <div class="left-category preferential-categories-title" data-class="preferential-categories-wrapper">
+      <p>最新优惠</p>
+    </div>
+  </div>
+
+  <div class="right">
+
+    <div class="wrapper hot-categories-wrapper">
+      <ul class="hot-categories">
+        <li class="list-unstyled classification-item">
+          <a href="#"></a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="wrapper hospital-categories-wrapper">
+      <ul class="hospital-categories">
+        <% @hospital_categories.each do |hospital_category| %>
+          <li class="list-unstyled parent-item classification-item">
+            <a href="#"><%= hospital_category.name %></a>
+            <ul class="child-category">
+              <% hospital_category.children.each do |category| %>
+                <li class="list-unstyled classification-item">
+                  <a href="#"><%= category.name %></a>
+                </li>
+              <% end %>
+            </ul>
+            <br>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+
+    <div class="wrapper disease-categories-wrapper">
+      <ul class="disease-categories">
+        <% @disease_categories.each do |disease_category| %>
+          <li class="list-unstyled parent-item classification-item">
+            <a href="#"><%= disease_category.name %></a>
+            <ul class="child-category">
+              <% disease_category.children.each do |category| %>
+                <li class="list-unstyled classification-item">
+                  <a href="#"><%= category.name %></a>
+                </li>
+              <% end %>
+            </ul>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="wrapper doctor-categories-wrapper">
+      <ul class="doctor-categories">
+        <% @doctor_categories.each do |doctor_category| %>
+          <li class="list-unstyled parent-item classification-item">
+            <a href="#"><%= doctor_category.name %></a>
+            <ul class="child-category">
+              <% doctor_category.children.each do |category| %>
+                <li class="list-unstyled classification-item">
+                  <a href="#"><%= category.name %></a>
+                </li>
+              <% end %>
+            </ul>
+            <br>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+
+    <div class="wrapper drugstore-categories-wrapper">
+      <ul class="drugstore-categories">
+        <li class="list-unstyled classification-item">
+          <a href="#"></a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="wrapper drug-categories-wrapper">
+      <ul class="drug-categories">
+        <li class="list-unstyled classification-item">
+          <a href="#"></a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="wrapper treatment-categories-wrapper">
+      <ul class="treatment-categories">
+        <li class="list-unstyled classification-item">
+          <a href="#"></a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="wrapper preferential-categories-wrapper">
+      <ul class="preferential-categories">
+        <li class="list-unstyled classification-item">
+          <a href="#"></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(function() {
+    $(".left-category").on("click", function(){
+      $(".left-category").removeClass("active");
+      $(this).addClass("active");
+      $(".wrapper").hide();
+      $(".child-category").hide();
+      $("." + $(this).data("class")).show();
+    });
+
+    $(".parent-item").on("click", function(){
+      $(".child-category").hide();
+      $(".parent-item").removeClass("active")
+      $(this).addClass("active");
+      $(this).find(".child-category").show();
+    });
+  })
+</script>
+

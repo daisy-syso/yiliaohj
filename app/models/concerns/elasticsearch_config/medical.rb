@@ -12,6 +12,10 @@ module ElasticsearchConfig
         mappings do
           indexes :telephone, type: 'string', index: :not_analyzed, analyzer: :keyword
           indexes :location, type: 'geo_point'
+          indexes :created_at, type: 'date', format: 'date_time'
+          indexes :click_count, type: 'integer'
+          indexes :star, type: 'integer'
+          indexes :price, type: 'Float'
         end
       end
     end
@@ -20,7 +24,11 @@ module ElasticsearchConfig
       {
           id: id.to_s,
           telephone: telephone,
-          location: location
+          location: location,
+          created_at: created_at,
+          click_count: click_count,
+          star: star,
+          price: price
       }.as_json(option)
     end
   end

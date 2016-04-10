@@ -1,0 +1,126 @@
+@import "../variables";
+
+.all-categories {
+  margin-top: 52px;
+  .left {
+    width: 110px;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 13px;
+    color: #474747;
+    text-align: center;
+    border-right: 1px solid $border-gray;
+    .hot-categories-title {
+      background-image: url("category/whole_icon_hot_nor.png");
+      &.active {
+        background-image: url("category/whole_icon_hot_sel.png");
+      }
+    }
+    .hospital-categories-title {
+      background-image: url("category/whole_icon_hospital_nor.png");
+      &.active {
+        background-image: url("category/whole_icon_hospital_sel.png");
+      }
+    }
+    .disease-categories-title {
+      background-image: url("category/whole_icon_query_nor.png");
+      &.active {
+        background-image: url("category/whole_icon_query_sel.png");
+      }
+    }
+    .doctor-categories-title {
+      background-image: url("category/whole_icon_doctor_nor.png");
+      &.active {
+        background-image: url("category/whole_icon_doctor_sel.png");
+      }
+    }
+    .drugstore-categories-title {
+      background-image: url("category/whole_icon_pharmacy_nor.png");
+      &.active {
+        background-image: url("category/whole_icon_pharmacy_sel.png");
+      }
+    }
+    .drug-categories-title {
+      background-image: url("category/whole_icon_drug_nor.png");
+      &.active {
+        background-image: url("category/whole_icon_drug_sel.png");
+      }
+    }
+    .treatment-categories-title {
+      background-image: url("category/whole_icon_purchase_nor.png");
+      &.active {
+        background-image: url("category/whole_icon_purchase_sel.png");
+      }
+    }
+    .preferential-categories-title {
+      background-image: url("category/whole_icon_sale_nor.png");
+      &.active {
+        background-image: url("category/whole_icon_sale_sel.png");
+      }
+    }
+    .left-category {
+      height: 76px;
+      background-size: 25px;
+      background-position-x: 50%;
+      background-position-y: 25%;
+      background-repeat: no-repeat;
+      border-bottom: 1px solid $border-gray;
+      p {
+        padding-top: 40%;
+      }
+      &.active {
+        background-color: $purple;
+        p {
+          color: $white;
+        }
+      }
+    }
+  }
+  .right {
+    display: inline-block;
+    width: 68%;
+    .wrapper {
+      display: none;
+      padding-left: 0px;
+      > ul {
+        padding-left: 0px;
+        position: relative;
+      }
+    }
+    .disease-categories-wrapper {
+      display: block;
+    }
+    .classification-item {
+      height: 50px;
+      line-height: 50px;
+      border-bottom: 1px solid $border-gray;
+      padding-left: 25px;
+      &.active {
+        background-color: $purple;
+        a {
+          color: $white;
+          text-decoration: none;
+        }
+        .child-category a{
+          color: $gray;
+        }
+      }
+      a {
+        color: $gray;
+      }
+    }
+    .child-category {
+      position: absolute;
+      display: none;
+      z-index: 99;
+      right: 0px;
+      top: 0px;
+      padding-left: 10px;
+      width: 50%;
+      left: 50%;
+      border-left: 1px solid $border-gray;
+      background-color: $white;
+      height: 100%;
+    }
+  }
+}
