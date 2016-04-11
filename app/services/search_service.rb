@@ -5,7 +5,7 @@ module SearchService
         json.filtered do
           json.filter do
             json.bool do
-              json.must "#{klass}_filters".camelcase.constantize.new(params[:filters]).filters
+              json.must "search_service/#{klass}_filters".camelcase.constantize.new(params[:filters]).filters
             end
           end
         end
@@ -17,3 +17,4 @@ module SearchService
     klass.to_s.camelcase.constantize.search(query).page(params[:page]).per(params[:per])
   end
 end
+

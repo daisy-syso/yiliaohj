@@ -25,20 +25,6 @@
     <p class="hospital-website">网址：<%= @hospital.url %></p>
   </div>
 
-  <div class="doctor-list-wrapper">
-    <div class="doctor-list">
-      <h2>医生列表</h2>
-      <% @doctor_categories.each do |category| %>
-        <h4 class="section-office"><%= category.name %></h4>
-        <% @doctors.each do |doctor| %>
-          <% if doctor.department.parent.try(:name) == category.name %>
-            <%= doctor.name %>
-          <% end %>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
-
   <div class="hospital-comments">
     <p class="comments-header">
       <span>
@@ -87,8 +73,7 @@
         <a class="pull-right" href="<%= frontend_maps_path(location: @hospital.location) %>">到这去</a>
       </p>
       <div class="map">
-        <div id="container"></div>
-        <%#= render partial: 'map', locals: { hospital: @hospital } %>
+        <div id="container2"></div>
       </div>
       <div class="operating-button">
         <% if @hospital.telephone.present? %>
@@ -101,12 +86,14 @@
 </div>
 
 <script type="text/javascript">
-  var lng = parseFloat("<%= @hospital.location.split(',')[1] %>");
-  var lat = parseFloat("<%= @hospital.location.split(',')[0] %>");
-  var map = new AMap.Map('container', {
+  var lng1 = parseFloat("<%= @hospital.location.split(',')[1] %>");
+  var lat1 = parseFloat("<%= @hospital.location.split(',')[0] %>");
+  console.log("lng1= "+lng1);
+  console.log("lat1= "+lat1);
+  var map = new AMap.Map('container2', {
       resizeEnable: true,
       zoom:14,
-      center: [lng, lat],
+      center: [lng1, lat1],
       isHotspot: true
   });
 
@@ -119,5 +106,10 @@
 </script>
 
 <style type="text/css">
-#container {width:300px; height: 280px; }  
+  #container2 {
+    width: 100%;
+    margin-top: 60px;
+    height: 350px;
+    bottom: 50px;
+  }
 </style>
