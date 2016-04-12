@@ -53,7 +53,7 @@ gem 'hiredis'
 gem 'redis', require: %w(redis redis/connection/hiredis)
 gem 'redis-objects'
 
-gem 'config'
+gem 'config', '1.0.0'
 
 gem 'devise'
 gem 'devise-bootstrap-views'
