@@ -2,7 +2,7 @@
   <nav class="navbar navbar-default custom-header">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a href="/<%= @comment_origin.class.name.downcase.pluralize %>/<%= @comment_origin.id.to_s %>">
+        <a href="/<%= @comment_origin.class.name.underscore.pluralize %>/<%= @comment_origin.id.to_s %>">
           <%= image_tag "users/title_icon_back_normal.png" %>
         </a>
         <a href="#"><%= @comment_origin.name %></a>

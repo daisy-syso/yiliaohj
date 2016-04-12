@@ -1,0 +1,115 @@
+<div class="app-header">
+  <nav class="navbar navbar-default custom-header">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="#">
+          <%= image_tag "users/title_icon_back_normal.png" %>
+        </a>
+        <a href="#"><%= @drug_store.name %></a>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<div class="drug_store-detail">
+  <div class="drug_store-info">
+    <div class="drug_store-cover">
+      <img src="<%= fixed_image_url(@drug_store) %>">
+    </div>
+    <p class="drug_store-name"><%= @drug_store.name %></p>
+    <p class="drug_store-characteristic-departments">
+      经营范围：<%= @drug_store.scope_of_business %>
+    </p>
+    <p class="medical-type">医保：<%= @drug_store.is_medical_insurance ? '医保定点' : '非医保定点' %>
+    </p>
+    <p class="drug_store-website">网址：<%= @drug_store.url %></p>
+  </div>
+
+  <div class="drug_store-comments">
+    <p class="comments-header">
+      <span>
+        <% @drug_store.star.times do |s| %>
+          <%= image_tag "static_pages/icon_star_selected.png", class: "start" %>
+        <% end %>
+        <%= @drug_store.star %>分
+      </span>
+      <span class="pull-right"><%= @drug_store.comments.size%>人已经点评</span>
+    </p>
+    <% if @comment %>
+      <ul class="comment-list list-unstyled">
+        <li class="comment-item">
+          <div class="user-info">
+            <div class="comment-user-name"><%= @comment.user.try(:nickname) %></div>
+            <div class="comment-time"><%= @comment.created_at.strftime("%F") %></div>
+          </div>
+          <div class="comment-rate pull-right">
+            <% @comment.rating.times do |s| %>
+              <%= image_tag "static_pages/icon_star_selected.png", class: "star" %>
+            <% end %>
+          </div>
+          <div class="comment-content"><%= @comment.content %></div>
+        </li>
+      </ul>
+    <% end %>
+    <div class="check-all-comments">
+      <a href="<%= frontend_drug_store_comments_path(@drug_store) %>">查看全部评价</a>
+    </div>
+  </div>
+
+  <div class="comment-edit">
+    <a href="<%= new_frontend_drug_store_comment_path(@drug_store) %>">我要评价</a>
+  </div>
+
+  <div class="join-and-correction">
+    <a href="#">商家加盟以及报错更正</a>
+  </div>
+
+  <div class="drug_store-connect">
+    <h3>商家位置</h3>
+    <div class="position-detail">
+      <h5><%= @drug_store.name %></h5>
+      <p>联系电话<%= @drug_store.telephone %></p>
+      <p>地址：<%= @drug_store.address %> 
+        <a class="pull-right" href="<%= frontend_maps_path(location: @drug_store.location) %>">到这去</a>
+      </p>
+      <div class="map">
+        <div id="container2"></div>
+      </div>
+      <div class="operating-button">
+        <% if @drug_store.telephone.present? %>
+          <a href="tel:<%= @drug_store.telephone %>15201991025">拨打电话</a>
+          <a href="#">查询/挂号</a>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  var lng1 = parseFloat("<%= @drug_store.location.split(',')[1] %>");
+  var lat1 = parseFloat("<%= @drug_store.location.split(',')[0] %>");
+  console.log("lng1= "+lng1);
+  console.log("lat1= "+lat1);
+  var map = new AMap.Map('container2', {
+      resizeEnable: true,
+      zoom:14,
+      center: [lng1, lat1],
+      isHotspot: true
+  });
+
+  // 标记
+  var marker = new AMap.Marker({
+    position: map.getCenter()
+  });
+  marker.setMap(map);
+
+</script>
+
+<style type="text/css">
+  #container2 {
+    width: 100%;
+    margin-top: 60px;
+    height: 350px;
+    bottom: 50px;
+  }
+</style>

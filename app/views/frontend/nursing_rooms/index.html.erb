@@ -1,1 +1,24 @@
-列表
+
+<ul class="list-unstyled hospital-list">
+  <% @nursing_rooms.each do |nursing_room| %>
+    <li class="hospital-item">
+      <a href="<%= frontend_nursing_room_path(nursing_room) %>">
+        <img src="<%= fixed_image_url(nursing_room) %>" class="hospital-avatar" alt=""/>
+        <div class="hospital-info">
+          <div class="title"><%= nursing_room.name %></div>
+          <p class="grade">
+            <% nursing_room.star.times do |s| %>
+              <%= image_tag "static_pages/icon_star_selected.png", class: "start" %>
+            <% end %>
+          </p>
+          <p class="distance">距离： <%= get_disance_by_poinit_point(nursing_room.location) if nursing_room.location%>千米</p>
+          <p class="tel">床位： <%= nursing_room.bed %></p>
+          <p class="tel">收住对象： <%= nursing_room.target %></p>
+          <p class="tel">收费标准： <%= nursing_room.price %></p>
+          <p class="tel">服务特色 <%= nursing_room.service %></p>
+        </div>
+      </a>
+    </li>
+  <% end %>
+</ul>
+<%= paginate @nursing_rooms %>

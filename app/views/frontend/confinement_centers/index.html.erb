@@ -1,0 +1,22 @@
+<% @confinement_centers.each do |confinement_center| %>
+  <a href="<%= frontend_confinement_center_path(confinement_center) %>">
+    <img src="<%= fixed_image_url(confinement_center) %>" alt=""/>
+    <%= confinement_center.name %>
+    <br>
+    <p class="grade">
+      <% confinement_center.star.times do |s| %>
+        <%= image_tag "static_pages/icon_star_selected.png", class: "start" %>
+      <% end %>
+    </p>
+    <%= confinement_center.price %>
+    <br />
+    <%= confinement_center.star %>人评价
+    <br />
+    0人购买
+    <br />
+  </a>
+  <hr >
+<% end %>
+
+<%= paginate @confinement_centers %>
+<br /><br /><br /><br /><br />

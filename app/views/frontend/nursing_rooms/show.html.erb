@@ -1,0 +1,110 @@
+<div class="app-header">
+  <nav class="navbar navbar-default custom-header">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="#">
+          <%= image_tag "users/title_icon_back_normal.png" %>
+        </a>
+        <a href="#"><%= @nursing_room.name %></a>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<div class="nursing_room-detail">
+  <div class="nursing_room-info">
+    <div class="nursing_room-cover">
+      <img src="<%= fixed_image_url(@nursing_room) %>">
+    </div>
+    <p class="nursing_room-name"><%= @nursing_room.name %></p>
+    </p>
+  </div>
+
+  <div class="nursing_room-comments">
+    <p class="comments-header">
+      <span>
+        <% @nursing_room.star.times do |s| %>
+          <%= image_tag "static_pages/icon_star_selected.png", class: "start" %>
+        <% end %>
+        <%= @nursing_room.star %>分
+      </span>
+      <span class="pull-right"><%= @nursing_room.comments.size%>人已经点评</span>
+    </p>
+    <% if @comment %>
+      <ul class="comment-list list-unstyled">
+        <li class="comment-item">
+          <div class="user-info">
+            <div class="comment-user-name"><%= @comment.user.try(:nickname) %></div>
+            <div class="comment-time"><%= @comment.created_at.strftime("%F") %></div>
+          </div>
+          <div class="comment-rate pull-right">
+            <% @comment.rating.times do |s| %>
+              <%= image_tag "static_pages/icon_star_selected.png", class: "star" %>
+            <% end %>
+          </div>
+          <div class="comment-content"><%= @comment.content %></div>
+        </li>
+      </ul>
+    <% end %>
+    <div class="check-all-comments">
+      <a href="<%= frontend_nursing_room_comments_path(@nursing_room) %>">查看全部评价</a>
+    </div>
+  </div>
+
+  <div class="comment-edit">
+    <a href="<%= new_frontend_nursing_room_comment_path(@nursing_room) %>">我要评价</a>
+  </div>
+
+  <div class="join-and-correction">
+    <a href="#">商家加盟以及报错更正</a>
+  </div>
+
+  <div class="nursing_room-connect">
+    <h3>商家位置</h3>
+    <div class="position-detail">
+      <h5><%= @nursing_room.name %></h5>
+      <p>联系电话<%= @nursing_room.telephone %></p>
+      <p>地址：<%= @nursing_room.address %> 
+        <a class="pull-right" href="<%= frontend_maps_path(location: @nursing_room.location) %>">到这去</a>
+      </p>
+      <div class="map">
+        <div id="container2"></div>
+      </div>
+      <div class="operating-button">
+        <% if @nursing_room.telephone.present? %>
+          <a href="tel:<%= @nursing_room.telephone %>15201991025">拨打电话</a>
+          <a href="#">查询/挂号</a>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  var lng1 = parseFloat("<%= @nursing_room.location.split(',')[1] %>");
+  var lat1 = parseFloat("<%= @nursing_room.location.split(',')[0] %>");
+  console.log("lng1= "+lng1);
+  console.log("lat1= "+lat1);
+  var map = new AMap.Map('container2', {
+      resizeEnable: true,
+      zoom:14,
+      center: [lng1, lat1],
+      isHotspot: true
+  });
+
+  // 标记
+  var marker = new AMap.Marker({
+    position: map.getCenter()
+  });
+  marker.setMap(map);
+
+</script>
+
+<style type="text/css">
+  #container2 {
+    width: 100%;
+    margin-top: 60px;
+    height: 350px;
+    bottom: 50px;
+  }
+</style>

@@ -1,1 +1,22 @@
-列表
+<% @medicals.each do |medical| %>
+  <a href="<%= frontend_medical_path(medical) %>">
+    <img src="<%= fixed_image_url(medical) %>" alt=""/>
+    <%= medical.name %>
+    <br>
+    <p class="grade">
+      <% medical.star.times do |s| %>
+        <%= image_tag "static_pages/icon_star_selected.png", class: "start" %>
+      <% end %>
+    </p>
+    <%= medical.price %>
+    <br />
+    <%= medical.star %>人评价
+    <br />
+    0人购买
+    <br />
+  </a>
+  <hr >
+<% end %>
+
+<%= paginate @medicals %>
+<br /><br /><br /><br /><br />

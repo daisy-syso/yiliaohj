@@ -29,7 +29,7 @@ class Hospital
   field :star, type: Integer, default: 3
   field :status, type: Boolean, default: true
   field :is_medical_insurance, type: Boolean
-  field :category, type: String
+  field :categories, type: Array, default: -> { [] }
 
   validates :name, presence: true
   # validates :telephone, presence: true

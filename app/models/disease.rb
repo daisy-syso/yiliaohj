@@ -26,4 +26,5 @@ class Disease
   validates :name, presence: true
 
   index name: 1
+  index created_at: 1
 end

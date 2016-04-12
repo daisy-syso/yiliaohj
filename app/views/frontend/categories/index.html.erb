@@ -13,13 +13,10 @@
 
 <div class="all-categories">
   <div class="left">
-    <div class="left-category hot-categories-title" data-class="hot-categories-wrapper">
-      <p>热门</p>
-    </div>
-    <div class="left-category hospital-categories-title" data-class="hospital-categories-wrapper">
+    <div class="left-category hospital-categories-title active" data-class="hospital-categories-wrapper">
       <p>医院大全</p>
     </div>
-    <div class="left-category disease-categories-title active" data-class="disease-categories-wrapper">
+    <div class="left-category disease-categories-title" data-class="disease-categories-wrapper">
       <p>疾病查询</p>
     </div>
     <div class="left-category doctor-categories-title" data-class="doctor-categories-wrapper">
@@ -57,7 +54,7 @@
             <ul class="child-category">
               <% hospital_category.children.each do |category| %>
                 <li class="list-unstyled classification-item">
-                  <a href="#"><%= category.name %></a>
+                  <a href="/hospitals?category_name=<%= category.name %>"><%= category.name %></a>
                 </li>
               <% end %>
             </ul>
@@ -75,7 +72,7 @@
             <ul class="child-category">
               <% disease_category.children.each do |category| %>
                 <li class="list-unstyled classification-item">
-                  <a href="#"><%= category.name %></a>
+                  <a href="/diseases?department_id=<%= category.id.to_s %>"><%= category.name %></a>
                 </li>
               <% end %>
             </ul>
@@ -92,7 +89,7 @@
             <ul class="child-category">
               <% doctor_category.children.each do |category| %>
                 <li class="list-unstyled classification-item">
-                  <a href="#"><%= category.name %></a>
+                  <a href="/doctors?department_id=<%= category.id.to_s %>"><%= category.name %></a>
                 </li>
               <% end %>
             </ul>
@@ -105,7 +102,7 @@
     <div class="wrapper drugstore-categories-wrapper">
       <ul class="drugstore-categories">
         <li class="list-unstyled classification-item">
-          <a href="#"></a>
+          <p><a href="/drug_stores">身边药房</a></p>
         </li>
       </ul>
     </div>

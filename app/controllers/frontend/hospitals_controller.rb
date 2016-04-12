@@ -7,7 +7,11 @@ module Frontend
       # params = params.merge({location: {lat: lat, lon: lon}})
       # @hospitals = SearchService.search(params, 'hospital').records.to_a
 
-      @hospitals = Hospital.desc(:created_at).page(params[:page]).per(params[:per])
+      query = {}
+      if params[:category_name]
+        query[:categories] = params[:category_name]
+      end
+      @hospitals = Hospital.where(query).page(params[:page]).per(params[:per])
     end
 
     def show

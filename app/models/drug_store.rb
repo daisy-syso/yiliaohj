@@ -8,6 +8,7 @@ class DrugStore
   belongs_to :drug_store_admin
   has_many :drugs
   has_many :instruments
+  has_many :comments, as: :commentable
 
   mount_uploader :image_url, PictureUploader
 
@@ -32,8 +33,20 @@ class DrugStore
 
   field :is_24, type: Boolean, default: true
   field :is_online, type: Boolean, default: false
+  field :is_medical_insurance, type: Boolean, default: false
+  field :is_transport, type: Boolean, default: false
+  field :scope_of_business, type: String
 
   validates :name, presence: true
 
   index name: 1
+  index click_count: 1
+  index star: 1
+
+  def category_star!
+    score = comments.pluck(:rating).compact.sum
+    member = comments.size
+    self.star = (score / member).to_i
+    save
+  end
 end

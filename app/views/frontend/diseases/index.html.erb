@@ -1,1 +1,20 @@
-这个恶心了。
+<div class="app-header">
+  <nav class="navbar navbar-default custom-header">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="#">
+          <%= image_tag "users/title_icon_back_normal.png" %>
+        </a>
+        <a href="#" >疾病查询</a>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<% @diseases.each do |disease| %>
+  <%= disease.name %><br />
+  医生| 医院| 药品|资讯|视频
+  <hr>
+<% end %>
+<%= paginate @diseases %>
+<br /><br /><br /><br /><br />

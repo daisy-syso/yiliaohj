@@ -1,0 +1,28 @@
+
+  <ul class="list-unstyled hospital-list">
+    <% @drug_stores.each do |drug_store| %>
+      <li class="hospital-item">
+        <a href="<%= frontend_drug_store_path(drug_store) %>">
+          <img src="<%= fixed_image_url(drug_store) %>" class="hospital-avatar" alt=""/>
+          <div class="hospital-info">
+            <div class="title"><%= drug_store.name %></div>
+            <p class="grade">
+              <% drug_store.star.times do |s| %>
+                <%= image_tag "static_pages/icon_star_selected.png", class: "start" %>
+              <% end %>
+            </p>
+            <p class="distance">距离： <%= get_disance_by_poinit_point(drug_store.location) if drug_store.location%>千米</p>
+            <p class="peculiarity">
+              经营许可证: <% drug_store.license %>
+            </p>
+            <p class="tel">电话： <%= drug_store.telephone %></p>
+            <p class="tel">网址： <%= drug_store.url %></p>
+            <p class="tel">24小时： <%= drug_store.is_24 %></p>
+            <p class="tel">医保： <%= drug_store.is_medical_insurance %></p>
+            <p class="tel">配送： <%= drug_store.is_transport %></p>
+          </div>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+  <%= paginate @drug_stores %>

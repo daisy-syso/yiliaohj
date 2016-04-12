@@ -4,6 +4,11 @@ class Maternity
   include Mongoid::Timestamps
   # include ElasticsearchConfig::Maternal
 
+  belongs_to :city
+  belongs_to :county
+  has_many :comments, as: :commentable
+  has_many :commodities, as: :commoditiable
+
   mount_uploader :image_url, PictureUploader
 
   field :name, type: String
@@ -23,15 +28,16 @@ class Maternity
   field :star, type: Integer
   field :status, type: Boolean
 
-  belongs_to :city
-  belongs_to :county
-
-  has_many :comments, as: :commentable
-  has_many :commodities, as: :commoditiable
-
   validates :name, presence: true
   validates :telephone, presence: true
   validates :address, presence: true
+
+  def category_star!
+    score = comments.pluck(:rating).compact.sum
+    member = comments.size
+    self.star = (score / member).to_i
+    save
+  end
 
   index name: 1
 end

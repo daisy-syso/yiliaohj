@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   devise_for :admins
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-  constraints subdomain: /^(test(.*))$/i do
+  # constraints subdomain: /^(test(.*))$/i do
     namespace :frontend, path: '/' do
       devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations', passwords: 'users/passwords', confirmations: 'users/confirmations' }
 
@@ -57,10 +57,24 @@ Rails.application.routes.draw do
           post 'like'
         end
       end
-      resources :maternities
-      resources :confinement_centers
-      resources :medicals
-      resources :nursing_rooms
+
+      resources :maternities do
+        resources :comments
+      end
+      
+      resources :confinement_centers do
+        resources :comments
+      end
+
+      resources :medicals do
+        resources :comments
+      end
+      
+      resources :nursing_rooms do
+        resources :comments
+      end
+
+      resources :symptoms
 
       resources :searches
 
@@ -78,11 +92,13 @@ Rails.application.routes.draw do
 
       resources :examinations
 
-      resources :drug_stores
+      resources :drug_stores do
+        resources :comments
+      end
 
       resources :maps
 
       resources :diseases
     end
-  end
+  # end
 end

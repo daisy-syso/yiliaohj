@@ -29,6 +29,9 @@ class NursingRoom
   field :star, type: Integer
   field :status, type: Boolean
 
+  # field :is_nature, type: Boolean
+  # field :is_mold, type: Boolean
+
   belongs_to :city
   belongs_to :county
 
@@ -40,4 +43,11 @@ class NursingRoom
   validates :address, presence: true
 
   index name: 1
+
+  def category_star!
+    score = comments.pluck(:rating).compact.sum
+    member = comments.size
+    self.star = (score / member).to_i
+    save
+  end
 end
