@@ -20,6 +20,7 @@
     <% @comments.each do |comment|%>
       <li class="comment-item">
         <div class="user-info">
+          <img src="<%= comment.user.try(:avatar) %>" width="60px">
           <div class="comment-user-name"><%= comment.user.try(:nickname) %></div>
           <div class="comment-time"><%= comment.created_at.strftime("%F") %></div>
         </div>

@@ -1,8 +1,19 @@
+<a href="#">评价</a>
+<br />
 <%= simple_form_for([:frontend, @comment_origin, @comment]) do |f| %>
   <%= f.error_notification %>
 
-  <%= f.input :content, placeholder: '请输入内容', label: false %>
   <%= f.input :rating, collection: 1..5, selected: 5, label: false %>
-
-  <%= f.button :submit, '提交', class: "btn btn-default full-button"%>
+  <%= f.input :content, as: :text, placeholder: '写下您的感受和想法...', label: false %>
+  <span id="word_size">已输入0个字</span>
+  <%= f.button :submit, '发布', class: "btn btn-default full-button"%>
 <% end %>
+
+<script type="text/javascript">
+  $(function(){
+    $("#comment_content").keyup(function(){
+      $('#word_size').text("已输入"+$("#comment_content").val().length+"个字");
+    })
+  })
+  
+</script>
