@@ -3,6 +3,7 @@ class Examination
   include Mongoid::Document
   include Mongoid::Timestamps
 
+  belongs_to :medical
   embeds_many :examination_details
   has_many :comments, as: :commentable
   has_many :commodities, as: :commoditiable
