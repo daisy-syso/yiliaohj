@@ -1,0 +1,24 @@
+<% @examinations.each do |examination| %>
+  <a href="<%= frontend_examination_path(examination) %>">
+    <img src="<%= fixed_image_url(examination) %>" alt="" width="100px"/>
+    <%= examination.name %>
+    <br>
+    <p class="grade">
+      <% examination.star.times do |s| %>
+        <%= image_tag "static_pages/icon_star_selected.png", class: "start" %>
+      <% end %>
+    </p>
+    <%= examination.applicable %>
+    <br />
+    <%= examination.price %>
+    <br />
+    <%= examination.star %>人评价
+    <br />
+    0人购买
+    <br />
+  </a>
+  <hr >
+<% end %>
+
+<%= paginate @examinations %>
+<br /><br /><br /><br /><br />

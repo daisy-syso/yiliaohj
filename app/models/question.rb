@@ -7,7 +7,7 @@ class Question
   field :category, type: String
   field :telephone, type: String
   field :email, type: String
+  field :answer, type: String
 
   belongs_to :user
-  has_many :answers
 end

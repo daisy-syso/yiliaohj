@@ -17,5 +17,14 @@ class Examination
   field :feature, type: String
   field :applicable, type: String
   field :category, type: String
+  field :click_count, type: String
+  field :star, type: Integer, default: 1
+  field :status, type: Boolean
 
+  def category_star!
+    score = comments.pluck(:rating).compact.sum
+    member = comments.size
+    self.star = (score / member).to_i
+    save
+  end
 end

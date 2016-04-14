@@ -90,7 +90,9 @@ Rails.application.routes.draw do
 
       resources :insurances
 
-      resources :examinations
+      resources :examinations do
+        resources :comments
+      end
 
       resources :drug_stores do
         resources :comments

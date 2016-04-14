@@ -18,20 +18,42 @@
 </div>
 <hr>
 <h2>精准疾病咨询推送</h2>
+<% if @information_categories.empty? %>
+  暂无订阅<a href="<%= frontend_person_customs_path %>">去订阅相关健康资讯</a>
+<% end %>
+<br>
+<% @information_categories.each do |information_category| %>
+  <ul>
+    <% information_category.information.each do |information| %>
+      <li>
+        【<%= information_category.name %>】<a href="/information/<%= information.id.to_s %>"><%= information.title %></a>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
 <a href="/subscriptions">我的订阅</a>
 <hr>
 
-<h2><a href="<%= new_frontend_question_path %>"> 提出医疗健康服务需求</a></h2>
+<h2>提出医疗健康服务需求</h2>
 <div>
   <br>
   <h3>历史提问</h3>
   <ul>
   <% @questions.each do |question| %>
     <li>
-      <a href="<%= frontend_question_path(question) %>"><%= question.content.slice(0,20) %></a>
+      <a href="<%= frontend_question_path(question) %>"><%= question.content.slice(0,20) %>
+        发布时间：<%= question.created_at.strftime("%F %T")%>
+        <% if question.answer.present? %>
+          已答复
+        <% else %>
+          待答复
+        <% end %>
+      </a>
     <li>
   <% end %>
   </ul>
+  <a href="<%= new_frontend_question_path %>"> 发布需求</a>
+  
   
 </div>
 
