@@ -13,28 +13,35 @@
   </nav>
 </div>
 
-<% @doctors.each do |doctor| %>
-  <a href="<%= frontend_doctor_path(doctor) %>">
-    <img src="<%= fixed_image_url(doctor) %>" alt=""/>
-    <%= doctor.name %>
-    <br>
-    <%= doctor.position %>
-    <br>
-    <p class="grade">
-      <% doctor.star.times do |s| %>
-        <%= image_tag "static_pages/icon_star_selected.png", class: "start" %>
-      <% end %>
-    </p>
-    科室： <%= doctor.room %>
-    <br>
-    特色科室： <%= doctor.summary %>
-    <br>
-    医院：<%= doctor.hospital.name %>
-    <br>
-    出诊：<%= doctor.is_home_visit ? '否' : '是' %>
-  </a>
-  <hr >
-<% end %>
+<%= render "filter" %>
 
-<%= paginate @doctors %>
-<br /><br /><br /><br /><br />
+<div class="doctor-list-content">
+  <ul class="list-unstyled doctor-list">
+    <% @doctors.each do |doctor| %>
+      <li class="doctor-item">
+        <a href="<%= frontend_doctor_path(doctor) %>">
+          <img src="<%= fixed_image_url(doctor) %>" class="doctor-avatar" alt=""/>
+          <div class="doctor-info">
+            <div class="title">
+              <span class="doctor-name"><%= doctor.name %></span>
+              <span class="position"><%= doctor.position %></span>
+              <span class="grade pull-right">
+                <% doctor.star.times do |s| %>
+                  <%= image_tag "static_pages/icon_star_selected.png", class: "start" %>
+                <% end %>
+               </span>
+
+            </div>
+            <p class="peculiarity">
+              科室： <%= doctor.room %>
+            </p>
+            <p>擅长： <span class="good-at"><%=doctor.summary %></span></p>
+            <p class="hospital-name">电话： <%= doctor.hospital.name %></p>
+            <p class="come-out">出诊：<%= doctor.is_home_visit ? '否' : '是' %></p>
+          </div>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+  <%= paginate @doctors %>
+</div>

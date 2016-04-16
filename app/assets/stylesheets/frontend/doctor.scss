@@ -1,0 +1,69 @@
+@import "../variables";
+
+.doctor-list-content {
+  margin-top: 96px;
+  margin-bottom: 60px;
+  .doctor-item:last-child {
+    border-bottom: 1px solid $light-gray;
+  }
+  .doctor-item {
+    height: 125px;
+    padding: 0 25px;
+    border-top: 1px solid $light-gray;
+    position: relative;
+    .doctor-avatar {
+      margin: 10px 0px;
+      height: 105px;
+      width: 105px;
+    }
+    .doctor-info {
+      position: absolute;
+      top: 10px;
+      left: 142px;
+      width: 60%;
+    }
+    .title {
+      font-size: 15px;
+      color: #474747;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 100%;
+      .position {
+        color: $purple;
+        font-size: 12px;
+      }
+    }
+
+    .peculiarity {
+      span {
+        border: 1px solid #C579F2;
+        color: #C579F2;
+        padding: 0px 2px;
+      }
+    }
+
+    .good-at {
+      color: $purple;
+    }
+
+    .grade {
+      padding-bottom: 5px;
+      .start {
+        width: 12px;
+        height: 12px;
+      }
+    }
+    p {
+      margin: 0px;
+      color: $gray;
+      font-size: 12px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      word-wrap: break-word;
+      width: 90%;
+      white-space: nowrap;
+    }
+  }
+}
+
