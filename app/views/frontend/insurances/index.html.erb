@@ -1,0 +1,18 @@
+<% @insurances.each do |insurance| %>
+  <img src="<%= fixed_image_url(insurance) %>" alt="" width="100px"/>
+  <%= insurance.name %>
+  <br>
+  保险期限：<%= insurance.expiry_date %>
+  <br />
+  年龄：<%= insurance.suitable_age %>
+  <br />
+  <%= insurance.insurance_type %>
+  <br />
+  ￥<%= insurance.price %>
+  累计销量：0
+  <br />
+  <hr >
+<% end %>
+
+<%= paginate @insurances %>
+<br /><br /><br /><br /><br />

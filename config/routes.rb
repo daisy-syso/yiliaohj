@@ -69,7 +69,7 @@ Rails.application.routes.draw do
       resources :medicals do
         resources :comments
       end
-      
+
       resources :nursing_rooms do
         resources :comments
       end
