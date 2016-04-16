@@ -30,11 +30,10 @@
             </p>
             <p class="distance">距离： <%= get_disance_by_poinit_point(hospital.location) if hospital.location%>千米</p>
             <p class="peculiarity">
-              特色科室： <% hospital.characteristic_departments.split(' ').each do |name| %>
-                <span><%= name %></span>
-              <% end %>
+              特色科室： <span><%= hospital.characteristic_departments.presence || '无' %></span>
             </p>
             <p class="tel">电话： <%= hospital.telephone %></p>
+            <p class="tel">访问量： <%= hospital.click_count %></p>
           </div>
         </a>
       </li>
