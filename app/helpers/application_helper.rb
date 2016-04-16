@@ -3,7 +3,11 @@ module ApplicationHelper
   end
 
   def fixed_image_url(model)
-    model.image_url.path.match('https').present? ? model.image_url : "http#{model.image_url.path.split('http')[1]}"
+    if model.image_url.path.present?
+      model.image_url.path.match('https').present? ? model.image_url : "http#{model.image_url.path.split('http')[1]}"
+    else
+      ''
+    end
   end
 
   def get_vote(doctor_id, disease_id)

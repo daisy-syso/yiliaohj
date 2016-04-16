@@ -1,0 +1,7 @@
+<% @symptoms.each do |k,symptoms| %>
+  <%= k %>
+  <% symptoms.each do |s| %>
+    <a href="symptoms/<%= s[0] %>"> <%= s[1] %></a>
+  <% end %>
+  <br />
+<% end %>
