@@ -1,5 +1,9 @@
 @import "../variables";
 
+html, body {
+  height: 100% !important;
+}
+
 // common css
 .app-header {
   .custom-header{

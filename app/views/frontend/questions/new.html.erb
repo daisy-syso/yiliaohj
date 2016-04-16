@@ -1,11 +1,25 @@
-您的需求
-<hr>
-<%= simple_form_for([:frontend, @question]) do |f| %>
-  <%= f.error_notification %>
-  <%= f.input :content, as: :text, placeholder: '请描述您的具体需求。。', label: false %>
-  您的联系方式
-  <br>
-  <%= f.input :telephone, placeholder: '请输入您的手机号码', label: false, input_html: { value: @current_user.telephone }  %>
-  <%= f.input :email, placeholder: '请输入您的邮箱', label: false, input_html: { value: @current_user.email }  %>
-  <%= f.button :submit, '提交', class: "btn btn-default full-button"%>
-<% end %>
+<div class="app-header">
+  <nav class="navbar navbar-default custom-header">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="javascript:;">
+          <%= image_tag "users/title_icon_back_normal.png" %>
+        </a>
+        <a href="#">发布需求</a>
+        <a class="pull-right help-link" href="#">帮助</a>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<div class="question-new">
+  <div class="section-title"><span></span>您的需求</div>
+  <%= simple_form_for([:frontend, @question]) do |f| %>
+    <%= f.error_notification %>
+    <%= f.input :content, as: :text, placeholder: '请描述您的具体需求。。', label: false %>
+    <div class="section-title"><span></span>您的联系方式</div>
+    <%= f.input :telephone, placeholder: '请输入您的手机号码', label: false, input_html: { value: @current_user.telephone }  %>
+    <%= f.input :email, placeholder: '请输入您的邮箱', label: false, input_html: { value: @current_user.email }  %>
+    <%= f.button :submit, '提交', class: "btn btn-default submit-button"%>
+  <% end %>
+</div>
