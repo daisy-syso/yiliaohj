@@ -27,7 +27,7 @@ class Hospital
   field :coordinates, type: Array, default: -> { [] }
   field :lat, type: Float
   field :lon, type: Float
-  field :click_count, type: Integer
+  field :click_count, type: Integer, default: 0
   field :star, type: Integer, default: 3
   field :status, type: Boolean, default: true
   field :is_medical_insurance, type: Boolean
