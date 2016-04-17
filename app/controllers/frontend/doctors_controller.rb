@@ -18,7 +18,6 @@ module Frontend
         @doctors = Doctor.includes(:hospital)
       end
 
-      @doctors = Doctor
       if params[:sort_type].present?
         case params[:sort_type]
         when 'new'
