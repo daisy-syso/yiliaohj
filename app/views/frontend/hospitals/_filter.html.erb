@@ -7,13 +7,13 @@
       <%= image_tag "static_pages/filter_icon_up.png", class: "filter-icon-up" %>
       </a>
     </li>
-    <!-- <li class="type-item city-filter">
+    <li class="type-item intelligent-filter" data-panel="general-city">
       <a href="javascript:;">
         全城
         <%= image_tag "static_pages/filter_icon_down.png", class: "filter-icon-down" %>
         <%= image_tag "static_pages/filter_icon_up.png", class: "filter-icon-up" %>
       </a>
-    </li> -->
+    </li>
     <li class="type-item intelligent-filter" data-panel="intelligent-order">
       <a href="javascript:;">
         智能排序
@@ -21,14 +21,20 @@
         <%= image_tag "static_pages/filter_icon_up.png", class: "filter-icon-up" %>
       </a>
     </li>
-    <!-- <li class="type-item filtration" data-panel="others-conditions">
+    <li class="type-item filtration" data-panel="others-conditions">
       <a href="javascript:;">
         筛选
         <%= image_tag "static_pages/filter_icon_down.png", class: "filter-icon-down" %>
         <%= image_tag "static_pages/filter_icon_up.png", class: "filter-icon-up" %>
       </a>
-    </li> -->
+    </li>
   </ul>
+  <ul class="list-unstyled detail-panel general-city">
+    <% %>
+    <li><a href="/hospitals?">上海</a></li>
+    <li><a href="/hospitals?">北京</a></li>
+  </ul>
+
   <ul class="list-unstyled detail-panel intelligent-order">
     <li><a href="/hospitals?sort_type=neighbour">离我最近</a></li>
     <li><a href="/hospitals?sort_type=new">最新发布</a></li>

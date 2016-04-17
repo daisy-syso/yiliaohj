@@ -3,6 +3,8 @@ module Frontend
     def index
       @hospital_categories = HospitalCategory.where(parent_id: nil).includes(:children)
 
+      # @city = City.all.size
+
       query = {}
 
       # 分类
