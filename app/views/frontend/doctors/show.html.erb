@@ -1,45 +1,85 @@
-<img src="<%= fixed_image_url(@doctor) %>">
+<div class="app-header">
+  <nav class="navbar navbar-default custom-header">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="#">
+          <%= image_tag "users/title_icon_back_normal.png" %>
+        </a>
+        <a href="#"><%= @doctor.name %></a>
+      </div>
+    </div>
+  </nav>
+</div>
 
-<br />
-<%= @doctor.name %>
-<br />
-<%= @doctor.position %>
-<br />
-资讯
-<br />
-科室：<%= @doctor.department.name %>
-<br />
-医院：<%= @doctor.hospital.name %>
-<br />
-临床经验：<%= @doctor.summary %>
-<br />
-个人网站：<%= @doctor.person_website || 'http://www.yiliaohj.com' %>
-<br />
 
-<hr>
-满意度投票
-<% @diseases.each do |disease| %>
-  <button id=""><%= disease.name %>(<%= get_vote(@doctor.id, disease.id) %>)</button>
-<% end %>
-<hr>
+<div class="doctor-detail">
+  <div class="doctor-info">
+    <div class="doctor-cover">
+      <img src="<%= fixed_image_url(@doctor) %>">
+      <p class="doctor-name"><%= @doctor.name %></p>
+      <p class="postilion"><%= @doctor.position %></p>
+      <button class="btn btn-default consult-button">咨询</button>
+    </div>
+    <p class="doctor-characteristic-departments">
+      科室：<%= @doctor.department.name %>
+    </p>
+    <p class="hospital">医院：<%= @doctor.hospital.name %></p>
+    <p>临床经验：<%= @doctor.summary %></p>
+    </p>
+    <p class="doctor-website">
+      个人咨询网址：<%= @doctor.person_website || 'http://www.yiliaohj.com' %>
+    </p>
+  </div>
 
-<% if @comment %>
-  <%= @comment.user.nickname %>
-  <%= @comment.created_at.strftime("%F") %>
-  <% @comment.rating.times do |s| %>
-    <%= image_tag "static_pages/icon_star_selected.png", class: "start" %>
-  <% end %>
-  <br>
-  <%= @comment.content %>
-<% end %>
-<hr>
-<a href="<%= frontend_doctor_comments_path(@doctor) %>">查看全部评价</a>
-<hr>
-<hr>
-<a href="<%= new_frontend_doctor_comment_path(@doctor) %>">我要评价</a>
+  <div class="vote-wrapper">
+    <div class='vote-header'>
+      <div class="title">满意度投票</div>
+      <div class="like">我要投票</div>
+    </div>
+    <div class="vote-body">
+      <% @diseases.each do |disease| %>
+        <button class="vote-item btn" id=""><%= disease.name %>(<%= get_vote(@doctor.id, disease.id) %>)</button>
+      <% end %>
+    </div>
+  </div>
 
-<hr>
-猜你喜欢
+  <div class="doctor-comments">
+    <p class="comments-header">
+      <span>
+        <% @doctor.star.times do |s| %>
+          <%= image_tag "static_pages/icon_star_selected.png", class: "star" %>
+        <% end %>
+        <%= @doctor.star %>分
+      </span>
+      <span class="pull-right"><%= @doctor.comments.size%>人已经点评</span>
+    </p>
+    <% if @comment %>
+      <ul class="comment-list list-unstyled">
+        <li class="comment-item">
+          <div class="user-info">
+            <div class="comment-user-name"><%= @comment.user.try(:nickname) %></div>
+            <div class="comment-time"><%= @comment.created_at.strftime("%F") %></div>
+          </div>
+          <div class="comment-rate pull-right">
+            <% @comment.rating.times do |s| %>
+              <%= image_tag "static_pages/icon_star_selected.png", class: "star" %>
+            <% end %>
+          </div>
+          <div class="comment-content"><%= @comment.content %></div>
+        </li>
+      </ul>
+    <% end %>
+    <div class="check-all-comments">
+      <a href="<%= frontend_doctor_comments_path(@doctor) %>">查看全部评价</a>
+    </div>
+  </div>
+
+  <div class="comment-edit">
+    <a href="<%= new_frontend_doctor_comment_path(@doctor) %>">我要评价</a>
+  </div>
+
+  <div>猜你喜欢</div>
+</div>
 
 <!-- 易株强 投票js 这块我不会。。。-->
 <script type="text/javascript">

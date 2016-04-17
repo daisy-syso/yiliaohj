@@ -67,3 +67,179 @@
   }
 }
 
+
+.doctor-detail {
+  margin: 50px 0 60px;
+  p {
+    font-size: 12px;
+    color: $gray;
+    margin: 10px 14px;;
+  }
+  .doctor-info {
+    border-bottom: 15px solid $border-gray;
+    .doctor-cover{
+      text-align: center;
+      height: 215px;
+      margin-bottom: 15px;
+      border-bottom: 12px solid $border-gray;
+      img{
+        width: 82px;
+        margin-top: 15px;
+        border-radius: 90%;
+      }
+    }
+    .doctor-name {
+      font-size: 15px;
+      color: #222222;
+      margin:10px 0 0;
+      padding: 0px;
+    }
+    .postilion {
+      font-size: 12px;
+      color: #666666;
+      margin: 0px;
+    }
+    .consult-button {
+      background-color: $purple;
+      height: 32px;
+      width: 113px;
+      border-radius: 15px;
+      margin-top: 13px;
+      color: $white;
+    }
+  }
+  .doctor-list-wrapper {
+    border-bottom: 12px solid $border-gray;
+  }
+  .doctor-list{
+    margin: 0 14px;
+    h2 {
+      border-bottom: 1px solid $border-gray;
+      line-height: 15px;
+      padding-bottom: 15px;
+      font-size: 15px;
+    }
+    .section-office {
+      font-size: 14px;
+      color: $gray;
+      margin: 18px 0px;
+    }
+  }
+  .vote-wrapper {
+    border-bottom: 12px solid $border-gray;
+    .vote-header {
+      .title{
+        font-size: 15px;
+        color: #080505;
+        display: inline-block;
+        margin: 15px;
+      }
+      .like {
+        font-size: 14px;
+        color: $white;
+        background-color: $purple;
+        float: right;
+        padding: 5px 10px;
+        border-radius: 10px;
+        margin-top: 10px;
+      }
+    }
+    .vote-body {
+      border-top: 1px solid $border-gray;
+      padding: 15px;
+      .vote-item {
+        color: $purple;
+        border-color: $purple;
+        background-color: $white;
+      }
+    }
+  }
+  .doctor-comments {
+    margin: 0 12px;
+    .comments-header {
+      height: 44px;
+      line-height: 44px;
+      margin: 0px;
+    }
+    .star {
+      width: 13px;
+    }
+    .comment-list {
+      border-top: 1px solid $border-gray;
+      padding-top: 16px;
+      .comment-item {
+        height: 105px;
+        border-bottom: 1px solid $border-gray;
+        .comment-time {
+          font-size: 12px;
+          color: $light-gray;
+        }
+        .user-info {
+          display: inline-block;
+        }
+        .comment-rate {
+          display: inline-block;
+          margin-top: 2px;
+        }
+        .comment-content {
+          margin: 20px 0;
+        }
+      }
+    }
+    .check-all-comments {
+      font-size: 14px;
+      text-align: center;
+      height: 50px;
+      line-height: 50px;
+      a {
+        color: $gray;
+      }
+    }
+  }
+  .comment-edit,
+  .join-and-correction {
+    border-top: 10px solid $border-gray;
+    height: 60px;
+    line-height: 50px;
+    a {
+      font-size: 14px;
+      margin-left: 12px;
+    }
+  }
+  .comment-edit a{
+    color: $gray;
+  }
+  .join-and-correction a{
+    color: #80c269;
+  }
+  .doctor-connect {
+    border-top: 10px solid $border-gray;
+    h3 {
+      padding: 12px;
+      margin: 0px;
+      font-size: 15px;
+      border-bottom: 1px solid $border-gray;
+    }
+    .position-detail {
+      margin: 0 12px;
+      p {
+        font-size: 13px;
+        margin-left: 0px;
+      }
+      .map #container {
+        width: 100%;
+      }
+    }
+    .operating-button {
+      margin-top: 20px;
+      a {
+        border: 1px solid $purple;
+        color: $purple;
+        padding: 10px;
+        border-radius: 5px;
+        margin-left: 54px;
+      }
+    }
+  }
+}
+
