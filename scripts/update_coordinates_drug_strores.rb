@@ -1,4 +1,4 @@
-Drug_store.all.each_with_index do |h, index|
+DrugStore.all.each_with_index do |h, index|
   if h.location.present?
     puts index
     location = h.location.split(',')
