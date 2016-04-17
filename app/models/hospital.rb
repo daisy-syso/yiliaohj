@@ -37,7 +37,10 @@ class Hospital
   # validates :telephone, presence: true
   # validates :address, presence: true
 
+  field :geo_near_distance, type: Float, default: 0.0
+
   index({ coordinates: '2dsphere' })
+  # index({ coordinates: '2d' })
   index name: 1
   index level: 1
   index click_count: 1

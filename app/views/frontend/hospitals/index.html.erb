@@ -28,6 +28,7 @@
               <% end %>
             </p>
             <p class="distance">距离： <%= get_disance_by_poinit_point(hospital.location) if hospital.location%>千米</p>
+            <!-- <p class="distance">距离： <%#= (hospital.geo_near_distance * 100).round(3) %>千米</p> -->
             <p class="peculiarity">
               特色科室： <span><%= hospital.characteristic_departments.presence || '无' %></span>
             </p>
