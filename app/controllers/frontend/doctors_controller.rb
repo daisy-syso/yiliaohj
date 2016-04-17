@@ -5,21 +5,35 @@ module Frontend
     # 人气最高 评价最好
     def index
       query = {}
+
+      # 分类
+      if params[:department_id]
+        query[:department] = params[:department_id]
+      end
+
       if params[:department_id]
         set_department
         @doctors = @department.doctors.includes(:hospital).page(params[:page]).per(10)
       else
-        @doctors = Doctor.includes(:hospital).desc(:created_at).page(params[:page]).per(10)
+        @doctors = Doctor.includes(:hospital)
       end
 
-      # @doctors = case params[:type]
-      #            when 'created_at'
-      #              Doctor.includes(:hospital).desc(:created_at).page(params[:page]).per(params[:per])
-      #            when 'click_count'
-      #              Doctor.includes(:hospital).desc(:click_count).page(params[:page]).per(params[:per])
-      #            else
-      #              Doctor.includes(:hospital).desc(:created_at).page(params[:page]).per(params[:per])
-      #             end
+      @doctors = Doctor
+      if params[:sort_type].present?
+        case params[:sort_type]
+        when 'new'
+          # 最近发布
+          @doctors = @doctors.desc(:created_at)
+        when 'star'
+          # 最近发布
+          @doctors = @doctors.desc(:star)
+        when 'click_count'
+          # 最近发布
+          @doctors = @doctors.desc(:click_count)
+        end
+      end
+
+      @doctors = @doctors.page(params[:page]).per(params[:per])
     end
 
     def show

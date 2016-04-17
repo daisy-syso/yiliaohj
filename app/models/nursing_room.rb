@@ -8,6 +8,9 @@ class NursingRoom
 
   field :name, type: String
   field :telephone, type: String
+
+  # [longitude,latitude]
+  field :coordinates, type: Array, default: -> { [] }
   field :location, type: String
 
   field :image_url, type: String
@@ -43,6 +46,9 @@ class NursingRoom
   validates :address, presence: true
 
   index name: 1
+  index click_count: 1
+  index star: 1
+  index({ coordinates: '2dsphere' })
 
   def category_star!
     score = comments.pluck(:rating).compact.sum
