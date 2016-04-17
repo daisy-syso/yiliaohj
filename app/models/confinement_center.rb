@@ -16,6 +16,8 @@ class ConfinementCenter
   field :telephone, type: String
   field :address, type: String
   field :image_url, type: String
+  # [longitude,latitude]
+  field :coordinates, type: Array, default: -> { [] }
   field :location, type: String
   field :origin_price, type: Float
   field :price, type: Float
@@ -27,6 +29,7 @@ class ConfinementCenter
   validates :name, :telephone, :address, presence: true
 
   index name: 1
+  index({ coordinates: '2dsphere' })
 
   def category_star!
     score = comments.pluck(:rating).compact.sum

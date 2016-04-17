@@ -23,6 +23,8 @@ class Hospital
   field :characteristic_departments, type: String
   field :level, type: String
   field :location, type: String
+  # [longitude,latitude]
+  field :coordinates, type: Array, default: -> { [] }
   field :lat, type: Float
   field :lon, type: Float
   field :click_count, type: Integer
@@ -35,10 +37,16 @@ class Hospital
   # validates :telephone, presence: true
   # validates :address, presence: true
 
+  index({ coordinates: '2dsphere' })
   index name: 1
   index level: 1
   index click_count: 1
   index star: 1
+
+  def visit!
+    self.click_count += 1
+    save
+  end
 
   def category_star!
     score = comments.pluck(:rating).compact.sum
@@ -47,3 +55,5 @@ class Hospital
     save
   end
 end
+
+

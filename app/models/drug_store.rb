@@ -16,6 +16,8 @@ class DrugStore
   field :address, type: String
   field :description, type: String
   field :position, type: String
+  # [longitude,latitude]
+  field :coordinates, type: Array, default: -> { [] }
   field :location, type: String
   field :lon, type: Float
   field :lat, type: Float
@@ -39,6 +41,7 @@ class DrugStore
 
   validates :name, presence: true
 
+  index({ coordinates: '2dsphere' })
   index name: 1
   index click_count: 1
   index star: 1

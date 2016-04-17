@@ -7,13 +7,13 @@
       <%= image_tag "static_pages/filter_icon_up.png", class: "filter-icon-up" %>
       </a>
     </li>
-    <li class="type-item city-filter">
+    <!-- <li class="type-item city-filter">
       <a href="javascript:;">
         全城
         <%= image_tag "static_pages/filter_icon_down.png", class: "filter-icon-down" %>
         <%= image_tag "static_pages/filter_icon_up.png", class: "filter-icon-up" %>
       </a>
-    </li>
+    </li> -->
     <li class="type-item intelligent-filter" data-panel="intelligent-order">
       <a href="javascript:;">
         智能排序
@@ -21,43 +21,29 @@
         <%= image_tag "static_pages/filter_icon_up.png", class: "filter-icon-up" %>
       </a>
     </li>
-    <li class="type-item filtration" data-panel="others-conditions">
+    <!-- <li class="type-item filtration" data-panel="others-conditions">
       <a href="javascript:;">
         筛选
         <%= image_tag "static_pages/filter_icon_down.png", class: "filter-icon-down" %>
         <%= image_tag "static_pages/filter_icon_up.png", class: "filter-icon-up" %>
       </a>
-    </li>
+    </li> -->
   </ul>
   <ul class="list-unstyled detail-panel intelligent-order">
-    <li><a href="javascript:;">智能排序</a></li>
-    <li><a href="javascript:;">最新发布</a></li>
-    <li><a href="javascript:;">人气最高</a></li>
-    <li><a href="javascript:;">评价最高</a></li>
-    <li><a href="javascript:;">价格最高</a></li>
+    <li><a href="/hospitals?sort_type=neighbour">离我最近</a></li>
+    <li><a href="/hospitals?sort_type=new">最新发布</a></li>
+    <li><a href="/hospitals?sort_type=click_count">人气最高</a></li>
+    <li><a href="/hospitals?sort_type=star">评价最高</a></li>
   </ul>
 
   <ul class="list-unstyled detail-panel general-hospital">
     <li class="hospital-type"><a href="javascript:;">全部医院</a></li>
-    <li class="hospital-type"><a href="javascript:;">综合医院</a></li>
-    <li class="hospital-type"><a href="javascript:;">体检机构</a></li>
-    <li class="hospital-type"><a href="javascript:;">整形医院</a></li>
-    <li class="hospital-type"><a href="javascript:;">牙科医院</a></li>
-    <li class="hospital-type"><a href="javascript:;">男科医院</a></li>
-    <li class="hospital-type"><a href="javascript:;">妇幼医院</a></li>
-    <li class="hospital-type"><a href="javascript:;">中医院</a></li>
-    <li>
-      <ul class="hospital-categories">
-        <li><a href="javascript:;">全部医院</a></li>
-        <li><a href="javascript:;">三级甲等</a></li>
-        <li><a href="javascript:;">三级乙等</a></li>
-        <li><a href="javascript:;">三级合格</a></li>
-        <li><a href="javascript:;">二级甲等</a></li>
-        <li><a href="javascript:;">二级乙等</a></li>
-        <li><a href="javascript:;">二级合格</a></li>
-        <li><a href="javascript:;">一级甲等</a></li>
-      </ul>
-    </li>
+    <% @hospital_categories.each do |hospital_category| %>
+      <li class="hospital-type"><%= hospital_category.name %></li>
+      <% hospital_category.children.each do |category| %>
+        <a href="/hospitals?category_name=<%= category.name %>"><%= category.name %></a>
+      <% end %>
+    <% end %>
   </ul>
 
   <ul class="list-unstyled detail-panel others-conditions">

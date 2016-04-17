@@ -2,10 +2,32 @@ module Frontend
   class DrugStoresController < FrontendController
     def index
       query = {}
-      if params[:category_name]
-        query[:categories] = params[:category_name]
+      @drug_stores = DrugStore.where(query)
+
+      if params[:sort_type].present?
+        case params[:sort_type]
+        when 'neighbour'
+          # 离我最近
+          latitude, longitude = $redis_position.get(request.remote_ip).split(',').map(&:to_f)
+          @drug_stores = @drug_stores.geo_near([longitude, latitude]).spherical.to_a
+        when 'new'
+          # 最近发布
+          @drug_stores = @drug_stores.desc(:created_at)
+        when 'star'
+          # 评价最好
+          @drug_stores = @drug_stores.desc(:star)
+        when 'click_count'
+          # 人气最高
+          @drug_stores = @drug_stores.desc(:click_count)
+        end
       end
-      @drug_stores = DrugStore.where(query).page(params[:page]).per(params[:per])
+
+      if params[:sort_type] == 'neighbour'
+        @drug_stores = Kaminari.paginate_array(@drug_stores).page(params[:page]).per(params[:per])
+      else
+        @drug_stores = @drug_stores.page(params[:page]).per(params[:per])
+      end
+
     end
 
     def show
