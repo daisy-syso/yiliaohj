@@ -5,5 +5,5 @@ class Country
 
   field :name, type: String
 
-  has_many :provinces
+  has_many :proviences
 end
