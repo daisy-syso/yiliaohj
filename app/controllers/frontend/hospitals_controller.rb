@@ -19,7 +19,7 @@ module Frontend
         when 'neighbour'
           # 离我最近
           latitude, longitude = $redis_position.get(request.remote_ip).split(',').map(&:to_f)
-          @hospitals = @hospitals.geo_near([longitude, latitude]).max_distance(1000).to_a
+          @hospitals = @hospitals.geo_near([longitude, latitude]).spherical.max_distance(1000).to_a
         when 'new'
           # 最近发布
           @hospitals = @hospitals.desc(:created_at)
