@@ -28,8 +28,10 @@ class ConfinementCenter
 
   validates :name, :telephone, :address, presence: true
 
-  index name: 1
   index({ coordinates: '2dsphere' })
+  index name: 1
+  index click_count: 1
+  index star: 1
 
   def category_star!
     score = comments.pluck(:rating).compact.sum

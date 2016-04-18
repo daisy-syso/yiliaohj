@@ -17,20 +17,23 @@ class Maternity
   field :address, type: String
   field :image_url, type: String
   field :location, type: String
+  # [longitude,latitude]
+  field :coordinates, type: Array, default: -> { [] }
 
   field :origin_price, type: Float
   field :price, type: Float
-
-  field :location, type: String
-
   field :click_count, type: Integer
-
   field :star, type: Integer
   field :status, type: Boolean
 
   validates :name, presence: true
   validates :telephone, presence: true
   validates :address, presence: true
+
+  index({ coordinates: '2dsphere' })
+  index name: 1
+  index click_count: 1
+  index star: 1
 
   def category_star!
     score = comments.pluck(:rating).compact.sum

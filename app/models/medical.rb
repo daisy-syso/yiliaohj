@@ -16,6 +16,9 @@ class Medical
   field :telephone, type: String
   field :address, type: String
   field :image_url, type: String
+
+  # [longitude,latitude]
+  field :coordinates, type: Array, default: -> { [] }
   field :location, type: String
 
   field :origin_price, type: Float
@@ -33,6 +36,11 @@ class Medical
   # has_many :examinations, as: :examinationable
 
   has_many :examinations
+
+  index({ coordinates: '2dsphere' })
+  index name: 1
+  index click_count: 1
+  index star: 1
 
   def category_star!
     score = comments.pluck(:rating).compact.sum
