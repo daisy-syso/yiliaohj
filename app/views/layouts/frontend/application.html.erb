@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
   <meta property="qc:admins" content="1303345111461141170263757" />
   <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=<%= Settings.amap.key %>&plugin=AMap.Driving"></script>
+  <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=<%= Settings.amap.key %>&plugin=AMap.CitySearch"></script>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -18,6 +19,7 @@
 
 <script type="text/javascript">
   $(function(){
+      var cityinfo = "";
       mapObj = new AMap.Map('container');
       mapObj.plugin('AMap.Geolocation', function() {
           geolocation = new AMap.Geolocation({
@@ -33,9 +35,22 @@
           AMap.event.addListener(geolocation, 'error', onError);      //返回定位出错信息
       });
 
+      var citysearch = new AMap.CitySearch();
+        //自动获取用户IP，返回当前城市
+        citysearch.getLocalCity(function(status, result) {
+            if (status === 'complete' && result.info === 'OK') {
+                if (result && result.city && result.bounds) {
+                    cityinfo = result.city;
+                }
+            } else {
+                document.getElementById('tip').innerHTML = result.info;
+            }
+        });
+
       function onComplete(data) {
           console.log(data.position.getLat());
           console.log(data.position.getLng());
+          console.log(cityinfo);
 
           var lat = data.position.getLat();
           var lon = data.position.getLng();
@@ -47,7 +62,8 @@
 
           $.post('/upload_position',{
            lat: data.position.getLat(),
-           lon: data.position.getLng()
+           lon: data.position.getLng(),
+           city: cityinfo
           })
       }
 

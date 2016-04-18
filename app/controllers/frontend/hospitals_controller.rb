@@ -2,8 +2,7 @@ module Frontend
   class HospitalsController < FrontendController
     def index
       @hospital_categories = HospitalCategory.where(parent_id: nil).includes(:children)
-
-      # @city = City.all.size
+      @proviences = Provience.includes(:cities)
 
       query = {}
 
@@ -11,6 +10,10 @@ module Frontend
       if params[:category_name]
         query[:categories] = params[:category_name]
       end
+
+      # 城市
+      city = params[:city] || $redis_position.get("#{request.remote_ip}_city") || '上海市'
+      query[:city] = City.where(name: city).first
 
       @hospitals = Hospital.where(query)
 
