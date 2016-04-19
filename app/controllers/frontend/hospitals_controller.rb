@@ -2,8 +2,7 @@ module Frontend
   class HospitalsController < FrontendController
     def index
       @hospital_categories = HospitalCategory.where(parent_id: nil).includes(:children)
-
-      # @city = City.all.size
+      @proviences = Provience.includes(:cities)
 
       query = {}
 
@@ -12,6 +11,10 @@ module Frontend
         query[:categories] = params[:category_name]
       end
 
+      # 城市
+      city = params[:city] || $redis_position.get("#{request.remote_ip}_city") || '上海市'
+      query[:city] = City.where(name: city).first
+
       @hospitals = Hospital.where(query)
 
       if params[:sort_type].present?
@@ -19,7 +22,7 @@ module Frontend
         when 'neighbour'
           # 离我最近
           latitude, longitude = $redis_position.get(request.remote_ip).split(',').map(&:to_f)
-          @hospitals = @hospitals.geo_near([longitude, latitude]).max_distance(1000).to_a
+          @hospitals = @hospitals.geo_near([longitude, latitude]).spherical.max_distance(1000).to_a
         when 'new'
           # 最近发布
           @hospitals = @hospitals.desc(:created_at)

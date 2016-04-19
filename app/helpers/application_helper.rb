@@ -90,4 +90,9 @@ module ApplicationHelper
   rescue Exception => e
     0
   end
+
+  def get_distance_by_coordinates(distance, spherical=true)
+    distance = spherical ? distance * 6371 : distance * 111
+    distance.round(3)
+  end
 end

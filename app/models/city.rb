@@ -5,7 +5,7 @@ class City
 
   field :name, type: String
 
-  belongs_to :province, index: true
+  belongs_to :provience, index: true
   has_many :counties
 
   has_many :hospitals

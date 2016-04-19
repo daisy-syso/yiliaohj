@@ -30,9 +30,12 @@
     </li>
   </ul>
   <ul class="list-unstyled detail-panel general-city">
-    <% %>
-    <li><a href="/hospitals?">上海</a></li>
-    <li><a href="/hospitals?">北京</a></li>
+    <% @proviences.each do |provience| %>
+      <li class="hospital-type"><%= provience.name %></li>
+      <% provience.cities.each do |city| %>
+        <a href="/hospitals?city=<%= city.name %>"><%= city.name %></a>
+      <% end %>
+    <% end %>
   </ul>
 
   <ul class="list-unstyled detail-panel intelligent-order">
