@@ -1,28 +1,53 @@
+<div class="app-header">
+  <nav class="navbar navbar-default custom-header">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="/">
+          <%= image_tag "users/title_icon_back_normal.png" %>
+        </a>
+        <a href="#" >身边药房</a>
+      </div>
+    </div>
+  </nav>
+</div>
 
-  <ul class="list-unstyled hospital-list">
+<div class="drug-store-list-content">
+  <ul class="list-unstyled drug-store-list">
     <% @drug_stores.each do |drug_store| %>
-      <li class="hospital-item">
-        <a href="<%= frontend_drug_store_path(drug_store) %>">
-          <img src="<%= fixed_image_url(drug_store) %>" class="hospital-avatar" alt=""/>
-          <div class="hospital-info">
+      <li class="drug-store-item">
+        <a href="<%= frontend_drug_store_path(drug_store) %>" class="item-body">
+          <img src="<%= fixed_image_url(drug_store) %>" class="drug-store-avatar" alt=""/>
+          <div class="drug-store-info">
             <div class="title"><%= drug_store.name %></div>
             <p class="grade">
               <% drug_store.star.times do |s| %>
-                <%= image_tag "static_pages/icon_star_selected.png", class: "start" %>
+                <%= image_tag "static_pages/icon_star_selected.png", class: "star" %>
               <% end %>
+              <%= drug_store.star %>分
             </p>
             <p class="distance">距离： <%= get_disance_by_poinit_point(drug_store.location) if drug_store.location%>千米</p>
             <p class="peculiarity">
               经营许可证: <% drug_store.license %>
             </p>
             <p class="tel">电话： <%= drug_store.telephone %></p>
-            <p class="tel">网址： <%= drug_store.url %></p>
-            <p class="tel">24小时： <%= drug_store.is_24 %></p>
-            <p class="tel">医保： <%= drug_store.is_medical_insurance %></p>
-            <p class="tel">配送： <%= drug_store.is_transport %></p>
+            <p class="web-site">网址： <%= drug_store.url %></p>
           </div>
         </a>
+        <div class="item-footer">
+          <ul>
+            <li>
+              <input type="checkbox" disabled <%= "checked" if drug_store.is_medical_insurance %> >医保
+            </li>
+            <li>
+              <input type="checkbox" disabled <%= "checked" if  drug_store.is_24 %>>24小时
+            </li>
+            <li>
+              <input type="checkbox" disabled <%= "checked" if  drug_store.is_transport %> >配送
+            </li>
+          </ul>
+        </div>
       </li>
     <% end %>
   </ul>
   <%= paginate @drug_stores %>
+</div>
