@@ -16,8 +16,8 @@ class Drug
   field :description, type: String
   field :image_url, type: String
   field :brand, type: String
-  field :expory_date, type: ActiveSupport::TimeWithZone
-  field :code, type: Integer
+  field :expory_date, type: String
+  field :code, type: String
   field :spec, type: String
   field :status, type: Boolean, default: true
   field :manufactory_name, type: String
