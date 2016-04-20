@@ -1,7 +1,9 @@
-<% @symptoms.each do |k,symptoms| %>
-  <%= k %>
-  <% symptoms.each do |s| %>
-    <a href="symptoms/<%= s[0] %>"> <%= s[1] %></a>
+<% ('A'...'Z').each do |i| %>
+  <%= i %>
+  <% if $redis_symptoms.hget('symptoms', i).present? %>
+    <% $redis_symptoms.hget('symptoms', i).split('|').each do |s| %>
+      <a href="symptoms/<%= s.split(',')[0] %>"> <%= s.split(',')[1] %></a>
+    <% end %>
   <% end %>
   <br />
 <% end %>
