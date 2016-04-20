@@ -5,21 +5,24 @@ class Insurance
 
   mount_uploader :image_url, PictureUploader
 
+  belongs_to :insurance_company
+
+  field :gender, type: String
+  field :calssification, type: String
+  field :charateristic, type: String
+  field :age, type: String
+  field :quota, type: String
   field :name, type: String
-  field :label, type: String
-  field :insurance_type, type: String
+
+  field :origin_price, type: Float
   field :price, type: Float
-  field :suitable_age, type: String
-  field :expiry_date, type: String
-  field :url, type: String
+
+  field :description, type: String
+
   field :image_url, type: String
 
   field :star, type: Integer
   field :status, type: Boolean
-
-  field :company_name, type: String
-  field :company_url, type: String
-  field :category, type: String
 
   has_many :comments, as: :commentable
   has_many :commodities, as: :commoditiable
