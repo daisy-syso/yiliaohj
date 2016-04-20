@@ -44,5 +44,10 @@ class Maternity
     save
   end
 
+  def visit!
+    self.click_count += 1
+    save
+  end
+
   index name: 1
 end

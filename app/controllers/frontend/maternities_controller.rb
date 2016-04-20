@@ -48,6 +48,8 @@ module Frontend
     def show
       @maternity = Maternity.find(params[:id])
 
+      @maternity.visit!
+
       @comment = @maternity.comments.desc(:created_at).first
     end
   end
