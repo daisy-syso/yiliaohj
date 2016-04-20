@@ -1,20 +1,43 @@
+<div class="app-header">
+  <nav class="navbar navbar-default custom-header">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="/">
+          <%= image_tag "users/title_icon_back_normal.png" %>
+        </a>
+        <a href="#" >月子团购</a>
+      </div>
+    </div>
+  </nav>
+</div>
 
-<ul class="list-unstyled hospital-list">
-  <% @maternities.each do |maternity| %>
-    <li class="hospital-item">
-      <a href="<%= frontend_maternity_path(maternity) %>">
-        <img src="<%= fixed_image_url(maternity) %>" class="hospital-avatar" alt=""/>
-        <div class="hospital-info">
-          <div class="title"><%= maternity.name %></div>
-          <p class="grade">
-            <% maternity.star.times do |s| %>
-              <%= image_tag "static_pages/icon_star_selected.png", class: "start" %>
-            <% end %>
-          </p>
-          <p class="distance">距离： <%= get_disance_by_poinit_point(maternity.location) if maternity.location%>千米</p>
-        </div>
-      </a>
-    </li>
-  <% end %>
-</ul>
-<%= paginate @maternities %>
+
+<div class="maternity-list-content">
+  <ul class="list-unstyled maternity-list">
+    <% @maternities.each do |maternity| %>
+      <li class="maternity-item">
+        <a href="<%= frontend_maternity_path(maternity) %>">
+          <img src="<%= fixed_image_url(maternity) %>" class="maternity-avatar" alt=""/>
+          <div class="maternity-info">
+            <div class="title"><%= maternity.name %></div>
+            <p class="grade">
+              <% maternity.star.times do |s| %>
+                <%= image_tag "static_pages/icon_star_selected.png", class: "start" %>
+              <% end %>
+              <%= maternity.star %>分
+            </p>
+            <p><%= maternity.summary %></p>
+            <div class="statistics">
+              <p><%= maternity.comments.count %> 人评价</p>
+              <p><%= maternity.commodities.count %> 人购买</p>
+            </div>
+            <!-- <p class="distance">距离： <%#= get_disance_by_poinit_point(maternity.location) if maternity.location%>千米</p> -->
+            <p class="price">￥<%= maternity.price %></p>
+          </div>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+  <%= paginate @maternities %>
+</div>
+
