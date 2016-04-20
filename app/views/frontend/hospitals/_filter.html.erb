@@ -31,10 +31,16 @@
   </ul>
   <ul class="list-unstyled detail-panel general-city">
     <% @proviences.each do |provience| %>
-      <li class="hospital-type"><%= provience.name %></li>
-      <% provience.cities.each do |city| %>
-        <a href="/hospitals?city=<%= city.name %>"><%= city.name %></a>
-      <% end %>
+      <li class="city-type"><%= provience.name %></li>
+      <ul class="city-categories">
+        <% provience.cities.each do |city| %>
+          <li>
+            <a href="/hospitals?city=<%= city.name %>">
+              <%= city.name %>
+            </a>
+          </li>
+        <% end %>
+      </ul>
     <% end %>
   </ul>
 
@@ -48,10 +54,16 @@
   <ul class="list-unstyled detail-panel general-hospital">
     <li class="hospital-type"><a href="javascript:;">全部医院</a></li>
     <% @hospital_categories.each do |hospital_category| %>
-      <li class="hospital-type"><%= hospital_category.name %></li>
-      <% hospital_category.children.each do |category| %>
-        <a href="/hospitals?category_name=<%= category.name %>"><%= category.name %></a>
-      <% end %>
+    <li class="hospital-type"><%= hospital_category.name %></li>
+      <ul class="hospital-categories">
+        <% hospital_category.children.each do |category| %>
+          <li>
+            <a href="/hospitals?category_name=<%= category.name %>">
+              <%= category.name %>
+            </a>
+          </li>
+        <% end %>
+        </ul>
     <% end %>
   </ul>
 
@@ -95,7 +107,16 @@
     });
     $(".hospital-type").on("click", function(event){
       $(".hospital-type").removeClass("active");
+      $(".hospital-categories").hide();
       $(this).addClass("active");
+      $(this).next("ul").show();
+    });
+
+    $(".city-type").on("click", function(event){
+      $(".city-type").removeClass("active");
+      $(".city-categories").hide();
+      $(this).addClass("active");
+      $(this).next("ul").show();
     });
     $(".others-conditions .toggle").click(function(){
       $(this).hide();
