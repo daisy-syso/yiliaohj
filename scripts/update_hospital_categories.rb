@@ -1,5 +1,9 @@
 Hospital.all.each_slice(100) do |h|
-  category = h.categories
-  h.categories = category.split(',')
-  h.save
+  h.each do |h|
+    category = h.categories
+    if category.class.name == 'String'
+      h.categories = category.split(',')
+      puts h.save
+    end
+  end
 end

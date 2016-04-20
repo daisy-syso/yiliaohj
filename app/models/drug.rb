@@ -3,7 +3,7 @@ class Drug
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  belongs_to :drug_store
+  has_and_belongs_to_many :drug_stores
   embeds_many :drug_details
   has_many :comments, as: :commentable
   has_many :commodities, as: :commoditiable
