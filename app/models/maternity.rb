@@ -26,6 +26,8 @@ class Maternity
   field :star, type: Integer
   field :status, type: Boolean
 
+  field :geo_near_distance, type: Float, default: 0.0
+
   validates :name, presence: true
   validates :telephone, presence: true
   validates :address, presence: true
@@ -39,6 +41,11 @@ class Maternity
     score = comments.pluck(:rating).compact.sum
     member = comments.size
     self.star = (score / member).to_i
+    save
+  end
+
+  def visit!
+    self.click_count += 1
     save
   end
 

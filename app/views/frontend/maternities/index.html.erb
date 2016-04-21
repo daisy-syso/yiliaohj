@@ -5,12 +5,14 @@
         <a href="/">
           <%= image_tag "users/title_icon_back_normal.png" %>
         </a>
-        <a href="#" >月子团购</a>
+        <a href="#" >母婴会馆</a>
+        <a href="/searches" >查询</a>
       </div>
     </div>
   </nav>
 </div>
 
+<%= render "filter" %>
 
 <div class="maternity-list-content">
   <ul class="list-unstyled maternity-list">
@@ -26,6 +28,13 @@
               <% end %>
               <%= maternity.star %>分
             </p>
+            <p class="distance">距离：
+              <% if params[:sort_type] == 'neighbour' %>
+                <%= get_distance_by_coordinates(maternity.geo_near_distance) %>
+              <% else %>
+                <%= get_disance_by_poinit_point(maternity.location) if maternity.location%>
+              <% end %>
+            千米</p>
             <p><%= maternity.summary %></p>
             <div class="statistics">
               <p><%= maternity.comments.count %> 人评价</p>

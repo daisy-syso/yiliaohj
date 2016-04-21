@@ -11,6 +11,8 @@ redis:
   sidekiq_db: 1
   object_db: 2
   position: 3
+  sms: 4
+  symptoms: 5
 elasticsearch:
   hosts:
     - localhost:9200
