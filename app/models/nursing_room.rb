@@ -20,8 +20,8 @@ class NursingRoom
   field :url, type: String
   field :bed, type: Integer
 
-  field :mold, type: String
-  field :nature, type: String
+  # field :mold, type: String
+  # field :nature, type: String
 
   field :description, type: String
   field :service, type: String
@@ -32,8 +32,11 @@ class NursingRoom
   field :star, type: Integer
   field :status, type: Boolean
 
-  # field :is_nature, type: Boolean
-  # field :is_mold, type: Boolean
+  # true 公办 false 民办
+  field :is_public, type: Boolean, default: false
+
+  # true 公寓 false 敬老院
+  field :is_apartment, type: Boolean, default: false
 
   belongs_to :city
   belongs_to :county

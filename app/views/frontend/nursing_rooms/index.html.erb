@@ -35,16 +35,16 @@
         <div class="item-footer">
           <ul>
             <li>
-              <input type="checkbox" disabled <%#= "checked" if nursing_room.is_medical_insurance %> >公办
+              <input type="checkbox" disabled <%= "checked" if nursing_room.is_public %> >公办
             </li>
             <li>
-              <input type="checkbox" disabled <%#= "checked" if  nursing_room.is_24 %>> 民办
+              <input type="checkbox" disabled <%= "checked" if  nursing_room.is_public %>> 民办
             </li>
             <li>
-              <input type="checkbox" disabled <%#= "checked" if  nursing_room.is_transport %> >养老公寓
+              <input type="checkbox" disabled <%= "checked" if  nursing_room.is_apartment %> >养老公寓
             </li>
             <li>
-              <input type="checkbox" disabled <%#= "checked" if  nursing_room.is_transport %> >养老院
+              <input type="checkbox" disabled <%= "checked" if  nursing_room.is_apartment %> >养老院
             </li>
           </ul>
         </div>
