@@ -1,24 +1,55 @@
+<div class="app-header">
+  <nav class="navbar navbar-default custom-header">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="/">
+          <%= image_tag "users/title_icon_back_normal.png" %>
+        </a>
+        <a href="#" >养老精选</a>
+      </div>
+    </div>
+  </nav>
+</div>
 
-<ul class="list-unstyled hospital-list">
-  <% @nursing_rooms.each do |nursing_room| %>
-    <li class="hospital-item">
-      <a href="<%= frontend_nursing_room_path(nursing_room) %>">
-        <img src="<%= fixed_image_url(nursing_room) %>" class="hospital-avatar" alt=""/>
-        <div class="hospital-info">
-          <div class="title"><%= nursing_room.name %></div>
-          <p class="grade">
-            <% nursing_room.star.times do |s| %>
-              <%= image_tag "static_pages/icon_star_selected.png", class: "start" %>
-            <% end %>
-          </p>
-          <p class="distance">距离： <%= get_disance_by_poinit_point(nursing_room.location) if nursing_room.location%>千米</p>
-          <p class="tel">床位： <%= nursing_room.bed %></p>
-          <p class="tel">收住对象： <%= nursing_room.target %></p>
-          <p class="tel">收费标准： <%= nursing_room.price %></p>
-          <p class="tel">服务特色 <%= nursing_room.service %></p>
+
+<div class="nursing-room-list-content">
+  <ul class="list-unstyled nursing-room-list">
+    <% @nursing_rooms.each do |nursing_room| %>
+      <li class="nursing-room-item">
+        <a href="<%= frontend_nursing_room_path(nursing_room) %>" class="item-body">
+          <img src="<%= fixed_image_url(nursing_room) %>" class="nursing-room-avatar" alt=""/>
+          <div class="nursing-room-info">
+            <div class="title"><%= nursing_room.name %></div>
+            <p class="grade">
+              <% nursing_room.star.times do |s| %>
+                <%= image_tag "static_pages/icon_star_selected.png", class: "star" %>
+              <% end %>
+              <%= nursing_room.star %>分
+            </p>
+            <p class="bed-count">床位： <%= nursing_room.bed %>张</p>
+            <p class="target">收住对象： <%= nursing_room.target %></p>
+            <p>收费标准： <span class="price">￥<%= nursing_room.price %>/月</span></p>
+            <p class="peculiarity">服务特色 <%= nursing_room.service %></p>
+          </div>
+        </a>
+        <div class="item-footer">
+          <ul>
+            <li>
+              <input type="checkbox" disabled <%#= "checked" if nursing_room.is_medical_insurance %> >公办
+            </li>
+            <li>
+              <input type="checkbox" disabled <%#= "checked" if  nursing_room.is_24 %>> 民办
+            </li>
+            <li>
+              <input type="checkbox" disabled <%#= "checked" if  nursing_room.is_transport %> >养老公寓
+            </li>
+            <li>
+              <input type="checkbox" disabled <%#= "checked" if  nursing_room.is_transport %> >养老院
+            </li>
+          </ul>
         </div>
-      </a>
-    </li>
-  <% end %>
-</ul>
-<%= paginate @nursing_rooms %>
+      </li>
+    <% end %>
+  </ul>
+  <%= paginate @nursing_rooms %>
+</div>
