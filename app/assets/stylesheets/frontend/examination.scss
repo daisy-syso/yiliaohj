@@ -1,22 +1,22 @@
 @import "../variables";
 
-.maternity-list-content {
+.examination-list-content {
   margin-top: 96px;
   margin-bottom: 60px;
-  .maternity-item:last-child {
+  .examination-item:last-child {
     border-bottom: 1px solid $light-gray;
   }
-  .maternity-item {
+  .examination-item {
     height: 125px;
     padding: 0 25px;
     border-top: 1px solid $light-gray;
     position: relative;
-    .maternity-avatar {
+    .examination-avatar {
       margin: 10px 0px;
       height: 105px;
       width: 105px;
     }
-    .maternity-info {
+    .examination-info {
       position: absolute;
       top: 10px;
       left: 142px;
@@ -25,10 +25,16 @@
     .statistics {
       float: right;
       display: inline-block;
+      margin-top: -18px;
     }
     .price {
       font-size: 18px;
       color: #c579f2;
+      display: inline-block;
+    }
+    .applicable {
+      display: inline-block;
+      width: 80%;
     }
     .title {
       font-size: 15px;
@@ -49,7 +55,7 @@
 
     .grade {
       padding: 5px 0px;
-      .start {
+      .star {
         width: 12px;
         height: 12px;
       }
