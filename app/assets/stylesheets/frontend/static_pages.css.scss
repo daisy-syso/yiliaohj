@@ -104,8 +104,8 @@ html, body {
 
     .city-categories,
     .hospital-categories {
-      position: absolute;
-      top: 0px;
+      position: fixed;
+      top: 97px;
       left: 50%;
       list-style: none;
       padding-left: 0px;
