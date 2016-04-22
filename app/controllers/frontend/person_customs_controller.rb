@@ -13,6 +13,5 @@ module Frontend
 
       @questions = @current_user.questions
     end
-
   end
 end

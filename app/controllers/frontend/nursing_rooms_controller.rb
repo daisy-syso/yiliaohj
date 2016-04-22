@@ -6,9 +6,7 @@ module Frontend
       query = {}
 
       # 分类
-      if params[:category_name]
-        query[:categories] = params[:category_name]
-      end
+      query[:categories] = params[:category_name] if params[:category_name]
 
       # 城市
       city = params[:city] || $redis_position.get("#{request.remote_ip}_city") || '上海市'
@@ -39,7 +37,6 @@ module Frontend
       else
         @nursing_rooms = @nursing_rooms.page(params[:page]).per(params[:per])
       end
-
     end
 
     def show

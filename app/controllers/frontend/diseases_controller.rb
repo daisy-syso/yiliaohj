@@ -1,6 +1,5 @@
 module Frontend
   class DiseasesController < FrontendController
-
     def index
       query = {}
       if params[:department_id]

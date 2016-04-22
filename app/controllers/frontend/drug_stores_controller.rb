@@ -8,7 +8,7 @@ module Frontend
       # 城市
       city = params[:city] || $redis_position.get("#{request.remote_ip}_city") || '上海市'
       query[:city] = City.where(name: city).first
-      
+
       @drug_stores = DrugStore.where(query)
 
       if params[:sort_type].present?
@@ -37,7 +37,6 @@ module Frontend
       else
         @drug_stores = @drug_stores.page(params[:page]).per(params[:per])
       end
-
     end
 
     def show

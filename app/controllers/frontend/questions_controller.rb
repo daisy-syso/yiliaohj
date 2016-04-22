@@ -4,7 +4,6 @@ module Frontend
     before_action :set_question, only: [:show]
 
     def show
-      
     end
 
     def new
@@ -13,9 +12,7 @@ module Frontend
 
     def create
       @question = @current_user.questions.new question_params
-      if @question.save
-        redirect_to frontend_person_customs_path
-      end
+      redirect_to frontend_person_customs_path if @question.save
     end
 
     private
@@ -27,6 +24,5 @@ module Frontend
     def set_question
       @question = @current_user.questions.find(params[:id])
     end
-    
   end
 end

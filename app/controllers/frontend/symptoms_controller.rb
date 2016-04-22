@@ -7,7 +7,7 @@ module Frontend
         symptoms.each do |s|
           if hash.keys.include? s.english
             aa = hash[s.english]
-            aa = aa + "|" + [s.id.to_s, s.name].join(',')
+            aa = aa + '|' + [s.id.to_s, s.name].join(',')
             hash[s.english] = aa
           else
             hash[s.english] = [[s.id.to_s, s.name].join(',')].join('|')

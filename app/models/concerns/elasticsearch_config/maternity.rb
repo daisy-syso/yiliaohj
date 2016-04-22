@@ -19,10 +19,10 @@ module ElasticsearchConfig
 
     def as_indexed_json(option = {})
       {
-          id: id.to_s,
-          name: name,
-          telephone: telephone,
-          location: location
+        id: id.to_s,
+        name: name,
+        telephone: telephone,
+        location: location
       }.as_json(option)
     end
   end

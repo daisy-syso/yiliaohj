@@ -18,9 +18,9 @@ module ElasticsearchConfig
 
     def as_indexed_json(option = {})
       {
-          id: id.to_s,
-          telephone: telephone,
-          location: location
+        id: id.to_s,
+        telephone: telephone,
+        location: location
       }.as_json(option)
     end
   end

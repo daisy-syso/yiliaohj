@@ -26,17 +26,17 @@ module ElasticsearchConfig
 
     def as_indexed_json(option = {})
       {
-          id: id.to_s,
-          name: name,
-          telephone: telephone,
-          location: location,
-          category: category,
-          level: level,
-          city_name: city.try(:name).to_s,
-          is_medical_insurance: is_medical_insurance,
-          created_at: created_at,
-          click_count: click_count,
-          star: star
+        id: id.to_s,
+        name: name,
+        telephone: telephone,
+        location: location,
+        category: category,
+        level: level,
+        city_name: city.try(:name).to_s,
+        is_medical_insurance: is_medical_insurance,
+        created_at: created_at,
+        click_count: click_count,
+        star: star
       }.as_json(option)
     end
   end

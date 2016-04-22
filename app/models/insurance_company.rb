@@ -22,7 +22,7 @@ class InsuranceCompany
   field :click_count, type: Integer
   field :star, type: Integer
 
-  index({ coordinates: '2dsphere' })
+  index(coordinates: '2dsphere')
   index name: 1
   index click_count: 1
   index star: 1

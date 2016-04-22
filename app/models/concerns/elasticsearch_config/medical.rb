@@ -22,13 +22,13 @@ module ElasticsearchConfig
 
     def as_indexed_json(option = {})
       {
-          id: id.to_s,
-          telephone: telephone,
-          location: location,
-          created_at: created_at,
-          click_count: click_count,
-          star: star,
-          price: price
+        id: id.to_s,
+        telephone: telephone,
+        location: location,
+        created_at: created_at,
+        click_count: click_count,
+        star: star,
+        price: price
       }.as_json(option)
     end
   end

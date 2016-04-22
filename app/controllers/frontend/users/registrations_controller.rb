@@ -97,7 +97,7 @@ module Frontend
       end
 
       def send_mail(to, subject, url)
-        vars = JSON.dump({ 'to' => [to], 'sub' => { '%url%' => [url] } })
+        vars = JSON.dump('to' => [to], 'sub' => { '%url%' => [url] })
         response = RestClient.post Settings.mail.url, api_user: Settings.mail.api_user,
                                                       api_key: Settings.mail.api_key,
                                                       from: Settings.mail.from,

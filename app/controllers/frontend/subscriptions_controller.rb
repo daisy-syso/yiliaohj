@@ -19,12 +19,11 @@ module Frontend
 
       category_name_ids.each do |category_name_id|
         ic = InformationCategory.where(id: category_name_id).first
-        
-        if ic.present? && !@information_category_ids.include?(ic.id)
-          subscription = @current_user.subscriptions.new
-          subscription.information_categories << ic
-          subscription.save
-        end
+
+        next unless ic.present? && !@information_category_ids.include?(ic.id)
+        subscription = @current_user.subscriptions.new
+        subscription.information_categories << ic
+        subscription.save
       end
 
       delete_category_name_ids.each do |category_name_id|
@@ -36,8 +35,7 @@ module Frontend
         end
       end
 
-      render json: {message: 'ok'}
+      render json: { message: 'ok' }
     end
-    
   end
 end

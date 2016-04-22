@@ -1,5 +1,4 @@
 class Frontend::CategoriesController < FrontendController
-  
   def index
     @hospital_categories = HospitalCategory.includes(:children).where(parent_id: nil)
 
@@ -8,5 +7,4 @@ class Frontend::CategoriesController < FrontendController
 
     @doctor_categories = Department.includes(:children).where(parent_id: nil)
   end
-
 end

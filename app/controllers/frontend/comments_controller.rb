@@ -16,7 +16,7 @@ class Frontend::CommentsController < FrontendController
     comment.user = @current_user
     if comment.save
       @comment_origin.category_star!
-      redirect_to "/#{@comment_origin.class.to_s.underscore.pluralize}/#{@comment_origin.id.to_s}"
+      redirect_to "/#{@comment_origin.class.to_s.underscore.pluralize}/#{@comment_origin.id}"
     end
   end
 

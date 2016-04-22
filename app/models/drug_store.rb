@@ -41,7 +41,7 @@ class DrugStore
 
   validates :name, presence: true
 
-  index({ coordinates: '2dsphere' })
+  index(coordinates: '2dsphere')
   index name: 1
   index click_count: 1
   index star: 1

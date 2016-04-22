@@ -39,7 +39,7 @@ class Hospital
 
   field :geo_near_distance, type: Float, default: 0.0
 
-  index({ coordinates: '2dsphere' })
+  index(coordinates: '2dsphere')
   # index({ coordinates: '2d' })
   index name: 1
   index level: 1
@@ -58,5 +58,3 @@ class Hospital
     save
   end
 end
-
-

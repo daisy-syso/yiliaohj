@@ -51,7 +51,7 @@ class NursingRoom
   index name: 1
   index click_count: 1
   index star: 1
-  index({ coordinates: '2dsphere' })
+  index(coordinates: '2dsphere')
 
   def visit!
     self.click_count += 1

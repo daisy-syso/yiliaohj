@@ -17,4 +17,3 @@ module SearchService
     klass.to_s.camelcase.constantize.search(query).page(params[:page]).per(params[:per])
   end
 end
-

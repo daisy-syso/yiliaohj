@@ -10,5 +10,4 @@ class SymptomDetail
   field :title, type: String
   field :description, type: String
   field :image_url, type: String
-  
 end

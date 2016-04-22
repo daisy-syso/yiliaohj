@@ -10,9 +10,7 @@ module Frontend
       query = {}
 
       # 职位
-      if params[:position]
-        query[:position] = params[:position]
-      end
+      query[:position] = params[:position] if params[:position]
 
       # 科室
       if params[:department_id]
@@ -31,19 +29,19 @@ module Frontend
       end
 
       if params[:sort_type].present?
-        case params[:sort_type]
-        when 'new'
-          # 最近发布
-          @doctors = @doctors.desc(:created_at)
-        when 'star'
-          # 最近发布
-          @doctors = @doctors.desc(:star)
-        when 'click_count'
-          # 最近发布
-          @doctors = @doctors.desc(:click_count)
-        else
-          @doctors = @doctors.desc(:created_at)
-        end
+        @doctors = case params[:sort_type]
+                   when 'new'
+                     # 最近发布
+                     @doctors.desc(:created_at)
+                   when 'star'
+                     # 最近发布
+                     @doctors.desc(:star)
+                   when 'click_count'
+                     # 最近发布
+                     @doctors.desc(:click_count)
+                   else
+                     @doctors.desc(:created_at)
+                   end
       end
 
       @doctors = @doctors.page(params[:page]).per(params[:per])

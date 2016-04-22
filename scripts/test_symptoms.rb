@@ -23,5 +23,4 @@ s.name = '阿测试'
 s.english = 'a'
 s.save
 
-
 Symptom.all.to_a
