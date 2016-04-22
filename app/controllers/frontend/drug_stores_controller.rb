@@ -1,7 +1,14 @@
 module Frontend
   class DrugStoresController < FrontendController
     def index
+      @proviences = Provience.includes(:cities)
+
       query = {}
+
+      # 城市
+      city = params[:city] || $redis_position.get("#{request.remote_ip}_city") || '上海市'
+      query[:city] = City.where(name: city).first
+      
       @drug_stores = DrugStore.where(query)
 
       if params[:sort_type].present?
@@ -19,6 +26,9 @@ module Frontend
         when 'click_count'
           # 人气最高
           @drug_stores = @drug_stores.desc(:click_count)
+        else
+          # 最近发布
+          @drug_stores = @drug_stores.desc(:created_at)
         end
       end
 

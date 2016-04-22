@@ -4,18 +4,30 @@ module Frontend
 
     # 人气最高 评价最好
     def index
+      @departments = Department.includes(:children)
+      @positions = Position.all
+
       query = {}
 
-      # 分类
-      if params[:department_id]
-        query[:department] = params[:department_id]
+      # 职位
+      if params[:position]
+        query[:position] = params[:position]
       end
 
+      # 科室
       if params[:department_id]
         set_department
-        @doctors = @department.doctors.includes(:hospital).page(params[:page]).per(10)
+        @doctors = @department.doctors.includes(:hospital)
       else
         @doctors = Doctor.includes(:hospital)
+      end
+
+      @doctors = @doctors.where(query)
+
+      # 疾病
+      if params[:disease_id]
+        disease = Disease.find(params[:disease_id])
+        @doctors = disease.doctors
       end
 
       if params[:sort_type].present?
@@ -29,6 +41,8 @@ module Frontend
         when 'click_count'
           # 最近发布
           @doctors = @doctors.desc(:click_count)
+        else
+          @doctors = @doctors.desc(:created_at)
         end
       end
 
@@ -37,6 +51,8 @@ module Frontend
 
     def show
       @doctor = Doctor.find(params[:id])
+
+      @doctor.visit!
 
       @comment = @doctor.comments.desc(:created_at).first
 

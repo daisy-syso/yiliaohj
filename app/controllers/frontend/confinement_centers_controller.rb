@@ -1,6 +1,8 @@
 module Frontend
   class ConfinementCentersController < FrontendController
     def index
+      @proviences = Provience.includes(:cities)
+      
       query = {}
       if params[:category_name]
         query[:categories] = params[:category_name]

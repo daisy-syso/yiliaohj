@@ -53,6 +53,11 @@ class NursingRoom
   index star: 1
   index({ coordinates: '2dsphere' })
 
+  def visit!
+    self.click_count += 1
+    save
+  end
+
   def category_star!
     score = comments.pluck(:rating).compact.sum
     member = comments.size

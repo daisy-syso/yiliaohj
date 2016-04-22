@@ -2,14 +2,14 @@
   <ul class="list-unstyled filter-type">
     <li class="type-item hospital-filter" data-panel="general-hospital">
       <a href="javascript:;">
-        职位
+        敬老院
       <%= image_tag "static_pages/filter_icon_down.png", class: "filter-icon-down" %>
       <%= image_tag "static_pages/filter_icon_up.png", class: "filter-icon-up" %>
       </a>
     </li>
     <li class="type-item intelligent-filter" data-panel="general-city">
       <a href="javascript:;">
-        科室
+        全城
         <%= image_tag "static_pages/filter_icon_down.png", class: "filter-icon-down" %>
         <%= image_tag "static_pages/filter_icon_up.png", class: "filter-icon-up" %>
       </a>
@@ -30,13 +30,13 @@
     </li>
   </ul>
   <ul class="list-unstyled detail-panel general-city">
-    <% @departments.each do |department| %>
-      <li class="city-type"><%= department.name %></li>
+    <% @proviences.each do |provience| %>
+      <li class="city-type"><%= provience.name %></li>
       <ul class="city-categories">
-        <% department.children.each do |part| %>
+        <% provience.cities.each do |city| %>
           <li>
-            <a href="/doctors?department_id=<%= part.id.to_s %>">
-              <%= part.name %>
+            <a href="/confinement_centers?city=<%= city.name %>">
+              <%= city.name %>
             </a>
           </li>
         <% end %>
@@ -45,18 +45,14 @@
   </ul>
 
   <ul class="list-unstyled detail-panel intelligent-order">
-    <li><a href="/doctors?sort_type=new">最新发布</a></li>
-    <li><a href="/doctors?sort_type=click_count">人气最高</a></li>
-    <li><a href="/doctors?sort_type=star">评价最高</a></li>
+    <li><a href="/confinement_centers?sort_type=neighbour">离我最近</a></li>
+    <li><a href="/confinement_centers?sort_type=new">最新发布</a></li>
+    <li><a href="/confinement_centers?sort_type=click_count">人气最高</a></li>
+    <li><a href="/confinement_centers?sort_type=star">评价最高</a></li>
   </ul>
 
   <ul class="list-unstyled detail-panel general-hospital">
-    <li class="hospital-type"><a href="javascript:;">职位</a></li>
-    <% @positions.each do |position| %>
-      <a href="/doctors?position=<%= position.name %>">
-        <li class="hospital-type"><%= position.name %></li>
-      </a>
-    <% end %>
+    <li class="hospital-type"><a href="javascript:;">全部敬老院</a></li>
   </ul>
 
   <ul class="list-unstyled detail-panel others-conditions">

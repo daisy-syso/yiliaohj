@@ -19,8 +19,10 @@
         <div class="disease-name"><%= disease.name %></div>
         <ul class="about-categories">
           <li>
-            <%= image_tag "frontend/disease/query_icon_query_nor.png" %>
-            <p>医生</p>
+            <a href="/doctors?disease_id=<%= disease.id.to_s %>">
+              <%= image_tag "frontend/disease/query_icon_query_nor.png" %>
+              <p>医生</p>
+            </a>
           </li>
           <li>
             <%= image_tag "frontend/disease/query_icon_hospital_nor.png" %>

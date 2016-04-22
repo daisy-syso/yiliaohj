@@ -1,3 +1,5 @@
+<%= render "filter" %>
+
 <% @confinement_centers.each do |confinement_center| %>
   <a href="<%= frontend_confinement_center_path(confinement_center) %>">
     <img src="<%= fixed_image_url(confinement_center) %>" alt=""/>

@@ -18,7 +18,7 @@ class Doctor
   field :telephone, type: String
   field :image_url, type: String
   field :url, type: String
-  field :click_count, type: String
+  field :click_count, type: Integer
   field :star, type: Integer
   field :room, type: String
   field :status, type: Boolean
@@ -28,6 +28,14 @@ class Doctor
   validates :name, presence: true
 
   index name: 1
+  index level: 1
+  index click_count: 1
+  index star: 1
+
+  def visit!
+    self.click_count += 1
+    save
+  end
 
   def diseases
     Disease.in(id: doctor_diseases.pluck(:disease_id))
