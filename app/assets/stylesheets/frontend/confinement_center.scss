@@ -1,0 +1,67 @@
+@import "../variables";
+
+.confinement-center-list-content {
+  margin-top: 96px;
+  margin-bottom: 60px;
+
+  .confinement-center-item:last-child {
+    border-bottom: 1px solid $light-gray;
+  }
+
+  .confinement-center-item {
+    height: 125px;
+    padding: 0 25px;
+    border-top: 1px solid $light-gray;
+    position: relative;
+
+    .confinement-center-avatar {
+      margin: 10px 0px;
+      height: 105px;
+      width: 105px;
+    }
+
+    .confinement-center-info {
+      position: absolute;
+      top: 10px;
+      left: 142px;
+      width: 60%;
+    }
+    .statistics {
+      float: right;
+      display: inline-block;
+    }
+    .price {
+      font-size: 18px;
+      color: #c579f2;
+    }
+    .title {
+      font-size: 15px;
+      color: #474747;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 100%;
+    }
+
+    .peculiarity {
+      span {
+        border: 1px solid #C579F2;
+        color: #C579F2;
+        padding: 0px 2px;
+      }
+    }
+
+    .grade {
+      padding: 5px 0px;
+      .start {
+        width: 12px;
+        height: 12px;
+      }
+    }
+    p {
+      margin: 0px;
+      color: $gray;
+      font-size: 12px;
+    }
+  }
+}
