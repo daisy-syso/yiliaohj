@@ -1,24 +1,40 @@
-相关检查
-<br />
-<%= @symptom.common_examination %>
-<br />
-相关症状
-<br />
-<%= @symptom.common_symptom %>
-<br />
-相关药品
-<br />
-<%= @symptom.common_drug %>
-<br />
-相关疾病
-<br />
-<%= @symptom.common_disease %>
-<br />
-<%= @symptom.name %> 描述<br />
-<% @symptom.symptom_details.each do |detail| %>
-  <%= detail.title %>
-  <br>
-  <%= detail.descripton %>
-  <br>
-  <hr >
-<% end %>
+<div class="app-header">
+  <nav class="navbar navbar-default custom-header">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="/">
+          <%= image_tag "users/title_icon_back_normal.png" %>
+        </a>
+        <a href="#" ><%= @symptom.name %></a>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<div class="symptom-detail">
+  <div class="symptom-detail-list">
+    <div class="symptom-detail-item">
+      <div class="detail-title"><span></span>相关检查</div>
+      <div class="detail-description"><%= @symptom.common_examination %></div>
+    </div>
+    <div class="symptom-detail-item">
+      <div class="detail-title"><span></span>相关症状</div>
+      <div class="detail-description"><%= @symptom.common_symptom %></div>
+    </div>
+    <div class="symptom-detail-item">
+      <div class="detail-title"><span></span>相关药品</div>
+      <div class="detail-description"><%= @symptom.common_drug %></div>
+    </div>
+    <div class="symptom-detail-item">
+      <div class="detail-title"><span></span>相关疾病</div>
+      <div class="detail-description"><%= @symptom.common_disease %></div>
+    </div>
+
+    <% @symptom.symptom_details.each do |detail| %>
+      <div class="symptom-detail-item">
+        <div class="detail-title"><span></span><%= detail.title %></div>
+        <div class="detail-description"><%= detail.descripton %></div>
+      </div>
+    <% end %>
+  </div>
+</div>
