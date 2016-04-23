@@ -202,7 +202,7 @@
     border-color: $light-gray;
   }
   .navbar-nav {
-    text-align: Center;
+    text-align: center;
     margin: 0 auto;
     li {
       width: 24%;
@@ -211,8 +211,51 @@
         width: 20px;
       }
       p {
-        font-size: 11px
+        font-size: 11px;
       }
+    }
+  }
+  .root-tab {
+    background-image: url("tabs/tab_icon_home_normal.png");
+    &.active {
+      background-image: url("tabs/tab_icon_home_pressed.png");
+    }
+  }
+  .category-tab {
+    background-image: url("tabs/tab_icon_find_normal.png");
+    &.active {
+      background-image: url("tabs/tab_icon_find_pressed.png");
+    }
+  }
+  .person-customs-tab {
+    background-image: url("tabs/tab_icon_shopping_normal.png");
+    &.active {
+      background-image: url("tabs/tab_icon_shopping_pressed.png");
+    }
+  }
+  .my-tab {
+    background-image: url("tabs/tab_icon_user_normal.png");
+    &.active {
+      background-image: url("tabs/tab_icon_user_pressed.png");
+    }
+  }
+  .tab-item {
+    background-size: 20px;
+    background-position-x: 50%;
+    background-position-y: 25%;
+    background-repeat: no-repeat;
+    border-bottom: 1px solid $border-gray;
+    p {
+      margin-top: 20px;
+    }
+  }
+  .active a {
+    background-color: $white !important;
+    color: $purple !important;
+    display: inline;
+    padding: 0px;
+    p {
+      margin-top: 28px;
     }
   }
 }

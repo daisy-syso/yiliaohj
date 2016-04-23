@@ -2,30 +2,24 @@
   <nav class="navbar navbar-inverse">
     <div class="container-fluid">
       <ul class="nav navbar-nav">
-        <li>
+        <li class="tab-item root-tab <%= "active" if current_page?('/')%>">
           <a href="<%= frontend_root_path %>">
-            <%= image_tag "frontend/tabs/tab_icon_home_normal.png" %>
             <p>首页</p>
           </a>
         </li>
-
-        <li>
+        <li class="tab-item category-tab <%= "active" if current_page?('/categories') %>" >
           <a href="/categories">
-            <%= image_tag "frontend/tabs/tab_icon_find_normal.png" %>
             <p>分类大全</p>
           </a>
         </li>
-
-        <li>
+        <li class="tab-item person-customs-tab <%= "active" if current_page?('/person_customs') %>" >
           <a href="/person_customs">
-            <%= image_tag "frontend/tabs/tab_icon_shopping_normal.png" %>
             <p>私人定制</p>
           </a>
         </li>
 
-        <li>
+        <li class="tab-item my-tab <%= "active" if current_page?('/users/me') %>">
           <a href="<%= frontend_users_me_index_path %>">
-            <%= image_tag "frontend/tabs/tab_icon_user_normal.png" %>
             <p>我的健康本</p>
           </a>
         </li>
