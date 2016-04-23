@@ -11,20 +11,20 @@
   </nav>
 </div>
 
-<div class="maternity-detail">
-  <div class="maternity-info">
-    <div class="maternity-cover">
+<div class="maternity-detail page-detail">
+  <div class="maternity-info page-info">
+    <div class="maternity-cover page-cover">
       <img src="<%= fixed_image_url(@maternity) %>">
     </div>
-    <p class="maternity-name"><%= @maternity.name %></p>
+    <p class="maternity-name page-name"><%= @maternity.name %></p>
     </p>
   </div>
 
-  <div class="maternity-comments">
+  <div class="maternity-comments page-comments">
     <p class="comments-header">
       <span>
         <% @maternity.star.times do |s| %>
-          <%= image_tag "static_pages/icon_star_selected.png", class: "start" %>
+          <%= image_tag "static_pages/icon_star_selected.png", class: "star" %>
         <% end %>
         <%= @maternity.star %>分
       </span>
@@ -59,12 +59,12 @@
     <a href="#">商家加盟以及报错更正</a>
   </div>
 
-  <div class="maternity-connect">
+  <div class="maternity-connect page-connect">
     <h3>商家位置</h3>
     <div class="position-detail">
       <h5><%= @maternity.name %></h5>
       <p>联系电话<%= @maternity.telephone %></p>
-      <p>地址：<%= @maternity.address %> 
+      <p>地址：<%= @maternity.address %>
         <a class="pull-right" href="<%= frontend_maps_path(location: @maternity.location) %>">到这去</a>
       </p>
       <div class="map">

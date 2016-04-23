@@ -11,20 +11,20 @@
   </nav>
 </div>
 
-<div class="nursing_room-detail">
-  <div class="nursing_room-info">
-    <div class="nursing_room-cover">
+<div class="nursing-room-detail page-detail">
+  <div class="nursing-room-info page-info">
+    <div class="nursing-room-cover page-cover">
       <img src="<%= fixed_image_url(@nursing_room) %>">
     </div>
-    <p class="nursing_room-name"><%= @nursing_room.name %></p>
+    <p class="nursing-room-name page-name"><%= @nursing_room.name %></p>
     </p>
   </div>
 
-  <div class="nursing_room-comments">
+  <div class="nursing-room-comments page-comments">
     <p class="comments-header">
       <span>
         <% @nursing_room.star.times do |s| %>
-          <%= image_tag "static_pages/icon_star_selected.png", class: "start" %>
+          <%= image_tag "static_pages/icon_star_selected.png", class: "star" %>
         <% end %>
         <%= @nursing_room.star %>分
       </span>
@@ -59,12 +59,12 @@
     <a href="#">商家加盟以及报错更正</a>
   </div>
 
-  <div class="nursing_room-connect">
+  <div class="nursing-room-connect page-connect">
     <h3>商家位置</h3>
     <div class="position-detail">
       <h5><%= @nursing_room.name %></h5>
       <p>联系电话<%= @nursing_room.telephone %></p>
-      <p>地址：<%= @nursing_room.address %> 
+      <p>地址：<%= @nursing_room.address %>
         <a class="pull-right" href="<%= frontend_maps_path(location: @nursing_room.location) %>">到这去</a>
       </p>
       <div class="map">
