@@ -11,20 +11,20 @@
   </nav>
 </div>
 
-<div class="medical-detail">
-  <div class="medical-info">
-    <div class="medical-cover">
+<div class="medical-detail page-detail">
+  <div class="medical-info page-info">
+    <div class="medical-cover page-cover">
       <img src="<%= fixed_image_url(@medical) %>">
     </div>
-    <p class="medical-name"><%= @medical.name %></p>
+    <p class="medical-name page-name"><%= @medical.name %></p>
     </p>
   </div>
 
-  <div class="medical-comments">
+  <div class="medical-comments page-comments">
     <p class="comments-header">
       <span>
         <% @medical.star.times do |s| %>
-          <%= image_tag "static_pages/icon_star_selected.png", class: "start" %>
+          <%= image_tag "static_pages/icon_star_selected.png", class: "star" %>
         <% end %>
         <%= @medical.star %>分
       </span>
@@ -59,12 +59,12 @@
     <a href="#">商家加盟以及报错更正</a>
   </div>
 
-  <div class="medical-connect">
+  <div class="medical-connect page-connect">
     <h3>商家位置</h3>
     <div class="position-detail">
       <h5><%= @medical.name %></h5>
       <p>联系电话<%= @medical.telephone %></p>
-      <p>地址：<%= @medical.address %> 
+      <p>地址：<%= @medical.address %>
         <a class="pull-right" href="<%= frontend_maps_path(location: @medical.location) %>">到这去</a>
       </p>
       <div class="map">
