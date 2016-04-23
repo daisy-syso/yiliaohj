@@ -1,9 +1,27 @@
-<% ('A'...'Z').each do |i| %>
-  <%= i %>
-  <% if $redis_symptoms.hget('symptoms', i).present? %>
-    <% $redis_symptoms.hget('symptoms', i).split('|').each do |s| %>
-      <a href="symptoms/<%= s.split(',')[0] %>"> <%= s.split(',')[1] %></a>
+<div class="app-header">
+  <nav class="navbar navbar-default custom-header">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="/">
+          <%= image_tag "users/title_icon_back_normal.png" %>
+        </a>
+        <a href="#" >症状查询</a>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<div class="symptom-list-content">
+  <% ('A'...'Z').each do |i| %>
+    <div class="letter"><%= i %></div>
+    <% if $redis_symptoms.hget('symptoms', i).present? %>
+      <ul class="symptom-list list-unstyled">
+        <% $redis_symptoms.hget('symptoms', i).split('|').each do |s| %>
+        <li class="symptom-item">
+          <a href="symptoms/<%= s.split(',')[0] %>"> <%= s.split(',')[1] %></a>
+        </li>
+        <% end %>
+       </ul>
     <% end %>
   <% end %>
-  <br />
-<% end %>
+</div>
