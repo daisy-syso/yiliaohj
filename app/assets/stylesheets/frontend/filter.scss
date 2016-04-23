@@ -1,0 +1,124 @@
+@import "../variables";
+
+// filter css
+.filter {
+  position: fixed;
+  z-index: 998;
+  background: white;
+  top: 0px;
+  width: 100%;
+  .detail-panel {
+    max-height: 400px;
+  }
+  a:hover, a:focus {
+    text-decoration: none;
+  }
+  .active {
+    a {
+      color: $purple !important;
+      .filter-icon-down {
+        display: none;
+      }
+      .filter-icon-up {
+        display: inline-block !important;
+      }
+    }
+  }
+  .filter-type {
+    padding-left: 15px;
+    height: 45px;
+    border-bottom: 1px solid $light-gray;
+    margin-bottom: 0px;
+    color: #737373;
+    margin-top: 52px;
+    text-align: center;
+    li {
+      padding: 10px 30px 10px 0;
+      display: inline-block;
+      a {
+        color: #737373;
+      }
+      .filter-icon-down,
+      .filter-icon-up {
+        width: 8px;
+      }
+      .filter-icon-up {
+        display: none;
+      }
+    }
+  }
+  .others-conditions,
+  .intelligent-order,
+  .general-city,
+  .general-hospital {
+    display: none;
+    position: absolute;
+    width: 100%;
+    z-index: 99999;
+    max-height: 400px;
+    overflow: scroll;
+
+    .city-categories,
+    .hospital-categories {
+      position: fixed;
+      top: 97px;
+      left: 50%;
+      list-style: none;
+      padding-left: 0px;
+      background-color: #f0f1f2;
+      width: 100%;
+      padding-left: 36px;
+      max-height: 400px;
+      overflow: scroll;
+    }
+    background-color: $white;
+    li {
+      height: 40px;
+      line-height: 40px;
+      padding-left: 15px;
+      a {
+        color: #737373;
+      }
+    }
+    li.active{
+      background-color: #f0f1f2;
+    }
+  }
+  .others-conditions {
+    padding: 15px;
+    .toggle {
+      margin: 10px;
+      width: 46px;
+      float: right;
+    }
+    .check {
+      display: none;
+    }
+    .reset,
+    .done {
+      color: $purple;
+    }
+    .done {
+      float: right;
+      margin-right: 20px;
+    }
+    > li {
+      clear: both;
+      height: auto;
+      border-bottom: 1px solid $light-gray;
+    }
+    .subject-list {
+      width: 100%;
+      margin-bottom: 16px;
+      li {
+        padding-left: 0px;
+        clear: both;
+        display: inline-block;
+        &.active .btn {
+          background-color: $purple;
+          outline: none;
+        }
+      }
+    }
+  }
+}
