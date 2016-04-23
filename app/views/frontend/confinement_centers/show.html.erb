@@ -11,20 +11,20 @@
   </nav>
 </div>
 
-<div class="confinement_center-detail">
-  <div class="confinement_center-info">
-    <div class="confinement_center-cover">
+<div class="confinement-center-detail page-detail">
+  <div class="confinement-center-info page-info">
+    <div class="confinement-center-cover page-cover">
       <img src="<%= fixed_image_url(@confinement_center) %>">
     </div>
-    <p class="confinement_center-name"><%= @confinement_center.name %></p>
+    <p class="confinement-center-name page-name"><%= @confinement_center.name %></p>
     </p>
   </div>
 
-  <div class="confinement_center-comments">
+  <div class="confinement-center-comments page-comments">
     <p class="comments-header">
       <span>
         <% @confinement_center.star.times do |s| %>
-          <%= image_tag "static_pages/icon_star_selected.png", class: "start" %>
+          <%= image_tag "static_pages/icon_star_selected.png", class: "star" %>
         <% end %>
         <%= @confinement_center.star %>分
       </span>
@@ -59,12 +59,12 @@
     <a href="#">商家加盟以及报错更正</a>
   </div>
 
-  <div class="confinement_center-connect">
+  <div class="confinement-center-connect page-connect">
     <h3>商家位置</h3>
     <div class="position-detail">
       <h5><%= @confinement_center.name %></h5>
       <p>联系电话<%= @confinement_center.telephone %></p>
-      <p>地址：<%= @confinement_center.address %> 
+      <p>地址：<%= @confinement_center.address %>
         <a class="pull-right" href="<%= frontend_maps_path(location: @confinement_center.location) %>">到这去</a>
       </p>
       <div class="map">
