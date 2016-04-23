@@ -1,24 +1,40 @@
+<div class="app-header">
+  <nav class="navbar navbar-default custom-header">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="/">
+          <%= image_tag "users/title_icon_back_normal.png" %>
+        </a>
+        <a href="#" >月子中心</a>
+      </div>
+    </div>
+  </nav>
+</div>
+
 <%= render "filter" %>
 
-<% @confinement_centers.each do |confinement_center| %>
-  <a href="<%= frontend_confinement_center_path(confinement_center) %>">
-    <img src="<%= fixed_image_url(confinement_center) %>" alt=""/>
-    <%= confinement_center.name %>
-    <br>
-    <p class="grade">
-      <% confinement_center.star.times do |s| %>
-        <%= image_tag "static_pages/icon_star_selected.png", class: "start" %>
-      <% end %>
-    </p>
-    <%= confinement_center.price %>
-    <br />
-    <%= confinement_center.star %>人评价
-    <br />
-    0人购买
-    <br />
-  </a>
-  <hr >
-<% end %>
-
-<%= paginate @confinement_centers %>
-<br /><br /><br /><br /><br />
+<div class="confinement-center-list-content">
+  <ul class="list-unstyled confinement-center-list">
+    <% @confinement_centers.each do |confinement_center| %>
+      <li class="confinement-center-item">
+        <a href="<%= frontend_confinement_center_path(confinement_center) %>">
+          <img src="<%= fixed_image_url(confinement_center) %>" class="confinement-center-avatar" alt=""/>
+          <div class="confinement-center-info">
+            <div class="title"><%= confinement_center.name %></div>
+            <p class="grade">
+              <% confinement_center.star.times do |s| %>
+                <%= image_tag "static_pages/icon_star_selected.png", class: "start" %>
+              <% end %>
+              <%= confinement_center.star %>分
+            </p>
+            <div class="statistics">
+              <p><%= confinement_center.comments.count %> 人评价</p>
+              <p><%= confinement_center.commodities.count %> 人购买</p>
+            </div>
+          </div>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+  <%= paginate @confinement_centers %>
+</div>
