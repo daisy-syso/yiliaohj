@@ -42,6 +42,8 @@ module Frontend
     def show
       @drug_store = DrugStore.find(params[:id])
 
+      @drug_store.visit!
+
       @comment = @drug_store.comments.desc(:created_at).first
     end
   end

@@ -46,6 +46,11 @@ class DrugStore
   index click_count: 1
   index star: 1
 
+  def visit!
+    self.click_count += 1
+    save
+  end
+
   def category_star!
     score = comments.pluck(:rating).compact.sum
     member = comments.size

@@ -2,7 +2,6 @@
 class Medical
   include Mongoid::Document
   include Mongoid::Timestamps
-  # include ElasticsearchConfig::Madical
 
   belongs_to :city
   belongs_to :county
@@ -41,6 +40,11 @@ class Medical
   index name: 1
   index click_count: 1
   index star: 1
+
+  def visit!
+    self.click_count += 1
+    save
+  end
 
   def category_star!
     score = comments.pluck(:rating).compact.sum
