@@ -14,6 +14,8 @@ class Insurance
   field :quota, type: String
   field :name, type: String
 
+  field :expiry_date, type: String
+
   field :origin_price, type: Float
   field :price, type: Float
 
@@ -22,10 +24,25 @@ class Insurance
   field :image_url, type: String
 
   field :star, type: Integer
+  field :click_count, type: Integer
   field :status, type: Boolean
 
   has_many :comments, as: :commentable
   has_many :commodities, as: :commoditiable
 
   index name: 1
+  index click_count: 1
+  index star: 1
+
+  def visit!
+    self.click_count += 1
+    save
+  end
+
+  def category_star!
+    score = comments.pluck(:rating).compact.sum
+    member = comments.size
+    self.star = (score / member).to_i
+    save
+  end
 end

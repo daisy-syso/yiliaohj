@@ -1,7 +1,29 @@
 module Frontend
   class InsurancesController < FrontendController
-    def index
-      @insurances = Insurance.all.page(params[:page]).per(params[:per])
+    def index      
+      @proviences = Provience.includes(:cities)
+
+      query = {}
+      @insurances = Insurance.includes(:comments).includes(:commodities).where(query)
+
+      if params[:sort_type].present?
+        case params[:sort_type]
+        when 'new'
+          # 最近发布
+          @insurances = @insurances.desc(:created_at)
+        when 'star'
+          # 评价最好
+          @insurances = @insurances.desc(:star)
+        when 'click_count'
+          # 人气最高
+          @insurances = @insurances.desc(:click_count)
+        else
+          # 最近发布
+          @insurances = @insurances.desc(:created_at)
+        end
+      end
+
+      @insurances = @insurances.page(params[:page]).per(params[:per])
     end
 
     def show
@@ -12,6 +34,8 @@ module Frontend
       # @insurance_company = @insurance.insurance_company
 
       @insurance = Insurance.includes(:comments).find(params[:id])
+
+      @insurance.visit!
 
       @comment = @examination.comments.desc(:created_at).first
     end
