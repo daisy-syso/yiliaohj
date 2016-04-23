@@ -11,25 +11,25 @@
   </nav>
 </div>
 
-<div class="drug_store-detail">
-  <div class="drug_store-info">
-    <div class="drug_store-cover">
+<div class="drug-store-detail page-detail">
+  <div class="drug-store-info page-info">
+    <div class="drug-store-cover page-cover">
       <img src="<%= fixed_image_url(@drug_store) %>">
     </div>
-    <p class="drug_store-name"><%= @drug_store.name %></p>
-    <p class="drug_store-characteristic-departments">
+    <p class="drug-store-name page-name"><%= @drug_store.name %></p>
+    <p class="drug-store-characteristic-departments">
       经营范围：<%= @drug_store.scope_of_business %>
     </p>
     <p class="medical-type">医保：<%= @drug_store.is_medical_insurance ? '医保定点' : '非医保定点' %>
     </p>
-    <p class="drug_store-website">网址：<%= @drug_store.url %></p>
+    <p class="drug-store-website">网址：<%= @drug_store.url %></p>
   </div>
 
-  <div class="drug_store-comments">
+  <div class="drug-store-comments page-comments">
     <p class="comments-header">
       <span>
         <% @drug_store.star.times do |s| %>
-          <%= image_tag "static_pages/icon_star_selected.png", class: "start" %>
+          <%= image_tag "static_pages/icon_star_selected.png", class: "star" %>
         <% end %>
         <%= @drug_store.star %>分
       </span>
@@ -64,12 +64,12 @@
     <a href="#">商家加盟以及报错更正</a>
   </div>
 
-  <div class="drug_store-connect">
+  <div class="drug-store-connect page-connect">
     <h3>商家位置</h3>
     <div class="position-detail">
       <h5><%= @drug_store.name %></h5>
       <p>联系电话<%= @drug_store.telephone %></p>
-      <p>地址：<%= @drug_store.address %> 
+      <p>地址：<%= @drug_store.address %>
         <a class="pull-right" href="<%= frontend_maps_path(location: @drug_store.location) %>">到这去</a>
       </p>
       <div class="map">
