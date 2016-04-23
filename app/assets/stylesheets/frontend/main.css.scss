@@ -39,6 +39,43 @@
     }
   }
 
+  .tools {
+    position: absolute;
+    top: 18px;
+    left: 25px;
+    height: auto !important;
+    .position {
+      position: absolute;
+      left: 10px;
+      opacity: 1;
+      height: 33px;
+      line-height: 33px;
+      z-index: 99;
+      img {
+        width: 13px;
+        margin-top: -4px;
+      }
+    }
+    .search-input {
+      height: 33px;
+      width: 286px;
+      border-radius: 5px;
+      box-shadow: none;
+      border: none;
+      opacity: 0.8;
+      padding-left: 70px;
+    }
+    .publish-requriements img{
+      width: 35px;
+    }
+    .search-icon {
+      position: absolute;
+      right: 47px;
+      width: 18px;
+      top: 8px;
+    }
+  }
+
   // accurate query section
   .accurate-search-section {
     height: 220px;
