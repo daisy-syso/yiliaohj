@@ -1,22 +1,40 @@
-<% @medicals.each do |medical| %>
-  <a href="<%= frontend_medical_path(medical) %>">
-    <img src="<%= fixed_image_url(medical) %>" alt=""/>
-    <%= medical.name %>
-    <br>
-    <p class="grade">
-      <% medical.star.times do |s| %>
-        <%= image_tag "static_pages/icon_star_selected.png", class: "start" %>
-      <% end %>
-    </p>
-    <%= medical.price %>
-    <br />
-    <%= medical.star %>人评价
-    <br />
-    0人购买
-    <br />
-  </a>
-  <hr >
-<% end %>
+<div class="app-header">
+  <nav class="navbar navbar-default custom-header">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="/">
+          <%= image_tag "users/title_icon_back_normal.png" %>
+        </a>
+        <a href="#" >体检中心</a>
+      </div>
+    </div>
+  </nav>
+</div>
 
-<%= paginate @medicals %>
-<br /><br /><br /><br /><br />
+
+<div class="medical-list-content">
+  <ul class="list-unstyled medical-list">
+    <% @medicals.each do |medical| %>
+      <li class="medical-item">
+        <a href="<%= frontend_medical_path(medical) %>">
+          <img src="<%= fixed_image_url(medical) %>" class="medical-avatar" alt=""/>
+          <div class="medical-info">
+            <div class="title"><%= medical.name %></div>
+            <p class="grade">
+              <% medical.star.times do |s| %>
+                <%= image_tag "static_pages/icon_star_selected.png", class: "start" %>
+              <% end %>
+              <%= medical.star %>分
+            </p>
+            <div class="statistics">
+              <p><%= medical.comments.count %> 人评价</p>
+              <p><%= medical.commodities.count %> 人购买</p>
+            </div>
+            <p class="price">￥<%= medical.price %></p>
+          </div>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+  <%= paginate @medicals %>
+</div>
