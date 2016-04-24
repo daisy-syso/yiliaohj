@@ -16,7 +16,7 @@
     <div class="diseases-item">
       <div class="diseases-cover"> <img src="http://lorempixel.com/400/400" alt=""> </div>
       <div class="diseases-detail">
-        <div class="disease-name"><%= disease.name %></div>
+        <a href="/diseases/<%= disease.id.to_s %>"><div class="disease-name"><%= disease.name %></div></a>
         <ul class="about-categories">
           <li>
             <a href="/doctors?disease_id=<%= disease.id.to_s %>">

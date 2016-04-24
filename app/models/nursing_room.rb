@@ -28,7 +28,7 @@ class NursingRoom
 
   field :target, type: String
 
-  field :click_count, type: Integer
+  field :click_count, type: Integer, default: 0
   field :star, type: Integer
   field :status, type: Boolean
 

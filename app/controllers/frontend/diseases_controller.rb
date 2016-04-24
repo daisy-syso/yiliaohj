@@ -10,6 +10,10 @@ module Frontend
       end
     end
 
+    def show
+      @disease = Disease.find(params[:id])
+    end
+
     private
 
     def set_department

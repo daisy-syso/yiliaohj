@@ -18,7 +18,7 @@ class Doctor
   field :telephone, type: String
   field :image_url, type: String
   field :url, type: String
-  field :click_count, type: Integer
+  field :click_count, type: Integer, default: 0
   field :star, type: Integer
   field :room, type: String
   field :status, type: Boolean

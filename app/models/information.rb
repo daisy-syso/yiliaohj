@@ -9,7 +9,7 @@ class Information
   field :content, type: String
   field :source, type: String
   field :image_url, type: String
-  field :click_count, type: Integer
+  field :click_count, type: Integer, default: 0
 
   belongs_to :information_category
 end

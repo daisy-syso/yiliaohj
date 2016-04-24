@@ -24,7 +24,7 @@ class Insurance
   field :image_url, type: String
 
   field :star, type: Integer
-  field :click_count, type: Integer
+  field :click_count, type: Integer, default: 0
   field :status, type: Boolean
 
   has_many :comments, as: :commentable
