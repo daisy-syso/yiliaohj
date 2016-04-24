@@ -11,51 +11,51 @@
     text-align: center;
     border-right: 1px solid $border-gray;
     .hot-categories-title {
-      background-image: image_url("category/whole_icon_hot_nor.png");
+      background-image:  image-url("category/whole_icon_hot_nor.png");
       &.active {
-        background-image: image_url("category/whole_icon_hot_sel.png");
+        background-image:  image-url("category/whole_icon_hot_sel.png");
       }
     }
     .hospital-categories-title {
-      background-image: image_url("category/whole_icon_hospital_nor.png");
+      background-image:  image-url("category/whole_icon_hospital_nor.png");
       &.active {
-        background-image: image_url("category/whole_icon_hospital_sel.png");
+        background-image:  image-url("category/whole_icon_hospital_sel.png");
       }
     }
     .disease-categories-title {
-      background-image: image_url("category/whole_icon_query_nor.png");
+      background-image:  image-url("category/whole_icon_query_nor.png");
       &.active {
-        background-image: image_url("category/whole_icon_query_sel.png");
+        background-image:  image-url("category/whole_icon_query_sel.png");
       }
     }
     .doctor-categories-title {
-      background-image: image_url("category/whole_icon_doctor_nor.png");
+      background-image:  image-url("category/whole_icon_doctor_nor.png");
       &.active {
-        background-image: image_url("category/whole_icon_doctor_sel.png");
+        background-image:  image-url("category/whole_icon_doctor_sel.png");
       }
     }
     .drugstore-categories-title {
-      background-image: image_url("category/whole_icon_pharmacy_nor.png");
+      background-image:  image-url("category/whole_icon_pharmacy_nor.png");
       &.active {
-        background-image: image_url("category/whole_icon_pharmacy_sel.png");
+        background-image:  image-url("category/whole_icon_pharmacy_sel.png");
       }
     }
     .drug-categories-title {
-      background-image: image_url("category/whole_icon_drug_nor.png");
+      background-image:  image-url("category/whole_icon_drug_nor.png");
       &.active {
-        background-image: image_url("category/whole_icon_drug_sel.png");
+        background-image:  image-url("category/whole_icon_drug_sel.png");
       }
     }
     .treatment-categories-title {
-      background-image: image_url("category/whole_icon_purchase_nor.png");
+      background-image:  image-url("category/whole_icon_purchase_nor.png");
       &.active {
-        background-image: image_url("category/whole_icon_purchase_sel.png");
+        background-image:  image-url("category/whole_icon_purchase_sel.png");
       }
     }
     .preferential-categories-title {
-      background-image: image_url("category/whole_icon_sale_nor.png");
+      background-image:  image-url("category/whole_icon_sale_nor.png");
       &.active {
-        background-image: image_url("category/whole_icon_sale_sel.png");
+        background-image:  image-url("category/whole_icon_sale_sel.png");
       }
     }
     .left-category {
