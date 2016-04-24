@@ -1,10 +1,38 @@
 class Frontend::CommentsController < FrontendController
-  before_action :set_comment_origin, only: [:index, :new, :create]
+  before_action :set_comment_origin, only: [:index, :new, :create, :get_more_comments]
   before_action :auth_check, only: [:new, :create]
 
   include ApplicationHelper
   def index
-    @comments = @comment_origin.comments.includes(:user).desc(:created_at).page(params[:page]).per(params[:per])
+    @comments = @comment_origin.comments.includes(:user).desc(:created_at).page(params[:page]).per(2)
+  end
+
+
+  def get_more_comments
+    @comments = @comment_origin.comments.includes(:user).desc(:created_at).page(params[:page]).per(2)
+    html = ''
+    @comments.each do |comment|
+      html += %Q(<li class="comment-item">
+        <div class="user-info">
+          <img src="#{comment.user.try(:avatar)}" width="60px">
+          <div class="comment-user-name">#{comment.user.try(:nickname)}</div>
+          <div class="comment-time">#{comment.created_at.strftime("%F")}</div>
+        </div>
+        <div class="comment-rate pull-right">
+          #{get_star_html(comment)}
+        </div>
+        <div class="comment-content">#{comment.content}</div>
+      </li>)
+    end
+    render text: html
+  end
+
+  def get_star_html(comment)
+    html = ""
+    comment.rating.times do |s|
+      html += '<img class="star" src="/assets/static_pages/icon_star_selected-2aee1bdfec73bf558c370762c0839431f944bf2b23e8b847a51c4be98a680c88.png" alt="Icon star selected 2aee1bdfec73bf558c370762c0839431f944bf2b23e8b847a51c4be98a680c88">'
+    end
+    html
   end
 
   def new

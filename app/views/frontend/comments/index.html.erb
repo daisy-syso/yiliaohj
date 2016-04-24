@@ -34,7 +34,16 @@
     <% end %>
   </ul>
   <div class="check-all-comments">
-    <a href="">查看全部评价</a>
+    <a id="get_more" href="javascript:;">查看更多</a>
   </div>
-  <% paginate @comments %>
 </div>
+
+<script type="text/javascript">
+  var page = 2
+  $("#get_more").click(function(){
+    $.get("/<%= @comment_origin.class.name.underscore.pluralize %>/<%= @comment_origin.id.to_s %>/comments/get_more_comments?page="+page, function(data){
+      page++;
+      $('.comment-list').append(unescape(data));
+    })
+  })
+</script>
