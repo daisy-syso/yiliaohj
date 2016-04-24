@@ -216,27 +216,27 @@
     }
   }
   .root-tab {
-    background-image:  image-url("tabs/tab_icon_home_normal.png");
+    background-image:  asset-url("frontend/tabs/tab_icon_home_normal.png");
     &.active {
-      background-image:  image-url("tabs/tab_icon_home_pressed.png");
+      background-image:  asset-url("frontend/tabs/tab_icon_home_pressed.png");
     }
   }
   .category-tab {
-    background-image:  image-url("tabs/tab_icon_find_normal.png");
+    background-image:  asset-url("frontend/tabs/tab_icon_find_normal.png");
     &.active {
-      background-image:  image-url("tabs/tab_icon_find_pressed.png");
+      background-image:  asset-url("frontend/tabs/tab_icon_find_pressed.png");
     }
   }
   .person-customs-tab {
-    background-image:  image-url("tabs/tab_icon_shopping_normal.png");
+    background-image:  asset-url("frontend/tabs/tab_icon_shopping_normal.png");
     &.active {
-      background-image:  image-url("tabs/tab_icon_shopping_pressed.png");
+      background-image:  asset-url("frontend/tabs/tab_icon_shopping_pressed.png");
     }
   }
   .my-tab {
-    background-image:  image-url("tabs/tab_icon_user_normal.png");
+    background-image:  asset-url("frontend/tabs/tab_icon_user_normal.png");
     &.active {
-      background-image:  image-url("tabs/tab_icon_user_pressed.png");
+      background-image:  asset-url("frontend/tabs/tab_icon_user_pressed.png");
     }
   }
   .tab-item {
