@@ -14,14 +14,27 @@ html, body {
     left: 0px;
     width: 100%;
     z-index: 9999;
+    height: 56px;
   }
-  a{
+  .container-fluid,
+  .navbar-header {
+    height: 100%;
+  }
+  a {
     vertical-align: text-top;
     color: $white ;
     height: 50px;
     img {
       height: 50px;
     }
+  }
+  .page-title {
+    width: 85%;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    overflow: hidden;
+    white-space: nowrap;
+    display: inline-block;
   }
 }
 
