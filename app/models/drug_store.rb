@@ -24,7 +24,7 @@ class DrugStore
   field :telephone, type: String
   field :image_url, type: String
   field :url, type: String
-  field :click_count, type: String
+  field :click_count, type: Integer, default: 0
   field :star, type: Integer
   field :status, type: Boolean
 

@@ -19,7 +19,7 @@ class InsuranceCompany
   field :url, type: String
   # [longitude,latitude]
   field :coordinates, type: Array, default: -> { [] }
-  field :click_count, type: Integer
+  field :click_count, type: Integer, default: 0
   field :star, type: Integer
 
   index(coordinates: '2dsphere')

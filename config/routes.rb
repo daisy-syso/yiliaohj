@@ -47,11 +47,19 @@ Rails.application.routes.draw do
       end
 
       resources :hospitals do
-        resources :comments
+        resources :comments do
+          collection do
+            get 'get_more_comments'
+          end
+        end
       end
 
       resources :doctors do
-        resources :comments
+        resources :comments do
+          collection do
+            get 'get_more_comments'
+          end
+        end
 
         collection do
           post 'like'
@@ -59,19 +67,35 @@ Rails.application.routes.draw do
       end
 
       resources :maternities do
-        resources :comments
+        resources :comments do
+          collection do
+            get 'get_more_comments'
+          end
+        end
       end
 
       resources :confinement_centers do
-        resources :comments
+        resources :comments do
+          collection do
+            get 'get_more_comments'
+          end
+        end
       end
 
       resources :medicals do
-        resources :comments
+        resources :comments do
+          collection do
+            get 'get_more_comments'
+          end
+        end
       end
 
       resources :nursing_rooms do
-        resources :comments
+        resources :comments do
+          collection do
+            get 'get_more_comments'
+          end
+        end
       end
 
       resources :symptoms
@@ -91,11 +115,19 @@ Rails.application.routes.draw do
       resources :insurances
 
       resources :examinations do
-        resources :comments
+        resources :comments do
+          collection do
+            get 'get_more_comments'
+          end
+        end
       end
 
       resources :drug_stores do
-        resources :comments
+        resources :comments do
+          collection do
+            get 'get_more_comments'
+          end
+        end
       end
 
       resources :maps

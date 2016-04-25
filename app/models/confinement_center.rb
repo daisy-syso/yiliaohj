@@ -22,7 +22,7 @@ class ConfinementCenter
   field :origin_price, type: Float
   field :price, type: Float
   field :location, type: String
-  field :click_count, type: Integer
+  field :click_count, type: Integer, default: 0
   field :star, type: Integer
   field :status, type: Boolean
 
