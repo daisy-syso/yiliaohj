@@ -30,9 +30,34 @@
     <div class="information-subscribe-categories right-content">
       <ul class="subscribe-list list-unstyled">
         <% @information_categories.each do |information_category| %>
-        <li class="subscribe-item">
+        <li class="subscribe-item" data-id="<%=information_category.id  %>">
           <%= image_tag "frontend/person_customs/#{ information_category.name }.png" %>
           <p><%= information_category.name %></p>
+          <div class="subscribe-panel panel-<%=information_category.id  %>">
+            <div class="list-header">
+              <span class="subscribe-title">
+                <%= information_category.name %> 资讯订阅
+              </span>
+              <span class="check-all">全选</span>
+            </div>
+            <ul class="list-unstyled list-body">
+              <% information_category.children.each do |category| %>
+                <li class="category-children">
+                  <input type="checkbox"
+                    name="category_name"
+                    value="<%= category.id.to_s %>"
+                    <%= @information_category_ids.include?(category.id) ? "" : "checked" %> />
+                  <span class="category-name">
+                    <%= category.name %>
+                  </span>
+                </li>
+              <% end %>
+            </ul>
+            <div class="list-footer">
+              <a href="javascript:;" class="cancel">取消</a>
+              <a href="#" id="submit">确认订阅</a>
+            </div>
+          </div>
         </li>
         <% end %>
       </ul>
@@ -106,12 +131,35 @@
   </div>
 </div>
 
+<div id="mask"></div>
+
 <script type="text/javascript">
   $(".category-title").click(function(){
     $(".category-title").removeClass("active");
     $(".right-content").hide();
     $(this).addClass("active");
     $("." + $(this).data("content")).show();
+  });
+
+  $(".subscribe-item").click(function(){
+    var categoryId = $(this).data("id");
+    $("#mask").show();
+    $(".panel-" + categoryId).show();
+  });
+
+  $(".cancel").click(function(){
+    $("#mask").hide();
+    $(".subscribe-panel").hide();
+    return false;
+  });
+
+  $("#mask").click(function(){
+    $("#mask").hide();
+    $(".subscribe-panel").hide();
+  })
+
+  $(".check-all").click(function(){
+    $(this).parents(".subscribe-panel").find(".list-body input").prop('checked', true);
   });
 
   $("#submit").click(function(data){
