@@ -1,64 +1,119 @@
-<h2>健康医疗资讯订阅</h2>
-<br>
-<div>
-  <% @information_categories.each do |information_category| %>
-    <%= information_category.name %>
-    <br>
-    <!-- 私人定制02 页面-->
-    <div>
-      全选
-      <br >
-      <% information_category.children.each do |category| %>
-        <input type="checkbox" name="category_name" value="<%= category.id.to_s %>" <%= @information_category_ids.include?(category.id) ? "" : "checked" %>checked><%= category.name %></input>
-      <% end %>  
+<div class="app-header">
+  <nav class="navbar navbar-default custom-header">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="#">
+          <%= image_tag "users/title_icon_back_normal.png" %>
+        </a>
+        <a href="#" class="page-title">私人订制健康医疗资讯推送</a>
+      </div>
     </div>
-    <br>
-  <% end %>
-  <button id="submit">确认订阅</button>
+  </nav>
 </div>
-<hr>
-<h2>精准疾病咨询推送</h2>
-<% if @information_categories.empty? %>
-  暂无订阅<a href="<%= frontend_person_customs_path %>">去订阅相关健康资讯</a>
-<% end %>
-<br>
-<% @information_categories.each do |information_category| %>
-  <ul>
-    <% information_category.information.each do |information| %>
-      <li>
-        【<%= information_category.name %>】<a href="/information/<%= information.id.to_s %>"><%= information.title %></a>
-      </li>
-    <% end %>
-  </ul>
-<% end %>
-<a href="/subscriptions">我的订阅</a>
-<hr>
 
-<h2>提出医疗健康服务需求</h2>
-<div>
-  <br>
-  <h3>历史提问</h3>
-  <ul>
-  <% @questions.each do |question| %>
-    <li>
-      <a href="<%= frontend_question_path(question) %>"><%= question.content.slice(0,20) %>
-        发布时间：<%= question.created_at.strftime("%F %T")%>
-        <% if question.answer.present? %>
-          已答复
-        <% else %>
-          待答复
+<div class="person-customs-content">
+  <div class="left categories">
+    <div class="category-title custom-news active"data-content="information-subscribe-categories">
+      <p>健康医疗资讯</p>
+    </div>
+    <div class="category-title custom-push" data-content="nformation-push-categories">
+      <p>精准疾病咨询</p>
+      <p>推送</p>
+    </div>
+    <div class="category-title custom-requirement" data-content="question">
+      <p>提出医疗健康</p>
+      <p>服务需求</p>
+    </div>
+  </div>
+
+  <div class="right category-detail">
+    <div class="information-subscribe-categories right-content">
+      <ul class="subscribe-list list-unstyled">
+        <% @information_categories.each do |information_category| %>
+        <li class="subscribe-item">
+          <%= image_tag "frontend/person_customs/#{ information_category.name }.png" %>
+          <p><%= information_category.name %></p>
+        </li>
         <% end %>
-      </a>
-    <li>
-  <% end %>
-  </ul>
-  <a href="<%= new_frontend_question_path %>"> 发布需求</a>
-  
-  
-</div>
+      </ul>
+    </div>
 
+    <div class="information-push-categories right-content">
+      <% if @information_categories.empty? %>
+        暂无订阅<a href="<%= frontend_person_customs_path %>">去订阅相关健康资讯</a>
+      <% end %>
+      <% @information_categories.each do |information_category| %>
+        <ul class="list-unstyled push-list">
+          <% information_category.information.each do |information| %>
+            <li class="push-item">
+              <a href="/information/<%= information.id.to_s %>" class="title">
+                【<%= information_category.name %>】
+                <%= information.title %>
+              </a>
+              <div class="publish-time">
+                <%= information.created_at %>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+      <div >
+        <a href="#">加载更多...</a>
+      </div>
+    </div>
+
+    <div class="question right-content">
+      <ul class="question-list list-unstyled">
+        <% @questions.each do |question| %>
+          <li class="question-item">
+            <a href="<%= frontend_question_path(question) %>" class="title"><%= question.content.slice(0,20) %>
+            </a>
+            <div class="publish-time">
+              发布时间：<%= question.created_at.strftime("%F %T")%>
+            </div>
+            <div class="question-tag <%= question.answer.present? ? 'answered-tag' : 'waiting-tag' %>">
+              <% if question.answer.present? %>
+                已答复
+              <% else %>
+                待答复
+              <% end %>
+            </div>
+          <li>
+        <% end %>
+        <li class="question-item">
+          <a href="#" class="title">提出医疗健康服务需求提出医疗健康服务需求
+          </a>
+          <div class="publish-time">
+            发布时间：2016-04-02
+          </div>
+          <div class="question-tag badge answered-tag">
+            已答复
+          </div>
+        <li>
+          <li class="question-item">
+          <a href="#" class="title">提出医疗健康服务需求提出医疗健康服务需求
+          </a>
+          <div class="publish-time">
+            发布时间：2016-04-02
+          </div>
+          <div class="question-tag badge waiting-tag">
+            待答复
+          </div>
+        <li>
+      </ul>
+       <a class="publish-requirement" href="<%= new_frontend_question_path %>"> 发布需求</a>
+    </div>
+  </div>
+</div>
 
 <script type="text/javascript">
+  $(".category-title").click(function(){
+    $(".category-title").removeClass("active");
+    $(".right-content").hide();
+    $(this).addClass("active");
+    $("." + $(this).data("content")).show();
+  });
+
   $("#submit").click(function(data){
     var category_name_ids = [];
     var all_category_name_ids = [];
@@ -78,6 +133,6 @@
       console.log(data);
     })
   });
-  
+
 </script>
 
