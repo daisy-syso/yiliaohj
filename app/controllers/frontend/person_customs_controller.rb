@@ -11,7 +11,7 @@ module Frontend
 
       @information_categories = InformationCategory.includes(:information).where(:id.in => @information_category_ids)
 
-      @questions = @current_user.questions
+      @questions = @current_user.questions.desc(:updated_at)
     end
   end
 end

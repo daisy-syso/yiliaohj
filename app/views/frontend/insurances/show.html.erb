@@ -1,0 +1,108 @@
+<div class="app-header">
+  <nav class="navbar navbar-default custom-header">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="#">
+          <%= image_tag "users/title_icon_back_normal.png" %>
+        </a>
+        <a href="#" class="page-title"><%= @insurance.name %></a>
+      </div>
+    </div>
+  </nav>
+</div>
+<%= @insurance.price %> <a href="javascript:;">立即购买</a><hr>
+<div class="insurance-detail page-detail">
+  <div class="insurance-info page-info">
+    <div class="insurance-cover page-cover">
+      <img src="<%= fixed_image_url(@insurance) %>", width="200px">
+    </div>
+    <p class="insurance-name page-name"><%= @insurance.name %></p>
+    </p>
+  </div>
+
+  <div class="insurance-comments page-comments">
+    <p class="comments-header">
+      <span>
+        <% @insurance.star.times do |s| %>
+          <%= image_tag "static_pages/icon_star_selected.png", class: "star" %>
+        <% end %>
+        <%= @insurance.star %>分
+      </span>
+      <span class="pull-right"><%= @insurance.comments.size%>人已经点评</span>
+    </p>
+    <% if @comment %>
+      <ul class="comment-list list-unstyled">
+        <li class="comment-item">
+          <div class="user-info">
+            <div class="comment-user-name"><%= @comment.user.try(:nickname) %></div>
+            <div class="comment-time"><%= @comment.created_at.strftime("%F") %></div>
+          </div>
+          <div class="comment-rate pull-right">
+            <% @comment.rating.times do |s| %>
+              <%= image_tag "static_pages/icon_star_selected.png", class: "star" %>
+            <% end %>
+          </div>
+          <div class="comment-content"><%= @comment.content %></div>
+        </li>
+      </ul>
+    <% end %>
+    <div class="check-all-comments">
+      <a href="<%= frontend_insurance_comments_path(@insurance) %>">查看全部评价</a>
+    </div>
+  </div>
+
+  <div class="comment-edit">
+    <a href="<%= new_frontend_insurance_comment_path(@insurance) %>">我要评价</a>
+  </div>
+
+  <div class="insurance-connect page-connect">
+    <h3>商家位置</h3>
+    <div class="position-detail">
+      <h5><%= @insurance.insurance_company.name %></h5>
+      <p>联系电话<%= @insurance.insurance_company.telephone %></p>
+      <p>地址：<%= @insurance.insurance_company.address %>
+        <a class="pull-right" href="<%= frontend_maps_path(location: @insurance.insurance_company.location) %>">到这去</a>
+      </p>
+      <div class="map">
+        <div id="container2"></div>
+      </div>
+      <div class="operating-button">
+        <% if @insurance.insurance_company.telephone.present? %>
+          <a href="tel:<%= @insurance.insurance_company.telephone %>15201991025">拨打电话</a>
+          <a href="#">查询/挂号</a>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  var lng1 = 0.0;
+  var lat1 = 0.0;
+  // var lng1 = parseFloat("<%#= @insurance.insurance_company.location.split(',')[1] %>");
+  // var lat1 = parseFloat("<%#= @insurance.insurance_company.location.split(',')[0] %>");
+  console.log("lng1= "+lng1);
+  console.log("lat1= "+lat1);
+  var map = new AMap.Map('container2', {
+      resizeEnable: true,
+      zoom:14,
+      center: [lng1, lat1],
+      isHotspot: true
+  });
+
+  // 标记
+  var marker = new AMap.Marker({
+    position: map.getCenter()
+  });
+  marker.setMap(map);
+
+</script>
+
+<style type="text/css">
+  #container2 {
+    width: 100%;
+    margin-top: 60px;
+    height: 350px;
+    bottom: 50px;
+  }
+</style>

@@ -37,7 +37,7 @@ module Frontend
 
       @insurance.visit!
 
-      @comment = @examination.comments.desc(:created_at).first
+      @comment = @insurance.comments.desc(:created_at).first
     end
   end
 end

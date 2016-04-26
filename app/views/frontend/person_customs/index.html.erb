@@ -90,20 +90,23 @@
     <div class="question right-content">
       <ul class="question-list list-unstyled">
         <% @questions.each do |question| %>
-          <li class="question-item">
-            <a href="<%= frontend_question_path(question) %>" class="title"><%= question.content.slice(0,20) %>
-            </a>
-            <div class="publish-time">
-              发布时间：<%= question.created_at.strftime("%F %T")%>
-            </div>
-            <div class="question-tag <%= question.answer.present? ? 'answered-tag' : 'waiting-tag' %>">
-              <% if question.answer.present? %>
-                已答复
-              <% else %>
-                待答复
-              <% end %>
-            </div>
-          <li>
+          <a href="<%= frontend_question_path(question) %>" >
+            <li class="question-item">
+              <span class="title">
+                <%= question.content.slice(0,20) %>
+              </span>
+              <div class="publish-time">
+                发布时间：<%= question.created_at.strftime("%F %T")%>
+              </div>
+              <div class="question-tag badge <%= question.answer.present? ? 'answered-tag' : 'waiting-tag' %>">
+                <% if question.answer.present? %>
+                  已答复
+                <% else %>
+                  待答复
+                <% end %>
+              </div>
+            <li>
+          </a>
         <% end %>
         <li class="question-item">
           <a href="#" class="title">提出医疗健康服务需求提出医疗健康服务需求

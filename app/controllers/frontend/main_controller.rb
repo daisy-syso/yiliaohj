@@ -4,7 +4,7 @@ module Frontend
       @banners = Banner.all
 
       @categories = Category.all.asc(:order)
-      @categories = [@categories.limit(8), @categories.offset(8).limit(8)]
+      @categories = [@categories.limit(8), @categories.offset(8).limit(8), @categories.offset(16).limit(8)]
 
       @advertisements = Advertisement.all
 

@@ -112,7 +112,13 @@ Rails.application.routes.draw do
 
       resources :questions
 
-      resources :insurances
+      resources :insurances do
+        resources :comments do
+          collection do
+            get 'get_more_comments'
+          end
+        end
+      end
 
       resources :examinations do
         resources :comments do

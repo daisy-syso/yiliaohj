@@ -15,7 +15,7 @@ class InsuranceCompany
   field :telephone, type: String
   field :address, type: String
   field :image_url, type: String
-  field :location, type: String
+  field :location, type: String, default: '0,0'
   field :url, type: String
   # [longitude,latitude]
   field :coordinates, type: Array, default: -> { [] }

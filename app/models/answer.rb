@@ -3,7 +3,7 @@ class Answer
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  field :content, type: String
+  embedded_in :question
 
-  belongs_to :question, index: true
+  field :content, type: String
 end
