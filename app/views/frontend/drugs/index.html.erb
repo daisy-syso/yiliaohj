@@ -1,0 +1,12 @@
+<% @drugs.each do |drug| %>
+  <a href="<%= frontend_drug_path(drug) %>" class="item-body">
+    <img src="<%= fixed_image_url(drug) %>" class="drug-store-avatar" alt=""/><br />
+    <%= drug.name %><br />
+    规格：<%= drug.spec %><br />
+    批号：<%= drug.code %><br />
+    厂家：<%= drug.manufactory_name %><br />
+    <%= drug.price %>
+    <hr >
+  </a>
+<% end %>
+<%= paginate @drugs %>

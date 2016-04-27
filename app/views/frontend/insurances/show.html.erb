@@ -10,12 +10,13 @@
     </div>
   </nav>
 </div>
-<%= @insurance.price %> <a href="javascript:;">立即购买</a><hr>
+
 <div class="insurance-detail page-detail">
   <div class="insurance-info page-info">
     <div class="insurance-cover page-cover">
       <img src="<%= fixed_image_url(@insurance) %>", width="200px">
     </div>
+    <%= @insurance.price %> <a href="javascript:;">立即购买</a><hr>
     <p class="insurance-name page-name"><%= @insurance.name %></p>
     </p>
   </div>

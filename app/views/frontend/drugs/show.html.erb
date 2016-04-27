@@ -1,0 +1,60 @@
+<img src="<%= fixed_image_url(@drug) %>" class="drug-store-avatar" alt=""/><br />
+<%= @drug.name %>
+<%= @drug.price %>
+<hr>
+品牌：<%= @drug.name %>
+厂家：<%= @drug.manufactory_name %>
+批准文号：<%= @drug.code %>
+规格：<%= @drug.spec %>
+<hr >
+
+<div class="drug-store-comments page-comments">
+  <p class="comments-header">
+    <span>
+      <% @drug.star.times do |s| %>
+        <%= image_tag "static_pages/icon_star_selected.png", class: "star" %>
+      <% end %>
+      <%= @drug.star %>分
+    </span>
+    <span class="pull-right"><%= @drug.comments.size%>人已经点评</span>
+  </p>
+  <% if @comment %>
+    <ul class="comment-list list-unstyled">
+      <li class="comment-item">
+        <div class="user-info">
+          <div class="comment-user-name"><%= @comment.user.try(:nickname) %></div>
+          <div class="comment-time"><%= @comment.created_at.strftime("%F") %></div>
+        </div>
+        <div class="comment-rate pull-right">
+          <% @comment.rating.times do |s| %>
+            <%= image_tag "static_pages/icon_star_selected.png", class: "star" %>
+          <% end %>
+        </div>
+        <div class="comment-content"><%= @comment.content %></div>
+      </li>
+    </ul>
+  <% end %>
+  <div class="check-all-comments">
+    <a href="<%= frontend_drug_comments_path(@drug) %>">查看全部评价</a>
+  </div>
+</div>
+
+<div class="comment-edit">
+  <a href="<%= new_frontend_drug_comment_path(@drug) %>">我要评价</a>
+</div>
+
+
+<hr>
+<% @drug.drug_details.each do |detail| %>
+  <%= detail.title %>
+  <br>
+  <%= detail.detail %>
+  <hr>
+<% end %>
+<hr>
+<a>提醒吃药</a>
+<br>
+<br>
+<br>
+<br>
+<br>

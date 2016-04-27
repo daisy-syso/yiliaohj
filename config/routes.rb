@@ -108,6 +108,14 @@ Rails.application.routes.draw do
 
       resources :information
 
+      resources :drugs do
+        resources :comments do
+          collection do
+            get 'get_more_comments'
+          end
+        end
+      end
+
       resources :person_customs
 
       resources :questions
