@@ -1,0 +1,58 @@
+@import "../variables";
+
+// insurance list
+.insurance-list-content {
+  margin-top: 96px;
+  margin-bottom: 60px;
+  .insurance-item:last-child {
+    border-bottom: 1px solid $light-gray;
+  }
+  .insurance-item {
+    height: 125px;
+    padding: 0 25px;
+    border-top: 1px solid $light-gray;
+    position: relative;
+    .insurance-avatar {
+      margin: 10px 0px;
+      height: 105px;
+      width: 105px;
+    }
+    .insurance-info {
+      position: absolute;
+      top: 10px;
+      left: 142px;
+      width: 60%;
+    }
+    .title {
+      font-size: 15px;
+      color: #474747;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 100%;
+    }
+    .charateristic {
+      color: $purple;
+    }
+    .price {
+      color: $purple;
+      font-size: 18px;
+    }
+    .sales-volume {
+      float: right;
+      margin-top: -20px;
+    }
+    .expiry-date {
+      span {
+        border: 1px solid $purple;
+        color: $purple;
+        padding: 0px 2px;
+      }
+    }
+    p {
+      margin: 0px;
+      color: $gray;
+      font-size: 12px;
+    }
+  }
+}

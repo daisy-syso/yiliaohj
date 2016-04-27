@@ -1,22 +1,36 @@
+<div class="app-header">
+  <nav class="navbar navbar-default custom-header">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="/">
+          <%= image_tag "users/title_icon_back_normal.png" %>
+        </a>
+        <a href="#" >疾病保险</a>
+      </div>
+    </div>
+  </nav>
+</div>
+
 <%= render "filter" %>
 
-<% @insurances.each do |insurance| %>
-  <a href="<%= frontend_insurance_path(insurance) %>" class="item-body">
-  <img src="<%= fixed_image_url(insurance) %>" alt="" width="100px"/>
-  <%= insurance.name %>
-  <br>
-  保险期限：<%= insurance.expiry_date %>
-  <br />
-  年龄：<%= insurance.age %>
-  <br />
-  <%= insurance.charateristic %>
-  <br />
-  ￥<%= insurance.price %>
-  累计销量：0
-  <br />
-  </a>
-  <hr >
-<% end %>
+<div class="insurance-list-content">
+  <ul class="list-unstyled insurance-list">
+    <% @insurances.each do |insurance| %>
+      <li class="insurance-item">
+        <a href="<%= frontend_insurance_path(insurance) %>">
+          <img src="<%= fixed_image_url(insurance) %>" class="insurance-avatar" alt=""/>
+          <div class="insurance-info">
+            <div class="title"><%= insurance.name %></div>
+            <p class="expiry-date">保险期限：<span><%= insurance.expiry_date %></span></p>
+            <p>年龄：<%= insurance.age %></p>
+            <p class="charateristic"><%= insurance.charateristic %></p>
+            <p class="price">￥<%= insurance.price %></p>
 
-<%= paginate @insurances %>
-<br /><br /><br /><br /><br />
+            <p class="sales-volume">累计销量：0</p>
+          </div>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+  <%= paginate @insurances %>
+</div>
