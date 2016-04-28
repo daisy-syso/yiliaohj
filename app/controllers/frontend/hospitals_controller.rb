@@ -1,13 +1,16 @@
 module Frontend
   class HospitalsController < FrontendController
     def index
-      @hospital_categories = HospitalCategory.where(parent_id: nil).includes(:children)
+      # @hospital_categories = HospitalCategory.where(parent_id: nil).includes(:children)
       @proviences = Provience.includes(:cities)
-
+      @hospital_levels = %w(三级特等 三级甲等 三级乙等 三级合格 二级甲等 二级乙等 二级合格 一级甲等 一级乙等 一级合格 社区医院 民营医院 外资医院)
       query = {}
 
       # 分类
       query[:categories] = params[:category_name] if params[:category_name]
+
+      # 等级
+      query[:level] = params[:category_level] if params[:category_level]
 
       # 城市
       city = params[:city] || $redis_position.get("#{request.remote_ip}_city") || '上海市'

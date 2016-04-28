@@ -53,17 +53,10 @@
 
   <ul class="list-unstyled detail-panel general-hospital">
     <li class="hospital-type"><a href="javascript:;">全部医院</a></li>
-    <% @hospital_categories.each do |hospital_category| %>
-    <li class="hospital-type"><%= hospital_category.name %></li>
-      <ul class="hospital-categories">
-        <% hospital_category.children.each do |category| %>
-          <li>
-            <a href="/hospitals?category_name=<%= category.name %>">
-              <%= category.name %>
-            </a>
-          </li>
-        <% end %>
-        </ul>
+    <% @hospital_levels.each do |hospital_level| %>
+      <a href="/hospitals?category_level=<%= hospital_level %>">
+        <li class="hospital-type"><%= hospital_level %></li>
+      </a>
     <% end %>
   </ul>
 
