@@ -1,60 +1,94 @@
-<img src="<%= fixed_image_url(@drug) %>" class="drug-store-avatar" alt=""/><br />
-<%= @drug.name %>
-<%= @drug.price %>
-<hr>
-品牌：<%= @drug.name %>
-厂家：<%= @drug.manufactory_name %>
-批准文号：<%= @drug.code %>
-规格：<%= @drug.spec %>
-<hr >
+<div class="app-header">
+  <nav class="navbar navbar-default custom-header">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="/">
+          <%= image_tag "users/title_icon_back_normal.png" %>
+        </a>
+        <a href="#" ><%= @drug.name %></a>
+      </div>
+    </div>
+  </nav>
+</div>
 
-<div class="drug-store-comments page-comments">
-  <p class="comments-header">
-    <span>
-      <% @drug.star.times do |s| %>
-        <%= image_tag "static_pages/icon_star_selected.png", class: "star" %>
-      <% end %>
-      <%= @drug.star %>分
-    </span>
-    <span class="pull-right"><%= @drug.comments.size%>人已经点评</span>
-  </p>
-  <% if @comment %>
-    <ul class="comment-list list-unstyled">
-      <li class="comment-item">
-        <div class="user-info">
-          <div class="comment-user-name"><%= @comment.user.try(:nickname) %></div>
-          <div class="comment-time"><%= @comment.created_at.strftime("%F") %></div>
-        </div>
-        <div class="comment-rate pull-right">
-          <% @comment.rating.times do |s| %>
-            <%= image_tag "static_pages/icon_star_selected.png", class: "star" %>
-          <% end %>
-        </div>
-        <div class="comment-content"><%= @comment.content %></div>
-      </li>
-    </ul>
-  <% end %>
-  <div class="check-all-comments">
-    <a href="<%= frontend_drug_comments_path(@drug) %>">查看全部评价</a>
+<div class="drug-detail page-detail">
+  <div class="drug-info page-info">
+    <div class="drug-cover page-cover">
+      <img src="<%= fixed_image_url(@drug) %>" >
+    </div>
+    <p class="insurance-name page-name"><%= @drug.name %></p>
+    </p>
+    <%= @drug.price %>
+    <p>品牌：<%= @drug.name %></p>
+    <p>厂家：<%= @drug.manufactory_name %></p>
+    <p>批准文号：<%= @drug.code %></p>
+    <p>规格：<%= @drug.spec %></p>
   </div>
+
+
+  <div class="drug-comments page-comments">
+    <p class="comments-header">
+      <span>
+        <% @drug.star.times do |s| %>
+          <%= image_tag "static_pages/icon_star_selected.png", class: "star" %>
+        <% end %>
+        <%= @drug.star %>分
+      </span>
+      <span class="pull-right"><%= @drug.comments.size%>人已经点评</span>
+    </p>
+    <% if @comment %>
+      <ul class="comment-list list-unstyled">
+        <li class="comment-item">
+          <div class="user-info">
+            <div class="comment-user-name"><%= @comment.user.try(:nickname) %></div>
+            <div class="comment-time"><%= @comment.created_at.strftime("%F") %></div>
+          </div>
+          <div class="comment-rate pull-right">
+            <% @comment.rating.times do |s| %>
+              <%= image_tag "static_pages/icon_star_selected.png", class: "star" %>
+            <% end %>
+          </div>
+          <div class="comment-content"><%= @comment.content %></div>
+        </li>
+      </ul>
+    <% end %>
+    <div class="check-all-comments">
+      <a href="<%= frontend_drug_comments_path(@drug) %>">查看全部评价</a>
+    </div>
+  </div>
+
+  <div class="comment-edit">
+    <a href="<%= new_frontend_drug_comment_path(@drug) %>">我要评价</a>
+  </div>
+
+  <dl class="drug-details-list list-unstyled slider">
+    <% @drug.drug_details.each do |detail| %>
+      <dt class="detail-title">
+        <%= detail.title %>
+      </dt>
+      <dd class="detail-describe">
+        <p><%= detail.detail %></p>
+      </dd>
+    <% end %>
+  </dl>
+  <a class="btn full-button">提醒吃药</a>
 </div>
 
-<div class="comment-edit">
-  <a href="<%= new_frontend_drug_comment_path(@drug) %>">我要评价</a>
-</div>
+<script>
+  $(function(){
+    //初始化变量
+    var flag = 0;
+    var $dt = $('.slider dt');
+    var $dd = $('.slider dd');
+    //单击事件
+    $dt.click(function(){
+      if($dt.index(this) == flag) return false;
+      flag = $dt.index(this);
+      $dd.not($dd.eq(flag)).slideUp();
+      $dd.eq(flag).slideDown();
+      $dt.eq(flag).css('cursor','default').addClass('slider_open');
+      $dt.not($dt.eq(flag)).css('cursor','pointer').removeClass('slider_open');
+    });
+  });
+</script>
 
-
-<hr>
-<% @drug.drug_details.each do |detail| %>
-  <%= detail.title %>
-  <br>
-  <%= detail.detail %>
-  <hr>
-<% end %>
-<hr>
-<a>提醒吃药</a>
-<br>
-<br>
-<br>
-<br>
-<br>

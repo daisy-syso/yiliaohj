@@ -38,17 +38,18 @@ html, body {
   }
 }
 
+.full-button {
+  width: 100%;
+  background-color: $purple;
+  font-size: 15px;
+  color: $white;
+  height: 50px;
+  margin-top: 50px;
+  line-height: 2;
+}
+
 .content {
   margin: 100px 25px 0px 25px;
-  .full-button {
-    width: 100%;
-    background-color: $purple;
-    font-size: 15px;
-    color: $white;
-    height: 50px;
-    margin-top: 50px;
-    line-height: 2;
-  }
   .no-border-input {
     width: 100%;
     border: none;
