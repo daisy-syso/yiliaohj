@@ -5,7 +5,7 @@ class Department
 
   has_many :doctors
   has_many :diseases
-  has_many :buffets
+  has_many :group_buyings
   has_and_belongs_to_many :hospitals
   belongs_to :parent, class_name: 'Department', inverse_of: :children, index: true
   has_many :children, class_name: 'Department', inverse_of: :parent
