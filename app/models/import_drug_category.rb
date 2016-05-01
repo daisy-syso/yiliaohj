@@ -1,0 +1,10 @@
+# 进口药分类
+class ImportDrugCategory
+  include Mongoid::Document
+  include Mongoid::Timestamps
+
+  has_many :import_drugs
+
+  belongs_to :parent, class_name: 'ImportDrugCategory', inverse_of: :children, index: true
+  has_many :children, class_name: 'ImportDrugCategory', inverse_of: :parent
+end
