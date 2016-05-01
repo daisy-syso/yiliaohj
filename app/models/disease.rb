@@ -21,6 +21,8 @@ class Disease
   field :image_url, type: String
   field :description, type: String
   field :drug_names, type: Array, default: -> { [] }
+  field :hospital_ids, type: Array, default: -> { [] }
+  field :information_ids, type: Array, default: -> { [] }
 
   def doctors
     Doctor.in(id: doctor_diseases.pluck(:doctor_id))
