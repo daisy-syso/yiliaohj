@@ -106,6 +106,8 @@ Rails.application.routes.draw do
 
       resources :subscriptions
 
+      resources :group_buyings
+
       resources :information
 
       resources :drugs do
