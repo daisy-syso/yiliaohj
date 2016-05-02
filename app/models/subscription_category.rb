@@ -1,5 +1,5 @@
-# Information 分类
-class InformationCategory
+# 订阅分类
+class SubscriptionCategory
   include Mongoid::Document
   include Mongoid::Timestamps
 
@@ -8,5 +8,6 @@ class InformationCategory
 
   field :name, type: String
 
+  has_and_belongs_to_many :subscriptions
   has_many :information
 end

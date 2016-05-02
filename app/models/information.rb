@@ -12,4 +12,5 @@ class Information
   field :click_count, type: Integer, default: 0
 
   belongs_to :information_category
+  belongs_to :subscription_category
 end
