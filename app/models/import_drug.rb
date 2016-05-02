@@ -1,4 +1,4 @@
-# 进口药
+# 进口保健品
 class ImportDrug
   include Mongoid::Document
   include Mongoid::Timestamps

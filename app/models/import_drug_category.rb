@@ -1,4 +1,4 @@
-# 进口药分类
+# 进口保健品分类
 class ImportDrugCategory
   include Mongoid::Document
   include Mongoid::Timestamps
