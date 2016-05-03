@@ -1,0 +1,38 @@
+<div class="app-header">
+  <nav class="navbar navbar-default custom-header">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="/">
+          <%= image_tag "users/title_icon_back_normal.png" %>
+        </a>
+        <a href="#" >药品团购</a>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<div class="drug-list-content">
+  <ul class="list-unstyled drug-list">
+    <% @drugs.each do |drug| %>
+      <li class="drug-item">
+        <a href="<%= frontend_drug_path(drug) %>">
+          <img src="<%= fixed_image_url(drug) %>" class="drug-avatar" alt=""/>
+          <div class="drug-info">
+            <div class="title">
+              <span class="drug-name"><%= drug.name %></span>
+            </div>
+            <p class="drug-spec">
+              规格：<%= drug.spec %>
+            </p>
+            <p class="drug-code">
+              批号：<span><%= drug.code %></span>
+            </p>
+            <p class="drug-factory">厂家：<%= drug.manufactory_name %></p>
+            <p class="drug-price">￥<%= drug.price %></p>
+          </div>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+  <%= paginate @drugs %>
+</div>
