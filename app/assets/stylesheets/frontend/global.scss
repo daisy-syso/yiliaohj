@@ -1,0 +1,78 @@
+@import "../variables";
+
+html, body {
+  height: 100% !important;
+}
+
+// common css
+.app-header {
+  .custom-header{
+    background: $purple;
+    margin-bottom: 0px;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    z-index: 9999;
+    height: 56px;
+  }
+  .container-fluid,
+  .navbar-header {
+    height: 100%;
+  }
+  a {
+    vertical-align: text-top;
+    color: $white ;
+    height: 50px;
+    img {
+      height: 50px;
+    }
+  }
+  .page-title {
+    width: 85%;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    overflow: hidden;
+    white-space: nowrap;
+    display: inline-block;
+  }
+}
+
+.full-button {
+  width: 100%;
+  background-color: $purple;
+  font-size: 15px;
+  color: $white;
+  height: 50px;
+  margin-top: 50px;
+  line-height: 2;
+}
+
+.content {
+  margin: 100px 25px 0px 25px;
+  .no-border-input {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #cccccc;
+    height: 50px;
+    box-shadow: none;
+  }
+}
+
+.spinner {
+  display: none;
+  margin-left: 46%;
+  margin-top: 30px;
+  height: 28px;
+  width: 28px;
+  animation: rotate 0.8s infinite linear;
+  border: 3px solid #B1B1B1;
+  border-right-color: transparent;
+  border-radius: 50%;
+}
+
+@keyframes rotate {
+  0%    { transform: rotate(0deg); }
+  100%  { transform: rotate(360deg); }
+}
+

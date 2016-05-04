@@ -44,21 +44,29 @@
       </li>
     <% end %>
   </ul>
+  <div class="spinner"></div>
   <%#= paginate @hospitals %>
 </div>
 <script type="text/javascript">
   var page = 2;
   var stop = false;
   $(window).scroll(function () {
-    if($(document).height() <= ($(window).scrollTop() + $(window).height()) + 20) {
+    if($(document).height() <= ($(window).scrollTop() + $(window).height()) + 60) {
       if(stop == false){
         stop = true;
-        url = "/hospitals?page=" + page;
+        $(".spinner").show();
+        var search = window.location.search;
+        if(search){
+          url = "/hospitals" + search + "&page=" + page;
+        } else {
+          url = "/hospitals?page=" + page;
+        }
         $.get(url, function(data){
           $html = $(data).find(".hospital-list").html();
           $(".hospital-list").append($html);
           page = page + 1;
           stop =false;
+          $(".spinner").hide();
         });
       }
     }

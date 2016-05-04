@@ -4,61 +4,6 @@ html, body {
   height: 100% !important;
 }
 
-// common css
-.app-header {
-  .custom-header{
-    background: $purple;
-    margin-bottom: 0px;
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    z-index: 9999;
-    height: 56px;
-  }
-  .container-fluid,
-  .navbar-header {
-    height: 100%;
-  }
-  a {
-    vertical-align: text-top;
-    color: $white ;
-    height: 50px;
-    img {
-      height: 50px;
-    }
-  }
-  .page-title {
-    width: 85%;
-    text-overflow: ellipsis;
-    word-wrap: break-word;
-    overflow: hidden;
-    white-space: nowrap;
-    display: inline-block;
-  }
-}
-
-.full-button {
-  width: 100%;
-  background-color: $purple;
-  font-size: 15px;
-  color: $white;
-  height: 50px;
-  margin-top: 50px;
-  line-height: 2;
-}
-
-.content {
-  margin: 100px 25px 0px 25px;
-  .no-border-input {
-    width: 100%;
-    border: none;
-    border-bottom: 1px solid #cccccc;
-    height: 50px;
-    box-shadow: none;
-  }
-}
-
 // register with email page
 .register-content {
   .register-with-email-form {
