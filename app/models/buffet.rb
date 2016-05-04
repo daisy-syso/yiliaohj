@@ -5,6 +5,7 @@ class Buffet
 
   belongs_to :group_buying
   belongs_to :hospital
+  belongs_to :hospital_category
 
   mount_uploader :image_url, PictureUploader
 
@@ -15,6 +16,8 @@ class Buffet
   field :description, type: String
   field :click_count, type: Integer
   field :star, type: Integer
+
+  field :group_buying_name, type: String
 
   index name: 1
   index click_count: 1

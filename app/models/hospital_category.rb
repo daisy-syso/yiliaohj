@@ -9,4 +9,5 @@ class HospitalCategory
   has_many :children, class_name: 'HospitalCategory', inverse_of: :parent
 
   # has_many :hospitals
+  has_many :buffets
 end

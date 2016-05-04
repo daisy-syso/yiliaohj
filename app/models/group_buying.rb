@@ -3,7 +3,7 @@ class GroupBuying
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  belongs_to :department
+  belongs_to :hospital_category
   has_many :buffets
 
   field :name, type: String
