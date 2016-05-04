@@ -83,7 +83,7 @@
         <div class="carousel-inner" role="listbox">
           <% @import_drugs.each_with_index do |drug, index| %>
             <div class="item <%= index == 0 ? "active" : "" %>">
-              <%= image_tag drug.image_url %>
+              <%= image_tag fixed_image_url(drug) %>
             </div>
           <% end %>
         </div>

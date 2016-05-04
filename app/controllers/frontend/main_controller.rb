@@ -6,11 +6,11 @@ module Frontend
       @categories = Category.all.asc(:order)
       @categories = [@categories.limit(8), @categories.offset(8).limit(8), @categories.offset(16).limit(8)]
 
-      @advertisements = Advertisement.all
+      @advertisements = Advertisement.desc(:created_at).limit(3)
 
-      @health_information = HealthInformation.all
+      @health_information = HealthInformation.desc(:created_at).limit(3)
 
-      @import_drugs = ImportDrug.all
+      @import_drugs = ImportDrug.desc(:created_at).limit(3)
 
       @hot_actions = HotAction.all.desc(:created_at).limit(6)
 

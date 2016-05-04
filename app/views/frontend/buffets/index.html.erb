@@ -1,0 +1,27 @@
+<div class="app-header">
+  <nav class="navbar navbar-default custom-header">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="/">
+          <%= image_tag "users/title_icon_back_normal.png" %>
+        </a>
+        <a href="#" >精准男科</a>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<%= render "filter" %>
+
+<div class="drug-list-content">
+  <ul class="list-unstyled drug-list">
+    <% @buffets.each do |buffet| %>
+      <li class="drug-item">
+        <a href="<%= frontend_buffet_path(buffet) %>">
+          <img src="<%= fixed_image_url(buffet) %>" class="drug-avatar" alt=""/>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+  <%= paginate @buffets %>
+</div>

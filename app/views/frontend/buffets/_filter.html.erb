@@ -1,0 +1,109 @@
+<div class="filter">
+  <ul class="list-unstyled filter-type">
+    <li class="type-item hospital-filter" data-panel="general-hospital">
+      <a href="javascript:;">
+        综合医院
+      <%= image_tag "static_pages/filter_icon_down.png", class: "filter-icon-down" %>
+      <%= image_tag "static_pages/filter_icon_up.png", class: "filter-icon-up" %>
+      </a>
+    </li>
+    <li class="type-item intelligent-filter" data-panel="general-city">
+      <a href="javascript:;">
+        全城
+        <%= image_tag "static_pages/filter_icon_down.png", class: "filter-icon-down" %>
+        <%= image_tag "static_pages/filter_icon_up.png", class: "filter-icon-up" %>
+      </a>
+    </li>
+    <li class="type-item intelligent-filter" data-panel="intelligent-order">
+      <a href="javascript:;">
+        智能排序
+        <%= image_tag "static_pages/filter_icon_down.png", class: "filter-icon-down" %>
+        <%= image_tag "static_pages/filter_icon_up.png", class: "filter-icon-up" %>
+      </a>
+    </li>
+    <li class="type-item filtration" data-panel="others-conditions">
+      <a href="javascript:;">
+        筛选
+        <%= image_tag "static_pages/filter_icon_down.png", class: "filter-icon-down" %>
+        <%= image_tag "static_pages/filter_icon_up.png", class: "filter-icon-up" %>
+      </a>
+    </li>
+  </ul>
+  <ul class="list-unstyled detail-panel general-city">
+  </ul>
+
+  <ul class="list-unstyled detail-panel intelligent-order">
+    <li><a href="/hospitals?sort_type=neighbour">离我最近</a></li>
+    <li><a href="/hospitals?sort_type=new">最新发布</a></li>
+    <li><a href="/hospitals?sort_type=click_count">人气最高</a></li>
+    <li><a href="/hospitals?sort_type=star">评价最高</a></li>
+  </ul>
+
+  <ul class="list-unstyled detail-panel general-hospital">
+    <li class="hospital-type"><a href="javascript:;">全部医院</a></li>
+  </ul>
+
+  <ul class="list-unstyled detail-panel others-conditions">
+    <li>
+      手机挂号
+      <%= image_tag "static_pages/filter_slider_normal.png", class: "toggle uncheck" %>
+      <%= image_tag "static_pages/filter_slider_pressed.png", class: "toggle check" %>
+    </li>
+    <li>
+      <p>当前主题精选</p>
+      <ul class="list-unstyled subject-list">
+        <li><button class="btn btn-default">不限</button> </li>
+        <li><button class="btn btn-default">医保定点医院</button></li>
+        <li><button class="btn btn-default">网上挂号/咨询</button></li>
+        <li><button class="btn btn-default">手机挂号/咨询</button></li>
+        <li><button class="btn btn-default">电话预约/咨询</button></li>
+      </ul>
+    </li>
+    <li>
+      <div>
+        <span class="reset">重置</span>
+        <span class="done">完成</span>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<script>
+  $(function() {
+    $(".filter-type li").on("click", function(event){
+      if($(this).hasClass("active")){
+        $(this).removeClass("active");
+        $("." + $(this).data("panel")).hide();
+      } else {
+        $(".type-item").removeClass("active");
+        $(".detail-panel").hide();
+        $(this).addClass("active");
+        $("." + $(this).data("panel")).show();
+      }
+    });
+    $(".hospital-type").on("click", function(event){
+      $(".hospital-type").removeClass("active");
+      $(".hospital-categories").hide();
+      $(this).addClass("active");
+      $(this).next("ul").show();
+    });
+
+    $(".city-type").on("click", function(event){
+      $(".city-type").removeClass("active");
+      $(".city-categories").hide();
+      $(this).addClass("active");
+      $(this).next("ul").show();
+    });
+    $(".others-conditions .toggle").click(function(){
+      $(this).hide();
+      $(this).siblings().show();
+    });
+    $(".subject-list li").on("click",function(event){
+      if($(this).hasClass("active")){
+        $(this).removeClass("active");
+      } else {
+        $(this).addClass("active");
+      }
+    });
+  });
+</script>
