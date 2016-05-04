@@ -52,5 +52,32 @@
       </li>
     <% end %>
   </ul>
-  <%= paginate @nursing_rooms %>
+  <div class="spinner"></div>
+  <%#= paginate @nursing_rooms %>
 </div>
+
+<script type="text/javascript">
+  var page = 2;
+  var stop = false;
+  $(window).scroll(function () {
+    if($(document).height() <= ($(window).scrollTop() + $(window).height()) + 60) {
+      if(stop == false){
+        stop = true;
+        $(".spinner").show();
+        var search = window.location.search;
+        if(search){
+          url = "/nursing_rooms" + search + "&page=" + page;
+        } else {
+          url = "/nursing_rooms?page=" + page;
+        }
+        $.get(url, function(data){
+          $html = $(data).find(".nursing-room-list").html();
+          $(".nursing-room-list").append($html);
+          page = page + 1;
+          stop =false;
+          $(".spinner").hide();
+        });
+      }
+    }
+  });
+</script>

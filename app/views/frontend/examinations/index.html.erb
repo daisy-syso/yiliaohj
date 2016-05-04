@@ -38,6 +38,32 @@
       </li>
     <% end %>
   </ul>
-  <%= paginate @examinations %>
+  <div class="spinner"></div>
+  <%#= paginate @examinations %>
 </div>
 
+<script type="text/javascript">
+  var page = 2;
+  var stop = false;
+  $(window).scroll(function () {
+    if($(document).height() <= ($(window).scrollTop() + $(window).height()) + 60) {
+      if(stop == false){
+        stop = true;
+        $(".spinner").show();
+        var search = window.location.search;
+        if(search){
+          url = "/examinations" + search + "&page=" + page;
+        } else {
+          url = "/examinations?page=" + page;
+        }
+        $.get(url, function(data){
+          $html = $(data).find(".examination-list").html();
+          $(".examination-list").append($html);
+          page = page + 1;
+          stop =false;
+          $(".spinner").hide();
+        });
+      }
+    }
+  });
+</script>

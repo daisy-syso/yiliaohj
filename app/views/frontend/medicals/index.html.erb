@@ -37,5 +37,32 @@
       </li>
     <% end %>
   </ul>
-  <%= paginate @medicals %>
+  <div class="spinner"></div>
+  <%#= paginate @medicals %>
 </div>
+
+<script type="text/javascript">
+  var page = 2;
+  var stop = false;
+  $(window).scroll(function () {
+    if($(document).height() <= ($(window).scrollTop() + $(window).height()) + 60) {
+      if(stop == false){
+        stop = true;
+        $(".spinner").show();
+        var search = window.location.search;
+        if(search){
+          url = "/medicals" + search + "&page=" + page;
+        } else {
+          url = "/medicals?page=" + page;
+        }
+        $.get(url, function(data){
+          $html = $(data).find(".medical-list").html();
+          $(".medical-list").append($html);
+          page = page + 1;
+          stop =false;
+          $(".spinner").hide();
+        });
+      }
+    }
+  });
+</script>

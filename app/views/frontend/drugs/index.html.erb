@@ -34,5 +34,32 @@
       </li>
     <% end %>
   </ul>
-  <%= paginate @drugs %>
+  <div class="spinner"></div>
+  <%#= paginate @drugs %>
 </div>
+
+<script type="text/javascript">
+  var page = 2;
+  var stop = false;
+  $(window).scroll(function () {
+    if($(document).height() <= ($(window).scrollTop() + $(window).height()) + 60) {
+      if(stop == false){
+        stop = true;
+        $(".spinner").show();
+        var search = window.location.search;
+        if(search){
+          url = "/drugs" + search + "&page=" + page;
+        } else {
+          url = "/drugs?page=" + page;
+        }
+        $.get(url, function(data){
+          $html = $(data).find(".drug-list").html();
+          $(".drug-list").append($html);
+          page = page + 1;
+          stop =false;
+          $(".spinner").hide();
+        });
+      }
+    }
+  });
+</script>
