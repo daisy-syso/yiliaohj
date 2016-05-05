@@ -104,7 +104,13 @@ Rails.application.routes.draw do
 
       resources :categories
 
-      resources :buffets
+      resources :buffets do
+        resources :comments do
+          collection do
+            get 'get_more_comments'
+          end
+        end
+      end
 
       resources :subscriptions
 
