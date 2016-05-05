@@ -21,6 +21,24 @@
           <img src="<%= fixed_image_url(buffet) %>" class="drug-avatar" alt=""/>
         </a>
       </li>
+      <li class="confinement-center-item">
+        <a href="<%= frontend_buffet_path(buffet) %>">
+          <img src="<%= fixed_image_url(buffet) %>" class="confinement-center-avatar" alt=""/>
+          <div class="confinement-center-info">
+            <div class="title"><%= buffet.name %></div>
+            <p class="grade">
+              <% buffet.star.times do |s| %>
+                <%= image_tag "static_pages/icon_star_selected.png", class: "start" %>
+              <% end %>
+              <%= buffet.star %>分
+            </p>
+            <div class="statistics">
+              <p><%= buffet.comments.count %> 人评价</p>
+              <p><%= buffet.commodities.count %> 人购买</p>
+            </div>
+          </div>
+        </a>
+      </li>
     <% end %>
   </ul>
   <%= paginate @buffets %>

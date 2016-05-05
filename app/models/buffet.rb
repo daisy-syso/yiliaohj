@@ -7,6 +7,9 @@ class Buffet
   belongs_to :hospital
   belongs_to :hospital_category
 
+  has_many :comments, as: :commentable
+  has_many :commodities, as: :commoditiable
+
   mount_uploader :image_url, PictureUploader
 
   field :image_url, type: String

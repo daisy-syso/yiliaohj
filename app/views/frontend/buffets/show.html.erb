@@ -1,0 +1,111 @@
+<div class="app-header">
+  <nav class="navbar navbar-default custom-header">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="/buffets">
+          <%= image_tag "users/title_icon_back_normal.png" %>
+        </a>
+        <a href="#"><%= @buffet.name %></a>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<div class="confinement-center-detail page-detail">
+  <%= @buffet.price %> <a href="javascript:;">立即购买</a><hr>
+  <div class="confinement-center-info page-info">
+    <div class="confinement-center-cover page-cover">
+      <img src="<%= fixed_image_url(@buffet) %>">
+    </div>
+    <p class="confinement-center-name page-name"><%= @buffet.name %></p>
+    </p>
+  </div>
+
+  <div class="confinement-center-comments page-comments">
+    <p class="comments-header">
+      <span>
+        <% @buffet.star.times do |s| %>
+          <%= image_tag "static_pages/icon_star_selected.png", class: "star" %>
+        <% end %>
+        <%= @buffet.star %>分
+      </span>
+      <span class="pull-right"><%= @buffet.comments.size%>人已经点评</span>
+    </p>
+    <% if @comment %>
+      <ul class="comment-list list-unstyled">
+        <li class="comment-item">
+          <div class="user-info">
+            <div class="comment-user-name"><%= @comment.user.try(:nickname) %></div>
+            <div class="comment-time"><%= @comment.created_at.strftime("%F") %></div>
+          </div>
+          <div class="comment-rate pull-right">
+            <% @comment.rating.times do |s| %>
+              <%= image_tag "static_pages/icon_star_selected.png", class: "star" %>
+            <% end %>
+          </div>
+          <div class="comment-content"><%= @comment.content %></div>
+        </li>
+      </ul>
+    <% end %>
+    <div class="check-all-comments">
+      <a href="<%= frontend_buffet_comments_path(@buffet) %>">查看全部评价</a>
+    </div>
+  </div>
+
+  <div class="comment-edit">
+    <a href="<%= new_frontend_buffet_comment_path(@buffet) %>">我要评价</a>
+  </div>
+
+  <div class="join-and-correction">
+    <a href="#">商家加盟以及报错更正</a>
+  </div>
+
+  <div class="confinement-center-connect page-connect">
+    <h3>商家位置</h3>
+    <div class="position-detail">
+      <h5><%= @buffet.hospital.name %></h5>
+      <p>联系电话<%= @buffet.hospital.telephone %></p>
+      <p>地址：<%= @buffet.hospital.address %>
+        <a class="pull-right" href="<%= frontend_maps_path(location: @buffet.hospital.location) %>">到这去</a>
+      </p>
+      <div class="map">
+        <div id="container2"></div>
+      </div>
+      <div class="operating-button">
+        <% if @buffet.hospital.telephone.present? %>
+          <a href="tel:<%= @buffet.hospital.telephone %>15201991025">拨打电话</a>
+          <a href="#">查询/挂号</a>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  var lng1 = parseFloat("<%= @buffet.hospital.location.split(',')[1] %>");
+  var lat1 = parseFloat("<%= @buffet.hospital.location.split(',')[0] %>");
+  console.log("lng1= "+lng1);
+  console.log("lat1= "+lat1);
+  var map = new AMap.Map('container2', {
+      resizeEnable: true,
+      zoom:14,
+      center: [lng1, lat1],
+      isHotspot: true
+  });
+
+  // 标记
+  var marker = new AMap.Marker({
+    position: map.getCenter()
+  });
+  marker.setMap(map);
+
+</script>
+
+<style type="text/css">
+  #container2 {
+    width: 100%;
+    margin-top: 60px;
+    height: 350px;
+    bottom: 50px;
+  }
+</style>
