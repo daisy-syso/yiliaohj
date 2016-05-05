@@ -13,25 +13,21 @@
 
 <%= render "filter" %>
 
-<div class="drug-list-content">
-  <ul class="list-unstyled drug-list">
+<div class="buffet-list-content">
+  <ul class="list-unstyled buffet-list">
     <% @buffets.each do |buffet| %>
-      <li class="drug-item">
-        <a href="<%= frontend_buffet_path(buffet) %>">
-          <img src="<%= fixed_image_url(buffet) %>" class="drug-avatar" alt=""/>
-        </a>
-      </li>
-      <li class="confinement-center-item">
-        <a href="<%= frontend_buffet_path(buffet) %>">
-          <img src="<%= fixed_image_url(buffet) %>" class="confinement-center-avatar" alt=""/>
-          <div class="confinement-center-info">
+      <li class="buffet-item">
+        <a href="<%= frontend_buffet_path(buffet) %>" class="item-body">
+          <img src="<%= fixed_image_url(buffet) %>" class="buffet-avatar" alt=""/>
+          <div class="buffet-info">
             <div class="title"><%= buffet.name %></div>
             <p class="grade">
               <% buffet.star.times do |s| %>
-                <%= image_tag "static_pages/icon_star_selected.png", class: "start" %>
+                <%= image_tag "static_pages/icon_star_selected.png", class: "star" %>
               <% end %>
               <%= buffet.star %>分
             </p>
+            <p class="price">￥<%= buffet.price %></p>
             <div class="statistics">
               <p><%= buffet.comments.count %> 人评价</p>
               <p><%= buffet.commodities.count %> 人购买</p>
@@ -41,5 +37,32 @@
       </li>
     <% end %>
   </ul>
-  <%= paginate @buffets %>
+  <div class="spinner"></div>
+  <%#= paginate @buffets %>
 </div>
+
+<script type="text/javascript">
+  var page = 2;
+  var stop = false;
+  $(window).scroll(function () {
+    if($(document).height() <= ($(window).scrollTop() + $(window).height()) + 60) {
+      if(stop == false){
+        stop = true;
+        $(".spinner").show();
+        var search = window.location.search;
+        if(search){
+          url = "/buffets" + search + "&page=" + page;
+        } else {
+          url = "/buffets?page=" + page;
+        }
+        $.get(url, function(data){
+          $html = $(data).find(".buffet-list").html();
+          $(".buffet-list").append($html);
+          page = page + 1;
+          stop =false;
+          $(".spinner").hide();
+        });
+      }
+    }
+  });
+</script>
