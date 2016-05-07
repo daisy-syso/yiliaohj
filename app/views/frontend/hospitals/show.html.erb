@@ -24,7 +24,15 @@
     </p>
     <p class="hospital-website">网址：<%= @hospital.url %></p>
   </div>
-
+  医生列表
+  <br />
+  <% @doctors.each_pair do |department, doctors|%>
+    <%= department.parent.name %>
+    <br />
+    <% doctors.each do |d| %>
+      <%= d[1] %>
+    <% end %>
+  <% end %>
   <div class="hospital-comments">
     <p class="comments-header">
       <span>
@@ -76,10 +84,8 @@
         <div id="container2"></div>
       </div>
       <div class="operating-button">
-        <% if @hospital.telephone.present? %>
-          <a href="tel:<%= @hospital.telephone %>15201991025">拨打电话</a>
-          <a href="#">查询/挂号</a>
-        <% end %>
+        <a href="tel:<%= @hospital.telephone %>">拨打电话</a>
+        <a href="#">查询/挂号</a>
       </div>
     </div>
   </div>

@@ -46,6 +46,16 @@ module Frontend
     def show
       @hospital = Hospital.find(params[:id])
 
+      # {key: [[],[]],key: [[],[]]}
+      @doctors = {}
+      @hospital.doctors.includes(:comments).includes(:department).each do |d|
+        if @doctors.keys.include? d.department
+          @doctors[d.department] << [d.id.to_s, d.name]
+        else
+          @doctors[d.department] = [[d.id.to_s, d.name]]
+        end
+      end
+
       @hospital.visit!
 
       @comment = @hospital.comments.desc(:created_at).first
