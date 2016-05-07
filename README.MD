@@ -43,3 +43,17 @@ rake diagram:all
 ```
 mongorestore --host 10.4.44.137 --db yiliao_production ./mongodb_yiliao_20160507/yiliao_production -u root -p yiliaohj_syso --authenticationDatabase yiliao_production
 ```
+
+mongo --host 10.4.44.137 -u "root" -p "yiliaohj_syso" --authenticationDatabase "yiliao_production"
+mongo --host 10.4.44.137 -u "guyifeng" -p "password" --authenticationDatabase "yiliao_production"
+
+mongorestore --host 10.4.44.137 --db yiliao_production ./mongodb_yiliao_20160506/yiliao_production -u guyifeng -p password
+
+
+db.createUser(
+  {
+    user: "guyifeng",
+    pwd: "password",
+    roles: [ { role: "readWrite", db: "yiliao_production" } ]
+  }
+)
