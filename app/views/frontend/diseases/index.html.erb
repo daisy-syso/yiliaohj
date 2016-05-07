@@ -32,8 +32,10 @@
               <p>医院</p>
             </li>
             <li>
-              <%= image_tag "frontend/disease/query_icon_drug_nor.png" %>
-              <p>药品</p>
+              <a href="/drugs?drug_names_disease_id=<%= disease.id.to_s %>">
+                <%= image_tag "frontend/disease/query_icon_drug_nor.png" %>
+                <p>药品</p>
+              </a>
             </li>
             <li>
               <%= image_tag "frontend/disease/query_icon_news_nor.png" %>
