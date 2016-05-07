@@ -38,3 +38,8 @@ rake diagram:all
 4-24
 疾病详情页面没有
 ```
+
+### 使用云 mongodb
+```
+mongorestore --host 10.4.44.137 --db yiliao_production ./mongodb_yiliao_20160507/yiliao_production -u root -p yiliaohj_syso --authenticationDatabase yiliao_production
+```

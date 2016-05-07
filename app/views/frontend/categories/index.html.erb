@@ -110,16 +110,17 @@
     <div class="wrapper drug-categories-wrapper">
       <ul class="drug-categories">
         <li class="list-unstyled classification-item">
-          <a href="#"></a>
         </li>
       </ul>
     </div>
 
     <div class="wrapper treatment-categories-wrapper">
       <ul class="treatment-categories">
-        <li class="list-unstyled classification-item">
-          <a href="#"></a>
-        </li>
+          <% @buffets.each do |buffet|%>
+            <li class="list-unstyled classification-item">
+              <p><a href="<%= buffet[:link] %>"><%= buffet[:name] %></a></p>
+            </li>
+          <% end %>
       </ul>
     </div>
 
