@@ -50,9 +50,9 @@ module Frontend
       @doctors = {}
       @hospital.doctors.includes(:comments).includes(:department).each do |d|
         if @doctors.keys.include? d.department
-          @doctors[d.department] << [d.id.to_s, d.name]
+          @doctors[d.department] << [d.id.to_s, d.name, d.position]
         else
-          @doctors[d.department] = [[d.id.to_s, d.name]]
+          @doctors[d.department] = [[d.id.to_s, d.name, d.position]]
         end
       end
 
