@@ -1,11 +1,13 @@
 <% hospital = Hospital.find(recommendation.recommendationable_id) %>
 <li class="guess-item">
-  <img src="<%= hospital.image_url %>" alt=""/>
+  <img src="<%= fixed_image_url(hospital) %>" alt=""/>
   <div class="content">
-    <div class="title"><%= hospital.name %></div>
-    <p class="grade">****** 5分</p>
-    <p class="distance">距离： <%= get_disance_by_poinit_point(hospital.location) %>千米</p>
-    <p class="peculiarity">特色科室： <%= hospital.characteristic_departments %></p>
-    <p class="tel">电话： <%= hospital.telephone %></p>
+    <a href="/hospitals/<%= hospital.id %>">
+      <div class="title"><%= hospital.name %></div>
+      <p class="grade">****** 5分</p>
+      <p class="distance">距离： <%= get_disance_by_poinit_point(hospital.location) %>千米</p>
+      <p class="peculiarity">特色科室： <%= hospital.characteristic_departments %></p>
+      <p class="tel">电话： <%= hospital.telephone %></p>
+    </a>
   </div>
 </li>

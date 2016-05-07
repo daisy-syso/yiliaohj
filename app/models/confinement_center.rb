@@ -8,6 +8,7 @@ class ConfinementCenter
   belongs_to :county, index: true
   has_many :comments, as: :commentable
   has_many :commodities, as: :commoditiable
+  # has_many :recommendations, as: :recommendationable
 
   mount_uploader :image_url, PictureUploader
 

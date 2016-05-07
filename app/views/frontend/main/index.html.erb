@@ -115,7 +115,9 @@
         <% when 'Hospital' %>
           <%= render partial: 'frontend/main/shared/hospital', locals: { recommendation: recommendation } %>
         <% when 'Doctor'%>
-          <%= render partial: 'frontend/main/shared/doctor' %>
+          <%= render partial: 'frontend/main/shared/doctor', locals: { recommendation: recommendation } %>
+        <% when 'ConfinementCenter'%>
+          <%= render partial: 'frontend/main/shared/confinement_center', locals: { recommendation: recommendation } %>
         <% when 'other' %>
         <% end %>
       <% end %>

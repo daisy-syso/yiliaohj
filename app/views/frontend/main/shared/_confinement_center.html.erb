@@ -1,0 +1,12 @@
+<% confinement_center = ConfinementCenter.find(recommendation.recommendationable_id) %>
+<li class="guess-item">
+  <img src="<%= fixed_image_url(confinement_center) %>" alt=""/>
+  <div class="content">
+    <a href="/confinement_centers/<%= confinement_center.id %>">
+      <div class="title"><%= confinement_center.name %></div>
+      <p class="grade">****** 5分</p>
+      <p class="distance">距离： <%= get_disance_by_poinit_point(confinement_center.location) %>千米</p>
+      <p class="tel">电话： <%= confinement_center.telephone %></p>
+    </a>
+  </div>
+</li>

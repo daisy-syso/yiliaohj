@@ -8,7 +8,7 @@ class Hospital
   belongs_to :county
   has_many :doctors
   has_many :comments, as: :commentable
-  has_many :recommendations, as: :recommendationable
+  # has_many :recommendations, as: :recommendationable
   has_and_belongs_to_many :departments
 
   mount_uploader :image_url, PictureUploader

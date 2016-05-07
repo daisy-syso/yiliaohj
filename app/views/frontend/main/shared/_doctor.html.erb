@@ -1,0 +1,9 @@
+<% doctor = Doctor.find(recommendation.recommendationable_id) %>
+<li class="guess-item">
+  <img src="<%= fixed_image_url(doctor) %>" alt=""/>
+  <div class="content">
+    <a href="/doctors/<%= doctor.id %>">
+      <div class="title"><%= doctor.name %></div>
+    </a>
+  </div>
+</li>
