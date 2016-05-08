@@ -16,7 +16,8 @@ production:
     default:
       database: yiliao_production
       hosts:
-        - 10.4.44.137:27017
+        # - 10.4.44.137:27017
+        - localhost:27017
       options:
         options:
         max_pool_size: 25
