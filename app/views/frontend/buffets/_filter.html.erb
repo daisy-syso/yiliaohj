@@ -2,11 +2,31 @@
   <ul class="list-unstyled filter-type">
     <li class="type-item hospital-filter" data-panel="general-hospital">
       <a href="javascript:;">
-        全部分类
+        精准<%= @hospital_category_parent_name %>
       <%= image_tag "static_pages/filter_icon_down.png", class: "filter-icon-down" %>
       <%= image_tag "static_pages/filter_icon_up.png", class: "filter-icon-up" %>
       </a>
     </li>
+    <li class="type-item intelligent-filter" data-panel="general-city">
+      <a href="javascript:;">
+        精选
+        <%= image_tag "static_pages/filter_icon_down.png", class: "filter-icon-down" %>
+        <%= image_tag "static_pages/filter_icon_up.png", class: "filter-icon-up" %>
+      </a>
+    </li>
+    <li class="type-item intelligent-filter" data-panel="intelligent-order">
+      <a href="javascript:;">
+        智能排序
+        <%= image_tag "static_pages/filter_icon_down.png", class: "filter-icon-down" %>
+        <%= image_tag "static_pages/filter_icon_up.png", class: "filter-icon-up" %>
+      </a>
+    </li>
+    <li class="type-item filtration" data-panel="others-conditions">
+      <a href="javascript:;">
+        筛选
+        <%= image_tag "static_pages/filter_icon_down.png", class: "filter-icon-down" %>
+        <%= image_tag "static_pages/filter_icon_up.png", class: "filter-icon-up" %>
+      </a>
   </ul>
 
   <ul class="list-unstyled detail-panel general-hospital">

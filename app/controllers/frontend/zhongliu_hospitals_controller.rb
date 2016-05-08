@@ -1,5 +1,5 @@
 module Frontend
-  class HospitalsController < FrontendController
+  class ZhongliuHospitalsController < FrontendController
     def index
       @hospital_categories = HospitalCategory.where(parent_id: nil).includes(:children)
       @proviences = Provience.includes(:cities)

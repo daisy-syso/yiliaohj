@@ -56,25 +56,27 @@
     <a href="<%= new_frontend_insurance_comment_path(@insurance) %>">我要评价</a>
   </div>
 
-  <div class="insurance-connect page-connect">
-    <h3>商家位置</h3>
-    <div class="position-detail">
-      <h5><%= @insurance.insurance_company.name %></h5>
-      <p>联系电话<%= @insurance.insurance_company.telephone %></p>
-      <p>地址：<%= @insurance.insurance_company.address %>
-        <a class="pull-right" href="<%= frontend_maps_path(location: @insurance.insurance_company.location) %>">到这去</a>
-      </p>
-      <div class="map">
-        <div id="container2"></div>
-      </div>
-      <div class="operating-button">
-        <% if @insurance.insurance_company.telephone.present? %>
-          <a href="tel:<%= @insurance.insurance_company.telephone %>15201991025">拨打电话</a>
-          <a href="#">查询/挂号</a>
-        <% end %>
+  <% if @insurance.insurance_company.present? %>
+    <div class="insurance-connect page-connect">
+      <h3>商家位置</h3>
+      <div class="position-detail">
+        <h5><%= @insurance.insurance_company.name %></h5>
+        <p>联系电话<%= @insurance.insurance_company.telephone %></p>
+        <p>地址：<%= @insurance.insurance_company.address %>
+          <a class="pull-right" href="<%= frontend_maps_path(location: @insurance.insurance_company.location) %>">到这去</a>
+        </p>
+        <div class="map">
+          <div id="container2"></div>
+        </div>
+        <div class="operating-button">
+          <% if @insurance.insurance_company.telephone.present? %>
+            <a href="tel:<%= @insurance.insurance_company.telephone %>15201991025">拨打电话</a>
+            <a href="#">查询/挂号</a>
+          <% end %>
+        </div>
       </div>
     </div>
-  </div>
+  <% end %>
 </div>
 
 <script type="text/javascript">

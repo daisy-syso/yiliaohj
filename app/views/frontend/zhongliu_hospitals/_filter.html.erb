@@ -2,7 +2,7 @@
   <ul class="list-unstyled filter-type">
     <li class="type-item hospital-filter" data-panel="general-hospital">
       <a href="javascript:;">
-        综合医院
+        肿瘤医院
       <%= image_tag "static_pages/filter_icon_down.png", class: "filter-icon-down" %>
       <%= image_tag "static_pages/filter_icon_up.png", class: "filter-icon-up" %>
       </a>
@@ -35,7 +35,7 @@
       <ul class="city-categories">
         <% provience.cities.each do |city| %>
           <li>
-            <a href="/hospitals?city=<%= city.name %>">
+            <a href="/zhongliu_hospitals?city=<%= city.name %>">
               <%= city.name %>
             </a>
           </li>
@@ -45,17 +45,17 @@
   </ul>
 
   <ul class="list-unstyled detail-panel intelligent-order">
-    <li><a href="/hospitals?sort_type=neighbour">离我最近</a></li>
-    <li><a href="/hospitals?sort_type=new">最新发布</a></li>
-    <li><a href="/hospitals?sort_type=click_count">人气最高</a></li>
-    <li><a href="/hospitals?sort_type=star">评价最高</a></li>
+    <li><a href="/zhongliu_hospitals?sort_type=neighbour">离我最近</a></li>
+    <li><a href="/zhongliu_hospitals?sort_type=new">最新发布</a></li>
+    <li><a href="/zhongliu_hospitals?sort_type=click_count">人气最高</a></li>
+    <li><a href="/zhongliu_hospitals?sort_type=star">评价最高</a></li>
   </ul>
 
   <!-- 医院等级 -->
   <ul class="list-unstyled detail-panel general-hospital">
     <li class="hospital-type"><a href="javascript:;">全部医院</a></li>
     <% @hospital_levels.each do |hospital_level| %>
-      <a href="/hospitals?category_level=<%= hospital_level %>">
+      <a href="/zhongliu_hospitals?category_level=<%= hospital_level %>">
         <li class="hospital-type"><%= hospital_level %></li>
       </a>
     <% end %>
@@ -69,7 +69,7 @@
       <ul class="hospital-categories">
         <% hospital_category.children.each do |category| %>
           <li>
-            <a href="/hospitals?category_name=<%= category.name %>">
+            <a href="/zhongliu_hospitals?category_name=<%= category.name %>">
               <%= category.name %>
             </a>
           </li>

@@ -20,11 +20,8 @@
     </p>
     <%= @drug.price %>
     <p>品牌：<%= @drug.name %></p>
-    <p>厂家：<%= @drug.manufactory_name %></p>
-    <p>批准文号：<%= @drug.code %></p>
     <p>规格：<%= @drug.spec %></p>
   </div>
-
 
   <div class="drug-comments page-comments">
     <p class="comments-header">
@@ -61,17 +58,6 @@
     <a href="<%= new_frontend_drug_comment_path(@drug) %>">我要评价</a>
   </div>
 
-  <dl class="drug-details-list list-unstyled slider">
-    <% @drug.drug_details.each do |detail| %>
-      <dt class="detail-title">
-        <%= detail.title %>
-      </dt>
-      <dd class="detail-describe">
-        <p><%= detail.detail %></p>
-      </dd>
-    <% end %>
-  </dl>
-  <a class="btn full-button">提醒吃药</a>
 </div>
 
 <script>

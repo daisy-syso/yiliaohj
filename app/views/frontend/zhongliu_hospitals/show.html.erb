@@ -1,0 +1,123 @@
+<div class="app-header">
+  <nav class="navbar navbar-default custom-header">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="/hospitals">
+          <%= image_tag "users/title_icon_back_normal.png" %>
+        </a>
+        <a href="#"><%= @hospital.name %></a>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<div class="hospital-detail">
+  <div class="hospital-info">
+    <div class="hospital-cover">
+      <img src="<%= fixed_image_url(@hospital) %>">
+    </div>
+    <p class="hospital-name"><%= @hospital.name %></p>
+    <p class="hospital-characteristic-departments">
+      特色科室：<%= @hospital.characteristic_departments %>
+    </p>
+    <p class="medical-type">医保：<%= @hospital.is_medical_insurance ? '医保定点' : '非医保定点' %>
+    </p>
+    <p class="hospital-website">网址：<%= @hospital.url %></p>
+  </div>
+  医生列表
+  <br />
+  <% @doctors.each_pair do |department, doctors|%>
+    <%= department.parent.name %>
+    <br />
+    <% doctors.each do |d| %>
+      <a href="/doctors/<%= d[0] %>">
+        <%= d[1] %><br/><%= d[2] %><br/>
+      </a>
+    <% end %>
+  <% end %>
+  <div class="hospital-comments">
+    <p class="comments-header">
+      <span>
+        <% @hospital.star.times do |s| %>
+          <%= image_tag "static_pages/icon_star_selected.png", class: "start" %>
+        <% end %>
+        <%= @hospital.star %>分
+      </span>
+      <span class="pull-right"><%= @hospital.comments.size%>人已经点评</span>
+    </p>
+    <% if @comment %>
+      <ul class="comment-list list-unstyled">
+        <li class="comment-item">
+          <div class="user-info">
+            <div class="comment-user-name"><%= @comment.user.try(:nickname) %></div>
+            <div class="comment-time"><%= @comment.created_at.strftime("%F") %></div>
+          </div>
+          <div class="comment-rate pull-right">
+            <% @comment.rating.times do |s| %>
+              <%= image_tag "static_pages/icon_star_selected.png", class: "star" %>
+            <% end %>
+          </div>
+          <div class="comment-content"><%= @comment.content %></div>
+        </li>
+      </ul>
+    <% end %>
+    <div class="check-all-comments">
+      <a href="<%= frontend_hospital_comments_path(@hospital) %>">查看全部评价</a>
+    </div>
+  </div>
+
+  <div class="comment-edit">
+    <a href="<%= new_frontend_hospital_comment_path(@hospital) %>">我要评价</a>
+  </div>
+
+  <div class="join-and-correction">
+    <a href="#">商家加盟以及报错更正</a>
+  </div>
+
+  <div class="hospital-connect">
+    <h3>商家位置</h3>
+    <div class="position-detail">
+      <h5><%= @hospital.name %></h5>
+      <p>联系电话<%= @hospital.telephone %></p>
+      <p>地址：<%= @hospital.address %> 
+        <a class="pull-right" href="<%= frontend_maps_path(location: @hospital.location) %>">到这去</a>
+      </p>
+      <div class="map">
+        <div id="container2"></div>
+      </div>
+      <div class="operating-button">
+        <a href="tel:<%= @hospital.telephone %>">拨打电话</a>
+        <a href="#">查询/挂号</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  var lng1 = parseFloat("<%= @hospital.location.split(',')[1] %>");
+  var lat1 = parseFloat("<%= @hospital.location.split(',')[0] %>");
+  console.log("lng1= "+lng1);
+  console.log("lat1= "+lat1);
+  var map = new AMap.Map('container2', {
+      resizeEnable: true,
+      zoom:14,
+      center: [lng1, lat1],
+      isHotspot: true
+  });
+
+  // 标记
+  var marker = new AMap.Marker({
+    position: map.getCenter()
+  });
+  marker.setMap(map);
+
+</script>
+
+<style type="text/css">
+  #container2 {
+    width: 100%;
+    margin-top: 60px;
+    height: 350px;
+    bottom: 50px;
+  }
+</style>

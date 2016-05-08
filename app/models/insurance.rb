@@ -23,7 +23,7 @@ class Insurance
 
   field :image_url, type: String
 
-  field :star, type: Integer
+  field :star, type: Integer, default: 0
   field :click_count, type: Integer, default: 0
   field :status, type: Boolean
 

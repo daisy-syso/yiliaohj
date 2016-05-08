@@ -1,0 +1,74 @@
+<div class="app-header">
+  <nav class="navbar navbar-default custom-header">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="/">
+          <%= image_tag "users/title_icon_back_normal.png" %>
+        </a>
+        <a href="#" >肿瘤医院</a>
+        <a href="/searches" >查询</a>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<%= render "filter" %>
+
+<div class="hospital-list-content">
+  <ul class="list-unstyled hospital-list">
+    <% @hospitals.each do |hospital| %>
+      <li class="hospital-item">
+        <a href="<%= frontend_zhongliu_hospital_path(hospital) %>">
+          <img src="<%= fixed_image_url(hospital) %>" class="hospital-avatar" alt=""/>
+          <div class="hospital-info">
+            <div class="title"><%= hospital.name %></div>
+            <p class="grade">
+              <% hospital.star.times do |s| %>
+                <%= image_tag "static_pages/icon_star_selected.png", class: "start" %>
+              <% end %>
+            </p>
+            <p class="distance">距离：
+              <% if params[:sort_type] == 'neighbour' %>
+                <%= get_distance_by_coordinates(hospital.geo_near_distance) %>
+              <% else %>
+                <%= get_disance_by_poinit_point(hospital.location) if hospital.location%>
+              <% end %>
+            千米</p>
+            <p class="peculiarity">
+              特色科室： <span><%= hospital.characteristic_departments.presence || '无' %></span>
+            </p>
+            <p class="tel">电话： <%= hospital.telephone %></p>
+            <p class="tel">访问量： <%= hospital.click_count %></p>
+          </div>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+  <div class="spinner"></div>
+  <%#= paginate @hospitals %>
+</div>
+<script type="text/javascript">
+  var page = 2;
+  var stop = false;
+  $(window).scroll(function () {
+    if($(document).height() <= ($(window).scrollTop() + $(window).height()) + 60) {
+      if(stop == false){
+        stop = true;
+        $(".spinner").show();
+        var search = window.location.search;
+        if(search){
+          url = "/hospitals" + search + "&page=" + page;
+        } else {
+          url = "/hospitals?page=" + page;
+        }
+        $.get(url, function(data){
+          $html = $(data).find(".hospital-list").html();
+          $(".hospital-list").append($html);
+          page = page + 1;
+          stop =false;
+          $(".spinner").hide();
+        });
+      }
+    }
+  });
+</script>

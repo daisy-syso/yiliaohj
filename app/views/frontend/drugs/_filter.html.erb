@@ -1,16 +1,15 @@
 <div class="filter">
   <ul class="list-unstyled filter-type">
     <li class="type-item hospital-filter" data-panel="general-hospital">
-        <!-- 职位 -->
-        <a href="javascript:;">
-          母婴会馆
-        <%= image_tag "static_pages/filter_icon_down.png", class: "filter-icon-down" %>
-        <%= image_tag "static_pages/filter_icon_up.png", class: "filter-icon-up" %>
-        </a>
-      </li>
+      <a href="javascript:;">
+        精准购药
+      <%= image_tag "static_pages/filter_icon_down.png", class: "filter-icon-down" %>
+      <%= image_tag "static_pages/filter_icon_up.png", class: "filter-icon-up" %>
+      </a>
+    </li>
     <li class="type-item intelligent-filter" data-panel="general-city">
       <a href="javascript:;">
-        全城
+        疾病
         <%= image_tag "static_pages/filter_icon_down.png", class: "filter-icon-down" %>
         <%= image_tag "static_pages/filter_icon_up.png", class: "filter-icon-up" %>
       </a>
@@ -30,30 +29,11 @@
       </a>
     </li>
   </ul>
-  <ul class="list-unstyled detail-panel general-city">
-    <% @proviences.each do |provience| %>
-      <li class="city-type"><%= provience.name %></li>
-      <ul class="city-categories">
-        <% provience.cities.each do |city| %>
-          <li>
-            <a href="/maternities?city=<%= city.name %>">
-              <%= city.name %>
-            </a>
-          </li>
-        <% end %>
-      </ul>
-    <% end %>
-  </ul>
 
   <ul class="list-unstyled detail-panel intelligent-order">
-    <li><a href="/maternities?sort_type=neighbour">离我最近</a></li>
-    <li><a href="/maternities?sort_type=new">最新发布</a></li>
-    <li><a href="/maternities?sort_type=click_count">人气最高</a></li>
-    <li><a href="/maternities?sort_type=star">评价最高</a></li>
-  </ul>
-
-  <ul class="list-unstyled detail-panel general-hospital">
-    <li class="hospital-type"><a href="javascript:;">母婴会馆</a></li>
+    <li><a href="/drugs?sort_type=new">最新发布</a></li>
+    <li><a href="/drugs?sort_type=click_count">人气最高</a></li>
+    <li><a href="/drugs?sort_type=star">评价最高</a></li>
   </ul>
 </div>
 

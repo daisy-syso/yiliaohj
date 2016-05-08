@@ -54,6 +54,14 @@ Rails.application.routes.draw do
         end
       end
 
+      resources :zhongliu_hospitals do
+        resources :comments do
+          collection do
+            get 'get_more_comments'
+          end
+        end
+      end
+
       resources :doctors do
         resources :comments do
           collection do
@@ -121,6 +129,14 @@ Rails.application.routes.draw do
       resources :group_buyings
 
       resources :information
+
+      resources :import_drugs do
+        resources :comments do
+          collection do
+            get 'get_more_comments'
+          end
+        end
+      end
 
       resources :drugs do
         resources :comments do
