@@ -166,18 +166,19 @@
       margin-left: 13px;
     }
     .guess-list {
+      margin-bottom: 60px;
       .guess-item {
         height: 128px;
         padding: 10px;
         border-top: 1px solid #cccccc;
         img {
           float: left;
-          width: 30%;
           margin-right: 10px;
+          width: 105px;
+          height: 105px;
         }
         .content {
           float: left;
-          width: 63%;
           margin-top: 2%;
           overflow: hidden;
           text-overflow: ellipsis;
