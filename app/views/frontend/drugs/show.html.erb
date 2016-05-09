@@ -16,9 +16,13 @@
     <div class="drug-cover page-cover">
       <img src="<%= fixed_image_url(@drug) %>" >
     </div>
+    <div id="talkbubble" class="drug-count">
+      <p>数量</p>
+      <p>28</p>
+    </div>
     <p class="insurance-name page-name"><%= @drug.name %></p>
     </p>
-    <%= @drug.price %>
+    <p class="drug-price">￥<%= @drug.price %></p>
     <p>品牌：<%= @drug.name %></p>
     <p>厂家：<%= @drug.manufactory_name %></p>
     <p>批准文号：<%= @drug.code %></p>
@@ -71,7 +75,7 @@
       </dd>
     <% end %>
   </dl>
-  <a class="btn full-button">提醒吃药</a>
+  <a class="btn full-button reminder">提醒吃药</a>
 </div>
 
 <script>

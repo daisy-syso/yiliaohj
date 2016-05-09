@@ -78,6 +78,9 @@
 
   // accurate query section
   .accurate-search-section {
+    .carousel-indicators {
+      display: none;
+    }
     height: 220px;
     .accurate-search-list {
       li {
@@ -204,6 +207,7 @@
   .navbar-nav {
     text-align: center;
     margin: 0 auto;
+    width: 100%;
     li {
       width: 24%;
       display: inline-block;
@@ -212,6 +216,9 @@
       }
       p {
         font-size: 11px;
+      }
+      a:hover, a:focus {
+        color: #9d9d9d !important;
       }
     }
   }

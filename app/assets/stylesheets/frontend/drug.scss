@@ -25,10 +25,6 @@
     }
     .title {
       font-size: 15px;
-      .price {
-      color: $purple;
-      font-size: 18px;
-    }
       color: #474747;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -52,6 +48,40 @@
 }
 
 .drug-detail {
+  .drug-price {
+    color: $purple;
+    font-size: 21px;
+  }
+  .drug-count {
+    width: 35px;
+    height: 36px;
+    background: #3896ff;
+    position: absolute;
+    left: 80%;
+    p {
+      font-size: 11px;
+      color:white;
+      margin: 0px;
+      text-align: center;
+      &:first-child{
+        margin-top: 8px;
+      }
+    }
+  }
+  .drug-count:before {
+    content: "";
+    position: absolute;
+    bottom: -13px;
+    height: 0;
+    border-left: 18px solid transparent;
+    border-right: 18px solid transparent;
+    border-top: 14px solid #3896ff;
+  }
+  .reminder {
+    line-height: 50px;
+    margin: 0px;
+    padding: 0px;
+  }
   .drug-details-list {
     border-top: 10px solid $border-gray;
   }
