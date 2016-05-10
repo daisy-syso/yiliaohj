@@ -124,3 +124,55 @@
     }
   }
 }
+
+// just for test
+.filter-content {
+  position: absolute;
+  top: 97px;
+  background: white;
+  width: 100%;
+  height: 400px;
+  overflow: scroll;
+  .list-unstyled {
+    position: fixed;
+    top: 97px;
+    height: 400px;
+    padding-left: 15px;
+    overflow: scroll;
+  }
+  .first-column-wrapper {
+    padding-left: 15px;
+    height: 400px;
+    width: 30%;
+    li {
+      height: 40px;
+      line-height: 40px;
+    }
+  }
+  .second-column-wrapper {
+    position: fixed;
+    top: 97px;
+    left: 33%;
+    background: #DEDCDC;
+    width: 33%;
+    height: 400px;
+    padding-left: 15px;
+    li {
+      height: 40px;
+      line-height: 40px;
+    }
+  }
+  .third-column-wrapper {
+    left: 66%;
+    padding-left: 15px;
+    position: fixed;
+    top: 97px;
+    width: 33%;
+    overflow: scroll;
+    height: 400px;
+    li {
+      height: 40px;
+      line-height: 40px;
+    }
+  }
+}

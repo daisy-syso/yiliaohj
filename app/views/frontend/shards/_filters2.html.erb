@@ -1,90 +1,120 @@
 <!-- 第一栏 -->
-<ul>
-  <li>医院大全</li>
-  <li>疾病查询</li>
-  <li>找医生</li>
-  <li>症状查询</li>
-  <li>肿瘤医院</li>
-  <li>母婴会馆</li>
-  <li>月子团购</li>
-  <li>保险团购</li>
-  <li>保健品团购</li>
-  <li>精准攻略</li>
-  <li>精准体检</li>
-  <li>特色科室</li>
-  <li>最新优惠</li>
-  <li>海外医疗</li>
-  <a href="buffets?hospital_category_parent_name=整形"><li>精准整形</li></a>
-  <a href="buffets?hospital_category_parent_name=牙科"><li>精准牙科</li></a>
-  <a href="buffets?hospital_category_parent_name=妇幼"><li>精准妇幼</li></a>
-  <a href="buffets?hospital_category_parent_name=男科"><li>精准男科</li></a>
-  <a href="/buffets?hospital_category_parent_name=中医"><li>精准中医</li></a>
-  <li>精准购药</li>
+<ul class="list-unstyled filter-type">
+  <li class="type-item" data-panel="all-category">医院大全</li>
+  <li class="type-item">第2列</li>
+  <li class="type-item">第3列</li>
+  <li class="type-item">第4列</li>
 </ul>
+<div class="filter-content">
+  <ul style="display:none;" class="all-category list-unstyled first-column-wrapper">
+    <li class="category-li first-column" data-panel="all-hospital">医院大全</li>
+    <li class="category-li first-column">疾病查询</li>
+    <li class="category-li first-column">找医生</li>
+    <li class="category-li first-column">症状查询</li>
+    <li class="category-li first-column">肿瘤医院</li>
+    <li class="category-li first-column">母婴会馆</li>
+    <li class="category-li first-column">月子团购</li>
+    <li class="category-li first-column">保险团购</li>
+    <li class="category-li first-column">保健品团购</li>
+    <li class="category-li first-column">精准攻略</li>
+    <li class="category-li first-column">精准体检</li>
+    <li class="category-li first-column">特色科室</li>
+    <li class="category-li first-column">最新优惠</li>
+    <li class="category-li first-column">海外医疗</li>
+    <a href="buffets?hospital_category_parent_name=整形"><li>精准整形</li></a>
+    <a href="buffets?hospital_category_parent_name=牙科"><li>精准牙科</li></a>
+    <a href="buffets?hospital_category_parent_name=妇幼"><li>精准妇幼</li></a>
+    <a href="buffets?hospital_category_parent_name=男科"><li>精准男科</li></a>
+    <a href="/buffets?hospital_category_parent_name=中医"><li>精准中医</li></a>
+    <li>精准购药</li>
+  </ul>
 
-<!-- 综合医院第一级 -->
-<ul>
-  <li>综合医院</li>
-  <li>男科</li>
-  <li>整形</li>
-  <li>体检</li>
-  <li>中医</li>
-  <li>妇幼</li>
-  <li>牙科</li>
-  <li>综合</li>
-  <li>其它</li>
-</ul>
+  <!-- 综合医院第一级 -->
+  <ul style="display:none;" class="all-hospital list-unstyled second-column-wrapper">
+    <li class="second-column-item" data-panel="hospital-grade">综合医院</li>
+    <li class="second-column-item" data-panel="andrology">男科</li>
+    <li class="second-column-item" data-panel="shaping">整形</li>
+    <li class="second-column-item">体检</li>
+    <li class="second-column-item">中医</li>
+    <li class="second-column-item">妇幼</li>
+    <li class="second-column-item">牙科</li>
+    <li class="second-column-item">综合</li>
+    <li class="second-column-item">其它</li>
+  </ul>
 
-<!-- 医院大全第二级 综合医院 -->
-<ul>
-  <li>三级特等</li>
-  <li>三级甲等</li>
-  <li>三级乙等</li>
-  <li>三级合格</li>
-  <li>二级甲等</li>
-  <li>二级乙等</li>
-  <li>二级合格</li>
-  <li>一级甲等</li>
-  <li>一级乙等</li>
-  <li>一级合格</li>
-  <li>社区医院</li>
-  <li>民营医院</li>
-  <li>外资医院</li>
-</ul>
+  <!-- 医院大全第二级 综合医院 -->
+  <ul style="display:none;" class="hospital-grade list-unstyled third-column-wrapper">
+    <li class="third-column-item">三级特等</li>
+    <li class="third-column-item">三级甲等</li>
+    <li class="third-column-item">三级乙等</li>
+    <li class="third-column-item">三级合格</li>
+    <li class="third-column-item">二级甲等</li>
+    <li class="third-column-item">二级乙等</li>
+    <li class="third-column-item">二级合格</li>
+    <li class="third-column-item">一级甲等</li>
+    <li class="third-column-item">一级乙等</li>
+    <li class="third-column-item">一级合格</li>
+    <li class="third-column-item">社区医院</li>
+    <li class="third-column-item">民营医院</li>
+    <li class="third-column-item">外资医院</li>
+  </ul>
 
-<!-- 医院大全第二级 整形 -->
-<ul>
-  <li>前列腺活检及治疗</li>
-  <li>前列腺癌根治术</li>
-  <li>男性生殖器常见手术</li>
-  <li>检查、治疗睾丸疾病</li>
-  <li>精索静脉曲张手术</li>
-  <li>隐睾治疗</li>
-  <li>男科整形</li>
-  <li>包皮手术</li>
-  <li>男科检查</li>
-  <li>性功能治疗</li>
-</ul>
+  <!-- 医院大全第二级 男科 -->
+  <ul style="display:none;" class="andrology list-unstyled third-column-wrapper">
+    <li class="third-column-item">前列腺活检及治疗</li>
+    <li class="third-column-item">前列腺癌根治术</li>
+    <li class="third-column-item">男性生殖器常见手术</li>
+    <li class="third-column-item">检查、治疗睾丸疾病</li>
+    <li class="third-column-item">精索静脉曲张手术</li>
+    <li class="third-column-item">隐睾治疗</li>
+    <li class="third-column-item">男科整形</li>
+    <li class="third-column-item">包皮手术</li>
+    <li class="third-column-item">男科检查</li>
+    <li class="third-column-item">性功能治疗</li>
+  </ul>
 
-<!-- 医院大全第二级 男科 -->
-<ul>
-  <a href="/hospitals?category_name=眼部整形"><li>眼部整形</li></a>
-  <li>鼻部整形</li>
-  <li>口腔整形</li>
-  <li>口唇整形</li>
-  <li>胸部整形</li>
-  <li>抽脂</li>
-  <li>毛发</li>
-  <li>除皱</li>
-  <li>减肥丰臀</li>
-  <li>面部轮廓</li>
-  <li>肉毒素</li>
-  <li>皮肤美容</li>
-  <li>其它</li>
-  <li>半永久性化妆</li>
-  <li>女性私密</li>
-  <li>耳部整形</li>
-  <li>皮肤激光</li>
-  <li>微整形</li>
-  <li>美体塑形</li>
-</ul>
+  <!-- 医院大全第二级  整形-->
+  <ul style="display:none;" class="shaping list-unstyled third-column-wrapper">
+    <a href="/hospitals?category_name=眼部整形"><li>眼部整形</li></a>
+    <li class="third-column-item">鼻部整形</li>
+    <li class="third-column-item">口腔整形</li>
+    <li class="third-column-item">口唇整形</li>
+    <li class="third-column-item">胸部整形</li>
+    <li class="third-column-item">抽脂</li>
+    <li class="third-column-item">毛发</li>
+    <li class="third-column-item">除皱</li>
+    <li class="third-column-item">减肥丰臀</li>
+    <li class="third-column-item">面部轮廓</li>
+    <li class="third-column-item">肉毒素</li>
+    <li class="third-column-item">皮肤美容</li>
+    <li class="third-column-item">其它</li>
+    <li class="third-column-item">半永久性化妆</li>
+    <li class="third-column-item">女性私密</li>
+    <li class="third-column-item">耳部整形</li>
+    <li class="third-column-item">皮肤激光</li>
+    <li class="third-column-item">微整形</li>
+    <li class="third-column-item">美体塑形</li>
+  </ul>
+</div>
+
+<script>
+  $(function() {
+    $("li").on("click", function(event){
+      if($(event.target).hasClass("second-column-item")){
+        $(".third-column-wrapper").hide();
+      }
+      if($(event.target).hasClass("first-column-item")){
+        $(".second-column-wrapper").hide();
+      }
+      if($(this).hasClass("active")){
+        $(this).removeClass("active");
+        $("." + $(this).data("panel")).hide();
+      } else {
+        $(".type-item").removeClass("active");
+        $(this).addClass("active");
+        $("." + $(this).data("panel")).show();
+      }
+    });
+    $
+  });
+</script>
