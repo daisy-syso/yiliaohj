@@ -7,6 +7,9 @@
   .activities-section {
     border-bottom: 10px solid #f0f1f2;
     padding: 0 13px;
+    .list-inline {
+      text-align: center;
+    }
   }
 
   .section-title {
@@ -204,6 +207,7 @@
     background-color: #ffffff;
     margin: 0px;
     border-color: $light-gray;
+    background-image: none;
   }
   .navbar-nav {
     text-align: center;
