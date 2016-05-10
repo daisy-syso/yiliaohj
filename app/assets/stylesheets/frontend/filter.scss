@@ -33,7 +33,9 @@
     margin-top: 52px;
     text-align: center;
     li {
-      padding: 10px 30px 10px 0;
+      display: inline-block;
+      min-width: 24%;
+      padding-top: 13px;
       display: inline-block;
       a {
         color: #737373;
