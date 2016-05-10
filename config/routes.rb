@@ -174,6 +174,8 @@ Rails.application.routes.draw do
         end
       end
 
+      resources :all_categories
+
       resources :maps
 
       resources :diseases

@@ -1,1 +1,44 @@
-_filters.html.erb
+<ul id="rss">
+  <% @big_categories.each do |category| %>
+    <% if category[:has_next] %>
+      <li id="<%= category[:key] %>"><%= category[:name] %></li>
+    <% else %>
+      <a href="/<%= category[:key] %>"><li id="nnn"><%= category[:name] %></li></a>
+    <% end %>
+  <% end %>
+</ul>
+
+<ul id="second_row">
+
+</ul>
+
+<script type="text/javascript">
+  $("#rss").on("click", function(event){
+    if(event.target.id != 'nnn'){
+      $.get('/all_categories',{
+        key: event.target.id
+      },function(data){
+        $.each(data, function(i,v){
+          if(v.has_next){
+            $("#second_row").append("<li id='"+v.category_id+"'>"+v.category_name+"<li>")
+          }else{
+            $("#second_row").append("<a><li id='sss'>"+v.category_name+"<li></a>")
+          }
+        })
+      });
+    }
+  });
+
+  $("#second_row").on("click", function(event){
+    if(event.target.id != 'sss'){
+      console.log('clicked');
+      $.get('/all_categories',{
+        key: event.target.id
+      },function(data){
+        $.each(data, function(i,v){
+          
+        })
+      });
+    }
+  });
+</script>
