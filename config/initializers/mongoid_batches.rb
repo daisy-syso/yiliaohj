@@ -1,4 +1,5 @@
 module Mongoid
+  module Batches
     def find_each(batch_size = 1000)
       return to_enum(:find_each, batch_size) unless block_given?
 
