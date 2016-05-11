@@ -3,6 +3,7 @@ module Frontend
     # before_action :get_filters, only: [:index]
     
     def index
+      @filter_filter_name = '精准药品'
       query = {}
 
       if params[:drug_names_disease_id].present?
