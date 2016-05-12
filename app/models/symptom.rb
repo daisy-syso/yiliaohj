@@ -12,4 +12,5 @@ class Symptom
   field :common_symptom, type: String
   field :common_drug, type: String
   field :common_disease, type: String
+  field :display_index, type: Integer, default: 0
 end

@@ -1,15 +1,15 @@
 module Frontend
   class SymptomsController < FrontendController
     def index
-      @symptoms = Symptom.order(id: :asc)
+      @symptoms = Symptom.order(display_index: :asc)
     end
 
     def load
       @symptom = Symptom.find(params[:id])
       @symptoms = Symptom
-      .order(id: :asc)
+      .order(display_index: :asc)
       .where(english: params[:english])
-      .where(:id.gt => @symptom.id).limit(10)
+      .where(:display_index.gt => @symptom.display_index).limit(10)
 
       html = ''
       @symptoms.each do |symptom|
