@@ -31,15 +31,10 @@
 
   <div class="accurate-search-section">
     <div class="section-title"><span></span>精确查询</div>
-    <div id="queriesCarousel" class="carousel slide section-content" data-ride="carousel">
-      <ol class="carousel-indicators">
-        <li data-target="#queriesCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#queriesCarousel" data-slide-to="1"></li>
-        <li data-target="#queriesCarousel" data-slide-to="2"></li>
-      </ol>
-      <div class="carousel-inner" role="listbox">
+    <div class="swiper-container section-content">
+      <div class="swiper-wrapper">
         <% @categories.each_with_index do |category_obj, index| %>
-          <div class="item <%= index == 0 ? "active" : "" %>">
+          <div class="swiper-slide <%= index == 0 ? "active" : "" %>">
             <ul class="list-unstyled list-inline accurate-search-list">
               <% category_obj.each do |category| %>
                 <li class="accurate-search-item">
@@ -147,5 +142,9 @@
 <script type="text/javascript">
   $(".search-input").focus(function(){
     window.location.href = '/searches';
+  })
+  var mySwiper = new Swiper('.swiper-container', {
+    autoplay: 5000,//可选选项，自动滑动
+    loop : true,
   })
 </script>

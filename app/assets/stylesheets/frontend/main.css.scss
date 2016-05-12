@@ -7,6 +7,9 @@
   .activities-section {
     border-bottom: 10px solid #f0f1f2;
     padding: 0 13px;
+    .list-inline {
+      text-align: center;
+    }
   }
 
   .section-title {
@@ -78,6 +81,9 @@
 
   // accurate query section
   .accurate-search-section {
+    .carousel-indicators {
+      display: none;
+    }
     height: 220px;
     .accurate-search-list {
       li {
@@ -163,18 +169,19 @@
       margin-left: 13px;
     }
     .guess-list {
+      margin-bottom: 60px;
       .guess-item {
         height: 128px;
         padding: 10px;
         border-top: 1px solid #cccccc;
         img {
           float: left;
-          width: 30%;
           margin-right: 10px;
+          width: 105px;
+          height: 105px;
         }
         .content {
           float: left;
-          width: 63%;
           margin-top: 2%;
           overflow: hidden;
           text-overflow: ellipsis;
@@ -200,10 +207,12 @@
     background-color: #ffffff;
     margin: 0px;
     border-color: $light-gray;
+    background-image: none;
   }
   .navbar-nav {
     text-align: center;
     margin: 0 auto;
+    width: 100%;
     li {
       width: 24%;
       display: inline-block;
@@ -212,6 +221,9 @@
       }
       p {
         font-size: 11px;
+      }
+      a:hover, a:focus {
+        color: #9d9d9d !important;
       }
     }
   }

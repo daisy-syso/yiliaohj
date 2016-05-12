@@ -1,78 +1,80 @@
 <div class="filter">
-  <ul class="list-unstyled filter-type">
+  <!-- <ul class="list-unstyled filter-type">
+
     <li class="type-item hospital-filter" data-panel="general-hospital">
       <a href="javascript:;">
         精准购药
-      <%= image_tag "static_pages/filter_icon_down.png", class: "filter-icon-down" %>
-      <%= image_tag "static_pages/filter_icon_up.png", class: "filter-icon-up" %>
+      <%#= image_tag "static_pages/filter_icon_down.png", class: "filter-icon-down" %>
+      <%#= image_tag "static_pages/filter_icon_up.png", class: "filter-icon-up" %>
       </a>
     </li>
     <li class="type-item intelligent-filter" data-panel="general-city">
       <a href="javascript:;">
         疾病
-        <%= image_tag "static_pages/filter_icon_down.png", class: "filter-icon-down" %>
-        <%= image_tag "static_pages/filter_icon_up.png", class: "filter-icon-up" %>
+        <%#= image_tag "static_pages/filter_icon_down.png", class: "filter-icon-down" %>
+        <%#= image_tag "static_pages/filter_icon_up.png", class: "filter-icon-up" %>
       </a>
     </li>
     <li class="type-item intelligent-filter" data-panel="intelligent-order">
       <a href="javascript:;">
         智能排序
-        <%= image_tag "static_pages/filter_icon_down.png", class: "filter-icon-down" %>
-        <%= image_tag "static_pages/filter_icon_up.png", class: "filter-icon-up" %>
+        <%#= image_tag "static_pages/filter_icon_down.png", class: "filter-icon-down" %>
+        <%#= image_tag "static_pages/filter_icon_up.png", class: "filter-icon-up" %>
       </a>
     </li>
     <li class="type-item filtration" data-panel="others-conditions">
       <a href="javascript:;">
         筛选
-        <%= image_tag "static_pages/filter_icon_down.png", class: "filter-icon-down" %>
-        <%= image_tag "static_pages/filter_icon_up.png", class: "filter-icon-up" %>
+        <%#= image_tag "static_pages/filter_icon_down.png", class: "filter-icon-down" %>
+        <%#= image_tag "static_pages/filter_icon_up.png", class: "filter-icon-up" %>
       </a>
     </li>
-  </ul>
+  </ul> -->
 
-  <ul class="list-unstyled detail-panel intelligent-order">
+  <!-- <ul class="list-unstyled detail-panel intelligent-order">
     <li><a href="/drugs?sort_type=new">最新发布</a></li>
     <li><a href="/drugs?sort_type=click_count">人气最高</a></li>
     <li><a href="/drugs?sort_type=star">评价最高</a></li>
-  </ul>
+  </ul> -->
+  <%= render "frontend/shards/filters2" %>
 </div>
 
 <script>
   $(function() {
-    $(".filter-type li").on("click", function(event){
-      if($(this).hasClass("active")){
-        $(this).removeClass("active");
-        $("." + $(this).data("panel")).hide();
-      } else {
-        $(".type-item").removeClass("active");
-        $(".detail-panel").hide();
-        $(this).addClass("active");
-        $("." + $(this).data("panel")).show();
-      }
-    });
-    $(".hospital-type").on("click", function(event){
-      $(".hospital-type").removeClass("active");
-      $(".hospital-categories").hide();
-      $(this).addClass("active");
-      $(this).next("ul").show();
-    });
+    // $(".filter-type li").on("click", function(event){
+    //   if($(this).hasClass("active")){
+    //     $(this).removeClass("active");
+    //     $("." + $(this).data("panel")).hide();
+    //   } else {
+    //     $(".type-item").removeClass("active");
+    //     $(".detail-panel").hide();
+    //     $(this).addClass("active");
+    //     $("." + $(this).data("panel")).show();
+    //   }
+    // });
+    // $(".hospital-type").on("click", function(event){
+    //   $(".hospital-type").removeClass("active");
+    //   $(".hospital-categories").hide();
+    //   $(this).addClass("active");
+    //   $(this).next("ul").show();
+    // });
 
-    $(".city-type").on("click", function(event){
-      $(".city-type").removeClass("active");
-      $(".city-categories").hide();
-      $(this).addClass("active");
-      $(this).next("ul").show();
-    });
-    $(".others-conditions .toggle").click(function(){
-      $(this).hide();
-      $(this).siblings().show();
-    });
-    $(".subject-list li").on("click",function(event){
-      if($(this).hasClass("active")){
-        $(this).removeClass("active");
-      } else {
-        $(this).addClass("active");
-      }
-    });
+    // $(".city-type").on("click", function(event){
+    //   $(".city-type").removeClass("active");
+    //   $(".city-categories").hide();
+    //   $(this).addClass("active");
+    //   $(this).next("ul").show();
+    // });
+    // $(".others-conditions .toggle").click(function(){
+    //   $(this).hide();
+    //   $(this).siblings().show();
+    // });
+    // $(".subject-list li").on("click",function(event){
+    //   if($(this).hasClass("active")){
+    //     $(this).removeClass("active");
+    //   } else {
+    //     $(this).addClass("active");
+    //   }
+    // });
   });
 </script>

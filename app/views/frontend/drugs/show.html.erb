@@ -16,9 +16,13 @@
     <div class="drug-cover page-cover">
       <img src="<%= fixed_image_url(@drug) %>" >
     </div>
+    <div id="talkbubble" class="drug-count">
+      <p>数量</p>
+      <p>28</p>
+    </div>
     <p class="insurance-name page-name"><%= @drug.name %></p>
     </p>
-    <%= @drug.price %>
+    <p class="drug-price">￥<%= @drug.price %></p>
     <p>品牌：<%= @drug.name %></p>
     <p>厂家：<%= @drug.manufactory_name %></p>
     <p>批准文号：<%= @drug.code %></p>
@@ -71,7 +75,7 @@
       </dd>
     <% end %>
   </dl>
-  <a class="btn full-button">提醒吃药</a>
+  <a class="btn full-button reminder">提醒吃药</a>
 </div>
 
 <script>
@@ -82,12 +86,21 @@
     var $dd = $('.slider dd');
     //单击事件
     $dt.click(function(){
-      if($dt.index(this) == flag) return false;
       flag = $dt.index(this);
-      $dd.not($dd.eq(flag)).slideUp();
-      $dd.eq(flag).slideDown();
-      $dt.eq(flag).css('cursor','default').addClass('slider_open');
-      $dt.not($dt.eq(flag)).css('cursor','pointer').removeClass('slider_open');
+      if($dt.index(this) == flag){
+        if($dd.eq(flag).is(":visible")){
+          $dd.eq(flag).slideUp();
+          $dt.eq(flag).removeClass('slider_open');
+        } else {
+          $dd.eq(flag).slideDown();
+          $dt.eq(flag).addClass('slider_open');
+        }
+      } else {
+        $dd.not($dd.eq(flag)).slideUp();
+        $dd.eq(flag).slideDown();
+        $dt.eq(flag).addClass('slider_open');
+        $dt.not($dt.eq(flag)).removeClass('slider_open');
+      }
     });
   });
 </script>
