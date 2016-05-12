@@ -49,6 +49,8 @@
       }
     }
   }
+  .disease-filter,
+  .drug-filter,
   .others-conditions,
   .intelligent-order,
   .general-city,
@@ -127,6 +129,7 @@
 
 // just for test
 .filter-content {
+  display: none;
   position: absolute;
   top: 97px;
   background: white;
@@ -139,15 +142,25 @@
     height: 400px;
     padding-left: 15px;
     overflow: scroll;
+    display: none;
+    li {
+      height: 40px;
+      line-height: 40px;
+      overflow: hidden;
+      word-wrap: break-word;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      a {
+        color: #737373;
+        text-decoration: none;
+      }
+    }
   }
   .first-column-wrapper {
     padding-left: 15px;
     height: 400px;
     width: 30%;
-    li {
-      height: 40px;
-      line-height: 40px;
-    }
+    display: block;
   }
   .second-column-wrapper {
     position: fixed;
@@ -157,10 +170,6 @@
     width: 33%;
     height: 400px;
     padding-left: 15px;
-    li {
-      height: 40px;
-      line-height: 40px;
-    }
   }
   .third-column-wrapper {
     left: 66%;
@@ -170,9 +179,5 @@
     width: 33%;
     overflow: scroll;
     height: 400px;
-    li {
-      height: 40px;
-      line-height: 40px;
-    }
   }
 }

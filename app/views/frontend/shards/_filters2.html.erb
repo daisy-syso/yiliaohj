@@ -1,37 +1,30 @@
-<!-- 第一栏 -->
-<ul class="list-unstyled filter-type">
-  <li class="type-item" data-panel="all-category"><%= @filter_filter_name %></li>
-  <li class="type-item">第2列</li>
-  <li class="type-item">第3列</li>
-  <li class="type-item">第4列</li>
-</ul>
 <div class="filter-content">
-  <ul style="display:none;" class="all-category list-unstyled first-column-wrapper">
-    <li class="category-li first-column" data-panel="all-hospital">医院大全</li>
-    <a href="/diseases"><li class="category-li first-column">疾病查询</li></a>
-    <a href="/doctors"><li class="category-li first-column">找医生</li></a>
-    <a href="/symptoms"><li class="category-li first-column">症状查询</li></a>
-    <a href="/zhongliu_hospitals"><li class="category-li first-column">肿瘤医院</li></a>
-    <a href="/maternities"><li class="category-li first-column">母婴会馆</li></a>
-    <a href="/confinement_centers"><li class="category-li first-column">月子团购</li></a>
-    <a href="/insurances"><li class="category-li first-column">保险团购</li></a>
-    <a href="/import_drugs"><li class="category-li first-column">保健品团购</li></a>
-    <a href="#"><li class="category-li first-column">精准攻略</li></a>
-    <a href="/medicals"><li class="category-li first-column">精准体检</li></a>
-    <a href="#"><li class="category-li first-column">特色科室</li></a>
-    <a href="#"><li class="category-li first-column">最新优惠</li></a>
-    <a href="/nursing_rooms"><li class="category-li first-column">养老精选</li></a>
-    <a href="/drugs"><li class="category-li first-column">精准购药</li></a>
-    <a href="/examinations"><li class="category-li first-column">精准体检</li></a>
-    <a href="/buffets?hospital_category_parent_name=整形"><li>精准整形</li></a>
-    <a href="/buffets?hospital_category_parent_name=牙科"><li>精准牙科</li></a>
-    <a href="/buffets?hospital_category_parent_name=妇幼"><li>精准妇幼</li></a>
-    <a href="/buffets?hospital_category_parent_name=男科"><li>精准男科</li></a>
-    <a href="/buffets?hospital_category_parent_name=中医"><li>精准中医</li></a>
+  <ul class="all-category list-unstyled first-column-wrapper">
+    <li class="category-li first-column" data-panel="all-hospital"><a href="javascript:;">医院大全</a></li>
+    <li class="category-li first-column"><a href="/diseases">疾病查询</a></li>
+    <li class="category-li first-column"><a href="/doctors">找医生</a></li>
+    <li class="category-li first-column"><a href="/symptoms">症状查询</a></li>
+    <li class="category-li first-column"><a href="/zhongliu_hospitals">肿瘤医院</a></li>
+    <li class="category-li first-column"><a href="/maternities">母婴会馆</a></li>
+    <li class="category-li first-column"><a href="/confinement_centers">月子团购</a></li>
+    <li class="category-li first-column"><a href="/insurances">保险团购</a></li>
+    <li class="category-li first-column"><a href="/import_drugs">保健品团购</a></li>
+    <li class="category-li first-column"><a href="#">精准攻略</a></li>
+    <li class="category-li first-column"><a href="/medicals">精准体检</a></li>
+    <li class="category-li first-column"><a href="#">特色科室</a></li>
+    <li class="category-li first-column"><a href="#">最新优惠</a></li>
+    <li class="category-li first-column"><a href="/nursing_rooms">养老精选</a></li>
+    <li class="category-li first-column"><a href="/drugs">精准购药</a></li>
+    <li class="category-li first-column"><a href="/examinations">精准体检</a></li>
+    <li class="category-li first-column"><a href="/buffets?hospital_category_parent_name=整形">精准整形</a></li>
+    <li class="category-li first-column"><a href="/buffets?hospital_category_parent_name=牙科">精准牙科</a></li>
+    <li class="category-li first-column"><a href="/buffets?hospital_category_parent_name=妇幼">精准妇幼</a></li>
+    <li class="category-li first-column"><a href="/buffets?hospital_category_parent_name=男科">精准男科</a></li>
+    <li class="category-li first-column"><a href="/buffets?hospital_category_parent_name=中医">精准中医</a></li>
   </ul>
 
   <!-- 综合医院第一级 -->
-  <ul style="display:none;" class="all-hospital list-unstyled second-column-wrapper">
+  <ul class="all-hospital list-unstyled second-column-wrapper">
     <li class="second-column-item" data-panel="hospital-grade">综合医院</li>
     <li class="second-column-item" data-panel="andrology">男科</li>
     <li class="second-column-item" data-panel="shaping">整形</li>
@@ -44,67 +37,80 @@
   </ul>
 
   <!-- 医院大全第二级 综合医院 -->
-  <ul style="display:none;" class="hospital-grade list-unstyled third-column-wrapper">
+  <ul class="hospital-grade list-unstyled third-column-wrapper">
     <% %w(三级甲等 三级乙等 三级合格 二级甲等 二级乙等 二级合格 一级甲等 一级乙等 一级合格 社区医院 民营医院 外资医院).each do |category_level| %>
-      <a href="/hospitals?category_level=<%= category_level %>"><li class="third-column-item"><%= category_level %></li></a>
+      <li class="third-column-item">
+        <a href="/hospitals?category_level=<%= category_level %>"><%= category_level %></a>
+      </li>
     <% end %>
   </ul>
 
   <!-- 医院大全第二级 男科 -->
-  <ul style="display:none;" class="andrology list-unstyled third-column-wrapper">
+  <ul class="andrology list-unstyled third-column-wrapper">
     <% %w(前列腺活检及治疗 前列腺癌根治术 检查、治疗睾丸疾病 精索静脉曲张手术 隐睾治疗 男科整形 包皮手术 男科检查 性功能治疗).each do |category_name| %>
-      <a href="/hospitals?category_name=<%= category_name %>"><li class="third-column-item"><%= category_name %></li></a>
+      <a href="/hospitals?category_name=<%= category_name %>"><li class="third-column-item"><%= category_name %></a></li>
     <% end %>
   </ul>
 
   <!-- 医院大全第二级 中医 -->
-  <ul>
+  <ul class="list-unstyled third-column-wrapper">
     <% %w(中医推拿治疗 中医灸法 中医针刺 中医肛肠 中医骨伤 中医特殊疗法 中药外治 其它).each do |category_name| %>
-      <a href="/hospitals?category_name=<%= category_name %>"><li class="third-column-item"><%= category_name %></li></a>
+      <li class="third-column-item">
+        <a href="/hospitals?category_name=<%= category_name %>"><%= category_name %></a>
+      </li>
     <% end %>
- 
+
   </ul>
 
   <!-- 医院大全第二级 妇幼 -->
-  <ul>
+  <ul class="list-unstyled third-column-wrapper">
     <% %w(宫颈疾病手术 妇科整形 无痛人流 不孕不育 妇科常规检查 妇科常规治疗 产科 孕期检查 四维/三维 妇科微创 痛经中心 B超 分泌物检验 尿液检验 通用检查 血液检查 阴道镜检查).each do |category_name| %>
-      <a href="/hospitals?category_name=<%= category_name %>"><li class="third-column-item"><%= category_name %></li></a>
+      <li class="third-column-item">
+        <a href="/hospitals?category_name=<%= category_name %>"><%= category_name %></a>
+      </li>
     <% end %>
   </ul>
 
   <!-- 医院大全第二级 牙科 -->
-  <ul>
+  <ul class="list-unstyled third-column-wrapper">
     <% %w(号源 洗牙（洁牙） 烤瓷牙 牙齿矫正（正畸） 隐形矫正 牙齿美白 拔牙 活动义齿 全口义齿 根管治疗 补牙 牙基托 精密附件 牙齿漂白 种植体 牙修复材料 嵌体 矫正器 排牙 牙冠 其他牙科手术 上药 麻醉 拔除术 X光 口腔检查费 口腔设计费 瓷贴面 儿童口腔 全瓷牙).each do |category_name| %>
-      <a href="/hospitals?category_name=<%= category_name %>"><li class="third-column-item"><%= category_name %></li></a>
+      <li class="third-column-item">
+        <a href="/hospitals?category_name=<%= category_name %>"><%= category_name %></a>
+      </li>
     <% end %>
   </ul>
 
   <!-- 医院大全第二级  整形-->
-  <ul style="display:none;" class="shaping list-unstyled third-column-wrapper">
+  <ul class="shaping list-unstyled third-column-wrapper">
     <% %w(眼部整形 鼻部整形 口腔整形 口唇整形 胸部整形 抽脂 毛发 除皱 减肥丰臀 面部轮廓 肉毒素 皮肤美容 其它 半永久性化妆 女性私密 耳部整形 皮肤激光 微整形 美体塑形).each do |category_name| %>
-      <a href="/hospitals?category_name=<%= category_name %>"><li class="third-column-item"><%= category_name %></li></a>
+      <li class="third-column-item">
+        <a href="/hospitals?category_name=<%= category_name %>"><%= category_name %></a>
+      </li>
     <% end %>
   </ul>
 </div>
 
 <script>
   $(function() {
-    $("li").on("click", function(event){
+    $(".filter-content li").on("click", function(event){
+      if($(event.target).hasClass("type-item")){
+        $(".filter-content").toggle();
+      }
       if($(event.target).hasClass("second-column-item")){
+        $(".second-column-item").removeClass("active");
         $(".third-column-wrapper").hide();
       }
       if($(event.target).hasClass("first-column-item")){
+        $(".first-column-item").removeClass("active")
         $(".second-column-wrapper").hide();
       }
       if($(this).hasClass("active")){
         $(this).removeClass("active");
         $("." + $(this).data("panel")).hide();
       } else {
-        $(".type-item").removeClass("active");
         $(this).addClass("active");
         $("." + $(this).data("panel")).show();
       }
     });
-    $
   });
 </script>
