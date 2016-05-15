@@ -13,7 +13,7 @@
 
 <div class="person-customs-content">
   <div class="left categories">
-    <div class="category-title custom-news active"data-content="information-subscribe-categories">
+    <div class="category-title custom-news active" data-content="information-subscribe-categories">
       <p>健康医疗资讯</p>
     </div>
     <div class="category-title custom-push" data-content="nformation-push-categories">
@@ -29,24 +29,25 @@
   <div class="right category-detail">
     <div class="information-subscribe-categories right-content">
       <ul class="subscribe-list list-unstyled">
-        <% @information_categories.each do |information_category| %>
-        <li class="subscribe-item" data-id="<%=information_category.id  %>">
-          <%= image_tag "frontend/person_customs/#{ information_category.name }.png" %>
-          <p><%= information_category.name %></p>
-          <div class="subscribe-panel panel-<%=information_category.id  %>">
+        <% @subscription_categories.each do |subscription_category| %>
+        <li class="subscribe-item" data-id="<%=subscription_category.id  %>">
+          <%#= image_tag "frontend/person_customs/#{ subscription_category.name }.png" %>
+          <img src="<%= subscription_category.image_url %>">
+          <p><%= subscription_category.name %></p>
+          <div class="subscribe-panel panel-<%=subscription_category.id  %>">
             <div class="list-header">
               <span class="subscribe-title">
-                <%= information_category.name %> 资讯订阅
+                <%= subscription_category.name %> 资讯订阅
               </span>
               <span class="check-all">全选</span>
             </div>
             <ul class="list-unstyled list-body">
-              <% information_category.children.each do |category| %>
+              <% subscription_category.children.each do |category| %>
                 <li class="category-children">
                   <input type="checkbox"
                     name="category_name"
                     value="<%= category.id.to_s %>"
-                    <%= @information_category_ids.include?(category.id) ? "" : "checked" %> />
+                    <%= @subscription_category_ids.include?(category.id) ? "checked" : "" %> />
                   <span class="category-name">
                     <%= category.name %>
                   </span>
@@ -61,30 +62,6 @@
         </li>
         <% end %>
       </ul>
-    </div>
-
-    <div class="information-push-categories right-content">
-      <% if @information_categories.empty? %>
-        暂无订阅<a href="<%= frontend_person_customs_path %>">去订阅相关健康资讯</a>
-      <% end %>
-      <% @information_categories.each do |information_category| %>
-        <ul class="list-unstyled push-list">
-          <% information_category.information.each do |information| %>
-            <li class="push-item">
-              <a href="/information/<%= information.id.to_s %>" class="title">
-                【<%= information_category.name %>】
-                <%= information.title %>
-              </a>
-              <div class="publish-time">
-                <%= information.created_at %>
-              </div>
-            </li>
-          <% end %>
-        </ul>
-      <% end %>
-      <div >
-        <a href="#">加载更多...</a>
-      </div>
     </div>
 
     <div class="question right-content">
@@ -181,6 +158,8 @@
       all_category_name_ids: all_category_name_ids,
       category_name_ids: category_name_ids
     },function(data){
+      $("#mask").hide();
+      $(".subscribe-panel").hide();
       console.log(data);
     })
   });

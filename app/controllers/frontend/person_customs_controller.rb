@@ -3,15 +3,18 @@ module Frontend
     before_action :auth_check, only: [:index]
 
     def index
-      @information_categories = InformationCategory.where(name: '疾病').first.children
+      # 大分类
+      @subscription_categories = SubscriptionCategory.where(parent_id: nil).includes(:children)
 
-      @information_category_ids = @current_user.subscriptions.map(&:information_category_ids).flatten
+      # 已经关注的分类
+      @subscription_category_ids = @current_user.subscriptions.map(&:subscription_category_ids).flatten
 
-      # @information_category_ids = @current_user.subscriptions.map(&:information_category_ids).flatten
+      # @information_categories = SubscriptionCategory.includes(:information).where(:id.in => @information_category_ids)
 
-      @information_categories = InformationCategory.includes(:information).where(:id.in => @information_category_ids)
-
+      # 问题
       @questions = @current_user.questions.desc(:updated_at)
+
+      @information_categories = []
     end
   end
 end
