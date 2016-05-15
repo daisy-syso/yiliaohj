@@ -29,6 +29,9 @@
       </a>
     </li>
   </ul>
+
+  <%= render "frontend/shards/filters2" %>
+
   <ul class="list-unstyled detail-panel general-city">
     <% @proviences.each do |provience| %>
       <li class="city-type"><%= provience.name %></li>
@@ -105,6 +108,10 @@
 
 <script>
   $(function() {
+    $(".hospital-filter").on("click", function(){
+      $(".filter-content").toggle();
+    });
+
     $(".filter-type li").on("click", function(event){
       if($(this).hasClass("active")){
         $(this).removeClass("active");
