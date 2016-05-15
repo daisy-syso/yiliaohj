@@ -1,7 +1,7 @@
 module Frontend
   class DrugsController < FrontendController
     # before_action :get_filters, only: [:index]
-    
+
     def index
       @filter_filter_name = '精准药品'
       query = {}
@@ -17,20 +17,20 @@ module Frontend
       @drugs = Drug.where(query)
 
       if params[:sort_type].present?
-        case params[:sort_type]
-        when 'star'
-          # 评价最好
-          @drugs = @drugs.desc(:star)
-        when 'click_count'
-          # 人气最高
-          @drugs = @drugs.desc(:click_count)
-        else
-          # 最近发布
-          @drugs = @drugs.desc(:created_at)
-        end
+        @drugs = case params[:sort_type]
+                 when 'star'
+                   # 评价最好
+                   @drugs.desc(:star)
+                 when 'click_count'
+                   # 人气最高
+                   @drugs.desc(:click_count)
+                 else
+                   # 最近发布
+                   @drugs.desc(:created_at)
+                 end
       end
 
-        @drugs = @drugs.page(params[:page]).per(params[:per])
+      @drugs = @drugs.page(params[:page]).per(params[:per])
     end
 
     def show
@@ -146,7 +146,6 @@ module Frontend
           has_next: false
         }
       ]
-
     end
   end
 end

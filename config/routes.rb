@@ -107,9 +107,9 @@ Rails.application.routes.draw do
       end
 
       resources :symptoms do
-          collection do
-            get 'load'
-          end
+        collection do
+          get 'load'
+        end
       end
 
       resources :searches

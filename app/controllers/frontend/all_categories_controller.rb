@@ -1,5 +1,4 @@
 class Frontend::AllCategoriesController < FrontendController
-
   def index
     words = params[:key]
 

@@ -24,9 +24,7 @@ class Frontend::BuffetsController < FrontendController
 
   def get_hospital_categories
     @hospital_category_parent_name = params[:hospital_category_parent_name]
-    if @hospital_category_parent_name.blank?
-      redirect_to '/'
-    end
+    redirect_to '/' if @hospital_category_parent_name.blank?
     hospital_category = HospitalCategory.where(name: @hospital_category_parent_name).first
 
     @hospital_categories = hospital_category.children
