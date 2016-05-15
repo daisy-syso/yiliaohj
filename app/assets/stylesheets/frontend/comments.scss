@@ -67,6 +67,9 @@
 .new-comment-wrapper {
   margin-top: 50px;
   text-align: center;
+  .hidden-element {
+    display: none;
+  }
   .title {
     font-size: 18px;
     color: #666666;

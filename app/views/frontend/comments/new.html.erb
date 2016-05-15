@@ -6,7 +6,7 @@
           <%= image_tag "users/title_icon_back_normal.png" %>
         </a>
         <a href="#" class="page-title">评价</a>
-        <a href="#" class="">发布</a>
+        <a href="#" class="submit-comment">发布</a>
       </div>
     </div>
   </nav>
@@ -14,15 +14,15 @@
 
 <div class="new-comment-wrapper">
   <div class="title">总体评价</div>
-  <div id="rate"></div>
-
-  <div class="form-wrapper">
     <%= simple_form_for([:frontend, @comment_origin, @comment]) do |f| %>
-      <%= f.error_notification %>
-      <%#= f.input :rating, collection: 1..5, selected: 5, label: false %>
-      <%= f.input :content, as: :text, placeholder: '写下您的感受和想法...', label: false %>
-      <span id="word_size">已输入0个字</span>
-      <%#= f.button :submit, '发布', class: "btn btn-default full-button"%>
+      <div id="rate"></div>
+      <div class="form-wrapper">
+        <%= f.error_notification %>
+        <%#= f.input :rating, collection: 1..5, selected: 5, label: false %>
+        <%= f.input :content, as: :text, placeholder: '写下您的感受和想法...', label: false %>
+        <span id="word_size">已输入0个字</span>
+        <%= f.button :submit, '发布', class: "btn btn-default full-button hidden-element"%>
+      </div>
     <% end %>
   </div>
 </div>
@@ -34,8 +34,13 @@
     $('#rate').raty({
       half        : false,
       starOff     : starOffImageUrl,
-      starOn      : starOnImageUrl
+      starOn      : starOnImageUrl,
+      scoreName   : "comment[rating]"
     });
+
+    $(".submit-comment").click(function(){
+      $("#new_comment").submit();
+    })
     $("#comment_content").keyup(function(){
       $('#word_size').text("已输入"+$("#comment_content").val().length+"个字");
     })
