@@ -254,6 +254,7 @@ GEM
     rest-client (1.7.3)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
+    rmmseg-cpp-new (0.3.1)
     rubocop (0.39.0)
       parser (>= 2.3.0.7, < 3.0)
       powerpack (~> 0.1)
@@ -261,6 +262,8 @@ GEM
       ruby-progressbar (~> 1.7)
       unicode-display_width (~> 1.0, >= 1.0.1)
     ruby-hmac (0.4.0)
+    ruby-pinyin (0.5.0)
+      rmmseg-cpp-new (~> 0.3.1)
     ruby-progressbar (1.7.5)
     safe_yaml (1.0.4)
     sass (3.4.22)
@@ -365,6 +368,7 @@ DEPENDENCIES
   redis
   redis-objects
   rubocop
+  ruby-pinyin
   sass-rails (~> 5.0)
   sidekiq
   simple_form
@@ -379,4 +383,4 @@ DEPENDENCIES
   whenever
 
 BUNDLED WITH
-   1.11.2
+   1.12.3

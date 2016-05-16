@@ -77,6 +77,9 @@ gem 'carrierwave-mongoid', require: 'carrierwave/mongoid'
 # gem 'mongoid-grid_fs', github: 'ahoward/mongoid-grid_fs'
 gem 'carrierwave-qiniu', '~> 0.1.5'
 
+# pinyin
+gem 'ruby-pinyin'
+
 group :development, :test do
   gem 'byebug'
 
