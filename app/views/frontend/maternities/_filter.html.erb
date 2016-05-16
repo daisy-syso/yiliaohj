@@ -45,6 +45,8 @@
     <% end %>
   </ul>
 
+  <%= render "frontend/shards/filters2" %>
+
   <ul class="list-unstyled detail-panel intelligent-order">
     <li><a href="/maternities?sort_type=neighbour">离我最近</a></li>
     <li><a href="/maternities?sort_type=new">最新发布</a></li>
@@ -59,6 +61,11 @@
 
 <script>
   $(function() {
+
+    $(".hospital-filter").on("click", function(){
+      $(".filter-content").toggle();
+    });
+    
     $(".filter-type li").on("click", function(event){
       if($(this).hasClass("active")){
         $(this).removeClass("active");

@@ -15,6 +15,7 @@ html, body {
     width: 100%;
     z-index: 9999;
     height: 56px;
+    border-radius: 0px;
   }
   .container-fluid,
   .navbar-header {
@@ -29,7 +30,7 @@ html, body {
     }
   }
   .page-title {
-    width: 85%;
+    width: 75%;
     text-overflow: ellipsis;
     word-wrap: break-word;
     overflow: hidden;

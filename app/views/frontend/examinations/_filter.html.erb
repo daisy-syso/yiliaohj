@@ -38,6 +38,8 @@
     <li><a href="/examinations?sort_type=star">评价最高</a></li>
   </ul>
 
+  <%= render "frontend/shards/filters2" %>
+
   <ul class="list-unstyled detail-panel general-hospital">
     <li class="hospital-type"><a href="javascript:;">精准体检</a></li>
   </ul>
@@ -45,6 +47,10 @@
 
 <script>
   $(function() {
+    $(".hospital-filter").on("click", function(){
+      $(".filter-content").toggle();
+    });
+
     $(".filter-type li").on("click", function(event){
       if($(this).hasClass("active")){
         $(this).removeClass("active");

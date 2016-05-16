@@ -1,19 +1,49 @@
-<a href="#">评价</a>
-<br />
-<%= simple_form_for([:frontend, @comment_origin, @comment]) do |f| %>
-  <%= f.error_notification %>
+<div class="app-header">
+  <nav class="navbar navbar-default custom-header">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="/<%= @comment_origin.class.name.underscore.pluralize %>/<%= @comment_origin.id.to_s %>">
+          <%= image_tag "users/title_icon_back_normal.png" %>
+        </a>
+        <a href="#" class="page-title">评价</a>
+        <a href="#" class="submit-comment">发布</a>
+      </div>
+    </div>
+  </nav>
+</div>
 
-  <%= f.input :rating, collection: 1..5, selected: 5, label: false %>
-  <%= f.input :content, as: :text, placeholder: '写下您的感受和想法...', label: false %>
-  <span id="word_size">已输入0个字</span>
-  <%= f.button :submit, '发布', class: "btn btn-default full-button"%>
-<% end %>
+<div class="new-comment-wrapper">
+  <div class="title">总体评价</div>
+    <%= simple_form_for([:frontend, @comment_origin, @comment]) do |f| %>
+      <div id="rate"></div>
+      <div class="form-wrapper">
+        <%= f.error_notification %>
+        <%#= f.input :rating, collection: 1..5, selected: 5, label: false %>
+        <%= f.input :content, as: :text, placeholder: '写下您的感受和想法...', label: false %>
+        <span id="word_size">已输入0个字</span>
+        <%= f.button :submit, '发布', class: "btn btn-default full-button hidden-element"%>
+      </div>
+    <% end %>
+  </div>
+</div>
 
 <script type="text/javascript">
   $(function(){
+    var starOffImageUrl = "<%= asset_path ("frontend/star-off.png") %>";
+    var starOnImageUrl = "<%= asset_path ("frontend/star-on.png") %> ";
+    $('#rate').raty({
+      half        : false,
+      starOff     : starOffImageUrl,
+      starOn      : starOnImageUrl,
+      scoreName   : "comment[rating]"
+    });
+
+    $(".submit-comment").click(function(){
+      $("#new_comment").submit();
+    })
     $("#comment_content").keyup(function(){
       $('#word_size').text("已输入"+$("#comment_content").val().length+"个字");
     })
   })
-  
+
 </script>

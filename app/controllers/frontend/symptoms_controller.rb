@@ -7,13 +7,13 @@ module Frontend
     def load
       @symptom = Symptom.find(params[:id])
       @symptoms = Symptom
-      .order(display_index: :asc)
-      .where(english: params[:english])
-      .where(:display_index.gt => @symptom.display_index).limit(10)
+                  .order(display_index: :asc)
+                  .where(english: params[:english])
+                  .where(:display_index.gt => @symptom.display_index).limit(10)
 
       html = ''
       @symptoms.each do |symptom|
-        html += %Q(<li class="symptom-item">
+        html += %(<li class="symptom-item">
           <a href="symptoms/#{symptom.id}" data-id="#{symptom.id}" data-english="#{params[:english]}">#{symptom.name}</a>
       </li>)
       end

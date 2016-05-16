@@ -29,7 +29,9 @@
       </a>
   </ul>
 
-  <ul class="list-unstyled detail-panel general-hospital">
+  <%= render "frontend/shards/filters2" %>
+
+  <ul class="list-unstyled detail-panel general-city">
     <li class="hospital-type"><a href="javascript:;">全部分类</a></li>
     <% @hospital_categories.each do |hospital_category| %>
       <%= link_to frontend_buffets_path(hospital_category: hospital_category.name, hospital_category_parent_name: @hospital_category_parent_name) do %>
@@ -42,6 +44,10 @@
 
 <script>
   $(function() {
+    $(".hospital-filter").on("click", function(){
+      $(".filter-content").toggle();
+    });
+    
     $(".filter-type li").on("click", function(event){
       if($(this).hasClass("active")){
         $(this).removeClass("active");

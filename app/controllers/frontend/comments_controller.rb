@@ -7,16 +7,15 @@ class Frontend::CommentsController < FrontendController
     @comments = @comment_origin.comments.includes(:user).desc(:created_at).page(params[:page]).per(2)
   end
 
-
   def get_more_comments
     @comments = @comment_origin.comments.includes(:user).desc(:created_at).page(params[:page]).per(2)
     html = ''
     @comments.each do |comment|
-      html += %Q(<li class="comment-item">
+      html += %(<li class="comment-item">
         <div class="user-info">
           <img src="#{comment.user.try(:avatar)}" width="60px">
           <div class="comment-user-name">#{comment.user.try(:nickname)}</div>
-          <div class="comment-time">#{comment.created_at.strftime("%F")}</div>
+          <div class="comment-time">#{comment.created_at.strftime('%F')}</div>
         </div>
         <div class="comment-rate pull-right">
           #{get_star_html(comment)}
@@ -28,8 +27,8 @@ class Frontend::CommentsController < FrontendController
   end
 
   def get_star_html(comment)
-    html = ""
-    comment.rating.times do |s|
+    html = ''
+    comment.rating.times do |_s|
       html += '<img class="star" src="/assets/static_pages/icon_star_selected-2aee1bdfec73bf558c370762c0839431f944bf2b23e8b847a51c4be98a680c88.png" alt="Icon star selected 2aee1bdfec73bf558c370762c0839431f944bf2b23e8b847a51c4be98a680c88">'
     end
     html

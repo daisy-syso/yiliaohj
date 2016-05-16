@@ -55,6 +55,8 @@
     <li class="hospital-type"><a href="/confinement_centers">全部月子中心</a></li>
   </ul>
 
+  <%= render "frontend/shards/filters2" %>
+
   <ul class="list-unstyled detail-panel others-conditions">
     <li>
       手机挂号
@@ -82,6 +84,10 @@
 
 <script>
   $(function() {
+    $(".hospital-filter").on("click", function(){
+      $(".filter-content").toggle();
+    });
+
     $(".filter-type li").on("click", function(event){
       if($(this).hasClass("active")){
         $(this).removeClass("active");

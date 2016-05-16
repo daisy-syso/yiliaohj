@@ -63,3 +63,35 @@
     }
   }
 }
+
+.new-comment-wrapper {
+  margin-top: 50px;
+  text-align: center;
+  .hidden-element {
+    display: none;
+  }
+  .title {
+    font-size: 18px;
+    color: #666666;
+    padding: 30px;
+  }
+  #rate {
+    margin-bottom: 30px;
+    img {
+      width: 30px;
+    }
+  }
+  .form-wrapper {
+    border-top: 10px solid #f0f1f2;
+    textarea {
+      border: none;
+      padding: 25px;
+    }
+    #word_size {
+      float: right;
+      margin-right: 15px;
+      font-size: 13px;
+      color: #666666;
+    }
+  }
+}

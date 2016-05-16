@@ -24,17 +24,31 @@
     </p>
     <p class="hospital-website">网址：<%= @hospital.url %></p>
   </div>
-  医生列表
-  <br />
-  <% @doctors.each_pair do |department, doctors|%>
-    <%= department.parent.present? ? department.parent.name : department.name %>
-    <br />
-    <% doctors.each do |d| %>
-      <a href="/doctors/<%= d[0] %>">
-        <%= d[1] %><br/><%= d[2] %><br/>
-      </a>
-    <% end %>
-  <% end %>
+
+  <div class="department-list-wrapper">
+    <div class="department-list-title">医生列表</div>
+    <ul class="department-list list-unstyled">
+      <% @doctors.each_pair do |department, doctors|%>
+        <li class="department-item">
+          <div class="department-name">
+            <%= department.parent.present? ? department.parent.name : department.name %>
+            <%= image_tag "frontend/hospital/top_position_up.png", class: "pull-right arrow-img" %>
+          </div>
+          <ul class="department-doctor-list list-unstyled">
+            <% doctors.each do |d| %>
+              <li class="doctor-item">
+                <a href="/doctors/<%= d[0] %>" >
+                  <div class="doctor-name"> <%= d[1] %></div>
+                  <div class="doctor-department"><%= d[2] %></div>
+                </a>
+              </li>
+            <% end %>
+          </ul>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
   <div class="hospital-comments">
     <p class="comments-header">
       <span>
@@ -79,7 +93,7 @@
     <div class="position-detail">
       <h5><%= @hospital.name %></h5>
       <p>联系电话<%= @hospital.telephone %></p>
-      <p>地址：<%= @hospital.address %> 
+      <p>地址：<%= @hospital.address %>
         <a class="pull-right" href="<%= frontend_maps_path(location: @hospital.location) %>">到这去</a>
       </p>
       <div class="map">
@@ -110,6 +124,10 @@
     position: map.getCenter()
   });
   marker.setMap(map);
+
+  $(".department-name").click(function(event){
+    $(this).siblings(".department-doctor-list").toggle();
+  })
 
 </script>
 
