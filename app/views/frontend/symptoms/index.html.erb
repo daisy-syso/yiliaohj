@@ -17,7 +17,7 @@
   <% ('A'...'Z').each do |i| %>
     <div class="letter"><%= i %></div>
     <ul class="symptom-list list-unstyled">
-      <% @symptoms.where(english: "#{i}").order(index_string: :asc).limit(10).each do |s| %>
+      <% @symptoms.where(english: "#{i}").reorder(index_string: :asc).limit(10).each do |s| %>
         <li class="symptom-item">
           <a href="symptoms/<%= s.id%>" data-id="<%= s.id %>" data-english="<%= i %>"><%= s.name %></a>
         </li>
