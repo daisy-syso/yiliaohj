@@ -146,7 +146,12 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :person_customs
+      resources :person_customs do
+        collection do
+          get 'more_information'
+          get 'more_questions'
+        end
+      end
 
       resources :questions
 

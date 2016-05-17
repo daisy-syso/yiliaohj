@@ -64,49 +64,22 @@
       </ul>
     </div>
 
-    <div class="question right-content">
-      <ul class="question-list list-unstyled">
-        <% @questions.each do |question| %>
-          <a href="<%= frontend_question_path(question) %>" >
-            <li class="question-item">
-              <span class="title">
-                <%= question.content.slice(0,20) %>
-              </span>
-              <div class="publish-time">
-                发布时间：<%= question.created_at.strftime("%F %T")%>
-              </div>
-              <div class="question-tag badge <%= question.answer.present? ? 'answered-tag' : 'waiting-tag' %>">
-                <% if question.answer.present? %>
-                  已答复
-                <% else %>
-                  待答复
-                <% end %>
-              </div>
-            <li>
-          </a>
-        <% end %>
-        <li class="question-item">
-          <a href="javascript:;" class="title">提出医疗健康服务需求提出医疗健康服务需求
-          </a>
-          <div class="publish-time">
-            发布时间：2016-04-02
-          </div>
-          <div class="question-tag badge answered-tag">
-            已答复
-          </div>
-        <li>
-          <li class="question-item">
-          <a href="javascript:;" class="title">提出医疗健康服务需求提出医疗健康服务需求
-          </a>
-          <div class="publish-time">
-            发布时间：2016-04-02
-          </div>
-          <div class="question-tag badge waiting-tag">
-            待答复
-          </div>
-        <li>
+    <!-- 订阅的资讯-->
+    <div class="information-push-categories right-content">
+      <ul class="list-unstyled push-list" id="information_list">
       </ul>
-       <a class="publish-requirement" href="<%= new_frontend_question_path %>"> 发布需求</a>
+      <div >
+        <a href="#">加载更多...</a>
+      </div>
+    </div>
+
+    <div class="question right-content">
+      <ul class="question-list list-unstyled" id="question_list">
+      </ul>
+      <div >
+        <a href="#">加载更多...</a>
+      </div>
+      <a class="publish-requirement" href="<%= new_frontend_question_path %>"> 发布需求</a>
     </div>
   </div>
 </div>
@@ -114,6 +87,28 @@
 <div id="mask"></div>
 
 <script type="text/javascript">
+  var information_page = 1;
+  var question_page = 1;
+  var per = 10;
+
+  $(function(){
+    $.get('/person_customs/more_information',{
+      page: information_page,
+      per: 10
+    },function(data){
+      $("#information_list").append(data);
+      information_page = information_page + 1;
+    })
+
+    $.get('/person_customs/more_questions',{
+      page: information_page,
+      per: 10
+    },function(data){
+      $("#question_list").append(data);
+      question_page = information_page + 1;
+    })
+  });
+
   $(".category-title").click(function(){
     $(".category-title").removeClass("active");
     $(".right-content").hide();

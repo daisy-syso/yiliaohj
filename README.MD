@@ -91,33 +91,3 @@ db.createUser(
 /diseases filter 样式调整
 
 ```
-
-
-
-```
-    <!-- 去订阅 -->
-    <div class="information-push-categories right-content">
-      <% if @subscription_categories.empty? %>
-        暂无订阅<a href="<%= frontend_person_customs_path %>">去订阅相关健康资讯</a>
-      <% end %>
-      <% @subscription_categories.each do |subscription_category| %>
-        <ul class="list-unstyled push-list">
-          <% subscription_category.information.each do |information| %>
-            <li class="push-item">
-              <a href="/information/<%= information.id.to_s %>" class="title">
-                【<%= subscription_category.name %>】
-                <%= information.title %>
-              </a>
-              <div class="publish-time">
-                <%= information.created_at %>
-              </div>
-            </li>
-          <% end %>
-        </ul>
-      <% end %>
-      <div >
-        <a href="#">加载更多...</a>
-      </div>
-    </div>
-
-```
