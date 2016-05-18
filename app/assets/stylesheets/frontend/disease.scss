@@ -1,7 +1,7 @@
 @import "../variables";
 
 .diseases-wrapper {
-  margin: 50px 0 60px;
+  margin: 60px 0 60px;
   .diseases-item {
     height: 98px;
     border-bottom: 1px solid $border-gray;
@@ -40,6 +40,46 @@
             border-right: 1px solid $border-gray;
           }
         }
+      }
+    }
+  }
+
+  background-color: #EFEFEF;
+
+  .diseases-panel {
+    margin-bottom: 12px;
+    padding: 10px 15px;
+    background-color: #FFF;
+
+    .title {
+      border-bottom: 1px solid #DEDEDE;
+      font-size: 16px;
+      padding-bottom: 5px;
+    }
+
+    .body {
+      margin-top: 5px;
+      padding-left: 10px;
+      padding-right: 10px;
+      overflow: hidden;
+      -webkit-line-clamp: 2;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      color: #515858;
+
+
+      .etiology-image {
+        width: 80px;
+      }
+
+      .etiology-description {
+        float: left;
+        display: inline-block;
+        width: calc(100% - 90px);
+        overflow: hidden;
+        -webkit-line-clamp: 3;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
       }
     }
   }
