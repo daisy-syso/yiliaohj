@@ -116,6 +116,8 @@ Rails.application.routes.draw do
 
       resources :categories
 
+      resources :promotions
+
       resources :buffets do
         resources :comments do
           collection do
