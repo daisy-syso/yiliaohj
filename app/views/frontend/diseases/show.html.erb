@@ -1,16 +1,99 @@
-名称：<%= @disease.name %>
-<br /><hr />
-病因：<%= @disease.etiology %>
-<br /><hr />
-治疗：<%= @disease.treatent %>
-<br /><hr />
-预防：<%= @disease.prevention %>
-<br /><hr />
-图片：<img src="<%= fixed_image_url(@disease) %>">
-<br /><hr />
-描述：<%= @disease.description %>
-<br /><hr />
-饮食：<%= @disease.diet %>
-<br /><hr />
-疾病：<%= @disease.symptom %>
-<br /><hr />
+<%= render "/frontend/common/nav", { title: @disease.name } %>
+
+<div class="diseases-wrapper">
+    <div class="diseases-panel">
+        <div class="title">
+            <span class="icon cricle"></span>
+            <%= @disease.name %>
+        </div>
+        <div class="body" data-line-clamp="3" style="-webkit-line-clamp: 3">
+            <img class="etiology-image" src="<%= fixed_image_url(@disease) %>">
+            <span class="etiology-description">
+                <%= @disease.description %>
+            </span>
+        </div>
+    </div>
+    <div class="diseases-panel">
+        <div class="title">
+            <%= image_tag "frontend/disease/list_icon_reason.png", { :dragable => false , :tabindex => -1} %>
+            病因
+        </div>
+        <div class="body">
+            <%= @disease.etiology %>
+        </div>
+    </div>
+    <div class="diseases-panel">
+        <div class="title">
+            <%= image_tag "frontend/disease/list_icon_treatment.png", { :dragable => false , :tabindex => -1} %>
+            治疗
+        </div>
+        <div class="body">
+            <%= @disease.treatent %>
+        </div>
+    </div>
+    <div class="diseases-panel">
+        <div class="title">
+            <%= image_tag "frontend/disease/list_icon_prevention.png", { :dragable => false , :tabindex => -1} %>
+            预防
+        </div>
+        <div class="body">
+            <%= @disease.prevention %>
+        </div>
+    </div>
+    <div class="diseases-panel">
+        <div class="title">
+            <%= image_tag "frontend/disease/list_icon_diet.png", { :dragable => false , :tabindex => -1} %>
+            饮食
+        </div>
+        <div class="body">
+            <%= @disease.diet %>
+        </div>
+    </div>
+    <div class="diseases-panel">
+        <div class="title">
+            <%= image_tag "frontend/disease/list_icon_disease.png", { :dragable => false , :tabindex => -1} %>
+            疾病
+        </div>
+        <div class="body">
+            <%= @disease.symptom %>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+(function($){
+
+
+    (function buildPanelMore(argument) {
+        var $targets = $(".diseases-panel");
+        console.log($targets);
+        $.each($targets, function(index, val) {
+            var $target = $(val);
+            var text = $target.find('.body').text();
+            if(40 < text.length) {
+                var more = $('<a class="more"><span class="glyphicon glyphicon-menu-down"></span></a>');
+                $target.append(more);
+                more.on('click', function() {
+                    var $body = $target.find('.body');
+                    var value = $body.css("-webkit-line-clamp");
+                    var  line = $body.data('line-clamp');
+                    console.log(line);
+                    console.log(value);
+                    if(value === 'none') {
+                        more.removeClass('hidden');
+                        $body.css("-webkit-line-clamp", String(line));
+                    } else {
+                        more.addClass('hidden');
+                        $body.css("-webkit-line-clamp", "initial");
+                    }
+                    return false;
+                });
+            }
+        });
+    })();
+
+})($);
+
+
+</script>
