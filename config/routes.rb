@@ -82,6 +82,8 @@ Rails.application.routes.draw do
         end
       end
 
+      resources :strategies
+
       resources :confinement_centers do
         resources :comments do
           collection do
