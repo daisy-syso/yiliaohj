@@ -55,6 +55,11 @@
       border-bottom: 1px solid #DEDEDE;
       font-size: 16px;
       padding-bottom: 5px;
+
+      > img {
+        width: 18px;
+        vertical-align: top;
+      }
     }
 
     .body {
@@ -67,20 +72,25 @@
       -webkit-box-orient: vertical;
       color: #515858;
 
-
       .etiology-image {
         width: 80px;
+        float: left;
       }
 
-      .etiology-description {
-        float: left;
-        display: inline-block;
-        width: calc(100% - 90px);
-        overflow: hidden;
-        -webkit-line-clamp: 3;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
+    }
+
+    a.more {
+      display: inline-block !important;
+      width: 100%;
+      text-align: center;
+      margin-top: 5px;
+      color: #636363 !IMPORTANT;
+      text-decoration: none;
+
+      &.hidden .glyphicon.glyphicon-menu-down:before {
+        content: "\e260";
       }
     }
+
   }
 }
