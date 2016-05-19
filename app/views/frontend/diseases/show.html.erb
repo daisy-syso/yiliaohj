@@ -6,7 +6,7 @@
             <span class="icon cricle"></span>
             <%= @disease.name %>
         </div>
-        <div class="body">
+        <div class="body" data-line-clamp="3" style="-webkit-line-clamp: 3">
             <img class="etiology-image" src="<%= fixed_image_url(@disease) %>">
             <span class="etiology-description">
                 <%= @disease.description %>
@@ -75,14 +75,17 @@
                 var more = $('<a class="more"><span class="glyphicon glyphicon-menu-down"></span></a>');
                 $target.append(more);
                 more.on('click', function() {
-                    var body = $target.find('.body');
-                    var value = body.css("-webkit-line-clamp");
+                    var $body = $target.find('.body');
+                    var value = $body.css("-webkit-line-clamp");
+                    var  line = $body.data('line-clamp');
+                    console.log(line);
+                    console.log(value);
                     if(value === 'none') {
                         more.removeClass('hidden');
-                        body.css("-webkit-line-clamp", "2");
+                        $body.css("-webkit-line-clamp", String(line));
                     } else {
                         more.addClass('hidden');
-                        body.css("-webkit-line-clamp", "initial");
+                        $body.css("-webkit-line-clamp", "initial");
                     }
                     return false;
                 });

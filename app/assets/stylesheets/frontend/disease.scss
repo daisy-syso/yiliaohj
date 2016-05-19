@@ -70,7 +70,7 @@
       -webkit-line-clamp: 2;
       display: -webkit-box;
       -webkit-box-orient: vertical;
-      color: #515858;
+      color: #919191;
 
       .etiology-image {
         width: 80px;
@@ -84,8 +84,9 @@
       width: 100%;
       text-align: center;
       margin-top: 5px;
-      color: #636363 !IMPORTANT;
+      color: #919191 !IMPORTANT;
       text-decoration: none;
+      font-size: 1.25em;
 
       &.hidden .glyphicon.glyphicon-menu-down:before {
         content: "\e260";
