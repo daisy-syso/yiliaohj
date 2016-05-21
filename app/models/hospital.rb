@@ -33,8 +33,11 @@ class Hospital
   field :is_medical_insurance, type: Boolean
   field :categories, type: Array, default: -> { [] }
 
-  # 海外医疗值填写为false
-  field :is_foreign, type: Boolean, default: true
+  # 海外医疗值填写为true
+  field :is_foreign, type: Boolean, default: false
+
+  # 肿瘤医院值填写为true
+  field :id_tumour, type: Boolean, default: false
 
   validates :name, presence: true
   # validates :telephone, presence: true

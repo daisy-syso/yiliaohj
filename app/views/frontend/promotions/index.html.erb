@@ -1,0 +1,68 @@
+<div class="app-header">
+  <nav class="navbar navbar-default custom-header">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="/">
+          <%= image_tag "users/title_icon_back_normal.png" %>
+        </a>
+        <a href="#" >最新优惠</a>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<%= render "filter" %>
+
+<div class="buffet-list-content">
+  <ul class="list-unstyled buffet-list">
+    <% @buffets.each do |buffet| %>
+      <li class="buffet-item">
+        <a href="<%= frontend_buffet_path(buffet) %>" class="item-body">
+          <img src="<%= fixed_image_url(buffet) %>" class="buffet-avatar" alt=""/>
+          <div class="buffet-info">
+            <div class="title"><%= buffet.name %></div>
+            <p class="grade">
+              <% buffet.star.times do |s| %>
+                <%= image_tag "static_pages/icon_star_selected.png", class: "star" %>
+              <% end %>
+              <%= buffet.star %>分
+            </p>
+            <p class="price">￥<%= buffet.price %></p>
+            <div class="statistics">
+              <p><%= buffet.comments.count %> 人评价</p>
+              <p><%= buffet.commodities.count %> 人购买</p>
+            </div>
+          </div>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+  <div class="spinner"></div>
+  <%#= paginate @buffets %>
+</div>
+
+<script type="text/javascript">
+  var page = 2;
+  var stop = false;
+  $(window).scroll(function () {
+    if($(document).height() <= ($(window).scrollTop() + $(window).height()) + 60) {
+      if(stop == false){
+        stop = true;
+        $(".spinner").show();
+        var search = window.location.search;
+        if(search){
+          url = "/promotions" + search + "&page=" + page;
+        } else {
+          url = "/promotions?page=" + page;
+        }
+        $.get(url, function(data){
+          $html = $(data).find(".buffet-list").html();
+          $(".buffet-list").append($html);
+          page = page + 1;
+          stop =false;
+          $(".spinner").hide();
+        });
+      }
+    }
+  });
+</script>

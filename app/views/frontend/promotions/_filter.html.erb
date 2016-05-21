@@ -1,0 +1,87 @@
+<div class="filter">
+  <ul class="list-unstyled filter-type">
+    <li class="type-item hospital-filter" data-panel="general-hospital">
+      <a href="javascript:;">
+        最新优惠
+      <%= image_tag "static_pages/filter_icon_down.png", class: "filter-icon-down" %>
+      <%= image_tag "static_pages/filter_icon_up.png", class: "filter-icon-up" %>
+      </a>
+    </li>
+    <li class="type-item intelligent-filter" data-panel="general-city">
+      <a href="javascript:;">
+        精选
+        <%= image_tag "static_pages/filter_icon_down.png", class: "filter-icon-down" %>
+        <%= image_tag "static_pages/filter_icon_up.png", class: "filter-icon-up" %>
+      </a>
+    </li>
+    <li class="type-item intelligent-filter" data-panel="intelligent-order">
+      <a href="javascript:;">
+        智能排序
+        <%= image_tag "static_pages/filter_icon_down.png", class: "filter-icon-down" %>
+        <%= image_tag "static_pages/filter_icon_up.png", class: "filter-icon-up" %>
+      </a>
+    </li>
+    <li class="type-item filtration" data-panel="others-conditions">
+      <a href="javascript:;">
+        筛选
+        <%= image_tag "static_pages/filter_icon_down.png", class: "filter-icon-down" %>
+        <%= image_tag "static_pages/filter_icon_up.png", class: "filter-icon-up" %>
+      </a>
+  </ul>
+
+  <%= render "frontend/shards/filters2" %>
+
+  <ul class="list-unstyled detail-panel general-city">
+    <li class="hospital-type"><a href="javascript:;">全部分类</a></li>
+    <% @hospital_categories.each do |hospital_category| %>
+      <%= link_to frontend_buffets_path(hospital_category: hospital_category.name, hospital_category_parent_name: @hospital_category_parent_name) do %>
+        <li class="hospital-type"><%= hospital_category.name %></li>
+      <% end %>
+    <% end %>
+  </ul>
+
+</div>
+
+<script>
+  $(function() {
+    $(".hospital-filter").on("click", function(){
+      $(".filter-content").toggle();
+    });
+    
+    $(".filter-type li").on("click", function(event){
+      if($(this).hasClass("active")){
+        $(this).removeClass("active");
+        $("." + $(this).data("panel")).hide();
+      } else {
+        $(".type-item").removeClass("active");
+        $(".detail-panel").hide();
+        $(this).addClass("active");
+        $("." + $(this).data("panel")).show();
+      }
+    });
+    $(".hospital-type").on("click", function(event){
+      $(".hospital-type").removeClass("active");
+      $(".hospital-categories").hide();
+      $(this).addClass("active");
+      $(this).next("ul").show();
+    });
+
+    $(".city-type").on("click", function(event){
+      $(".city-type").removeClass("active");
+      $(".city-categories").hide();
+      $(this).addClass("active");
+      $(this).next("ul").show();
+    });
+    $(".others-conditions .toggle").click(function(){
+      $(this).hide();
+      $(this).siblings().show();
+    });
+    $(".subject-list li").on("click",function(event){
+      if($(this).hasClass("active")){
+        $(this).removeClass("active");
+      } else {
+        $(this).addClass("active");
+      }
+    });
+  });
+</script>

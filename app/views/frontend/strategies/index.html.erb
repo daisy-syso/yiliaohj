@@ -1,0 +1,8 @@
+<% @strategies.each do |strategy|%>
+  <a href="<%= frontend_strategy_category_strategy_path(@strategy_category, strategy) %>">
+    <%= strategy.title %>---
+    [<%= strategy.sub_title %>]
+    <br>
+  </a>
+  <br />
+<% end %>

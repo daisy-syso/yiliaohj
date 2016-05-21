@@ -116,6 +116,8 @@ Rails.application.routes.draw do
 
       resources :categories
 
+      resources :promotions
+
       resources :buffets do
         resources :comments do
           collection do
@@ -184,6 +186,13 @@ Rails.application.routes.draw do
       resources :maps
 
       resources :diseases
+
+      resources :strategy_categories do
+        member do
+          get 'sub_strategy_categories'
+        end
+        resources :strategies
+      end
     end
   end
 end
