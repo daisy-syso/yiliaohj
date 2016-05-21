@@ -28,4 +28,28 @@
             }
         }
     }
+
+    .list-group {
+        box-shadow: none;
+        .list-group-item {
+            color: #666;
+            border-radius: 0 !important;
+            text-align: left;
+            padding: 15px 20px;
+            font-size: 1.25em;
+
+            &:after {
+                position: relative;
+                top: 1px;
+                display: inline-block;
+                font-family: 'Glyphicons Halflings';
+                font-style: normal;
+                font-weight: 400;
+                line-height: 1;
+                -webkit-font-smoothing: antialiased;
+                content: "\e258";
+                float: right;
+            }
+        }
+    }
 }
