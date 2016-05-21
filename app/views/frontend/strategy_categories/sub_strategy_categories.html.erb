@@ -1,0 +1,7 @@
+<% @sub_strategy_categories.each do |strategy_category|%>
+  <a href="<%= frontend_strategy_category_strategies_path(strategy_category) %>">
+    <img src="<%= fixed_image_url(strategy_category) %>" alt=""/>
+    <%= strategy_category.name %>
+  </a>
+  <br />
+<% end %>
