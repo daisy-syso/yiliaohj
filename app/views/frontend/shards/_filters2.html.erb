@@ -1,6 +1,6 @@
 <div class="filter-content">
   <ul class="all-category list-unstyled first-column-wrapper">
-    <li class="category-li first-column" data-panel="all-hospital"><a href="javascript:;">医院大全</a></li>
+    <li class="category-li first-column active" data-panel="all-hospital"><a href="javascript:;">医院大全</a></li>
     <li class="category-li first-column"><a href="/diseases">疾病查询</a></li>
     <li class="category-li first-column"><a href="/doctors">找医生</a></li>
     <li class="category-li first-column"><a href="/symptoms">症状查询</a></li>
@@ -24,8 +24,8 @@
   </ul>
 
   <!-- 综合医院第一级 -->
-  <ul class="all-hospital list-unstyled second-column-wrapper">
-    <li class="second-column-item" data-panel="hospital-grade">综合医院</li>
+  <ul class="all-hospital list-unstyled second-column-wrapper active" style="display: block;">
+    <li class="second-column-item active" data-panel="hospital-grade">综合医院</li>
     <li class="second-column-item" data-panel="andrology">男科</li>
     <li class="second-column-item" data-panel="shaping">整形</li>
     <li class="second-column-item">体检</li>
@@ -37,7 +37,7 @@
   </ul>
 
   <!-- 医院大全第二级 综合医院 -->
-  <ul class="hospital-grade list-unstyled third-column-wrapper">
+  <ul class="hospital-grade list-unstyled third-column-wrapper" style="display: block;">
     <% %w(三级甲等 三级乙等 三级合格 二级甲等 二级乙等 二级合格 一级甲等 一级乙等 一级合格 社区医院 民营医院 外资医院).each do |category_level| %>
       <li class="third-column-item">
         <a href="/hospitals?category_level=<%= category_level %>"><%= category_level %></a>
