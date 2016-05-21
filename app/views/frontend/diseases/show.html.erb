@@ -67,7 +67,6 @@
 
     (function buildPanelMore(argument) {
         var $targets = $(".diseases-panel");
-        console.log($targets);
         $.each($targets, function(index, val) {
             var $target = $(val);
             var text = $target.find('.body').text();
@@ -78,8 +77,7 @@
                     var $body = $target.find('.body');
                     var value = $body.css("-webkit-line-clamp");
                     var  line = $body.data('line-clamp');
-                    console.log(line);
-                    console.log(value);
+                    line = line | 2;
                     if(value === 'none') {
                         more.removeClass('hidden');
                         $body.css("-webkit-line-clamp", String(line));
