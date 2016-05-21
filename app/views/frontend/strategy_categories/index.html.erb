@@ -1,7 +1,22 @@
-<% @strategy_categories.each do |strategy_category|%>
-  <a href="<%= sub_strategy_categories_frontend_strategy_category_path(strategy_category) %>">
-    <img src="<%= fixed_image_url(strategy_category) %>" alt=""/>
-    <%= strategy_category.name %>
-  </a>
-  <br />
-<% end %>
+<%= render "/frontend/common/nav", { title: "攻略" } %>
+
+<div class="strategy-categories-group">
+    <% @strategy_categories.each do |strategy_category|%>
+        <div class="item">
+          <a href="<%= sub_strategy_categories_frontend_strategy_category_path(strategy_category) %>">
+            <div><%= image_tag "frontend/strategy_categories/explain_icon_1_normal.png", { :dragable => false , :tabindex => -1} %></div>
+            <%= strategy_category.name %>
+          </a>
+          <br />
+        </div>
+    <% end %>
+</div>
+
+<script>
+
+    (function($) {
+        var $items = $('.strategy-categories-group .item');
+        var width = $items.width();
+        $items.height(width);
+    })(jQuery);
+</script>
