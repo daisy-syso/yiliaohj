@@ -185,6 +185,12 @@ Rails.application.routes.draw do
 
       resources :maps
 
+      resources :cities do
+        collection do
+          get 'cities_search'
+        end
+      end
+
       resources :diseases
 
       resources :strategy_categories do
