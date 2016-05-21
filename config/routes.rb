@@ -82,8 +82,6 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :strategies
-
       resources :confinement_centers do
         resources :comments do
           collection do
@@ -188,6 +186,13 @@ Rails.application.routes.draw do
       resources :maps
 
       resources :diseases
+
+      resources :strategy_categories do
+        member do
+          get 'sub_strategy_categories'
+        end
+        resources :strategies
+      end
     end
   end
 end

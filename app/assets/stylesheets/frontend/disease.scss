@@ -56,6 +56,24 @@
       font-size: 16px;
       padding-bottom: 5px;
 
+      .icon.cricle {
+        height: 100%;
+        display: inline-block;
+        width: 12px;
+        position: relative;
+
+        &:after {
+          content: " ";
+          position: absolute;
+          top: -14px;
+          left: 3px;
+          width: 9px;
+          height: 15px;
+          background-color: #c579f2;
+          border-radius: 5px;
+        }
+      }
+
       > img {
         width: 18px;
         vertical-align: top;
