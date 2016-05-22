@@ -108,7 +108,7 @@ Rails.application.routes.draw do
 
       resources :symptoms do
         collection do
-          get 'load'
+          get 'get_more'
         end
       end
 

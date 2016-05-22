@@ -14,14 +14,30 @@
 <div class="symptom-list-content">
   <% @symptom_first_chars.each do |char| %>
     <div class="letter"><%= char %></div>
-    <ul class="symptom-list list-unstyled">
-      <%# $redis_symptoms.lrange(char, 0, -1).each do |s| %>
-      <% $redis_symptoms.lrange(char, 0, 10).each do |s| %>
+    <ul class="symptom-list list-unstyled" id="symptom_list_<%= char %>">
+      <% $redis_symptoms.lrange(char, 0, 9).each do |s| %>
       <li class="symptom-item">
         <a href="symptoms/<%= s.split(',')[0] %>"> <%= s.split(',')[1] %></a>
       </li>
-      <!-- <button class="more">加载更多</button> -->
       <% end %>
      </ul>
+     <button class="more" page="1" char="<%= char %>">加载更多</button>
   <% end %>
 </div>
+
+<script type="text/javascript">
+  $('.more').click(function(e){
+    var char = e.target.getAttribute("char");
+    var page = e.target.getAttribute("page");
+
+    $.get('/symptoms/get_more', {
+      char: char,
+      page: page
+    }, function(data){
+      var id_name = "#symptom_list_" + char;
+      $(id_name).append(data);
+
+      e.target.setAttribute("page", parseInt(page) + 1);
+    })
+  })
+</script>
