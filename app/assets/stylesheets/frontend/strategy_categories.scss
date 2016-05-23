@@ -1,15 +1,14 @@
 @import "../variables";
 
-
 .strategy-categories-group {
-  padding-top: 56px;
-  padding-bottom: 50px;
   text-align: center;
+  display: inline-block;
+
   .item {
     display: inline-block;
     float: left;
     width: 33.33%;
-    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
 
     a {
@@ -18,9 +17,11 @@
       color: #666;
       text-decoration: none;
       display: inline-block;
+
       div {
         width: 100%;
-          padding: 15px;
+        padding: 15px;
+
         img {
           display: inline-block;
           width: 60px;
@@ -29,9 +30,12 @@
       }
     }
   }
-
+}
+.strategy-categories-list {
   .list-group {
     box-shadow: none;
+    margin-bottom: 0px;
+
     .list-group-item {
       color: #666;
       border-radius: 0;
@@ -39,7 +43,8 @@
       padding: 15px 20px;
       font-size: 1.25em;
       outline: none;
-      &:acitve {
+
+      &:active {
         background-color: #DA2AF4;
         color: #FFF;
       }

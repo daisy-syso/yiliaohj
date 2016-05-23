@@ -1,15 +1,16 @@
 <%= render "/frontend/common/nav", { title: "攻略" } %>
 
-<div class="strategy-categories-group">
+<div class="content-wrapper">
+  <div class="strategy-categories-group">
     <% @strategy_categories.each do |strategy_category|%>
-        <div class="item">
-          <a href="<%= sub_strategy_categories_frontend_strategy_category_path(strategy_category) %>">
-            <div><%= image_tag "frontend/strategy_categories/explain_icon_1_normal.png", { :dragable => false , :tabindex => -1} %></div>
-            <%= strategy_category.name %>
-          </a>
-          <br />
-        </div>
+      <div class="item">
+        <a href="<%= sub_strategy_categories_frontend_strategy_category_path(strategy_category) %>">
+          <div><%= image_tag "frontend/strategy_categories/explain_icon_1_normal.png", { :dragable => false , :tabindex => -1} %></div>
+          <%= strategy_category.name %>
+        </a>
+      </div>
     <% end %>
+  </div>
 </div>
 
 <script>
