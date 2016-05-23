@@ -27,7 +27,7 @@
   医生列表
   <br />
   <% @doctors.each_pair do |department, doctors|%>
-    <%= department.parent.name %>
+    <%= department.parent.name if department.parent.present? %>
     <br />
     <% doctors.each do |d| %>
       <a href="/doctors/<%= d[0] %>">
