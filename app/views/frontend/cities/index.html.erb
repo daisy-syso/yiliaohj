@@ -1,0 +1,21 @@
+<input type="text" id="search_city" class="search-input" placeholder="XXX">
+<br />
+当前： 上海
+<br />
+
+热门城市<br>
+<% @hot_cities.each do |city| %>
+  <%= city.name %>
+<% end %>
+
+<br />
+
+<script type="text/javascript">
+  $("#search_city").keyup(function(e){
+    $.get("/cities/cities_search",{
+      query: $('#search_city').val()
+    },function(data){
+      console.log(data);
+    })
+  })
+</script>

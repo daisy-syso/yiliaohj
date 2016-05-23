@@ -11,44 +11,33 @@
   </nav>
 </div>
 
-<%= render "filter" %>
-
 <div class="symptom-list-content">
-  <% ('A'...'Z').each do |i| %>
-    <div class="letter"><%= i %></div>
-    <ul class="symptom-list list-unstyled">
-      <% @symptoms.where(english: "#{i}").reorder(index_string: :asc).limit(10).each do |s| %>
-        <li class="symptom-item">
-          <a href="symptoms/<%= s.id%>" data-id="<%= s.id %>" data-english="<%= i %>"><%= s.name %></a>
-        </li>
+  <% @symptom_first_chars.each do |char| %>
+    <div class="letter"><%= char %></div>
+    <ul class="symptom-list list-unstyled" id="symptom_list_<%= char %>">
+      <% $redis_symptoms.lrange(char, 0, 9).each do |s| %>
+      <li class="symptom-item">
+        <a href="symptoms/<%= s.split(',')[0] %>"> <%= s.split(',')[1] %></a>
+      </li>
       <% end %>
-      <a href="#" class="js-load-data">加载更多</a>
-    </ul>
+     </ul>
+     <button class="more" page="1" char="<%= char %>">加载更多</button>
   <% end %>
 </div>
 
-<script>
-$(".js-load-data").on("click",function(event){
-    var target;
-    target = event.target || window.event.srcElement;
-    var prev_node = $(target).prev('li').children().last();
-    console.log(prev_node.html());
-    var id = prev_node.attr('data-id');
-    var english = prev_node.attr('data-english');
-    if(id == undefined){
-     var str = prev_node.html();
-     str = str.replace(/\ +/g,"");
-     str = str.split('data-id="')[1].split('"data-english="');
-     id = str[0];
-     english = str[1].split('">')[0]
-    }
-    $.ajax({
-         type: 'get',
-         url: '/symptoms/load',
-         data: {id: id, english: english },
-         success: function(data){
-           prev_node.after(data);
-         }
-      });
-    });
+<script type="text/javascript">
+  $('.more').click(function(e){
+    var char = e.target.getAttribute("char");
+    var page = e.target.getAttribute("page");
+
+    $.get('/symptoms/get_more', {
+      char: char,
+      page: page
+    }, function(data){
+      var id_name = "#symptom_list_" + char;
+      $(id_name).append(data);
+
+      e.target.setAttribute("page", parseInt(page) + 1);
+    })
+  })
 </script>

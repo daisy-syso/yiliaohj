@@ -12,6 +12,8 @@ module Frontend
       # 等级
       query[:level] = params[:category_level] if params[:category_level]
 
+      query[:id_tumour] = true
+
       # 城市
       city = params[:city] || $redis_position.get("#{request.remote_ip}_city") || '上海市'
       query[:city] = City.where(name: city).first

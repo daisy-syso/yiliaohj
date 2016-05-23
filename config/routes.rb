@@ -108,7 +108,7 @@ Rails.application.routes.draw do
 
       resources :symptoms do
         collection do
-          get 'load'
+          get 'get_more'
         end
       end
 
@@ -184,6 +184,12 @@ Rails.application.routes.draw do
       resources :all_categories
 
       resources :maps
+
+      resources :cities do
+        collection do
+          get 'cities_search'
+        end
+      end
 
       resources :diseases
 

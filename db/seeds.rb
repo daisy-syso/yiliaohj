@@ -6,8 +6,3 @@
 # a.email = '651019063@qq.com'
 # a.password = 'password'
 # a.save
-
-Symptom.each_with_index do |value, index|
-  value.display_index = index
-  value.save
-end

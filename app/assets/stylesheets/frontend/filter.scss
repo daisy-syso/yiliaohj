@@ -157,10 +157,14 @@
     }
   }
   .first-column-wrapper {
-    padding-left: 15px;
+    padding-left: 0px;
     height: 400px;
-    width: 30%;
+    width: 33%;
     display: block;
+    text-indent: 15px;
+    .first-column.active {
+      background: #DEDCDC;
+    }
   }
   .second-column-wrapper {
     position: fixed;
@@ -170,6 +174,9 @@
     width: 33%;
     height: 400px;
     padding-left: 15px;
+    .second-column-item.active {
+      color: $purple;
+    }
   }
   .third-column-wrapper {
     left: 66%;
