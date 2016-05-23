@@ -30,7 +30,6 @@
   </ul>
 
   <%= render "frontend/shards/filters2" %>
-
   <ul class="list-unstyled detail-panel general-city">
     <li class="hospital-type"><a href="javascript:;">全部分类</a></li>
     <% @hospital_categories.each do |hospital_category| %>
@@ -38,6 +37,12 @@
         <li class="hospital-type"><%= hospital_category.name %></li>
       <% end %>
     <% end %>
+  </ul>
+
+  <ul class="list-unstyled detail-panel intelligent-order">
+    <li><a href="<%= request.url %>&sort_type=new">最新发布</a></li>
+    <li><a href="<%= request.url %>&sort_type=click_count">人气最高</a></li>
+    <li><a href="<%= request.url %>&sort_type=star">评价最高</a></li>
   </ul>
 
 </div>

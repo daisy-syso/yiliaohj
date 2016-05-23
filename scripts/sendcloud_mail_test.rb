@@ -42,7 +42,6 @@ require 'rest_client'
 #     template_invoke_name: 'email_confirmation',
 #     resp_email_id: 'true'
 #   }
-#   debugger
 #   puts "zzzzzzz"
 #   puts response
 #   puts response.code

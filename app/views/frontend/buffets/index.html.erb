@@ -10,7 +10,6 @@
     </div>
   </nav>
 </div>
-
 <%= render "filter" %>
 
 <div class="buffet-list-content">
@@ -30,6 +29,7 @@
             <p class="price">￥<%= buffet.price %></p>
             <div class="statistics">
               <p><%= buffet.comments.count %> 人评价</p>
+              <p><%= buffet.click_count %> 人点击</p>
               <p><%= buffet.commodities.count %> 人购买</p>
             </div>
           </div>
