@@ -24,6 +24,7 @@
         img {
           display: inline-block;
           width: 60px;
+          outline: none;
         }
       }
     }
@@ -38,7 +39,10 @@
       padding: 15px 20px;
       font-size: 1.25em;
       outline: none;
-
+      &:acitve {
+        background-color: #DA2AF4;
+        color: #FFF;
+      }
       &:after {
         position: relative;
         top: 1px;
