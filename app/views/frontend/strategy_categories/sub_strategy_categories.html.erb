@@ -1,10 +1,11 @@
 <%= render "/frontend/common/nav", { title: "诊疗攻略" } %>
 
-<div class="strategy-categories-group">
-
+<div class="content-wrapper">
+  <div class="strategy-categories-list">
     <div class="list-group">
       <% @sub_strategy_categories.each do | strategy_category |%>
-        <%= link_to strategy_category.name, frontend_strategy_category_strategies_path(strategy_category), class: "list-group-item" %>
+      <%= link_to strategy_category.name, frontend_strategy_category_strategies_path(strategy_category), class: "list-group-item" %>
       <% end %>
     </div>
+  </div>
 </div>

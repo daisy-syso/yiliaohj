@@ -1,2 +1,14 @@
-<%= @strategy.title %><br >
-<%= @strategy.content %>
+<%= render "/frontend/common/nav", { title: @strategy.title } %>
+
+<div class="content-wrapper">
+  <div class="strategy-detail">
+    <h4 class="title">
+      <%= @strategy.title %>
+    </h4>
+    <div class="body">
+      <%= @strategy.content %>
+    </div>
+  </div>
+  <br >
+
+</div>

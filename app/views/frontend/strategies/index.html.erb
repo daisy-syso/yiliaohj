@@ -1,8 +1,15 @@
-<% @strategies.each do |strategy|%>
-  <a href="<%= frontend_strategy_category_strategy_path(@strategy_category, strategy) %>">
-    <%= strategy.title %>---
-    [<%= strategy.sub_title %>]
-    <br>
-  </a>
-  <br />
-<% end %>
+<%= render "/frontend/common/nav", { title: "诊疗攻略" } %>
+
+<div class="content-wrapper">
+  <div class="strategy-categories-list">
+    <div class="list-group">
+      <% @strategies.each do |strategy|%>
+        <%= link_to frontend_strategy_category_strategy_path(@strategy_category, strategy), class: "list-group-item" do %>
+          <%= strategy.title %>
+          ---
+          [<%= strategy.sub_title %>]
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
