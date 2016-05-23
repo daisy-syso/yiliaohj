@@ -7,4 +7,4 @@ symptom_first_chars.each do |char|
   end
 end
 
-$redis_symptoms.lrange(char, 0, -1)
+$redis_symptoms.lrange('A', 0, -1)
