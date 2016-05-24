@@ -33,9 +33,14 @@
   <ul class="list-unstyled detail-panel general-city">
     <li class="hospital-type"><a href="javascript:;">全部分类</a></li>
     <% @hospital_categories.each do |hospital_category| %>
-      <%= link_to frontend_buffets_path(hospital_category: hospital_category.name, hospital_category_parent_name: @hospital_category_parent_name) do %>
         <li class="hospital-type"><%= hospital_category.name %></li>
-      <% end %>
+        <ul>
+          <% GroupBuying.where(hospital_category_id: hospital_category.id.to_s).each do |gb| %>
+            <%= link_to frontend_buffets_path(hospital_category_parent_name: @hospital_category_parent_name, group_buying_name: gb.name) do %>
+              <%= gb.name %>
+            <% end %>
+          <% end %>
+        </ul>
     <% end %>
   </ul>
 

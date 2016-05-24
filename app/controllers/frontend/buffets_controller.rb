@@ -2,14 +2,12 @@ class Frontend::BuffetsController < FrontendController
   before_action :get_hospital_categories, only: [:index]
 
   def index
-    if params[:hospital_category].present?
-      hospital_category = HospitalCategory.where(name: params[:hospital_category]).first
+    @buffets = Buffet.includes(:comments).includes(:commodities)
 
-      @buffets = hospital_category.buffets.includes(:comments).includes(:commodities)
-    else
-      @buffets = Buffet.includes(:comments).includes(:commodities)
+    @buffets = @buffets.where(:group_buying_name.in => @hospital_categories.pluck(:name))
 
-      @buffets = @buffets.where(:group_buying_name.in => @hospital_categories.pluck(:name))
+    if params[:group_buying_name].present?
+      @buffets = @buffets.where(group_buying_name: params[:group_buying_name])
     end
 
     if params[:sort_type].present?
