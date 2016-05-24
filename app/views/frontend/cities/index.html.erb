@@ -81,12 +81,16 @@
           $.get("/cities/cities_search",{
             query: keyword
           },function(response){
-            $.each(response.data, function(index, val) {
-              val = val.split(keyword).join('<span>' + keyword + '</span>');
-              var $item = $('<div class="item"></div>');
-              $item.html(val);
-              $item.appendTo($result);
-            });
+            if(response.data.length === 0){
+              $('<div class="not-result">抱歉, 未找到相关位置, 可修改后重试</div>').appendTo($result);
+            } else {
+              $.each(response.data, function(index, val) {
+                val = val.split(keyword).join('<span>' + keyword + '</span>');
+                var $item = $('<div class="item"></div>');
+                $item.html(val);
+                $item.appendTo($result);
+              });
+            }
           });
         }, 500);
       }
