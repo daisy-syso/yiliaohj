@@ -1,5 +1,12 @@
 @import "../variables";
 
+@mixin item() {
+  height: 50px;
+  line-height: 50px;
+  font-size: 1.1em;
+  padding-left: 15px;
+  border-bottom: 1px solid #DFDFDF;
+}
 
 .cities {
   .search {
@@ -44,11 +51,7 @@
     }
 
     .item {
-      height: 50px;
-      line-height: 50px;
-      font-size: 1.1em;
-      padding-left: 15px;
-      border-bottom: 1px solid #DFDFDF;
+      @include item();
 
       > span {
         color: #C579F2;
@@ -100,6 +103,36 @@
         color: #CFCFCF;
         text-decoration: none;
       }
+    }
+
+    .alphabet {
+      padding: 0;
+      .title {
+        padding: 5px 18px;
+        background-color: #F0F1F2;
+      }
+
+      .item {
+        @include item();
+        margin-right: 25px;
+      }
+    }
+  }
+
+  .right-nav  {
+    position: fixed;
+    right: 5px;
+    top: 150px;
+    width: 25px;
+    text-align: center;
+    line-height: 14px;
+
+    .item {
+      display: inline-block;
+      width: 100%;
+      font-size: 12px;
+      text-decoration: none;
+      color: #666;
     }
   }
 }

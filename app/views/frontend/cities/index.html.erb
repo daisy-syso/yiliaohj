@@ -29,12 +29,12 @@
         </div>
       </div>
 
-      <div class="position">
+      <div name="position" class="position">
         <p class="title">当前定位城市</p>
         <div class="city-label">上海</div>
       </div>
 
-      <div class="often-use">
+      <div name="often" class="often-use">
         <p class="title">最近访问的城市</p>
         <div class="city-label">上海</div>
         <div class="city-label">北京</div>
@@ -42,7 +42,7 @@
       </div>
 
 
-      <div class="hot">
+      <div name="hot" class="hot">
         <p class="title">热门城市</p>
         <% @hot_cities.each do |city| %>
           <div class="city-label">
@@ -51,14 +51,63 @@
         <% end %>
       </div>
 
+      <div class="alphabet">
+
+        <div name="A" class="title">A</div>
+        <div class="item">鞍山</div>
+        <div class="item">鞍山</div>
+        <div class="item">鞍山</div>
+        <div class="item">鞍山</div>
+        <div class="item">鞍山</div>
+
+        <div name="B" class="title">B</div>
+        <div class="item">鞍山</div>
+        <div class="item">鞍山</div>
+        <div class="item">鞍山</div>
+        <div class="item">鞍山</div>
+        <div class="item">鞍山</div>
+      </div>
     </div>
 
+
+    <div class="right-nav">
+      <a class="item" data-target="position">定位</a>
+      <a class="item" data-target="often">最近</a>
+      <a class="item" data-target="hot">热门</a>
+    </div>
   </div>
 </div>
 
 <script type="text/javascript">
 
   (function($){
+
+    (function initRightNav(){
+      /**
+       * init right alphabet nav
+       */
+      var alphabetArr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+
+      var $nav = $(".right-nav");
+      alphabetArr.forEach(function(item){
+        var $item = $('<a class="item"></a>')
+        $item.data('target', item);
+        $item.text(item);
+        $item.appendTo($nav);
+      });
+
+      var $items = $nav.children();
+      $items.on('click', function() {
+        var targetName = $(this).data('target');
+        var $target = $("[name=" + targetName + "]");
+        if($target.length !== 0) {
+          $('html, body').stop().animate({
+            scrollTop: $target.offset().top - 60
+          }, 500);
+        }
+      });
+    })();
+
 
     var timer = null;
 
