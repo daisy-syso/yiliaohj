@@ -1,21 +1,107 @@
-<input type="text" id="search_city" class="search-input" placeholder="XXX">
-<br />
-当前： 上海
-<br />
+<%= render "/frontend/common/nav", { title: "位置" } %>
 
-热门城市<br>
-<% @hot_cities.each do |city| %>
-  <%= city.name %>
-<% end %>
+<div class="content-wrapper">
+  <div class="cities">
+    <div class="search">
+      <div class="form-group">
+        <span class="glyphicon glyphicon-search"></span>
+        <input type="text" id="city" class="form-control" placeholder="其他">
+      </div>
+    </div>
 
-<br />
+    <div class="result"></div>
+
+    <div class="group">
+      <div class="current show">
+        <div>
+          当前：<span>上海</span>
+          <a id="switch-btn" href="javascript:void(0);">
+            切换区县<span class="glyphicon glyphicon-menu-down"></span>
+          </a>
+        </div>
+
+        <div class="sub-area">
+          <div class="city-label">全城</div>
+          <div class="city-label">全城</div>
+          <div class="city-label">全城</div>
+          <div class="city-label">全城</div>
+          <div class="city-label">全城</div>
+        </div>
+      </div>
+
+      <div class="position">
+        <p class="title">当前定位城市</p>
+        <div class="city-label">上海</div>
+      </div>
+
+      <div class="often-use">
+        <p class="title">最近访问的城市</p>
+        <div class="city-label">上海</div>
+        <div class="city-label">北京</div>
+        <div class="city-label">深圳</div>
+      </div>
+
+
+      <div class="hot">
+        <p class="title">热门城市</p>
+        <% @hot_cities.each do |city| %>
+          <div class="city-label">
+            <%= city.name %>
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+
+  </div>
+</div>
 
 <script type="text/javascript">
-  $("#search_city").keyup(function(e){
-    $.get("/cities/cities_search",{
-      query: $('#search_city').val()
-    },function(data){
-      console.log(data);
-    })
-  })
+
+  (function($){
+
+    var timer = null;
+
+    $('#city').on('input', function(event) {
+      event.preventDefault();
+      var $result = $('.result');
+      $('.result').empty();
+      var keyword = $(this).val();
+      if(!!timer) {
+        clearTimeout(timer);
+        timer = null;
+      }
+      var $group = $('.group');
+      if(!keyword) {
+        $group.show();
+      } else {
+        $group.hide();
+        timer = setTimeout(function(){
+
+          $.get("/cities/cities_search",{
+            query: keyword
+          },function(response){
+            $.each(response.data, function(index, val) {
+              val = val.split(keyword).join('<span>' + keyword + '</span>');
+              var $item = $('<div class="item"></div>');
+              $item.html(val);
+              $item.appendTo($result);
+            });
+          });
+        }, 500);
+      }
+    });
+
+
+
+    var $swichTab = $('.sub-area');
+    /**
+     *  切换市区显示
+     */
+    $('#switch-btn').on('click', function(event) {
+      event.preventDefault();
+      $swichTab.stop().slideToggle()
+      $(this).parents('.current').toggleClass('show');
+    });
+  })(jQuery);
 </script>
