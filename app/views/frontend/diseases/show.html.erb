@@ -9,7 +9,7 @@
         <div class="body" data-line-clamp="3" style="-webkit-line-clamp: 3">
             <img class="etiology-image" src="<%= fixed_image_url(@disease) %>">
             <span class="etiology-description">
-                <%= @disease.description %>
+                <%= raw @disease.description %>
             </span>
         </div>
     </div>
@@ -19,7 +19,7 @@
             病因
         </div>
         <div class="body">
-            <%= @disease.etiology %>
+            <%= raw @disease.etiology %>
         </div>
     </div>
     <div class="diseases-panel">
@@ -28,7 +28,7 @@
             治疗
         </div>
         <div class="body">
-            <%= @disease.treatent %>
+            <%= raw @disease.treatent %>
         </div>
     </div>
     <div class="diseases-panel">
@@ -37,7 +37,7 @@
             预防
         </div>
         <div class="body">
-            <%= @disease.prevention %>
+            <%= raw @disease.prevention %>
         </div>
     </div>
     <div class="diseases-panel">
@@ -46,7 +46,7 @@
             饮食
         </div>
         <div class="body">
-            <%= @disease.diet %>
+            <%= raw @disease.diet %>
         </div>
     </div>
     <div class="diseases-panel">
@@ -55,7 +55,7 @@
             疾病
         </div>
         <div class="body">
-            <%= @disease.symptom %>
+            <%= raw @disease.symptom %>
         </div>
     </div>
 </div>
