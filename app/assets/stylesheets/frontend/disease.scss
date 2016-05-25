@@ -1,7 +1,7 @@
 @import "../variables";
 
 .diseases-wrapper {
-  margin: 96px 0 60px;
+  margin: 56px 0 60px;
   .diseases-item {
     height: 98px;
     border-bottom: 1px solid $border-gray;
@@ -80,19 +80,29 @@
       }
     }
 
+    pre.body {
+      white-space: pre-wrap;
+    }
+
     .body {
       margin-top: 5px;
-      padding-left: 10px;
-      padding-right: 10px;
+      padding: 3px 10px;
       overflow: hidden;
       -webkit-line-clamp: 2;
       display: -webkit-box;
       -webkit-box-orient: vertical;
       color: #919191;
+      background-color: transparent;
+      border: 0;
 
       .etiology-image {
         width: 80px;
         float: left;
+      }
+
+      .etiology-description {
+        display: inline;
+        width: calc(100% - 80px);
       }
 
     }

@@ -8,9 +8,9 @@
         </div>
         <div class="body" data-line-clamp="3" style="-webkit-line-clamp: 3">
             <img class="etiology-image" src="<%= fixed_image_url(@disease) %>">
-            <span class="etiology-description">
-                <pre><%= @disease.description %></pre>
-            </span>
+            <pre class="etiology-description body">
+                <%= @disease.description %>
+            </pre>
         </div>
     </div>
     <div class="diseases-panel">
@@ -18,45 +18,45 @@
             <%= image_tag "frontend/disease/list_icon_reason.png", { :dragable => false , :tabindex => -1} %>
             病因
         </div>
-        <div class="body">
-            <pre><%= @disease.etiology %></pre>
-        </div>
+        <pre class="body">
+            <%= @disease.etiology %>
+        </pre>
     </div>
     <div class="diseases-panel">
         <div class="title">
             <%= image_tag "frontend/disease/list_icon_treatment.png", { :dragable => false , :tabindex => -1} %>
             治疗
         </div>
-        <div class="body">
-            <pre><%= @disease.treatent %></pre>
-        </div>
+        <pre class="body">
+            <%= @disease.treatent %>
+        </pre>
     </div>
     <div class="diseases-panel">
         <div class="title">
             <%= image_tag "frontend/disease/list_icon_prevention.png", { :dragable => false , :tabindex => -1} %>
             预防
         </div>
-        <div class="body">
-            <pre><%= @disease.prevention %></pre>
-        </div>
+        <pre class="body">
+            <%= @disease.prevention %>
+        </pre>
     </div>
     <div class="diseases-panel">
         <div class="title">
             <%= image_tag "frontend/disease/list_icon_diet.png", { :dragable => false , :tabindex => -1} %>
             饮食
         </div>
-        <div class="body">
-            <pre><%= @disease.diet %></pre>
-        </div>
+        <pre class="body">
+            <%= @disease.diet %>
+        </pre>
     </div>
     <div class="diseases-panel">
         <div class="title">
             <%= image_tag "frontend/disease/list_icon_disease.png", { :dragable => false , :tabindex => -1} %>
             疾病
         </div>
-        <div class="body">
-            <pre><%= @disease.symptom %></pre>
-        </div>
+        <pre class="body">
+            <%= @disease.symptom %>
+        </pre>
     </div>
 </div>
 <script type="text/javascript">
