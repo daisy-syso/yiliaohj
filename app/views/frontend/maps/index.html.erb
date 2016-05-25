@@ -8,8 +8,8 @@
   <link rel="stylesheet" href="http://cache.amap.com/lbs/static/main1119.css"/>
   <style type="text/css">
     #container {
-      width:600px; 
-      height: 680px; 
+      width:600px;
+      height: 680px;
       margin-top: 30px;
     }
     #panel {
@@ -30,7 +30,7 @@
 </head>
 <body>
 <button id='driving'>驾车</button>
-<button id='transfer'>驾车</button>
+<button id='transfer'>公交</button>
 <button id='walking'>走路</button>
 <div id="container"></div>
 <div id="panel"></div>
@@ -72,7 +72,7 @@
     var driving = new AMap.Driving({
         map: map,
         panel: "panel"
-    }); 
+    });
     // 根据起终点经纬度规划驾车导航路线
     driving.search(new AMap.LngLat(current_lng, current_lat), new AMap.LngLat("<%= @lng %>", "<%= @lat %>"));
   })
@@ -95,7 +95,7 @@
       var walking = new AMap.Walking({
           map: map,
           panel: "panel"
-      }); 
+      });
       // 根据起终点经纬度规划驾车导航路线
       walking.search([current_lng, current_lat], ["<%= @lng %>", "<%= @lat %>"]);
     })
