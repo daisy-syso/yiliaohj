@@ -2,7 +2,7 @@ class Frontend::BuffetsController < FrontendController
   before_action :get_hospital_categories, only: [:index]
 
   def index
-    @buffets = Buffet.includes(:comments).includes(:commodities)
+    @buffets = Buffet.includes(:hospital).includes(:comments).includes(:commodities)
 
     @buffets = @buffets.where(:group_buying_name.in => @hospital_categories.pluck(:name))
 
