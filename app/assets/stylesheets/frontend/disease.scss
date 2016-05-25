@@ -80,15 +80,20 @@
       }
     }
 
+    pre.body {
+      white-space: pre-wrap;
+    }
+
     .body {
       margin-top: 5px;
-      padding-left: 10px;
-      padding-right: 10px;
+      padding: 3px 10px;
       overflow: hidden;
       -webkit-line-clamp: 2;
       display: -webkit-box;
       -webkit-box-orient: vertical;
       color: #919191;
+      background-color: transparent;
+      border: 0;
 
       .etiology-image {
         width: 80px;
