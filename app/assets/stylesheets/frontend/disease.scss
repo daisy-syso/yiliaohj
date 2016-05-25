@@ -1,7 +1,7 @@
 @import "../variables";
 
 .diseases-wrapper {
-  margin: 96px 0 60px;
+  margin: 56px 0 60px;
   .diseases-item {
     height: 98px;
     border-bottom: 1px solid $border-gray;
@@ -98,6 +98,11 @@
       .etiology-image {
         width: 80px;
         float: left;
+      }
+
+      .etiology-description {
+        display: inline;
+        width: calc(100% - 80px);
       }
 
     }
