@@ -6,8 +6,6 @@ module Frontend
       @hospital_categories = HospitalCategory.where(parent_id: nil).includes(:children)
       @proviences = Provience.includes(:cities)
       @hospital_levels = %w(三级特等 三级甲等 三级乙等 三级合格 二级甲等 二级乙等 二级合格 一级甲等 一级乙等 一级合格 社区医院 民营医院 外资医院)
-      @categories = params[:category_name] if params[:category_name]
-      @level = params[:category_level] if params[:category_level]
       query = {}
 
       query[:is_foreign] = params[:is_foreign] if params[:is_foreign].present?

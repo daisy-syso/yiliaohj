@@ -39,7 +39,7 @@
   <!-- 医院大全第二级 综合医院 -->
   <ul data-parent-panel="hospital-grade" class="hospital-grade list-unstyled third-column-wrapper" style="display: block;">
     <% %w(三级甲等 三级乙等 三级合格 二级甲等 二级乙等 二级合格 一级甲等 一级乙等 一级合格 社区医院 民营医院 外资医院).each do |category_level| %>
-      <li class="third-column-item <%= @level == category_level ? "active" : "" %>">
+      <li class="third-column-item <%= params[:category_level] == category_level ? "active" : "" %>">
         <a href="/hospitals?category_level=<%= category_level %>"><%= category_level %></a>
       </li>
     <% end %>
@@ -48,14 +48,14 @@
   <!-- 医院大全第二级 男科 -->
   <ul data-parent-panel="andrology" class="andrology list-unstyled third-column-wrapper">
     <% %w(前列腺活检及治疗 前列腺癌根治术 检查、治疗睾丸疾病 精索静脉曲张手术 隐睾治疗 男科整形 包皮手术 男科检查 性功能治疗).each do |category_name| %>
-      <a href="/hospitals?category_name=<%= category_name %>"><li class="third-column-item <%= @categories == category_name ? "active" : "" %>"><%= category_name %></a></li>
+      <a href="/hospitals?category_name=<%= category_name %>"><li class="third-column-item <%= params[:category_name] == category_name ? "active" : "" if params[:category_name] %>"><%= category_name %></a></li>
     <% end %>
   </ul>
 
   <!-- 医院大全第二级 中医 -->
   <ul class="list-unstyled third-column-wrapper">
     <% %w(中医推拿治疗 中医灸法 中医针刺 中医肛肠 中医骨伤 中医特殊疗法 中药外治 其它).each do |category_name| %>
-      <li class="third-column-item <%= @categories == category_name ? "active" : "" %>">
+      <li class="third-column-item <%= params[:category_name] == category_name ? "active" : "" if params[:category_name]  %>">
         <a href="/hospitals?category_name=<%= category_name %>"><%= category_name %></a>
       </li>
     <% end %>
@@ -65,7 +65,7 @@
   <!-- 医院大全第二级 妇幼 -->
   <ul class="list-unstyled third-column-wrapper">
     <% %w(宫颈疾病手术 妇科整形 无痛人流 不孕不育 妇科常规检查 妇科常规治疗 产科 孕期检查 四维/三维 妇科微创 痛经中心 B超 分泌物检验 尿液检验 通用检查 血液检查 阴道镜检查).each do |category_name| %>
-      <li class="third-column-item <%= @categories == category_name ? "active" : "" %>">
+      <li class="third-column-item <%= params[:category_name] == category_name ? "active" : "" if params[:category_name] %>">
         <a href="/hospitals?category_name=<%= category_name %>"><%= category_name %></a>
       </li>
     <% end %>
@@ -74,7 +74,7 @@
   <!-- 医院大全第二级 牙科 -->
   <ul class="list-unstyled third-column-wrapper">
     <% %w(号源 洗牙（洁牙） 烤瓷牙 牙齿矫正（正畸） 隐形矫正 牙齿美白 拔牙 活动义齿 全口义齿 根管治疗 补牙 牙基托 精密附件 牙齿漂白 种植体 牙修复材料 嵌体 矫正器 排牙 牙冠 其他牙科手术 上药 麻醉 拔除术 X光 口腔检查费 口腔设计费 瓷贴面 儿童口腔 全瓷牙).each do |category_name| %>
-      <li class="third-column-item <%= @categories == category_name ? "active" : "" %>">
+      <li class="third-column-item <%= params[:category_name] == category_name ? "active" : "" if params[:category_name] %>">
         <a href="/hospitals?category_name=<%= category_name %>"><%= category_name %></a>
       </li>
     <% end %>
@@ -83,7 +83,7 @@
   <!-- 医院大全第二级  整形-->
   <ul data-parent-panel="shaping" class="shaping list-unstyled third-column-wrapper">
     <% %w(眼部整形 鼻部整形 口腔整形 口唇整形 胸部整形 抽脂 毛发 除皱 减肥丰臀 面部轮廓 肉毒素 皮肤美容 其它 半永久性化妆 女性私密 耳部整形 皮肤激光 微整形 美体塑形).each do |category_name| %>
-      <li class="third-column-item <%= @categories == category_name ? "active" : "" %>">
+      <li class="third-column-item <%= params[:category_name] == category_name ? "active" : "" if params[:category_name] %>">
         <a href="/hospitals?category_name=<%= category_name %>"><%= category_name %></a>
       </li>
     <% end %>
