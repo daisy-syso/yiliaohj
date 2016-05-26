@@ -17,7 +17,8 @@
     <% @buffets.each do |buffet| %>
       <li class="buffet-item">
         <a href="<%= frontend_buffet_path(buffet) %>" class="item-body">
-          <img src="<%= fixed_image_url(buffet) %>" class="buffet-avatar" alt=""/>
+          <% entity = buffet.image_url.present? ? buffet : buffet.hospital %>
+          <img src="<%= fixed_image_url(entity) %>" class="buffet-avatar" alt=""/>
           <div class="buffet-info">
             <div class="title"><%= buffet.name %></div>
             <p class="grade">
@@ -26,6 +27,7 @@
               <% end %>
               <%= buffet.star %>分
             </p>
+            <p><%= buffet.hospital.name %></p>
             <p class="price">￥<%= buffet.price %></p>
             <div class="statistics">
               <p><%= buffet.comments.count %> 人评价</p>

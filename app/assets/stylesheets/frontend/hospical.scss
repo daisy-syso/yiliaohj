@@ -203,6 +203,7 @@
   }
   .hospital-connect {
     border-top: 10px solid $border-gray;
+    margin-bottom: 30px;
     h3 {
       padding: 12px;
       margin: 0px;
@@ -217,16 +218,6 @@
       }
       .map #container {
         width: 100%;
-      }
-    }
-    .operating-button {
-      margin-top: 20px;
-      a {
-        border: 1px solid $purple;
-        color: $purple;
-        padding: 10px;
-        border-radius: 5px;
-        margin-left: 54px;
       }
     }
   }
