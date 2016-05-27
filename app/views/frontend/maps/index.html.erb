@@ -17,7 +17,8 @@
         width: 100%;
         z-index: 9999;
         height: 56px;
-        border-radius: 0px
+        border-radius: 0px;
+        border-bottom: 0;
       }
       .app-header .container-fluid, .app-header .navbar-header {
         height: 100%
@@ -39,7 +40,12 @@
         display: inline-block
       }
 
+      .content-wrapper {
+        padding-top: 56px;
+      }
+
       #container {
+        position: absolute !important;
         width: 100%;
         height: calc(100% - 100px);
         position: inherit;
