@@ -62,6 +62,14 @@ Rails.application.routes.draw do
         end
       end
 
+      resources :haiwai_hospitals do
+        resources :comments do
+          collection do
+            get 'get_more_comments'
+          end
+        end
+      end
+
       resources :doctors do
         resources :comments do
           collection do

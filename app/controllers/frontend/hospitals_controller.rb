@@ -11,7 +11,7 @@ module Frontend
       query[:is_foreign] = params[:is_foreign] if params[:is_foreign].present?
 
       # 分类
-      query[:categories] = params[:category_name] if params[:category_name]
+      query[:categories] = params[:category_name] if params[:category_name].present?
 
       # 疾病
       if params[:disease_id].present?
