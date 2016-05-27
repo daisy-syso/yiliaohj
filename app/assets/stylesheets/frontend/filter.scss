@@ -162,6 +162,7 @@
     width: 33%;
     display: block;
     text-indent: 15px;
+    background-color: white;
     .first-column.active {
       background: #DEDCDC;
     }
@@ -170,10 +171,10 @@
     position: fixed;
     top: 97px;
     left: 33%;
-    background: #DEDCDC;
     width: 33%;
     height: 400px;
     padding-left: 15px;
+    background-color: whitesmoke;
     .second-column-item.active {
       color: $purple;
     }
@@ -186,5 +187,6 @@
     width: 33%;
     overflow: scroll;
     height: 400px;
+    background-color: gainsboro;
   }
 }
