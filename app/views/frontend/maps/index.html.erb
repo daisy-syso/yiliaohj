@@ -1,106 +1,204 @@
 <!doctype html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
-  <title>按起终点经纬度规划路线</title>
-  <link rel="stylesheet" href="http://cache.amap.com/lbs/static/main1119.css"/>
-  <style type="text/css">
-    #container {
-      width:600px;
-      height: 680px;
-      margin-top: 30px;
-    }
-    #panel {
-      position: fixed;
-      background-color: white;
-      max-height: 90%;
-      overflow-y: auto;
-      top: 10px;
-      right: 10px;
-      width: 280px;
-    }
-  </style>
-  <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-  <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=d03250bc8374092bf69ef4687f4a46af&plugin=AMap.Transfer"></script>
-  <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=d03250bc8374092bf69ef4687f4a46af&plugin=AMap.Walking"></script>
-  <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=d03250bc8374092bf69ef4687f4a46af&plugin=AMap.Driving"></script>
-  <script type="text/javascript" src="http://cache.amap.com/lbs/static/addToolbar.js"></script>
-</head>
-<body>
-<button id='driving'>驾车</button>
-<button id='transfer'>公交</button>
-<button id='walking'>走路</button>
-<div id="container"></div>
-<div id="panel"></div>
-<script type="text/javascript">
-  var current_lat = 0.0;
-  var current_lng = 0.0;
-  //基本地图加载
-  var map = new AMap.Map("container", {
-    resizeEnable: true,
-    center: ["<%= @lng %>", "<%= @lat %>"],//地图中心点
-    zoom: 13 //地图显示的缩放级别
-  });
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <title>按起终点经纬度规划路线</title>
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cache.amap.com/lbs/static/main1119.css"/>
+    <style type="text/css">
+      .app-header .custom-header {
+        background: #c579f2;
+        margin-bottom: -1px;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        z-index: 9999;
+        height: 56px;
+        border-radius: 0px;
+        border-bottom: 0;
+      }
+      .app-header .container-fluid, .app-header .navbar-header {
+        height: 100%
+      }
+      .app-header a {
+        vertical-align: text-top;
+        color: #ffffff;
+        height: 50px
+      }
+      .app-header a img {
+        height: 50px
+      }
+      .app-header .page-title {
+        width: 75%;
+        text-overflow: ellipsis;
+        word-wrap: break-word;
+        overflow: hidden;
+        white-space: nowrap;
+        display: inline-block
+      }
 
-  map.plugin('AMap.Geolocation', function() {
-    geolocation = new AMap.Geolocation({
-        enableHighAccuracy: true,//是否使用高精度定位，默认:true
-        timeout: 10000,          //超过10秒后停止定位，默认：无穷大
-        buttonOffset: new AMap.Pixel(10, 20),//定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
-        zoomToAccuracy: true,      //定位成功后调整地图视野范围使定位位置及精度范围视野内可见，默认：false
-        buttonPosition:'RB'
-    });
-    map.addControl(geolocation);
-    geolocation.getCurrentPosition();
-    AMap.event.addListener(geolocation, 'complete', onComplete);//返回定位信息
-    AMap.event.addListener(geolocation, 'error', onError);      //返回定位出错信息
-  });
+      .content-wrapper {
+        padding-top: 56px;
+      }
 
-  function onComplete(data) {
-    current_lat = data.position.getLat();
-    current_lng = data.position.getLng();
-  }
+      #container {
+        position: absolute !important;
+        width: 100%;
+        height: calc(100% - 100px);
+        position: inherit;
+        display: inline-block;
+        top: initial;
+        bottom: 0;
+      }
+      #panel {
+        position: fixed;
+        background-color: white;
+        max-height: 90%;
+        overflow-y: auto;
+        top: 10px;
+        right: 10px;
+        width: 280px;
+      }
 
-  function onError(data) {
-    console.log(data)
-  }
+      .button-panel {
+        margin-top: 2px;
+        text-align: center;
+      }
 
-  $("#driving").click(function(){
-    // 构造路线导航类
-    var driving = new AMap.Driving({
-        map: map,
-        panel: "panel"
-    });
-    // 根据起终点经纬度规划驾车导航路线
-    driving.search(new AMap.LngLat(current_lng, current_lat), new AMap.LngLat("<%= @lng %>", "<%= @lat %>"));
-  })
+      .button-panel button {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        width: 32%;
+        display: inline-block;
+        background-color: #FFF;
+        border: 1px solid #ccc;
+        outline: none;
+      }
 
-  $("#transfer").click(function(){
-    AMap.plugin('AMap.Transfer',function(){
-      // 构造路线导航类
-      var transfer = new AMap.Transfer({
-          map: map,
-          panel: "panel"
+      #panel {
+        max-height: 85%;
+        overflow-y: auto;
+        bottom: 0;
+        top: initial;
+        border-top: 1px solid silver;
+      }
+
+      footer {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <%= render "/frontend/common/nav", { title: "导航" } %>
+
+    <div class="content-wrapper">
+      <div class="button-panel">
+        <button id='driving'>驾车</button>
+        <button id='transfer'>公交</button>
+        <button id='walking'>步行</button>
+      </div>
+      <div id="container"></div>
+      <div id="panel"></div>
+    </div>
+
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=d03250bc8374092bf69ef4687f4a46af&plugin=AMap.Transfer"></script>
+    <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=d03250bc8374092bf69ef4687f4a46af&plugin=AMap.Walking"></script>
+    <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=d03250bc8374092bf69ef4687f4a46af&plugin=AMap.Driving"></script>
+    <script type="text/javascript" src="http://cache.amap.com/lbs/static/addToolbar.js"></script>
+
+
+    <script type="text/javascript">
+
+      var current_lat = 0.0;
+      var current_lng = 0.0;
+      //基本地图加载
+      var map = new AMap.Map("container", {
+        resizeEnable: true,
+        center: ["<%= @lng %>", "<%= @lat %>"],//地图中心点
+        zoom: 13 //地图显示的缩放级别
       });
-      // 根据起终点经纬度规划驾车导航路线
-      transfer.search(new AMap.LngLat(current_lng, current_lat), new AMap.LngLat("<%= @lng %>", "<%= @lat %>"));
-    })
-  })
 
-  $("#walking").click(function(){
-    AMap.plugin('AMap.Walking',function(){
-      // 构造路线导航类
-      var walking = new AMap.Walking({
-          map: map,
-          panel: "panel"
+      map.plugin('AMap.Geolocation', function() {
+        geolocation = new AMap.Geolocation({
+            enableHighAccuracy: true,//是否使用高精度定位，默认:true
+            timeout: 10000,          //超过10秒后停止定位，默认：无穷大
+            buttonOffset: new AMap.Pixel(10, 20),//定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
+            zoomToAccuracy: true,      //定位成功后调整地图视野范围使定位位置及精度范围视野内可见，默认：false
+            buttonPosition:'RB'
+        });
+        map.addControl(geolocation);
+        geolocation.getCurrentPosition();
+        AMap.event.addListener(geolocation, 'complete', onComplete);//返回定位信息
+        AMap.event.addListener(geolocation, 'error', onError);      //返回定位出错信息
       });
-      // 根据起终点经纬度规划驾车导航路线
-      walking.search([current_lng, current_lat], ["<%= @lng %>", "<%= @lat %>"]);
-    })
-  })
 
-</script>
-</body>
+      function onComplete(data) {
+        current_lat = data.position.getLat();
+        current_lng = data.position.getLng();
+      }
+
+      function onError(data) {
+        console.log(data)
+      }
+
+      var $panel = $('#panel');
+
+      $('body').on('click', function(){
+        // hide #panel
+        $panel.empty();
+      });
+
+      $("#driving").click(function(){
+        if($panel.is(':empty')){
+          // 构造路线导航类
+          var driving = new AMap.Driving({
+              map: map,
+              panel: "panel"
+          });
+          // 根据起终点经纬度规划驾车导航路线
+          driving.search(new AMap.LngLat(current_lng, current_lat), new AMap.LngLat("<%= @lng %>", "<%= @lat %>"));
+        } else {
+          $panel.empty();
+        }
+      })
+
+      $("#transfer").click(function(){
+        if($panel.is(':empty')){
+          AMap.plugin('AMap.Transfer',function(){
+            // 构造路线导航类
+            var transfer = new AMap.Transfer({
+                map: map,
+                panel: "panel"
+            });
+            // 根据起终点经纬度规划驾车导航路线
+            transfer.search(new AMap.LngLat(current_lng, current_lat), new AMap.LngLat("<%= @lng %>", "<%= @lat %>"));
+          });
+        } else {
+          $panel.empty();
+        }
+      })
+
+      $("#walking").click(function(){
+
+        if($panel.is(':empty')){
+          AMap.plugin('AMap.Walking',function(){
+            // 构造路线导航类
+            var walking = new AMap.Walking({
+                map: map,
+                panel: "panel"
+            });
+            // 根据起终点经纬度规划驾车导航路线
+            walking.search([current_lng, current_lat], ["<%= @lng %>", "<%= @lat %>"]);
+          })
+        } else {
+          $panel.empty();
+        }
+      })
+    </script>
+  </body>
 </html>

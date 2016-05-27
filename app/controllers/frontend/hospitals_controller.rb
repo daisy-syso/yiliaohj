@@ -13,6 +13,12 @@ module Frontend
       # 分类
       query[:categories] = params[:category_name] if params[:category_name]
 
+      # 疾病
+      if params[:disease_id].present?
+        hospital_ids = Disease.find(params[:disease_id]).hospital_ids
+        query[:id.in] = hospital_ids
+      end
+
       # 等级
       query[:level] = params[:category_level] if params[:category_level]
 
