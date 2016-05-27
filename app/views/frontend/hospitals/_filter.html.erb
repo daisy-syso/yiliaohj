@@ -33,17 +33,11 @@
   </ul>
 
   <ul class="list-unstyled detail-panel general-city">
-    <% @proviences.each do |provience| %>
-      <li class="city-type"><%= provience.name %></li>
-      <ul class="city-categories">
-        <% provience.cities.each do |city| %>
-          <li>
-            <a href="/hospitals?city=<%= city.name %>">
-              <%= city.name %>
-            </a>
-          </li>
-        <% end %>
-      </ul>
+    <% counties = City.where(name: @current_city).first.counties %>
+    <% counties.each do |county| %>
+      <a href="/hospitals?county=<%= county.name %>">
+        <li class="city-type"><%= county.name %></li>
+      </a>
     <% end %>
   </ul>
 

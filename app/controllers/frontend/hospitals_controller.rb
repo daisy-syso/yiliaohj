@@ -1,7 +1,5 @@
 module Frontend
   class HospitalsController < FrontendController
-    # before_action :get_filters, only: [:index]
-
     def index
       @hospital_categories = HospitalCategory.where(parent_id: nil).includes(:children)
       @proviences = Provience.includes(:cities)
@@ -17,6 +15,10 @@ module Frontend
       if params[:disease_id].present?
         hospital_ids = Disease.find(params[:disease_id]).hospital_ids
         query[:id.in] = hospital_ids
+      end
+
+      if params[:county].present?
+        query[:county] = County.where(name: params[:county]).first
       end
 
       # 等级
