@@ -196,6 +196,7 @@ Rails.application.routes.draw do
       resources :cities do
         collection do
           get 'cities_search'
+          get 'get_counties_by_city_name'
         end
       end
 

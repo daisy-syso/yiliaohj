@@ -14,22 +14,19 @@
     <div class="group">
       <div class="current show">
         <div>
-          当前：<span><%= @current_city %></span>
+          当前：<span id="current_city"></span>
           <a id="switch-btn" href="javascript:void(0);">
             切换区县<span class="glyphicon glyphicon-menu-down"></span>
           </a>
         </div>
 
-        <div class="sub-area">
-          <% City.where(name: @current_city).first.counties.each do |county|%>
-            <div class="city-label"><%= county.name %></div>
-          <% end %>
+        <div class="sub-area" id="sub_area">
         </div>
       </div>
 
       <div name="position" class="position">
         <p class="title">当前定位城市</p>
-        <div class="city-label">上海</div>
+        <div class="city-label" id="city_label"></div>
       </div>
 
       <div name="often" class="often-use">
@@ -133,8 +130,6 @@
       }
     });
 
-
-
     var $swichTab = $('.sub-area');
     /**
      *  切换市区显示
@@ -144,5 +139,17 @@
       $swichTab.stop().slideToggle()
       $(this).parents('.current').toggleClass('show');
     });
+
+    $("#current_city").text(sessionStorage.getItem('current_city'));
+    $("#city_label").text(sessionStorage.getItem('current_city'));
+
+    $.get('/cities/get_counties_by_city_name',{
+      city_name: sessionStorage.getItem('current_city')
+    },function(data){
+      data.data.forEach(function(e){
+        console.log(e)
+        $("#sub_area").append('<div class="city-label">'+e+'</div>')
+      })
+    })
   })(jQuery);
 </script>

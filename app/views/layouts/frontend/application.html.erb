@@ -65,6 +65,8 @@
            lon: data.position.getLng(),
            city: cityinfo
           })
+
+          sessionStorage.setItem('current_city', cityinfo);
       }
 
       function onError(data){

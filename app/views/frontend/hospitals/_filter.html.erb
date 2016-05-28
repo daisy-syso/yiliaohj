@@ -32,15 +32,7 @@
     </li>
   </ul>
 
-  <ul class="list-unstyled detail-panel general-city">
-    <% city = City.where(name: @current_city).first %>
-    <% if city.present? %>
-      <% city.counties.each do |county| %>
-        <a href="/hospitals?county=<%= county.name %>">
-          <li class="city-type"><%= county.name %></li>
-        </a>
-      <% end %>
-    <% end %>
+  <ul class="list-unstyled detail-panel general-city" id="city_counties">
   </ul>
 
   <ul class="list-unstyled detail-panel intelligent-order">
@@ -79,7 +71,17 @@
 </div>
 
 <script>
+
   $(function() {
+    $.get('/cities/get_counties_by_city_name',{
+      city_name: sessionStorage.getItem('current_city')
+    },function(data){
+      data.data.forEach(function(e){
+        $("#city_counties").append(
+          '<a href="/hospitals?county='+e+'"><li class="city-type">'+e+'</li></a>')
+      })
+    })
+
     $(".hospital-filter").on("click", function(){
       $(".filter-content").toggle();
     });
