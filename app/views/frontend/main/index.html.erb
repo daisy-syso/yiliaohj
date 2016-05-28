@@ -18,7 +18,7 @@
     </div>
     <div class="tools">
       <div class="position">
-        <%= @current_city %>
+        <div id='current_city'></div>
         <%= image_tag "frontend/main/top_position_up.png" %>
       </div>
       <input type="text" class="search-input" placeholder="请输入要搜索的内容" />
@@ -147,4 +147,9 @@
     autoplay: 5000,//可选选项，自动滑动
     loop : true,
   })
+</script>
+
+<script type="text/javascript">
+  $("#current_city").text(sessionStorage.getItem('current_city'));
+
 </script>
