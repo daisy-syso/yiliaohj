@@ -65,6 +65,10 @@
       margin: 0px;
       color: $gray;
       font-size: 11px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 100%;
     }
   }
 }
