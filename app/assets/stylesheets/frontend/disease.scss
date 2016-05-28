@@ -1,5 +1,6 @@
 @import "../variables";
 
+.diseases-detail-wrapper,
 .diseases-wrapper {
   margin: 56px 0 60px;
   .diseases-item {
@@ -122,4 +123,7 @@
     }
 
   }
+}
+.diseases-wrapper {
+  margin: 96px 0 60px;
 }
