@@ -17,7 +17,8 @@
   <ul class="list-unstyled drug-list">
     <% @drugs.each do |drug| %>
       <li class="drug-item">
-        <a href="<%= frontend_drug_path(drug) %>">
+        <a href="<%= drug_stores_frontend_drug_path(drug) %>">
+        <!-- <a href="<%#= frontend_drug_path(drug) %>"> -->
           <img src="<%= fixed_image_url(drug) %>" class="drug-avatar" alt=""/>
           <div class="drug-info">
             <div class="title">

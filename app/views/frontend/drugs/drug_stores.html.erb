@@ -1,0 +1,37 @@
+药品信息
+<hr />
+<div class="drug-info page-info">
+  <div class="drug-cover page-cover">
+    <img src="<%= fixed_image_url(@drug) %>" >
+  </div>
+  <div id="talkbubble" class="drug-count">
+    <p>数量</p>
+    <p>28</p>
+  </div>
+  <p class="insurance-name page-name"><%= @drug.name %></p>
+  </p>
+  <p class="drug-price">￥<%= @drug.price %></p>
+  <p>品牌：<%= @drug.name %></p>
+  <p>厂家：<%= @drug.manufactory_name %></p>
+  <p>批准文号：<%= @drug.code %></p>
+  <p>规格：<%= @drug.spec %></p>
+</div>
+<hr >
+
+商家报价
+<hr />
+
+<% @drug_stores.each do |drug_store| %>
+  <img src="<%= fixed_image_url(drug_store) %>" >
+  <br />
+  <%= drug_store.name %>
+  <br />
+  <p>厂家: <%= @drug.manufactory_name %></p>
+  <p class="distance">距离： <%= get_disance_by_poinit_point(drug_store.location) if drug_store.location%>千米</p>
+  <p class="peculiarity">
+    经营许可证: <%= drug_store.license %>
+  </p>
+  <p>价格: <%#= drug_store.drugs.where(id: @drug.id).first.price %></p>
+
+  <br />
+<% end %>

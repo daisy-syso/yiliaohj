@@ -149,6 +149,9 @@ Rails.application.routes.draw do
       end
 
       resources :drugs do
+        member do
+          get 'drug_stores'
+        end
         resources :comments do
           collection do
             get 'get_more_comments'

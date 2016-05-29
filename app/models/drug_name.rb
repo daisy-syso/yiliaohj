@@ -1,12 +1,23 @@
 # 药品名称
 class DrugName
-  # include Mongoid::Document
-  # include Mongoid::Timestamps
+  include Mongoid::Document
+  include Mongoid::Timestamps
 
-  # field :title, type: String
+  has_many :drugs
 
-  # has_many :drugs
-  # has_many :drug_details
-  # has_and_belongs_to_many :diseases
-  # belongs_to :drug_category
+  mount_uploader :image_url, PictureUploader
+
+  field :name, type: String
+  field :image_url, type: String
+  field :brand, type: String
+  field :code, type: String
+  field :spec, type: String
+  # 价格范围 [25, 60]
+  field :price_range, type: Array, default: -> {[]}
+  # 药品分类
+  field :drug_category, type: String
+  # 疾病名称
+  field :disease_names, type: Array, default: -> {[]}
+  # 推广的药店ID
+  field :recommand_drug_id, type: String
 end

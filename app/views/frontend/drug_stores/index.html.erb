@@ -29,7 +29,7 @@
             </p>
             <p class="distance">距离： <%= get_disance_by_poinit_point(drug_store.location) if drug_store.location%>千米</p>
             <p class="peculiarity">
-              经营许可证: <% drug_store.license %>
+              经营许可证: <%= drug_store.license %>
             </p>
             <p class="tel">电话： <%= drug_store.telephone %></p>
             <p class="web-site">网址： <%= drug_store.url %></p>

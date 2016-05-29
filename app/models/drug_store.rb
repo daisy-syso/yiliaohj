@@ -3,10 +3,11 @@ class DrugStore
   include Mongoid::Document
   include Mongoid::Timestamps
 
+  has_and_belongs_to_many :drugs, index: true
+
   belongs_to :city
   belongs_to :county
   belongs_to :drug_store_admin
-  has_and_belongs_to_many :drugs
   has_many :instruments
   has_many :comments, as: :commentable
 

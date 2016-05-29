@@ -1,6 +1,6 @@
 module Frontend
   class DrugsController < FrontendController
-    # before_action :get_filters, only: [:index]
+    before_action :set_durg, only: [:drug_stores]
 
     def index
       @filter_filter_name = '精准药品'
@@ -33,6 +33,10 @@ module Frontend
       @drugs = @drugs.page(params[:page]).per(params[:per])
     end
 
+    def drug_stores
+      @drug_stores = @drug.drug_stores.all
+    end
+
     def show
       @drug = Drug.find(params[:id])
 
@@ -42,6 +46,10 @@ module Frontend
     end
 
     private
+
+    def set_durg
+      @drug = Drug.find(params[:id])
+    end
 
     def get_filters
       @big_categories = [
