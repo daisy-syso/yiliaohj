@@ -32,33 +32,20 @@
 
   <%= render "frontend/shards/filters2" %>
 
-  <ul class="list-unstyled detail-panel general-city">
-    <% @proviences.each do |provience| %>
-      <li class="city-type"><%= provience.name %></li>
-      <ul class="city-categories">
-        <% provience.cities.each do |city| %>
-          <li>
-            <a href="/zhongliu_hospitals?city=<%= city.name %>">
-              <%= city.name %>
-            </a>
-          </li>
-        <% end %>
-      </ul>
-    <% end %>
-  </ul>
+  <ul class="list-unstyled detail-panel general-city" id="city_counties"></ul>
 
   <ul class="list-unstyled detail-panel intelligent-order">
-    <li><a href="/zhongliu_hospitals?sort_type=neighbour">离我最近</a></li>
-    <li><a href="/zhongliu_hospitals?sort_type=new">最新发布</a></li>
-    <li><a href="/zhongliu_hospitals?sort_type=click_count">人气最高</a></li>
-    <li><a href="/zhongliu_hospitals?sort_type=star">评价最高</a></li>
+    <li><a href="/haiwai_hospitals?sort_type=neighbour">离我最近</a></li>
+    <li><a href="/haiwai_hospitals?sort_type=new">最新发布</a></li>
+    <li><a href="/haiwai_hospitals?sort_type=click_count">人气最高</a></li>
+    <li><a href="/haiwai_hospitals?sort_type=star">评价最高</a></li>
   </ul>
 
   <!-- 医院等级 -->
   <ul class="list-unstyled detail-panel general-hospital">
     <li class="hospital-type"><a href="javascript:;">全部医院</a></li>
     <% @hospital_levels.each do |hospital_level| %>
-      <a href="/zhongliu_hospitals?category_level=<%= hospital_level %>">
+      <a href="/haiwai_hospitals?category_level=<%= hospital_level %>">
         <li class="hospital-type"><%= hospital_level %></li>
       </a>
     <% end %>
@@ -72,7 +59,7 @@
       <ul class="hospital-categories">
         <% hospital_category.children.each do |category| %>
           <li>
-            <a href="/zhongliu_hospitals?category_name=<%= category.name %>">
+            <a href="/haiwai_hospitals?category_name=<%= category.name %>">
               <%= category.name %>
             </a>
           </li>
@@ -108,6 +95,16 @@
 
 <script>
   $(function() {
+    var true_city = sessionStorage.getItem('selected_city') || sessionStorage.getItem('current_city') ;
+    $.get('/cities/get_counties_by_city_name',{
+      city_name: true_city
+    },function(data){
+      data.data.forEach(function(e){
+        $("#city_counties").append(
+          '<a href="/hospitals?county='+e+'"><li class="city-type">'+e+'</li></a>')
+      })
+    })
+
     $(".hospital-filter").on("click", function(){
       $(".filter-content").toggle();
     });

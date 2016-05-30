@@ -6,6 +6,10 @@ module Frontend
       query = {}
       query[:categories] = params[:category_name] if params[:category_name]
 
+      if params[:county].present?
+        query[:county] = County.where(name: params[:county]).first
+      end
+
       # 城市
       city = params[:city] || $redis_position.get("#{request.remote_ip}_city") || '上海市'
       query[:city] = City.where(name: city).first

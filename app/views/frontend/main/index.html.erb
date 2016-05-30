@@ -18,7 +18,7 @@
     </div>
     <div class="tools">
       <div class="position">
-        <div id='current_city'></div>
+        <a href="/cities"><div id='current_city'></div></a>
         <%= image_tag "frontend/main/top_position_up.png" %>
       </div>
       <input type="text" class="search-input" placeholder="请输入要搜索的内容" />
@@ -150,6 +150,8 @@
 </script>
 
 <script type="text/javascript">
-  $("#current_city").text(sessionStorage.getItem('current_city'));
+  var selected_city = sessionStorage.getItem('selected_city');
+  var true_city = selected_city || sessionStorage.getItem('current_city');
+  $("#current_city").text(true_city);
 
 </script>

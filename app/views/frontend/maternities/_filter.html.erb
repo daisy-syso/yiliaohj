@@ -30,20 +30,7 @@
       </a>
     </li>
   </ul>
-  <ul class="list-unstyled detail-panel general-city">
-    <% @proviences.each do |provience| %>
-      <li class="city-type"><%= provience.name %></li>
-      <ul class="city-categories">
-        <% provience.cities.each do |city| %>
-          <li>
-            <a href="/maternities?city=<%= city.name %>">
-              <%= city.name %>
-            </a>
-          </li>
-        <% end %>
-      </ul>
-    <% end %>
-  </ul>
+  <ul class="list-unstyled detail-panel general-city" id="city_counties"></ul>
 
   <%= render "frontend/shards/filters2" %>
 
@@ -61,7 +48,16 @@
 
 <script>
   $(function() {
-
+    var true_city = sessionStorage.getItem('selected_city') || sessionStorage.getItem('current_city') ;
+    $.get('/cities/get_counties_by_city_name',{
+      city_name: true_city
+    },function(data){
+      data.data.forEach(function(e){
+        $("#city_counties").append(
+          '<a href="/maternities?county='+e+'"><li class="city-type">'+e+'</li></a>')
+      })
+    })
+    
     $(".hospital-filter").on("click", function(){
       $(".filter-content").toggle();
     });

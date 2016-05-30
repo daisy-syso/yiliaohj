@@ -31,9 +31,9 @@
 
       <div name="often" class="often-use">
         <p class="title">最近访问的城市</p>
-        <div class="city-label">上海</div>
-        <div class="city-label">北京</div>
-        <div class="city-label">深圳</div>
+        <div class="city-label">上海市</div>
+        <div class="city-label">北京市</div>
+        <div class="city-label">深圳市</div>
       </div>
 
       <div name="hot" class="hot">
@@ -62,9 +62,8 @@
     </div>
   </div>
 </div>
-
+<div id="container"></div>
 <script type="text/javascript">
-
   (function($){
 
     (function initRightNav(){
@@ -130,6 +129,44 @@
       }
     });
 
+    $('.item').click(function(e){
+      var selected_city = e.target.textContent;
+
+      sessionStorage.setItem('selected_city', selected_city);
+
+      $("#current_city").text(sessionStorage.getItem('selected_city'));
+      $("#city_label").text(sessionStorage.getItem('selected_city'));
+
+      $.get('/cities/get_counties_by_city_name',{
+        city_name: selected_city
+      },function(data){
+        $("#sub_area").html('');
+        data.data.forEach(function(e){
+          $("#sub_area").append('<div class="city-label">'+e+'</div>')
+        })
+      })
+    })
+
+    $('.city-label').click(function(e){
+      var selected_city = e.target.textContent;
+
+      sessionStorage.setItem('selected_city', selected_city);
+
+      $("#current_city").text(sessionStorage.getItem('selected_city'));
+      $("#city_label").text(sessionStorage.getItem('selected_city'));
+
+      $.get('/cities/get_counties_by_city_name',{
+        city_name: selected_city
+      },function(data){
+        $("#sub_area").html('');
+        data.data.forEach(function(e){
+          $("#sub_area").append('<div class="city-label">'+e+'</div>')
+        })
+      })
+    })
+    
+    
+
     var $swichTab = $('.sub-area');
     /**
      *  切换市区显示
@@ -140,16 +177,58 @@
       $(this).parents('.current').toggleClass('show');
     });
 
-    $("#current_city").text(sessionStorage.getItem('current_city'));
-    $("#city_label").text(sessionStorage.getItem('current_city'));
+    var cityinfo = "";
+    mapObj = new AMap.Map('container');
+    mapObj.plugin('AMap.Geolocation', function() {
+      geolocation = new AMap.Geolocation({
+        enableHighAccuracy: true,//是否使用高精度定位，默认:true
+        timeout: 10000,          //超过10秒后停止定位，默认：无穷大
+        buttonOffset: new AMap.Pixel(10, 20),//定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
+        zoomToAccuracy: true,      //定位成功后调整地图视野范围使定位位置及精度范围视野内可见，默认：false
+        buttonPosition:'RB'
+      });
+      mapObj.addControl(geolocation);
+      geolocation.getCurrentPosition();
+      AMap.event.addListener(geolocation, 'complete', onComplete);//返回定位信息
+      AMap.event.addListener(geolocation, 'error', onError);      //返回定位出错信息
+    });
 
-    $.get('/cities/get_counties_by_city_name',{
-      city_name: sessionStorage.getItem('current_city')
-    },function(data){
-      data.data.forEach(function(e){
-        console.log(e)
-        $("#sub_area").append('<div class="city-label">'+e+'</div>')
+    var citysearch = new AMap.CitySearch();
+      //自动获取用户IP，返回当前城市
+      citysearch.getLocalCity(function(status, result) {
+          if (status === 'complete' && result.info === 'OK') {
+              if (result && result.city && result.bounds) {
+                  cityinfo = result.city;
+              }
+          } else {
+              document.getElementById('tip').innerHTML = result.info;
+          }
+      });
+
+    function onComplete(data) {
+      sessionStorage.setItem('current_city', cityinfo);
+
+      var true_city = "";
+      var selected_city = sessionStorage.getItem('selected_city');
+      if(selected_city){
+        $("#current_city").text(sessionStorage.getItem('selected_city'));
+        $("#city_label").text(sessionStorage.getItem('selected_city'));
+
+        true_city = selected_city;
+      }else{
+        true_city = sessionStorage.getItem('current_city')
+      }
+
+      $.get('/cities/get_counties_by_city_name',{
+        city_name: true_city
+      },function(data){
+        data.data.forEach(function(e){
+          $("#sub_area").append('<div class="city-label">'+e+'</div>')
+        })
       })
-    })
+    }
+
+    function onError(data){
+    }
   })(jQuery);
 </script>

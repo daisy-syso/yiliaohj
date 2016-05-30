@@ -32,8 +32,7 @@
     </li>
   </ul>
 
-  <ul class="list-unstyled detail-panel general-city" id="city_counties">
-  </ul>
+  <ul class="list-unstyled detail-panel general-city" id="city_counties"></ul>
 
   <ul class="list-unstyled detail-panel intelligent-order">
     <li><a href="/hospitals?sort_type=neighbour">离我最近</a></li>
@@ -73,8 +72,9 @@
 <script>
 
   $(function() {
+    var true_city = sessionStorage.getItem('selected_city') || sessionStorage.getItem('current_city') ;
     $.get('/cities/get_counties_by_city_name',{
-      city_name: sessionStorage.getItem('current_city')
+      city_name: true_city
     },function(data){
       data.data.forEach(function(e){
         $("#city_counties").append(
