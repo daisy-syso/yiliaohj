@@ -13,6 +13,9 @@ redis:
   position: 3
   sms: 4
   symptoms: 5
+cloud_redis:
+  host: 10.4.39.132
+  port: 6379
 elasticsearch:
   hosts:
     - localhost:9200
