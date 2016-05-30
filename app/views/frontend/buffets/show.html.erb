@@ -1,15 +1,4 @@
-<div class="app-header">
-  <nav class="navbar navbar-default custom-header">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a href="/buffets?hospital_category_parent_name=<%= @buffet.hospital_category.parent.name %>">
-          <%= image_tag "users/title_icon_back_normal.png" %>
-        </a>
-        <a href="#"><%= @buffet.name %></a>
-      </div>
-    </div>
-  </nav>
-</div>
+<%= render "/frontend/common/nav", { title: @buffet.name , href: "/buffets?hospital_category_parent_name=" + @buffet.hospital_category.parent.name } %>
 
 <div class="confinement-center-detail page-detail">
   <%= @buffet.price %> <a href="javascript:;">立即购买</a><hr>

@@ -1,15 +1,5 @@
-<div class="app-header">
-  <nav class="navbar navbar-default custom-header">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a href="/">
-          <%= image_tag "users/title_icon_back_normal.png" %>
-        </a>
-        <a href="#" >精准<%= @hospital_category_parent_name %></a>
-      </div>
-    </div>
-  </nav>
-</div>
+<%= render "/frontend/common/nav", { title: "精准" + @hospital_category_parent_name } %>
+
 <%= render "filter" %>
 
 <div class="buffet-list-content">

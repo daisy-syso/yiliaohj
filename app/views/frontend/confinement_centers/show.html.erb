@@ -1,15 +1,4 @@
-<div class="app-header">
-  <nav class="navbar navbar-default custom-header">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a href="/confinement_centers">
-          <%= image_tag "users/title_icon_back_normal.png" %>
-        </a>
-        <a href="#"><%= @confinement_center.name %></a>
-      </div>
-    </div>
-  </nav>
-</div>
+<%= render "/frontend/common/nav", { title: @confinement_center.name } %>
 
 <div class="confinement-center-detail page-detail">
   <%= @confinement_center.price %> <a href="javascript:;">立即购买</a><hr>

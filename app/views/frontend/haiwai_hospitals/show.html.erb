@@ -1,15 +1,4 @@
-<div class="app-header">
-  <nav class="navbar navbar-default custom-header">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a href="/hospitals">
-          <%= image_tag "users/title_icon_back_normal.png" %>
-        </a>
-        <a href="#"><%= @hospital.name %></a>
-      </div>
-    </div>
-  </nav>
-</div>
+<%= render "/frontend/common/nav", { title: @hospital.name , href: "/hospitals"} %>
 
 <div class="hospital-detail">
   <div class="hospital-info">
@@ -79,7 +68,7 @@
     <div class="position-detail">
       <h5><%= @hospital.name %></h5>
       <p>联系电话<%= @hospital.telephone %></p>
-      <p>地址：<%= @hospital.address %> 
+      <p>地址：<%= @hospital.address %>
         <a class="pull-right" href="<%= frontend_maps_path(location: @hospital.location) %>">到这去</a>
       </p>
       <div class="map">
