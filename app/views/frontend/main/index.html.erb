@@ -150,8 +150,7 @@
 </script>
 
 <script type="text/javascript">
-  var selected_city = sessionStorage.getItem('selected_city');
-  var true_city = selected_city || sessionStorage.getItem('current_city');
+  var true_city = sessionStorage.getItem('selected_city') || sessionStorage.getItem('current_city') || '上海市';
   $("#current_city").text(true_city);
 
 </script>
