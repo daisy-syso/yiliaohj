@@ -14,7 +14,7 @@ class Frontend::BuffetsController < FrontendController
       case params[:sort_type]
       when 'new'
         # 最近发布
-        @buffets = @buffets.desc(:created_at)
+        @buffets = @buffets.desc(:updated_at)
       when 'star'
         # 评价最好
         @buffets = @buffets.desc(:star)
