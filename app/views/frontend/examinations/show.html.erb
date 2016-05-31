@@ -1,11 +1,21 @@
 <%= render "/frontend/common/nav", { title: @examination.name } %>
 
-<%= @examination.price %> <a href="javascript:;">立即购买</a><hr>
 <div class="examination-detail page-detail">
   <div class="examination-info page-info">
     <div class="examination-cover page-cover">
       <img src="<%= fixed_image_url(@examination) %>", width="200px">
     </div>
+
+    <div class="buy-detail">
+      <span>
+        ￥<%= @examination.price %>
+        <!-- <small>减少6800</small> -->
+      </span>
+      <div class="pull-right">
+        <a class="buy-btn" href="javascript:;">立即购买</a>
+      </div>
+    </div>
+
     <p class="examination-name page-name"><%= @examination.name %></p>
     </p>
   </div>

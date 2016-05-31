@@ -5,7 +5,16 @@
     <div class="insurance-cover page-cover">
       <img src="<%= fixed_image_url(@insurance) %>", width="200px">
     </div>
-    <%= @insurance.price %> <a href="javascript:;">立即购买</a><hr>
+    <div class="buy-detail">
+      <span>
+        ￥<%= @insurance.price %>
+        <!-- <small>减少6800</small> -->
+      </span>
+      <div class="pull-right">
+        <a class="buy-btn" href="javascript:;">立即购买</a>
+      </div>
+    </div>
+
     <p class="insurance-name page-name"><%= @insurance.name %></p>
     </p>
   </div>
