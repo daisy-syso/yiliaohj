@@ -122,10 +122,16 @@
   .right-nav  {
     position: fixed;
     right: 5px;
-    top: 150px;
+    top: 0;
+    bottom: 0;
+    margin-bottom: auto;
+    height: 440px;
+    margin-top: auto;
     width: 25px;
     text-align: center;
     line-height: 14px;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
 
     .item {
       display: inline-block;

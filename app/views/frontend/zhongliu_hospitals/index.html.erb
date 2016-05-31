@@ -1,16 +1,4 @@
-<div class="app-header">
-  <nav class="navbar navbar-default custom-header">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a href="/">
-          <%= image_tag "users/title_icon_back_normal.png" %>
-        </a>
-        <a href="#" >肿瘤医院</a>
-        <a href="/searches" >查询</a>
-      </div>
-    </div>
-  </nav>
-</div>
+<%= render "/frontend/common/nav", { title: "肿瘤医院" , is_list: true } %>
 
 <%= render "filter" %>
 

@@ -20,6 +20,19 @@ html, body {
   .container-fluid,
   .navbar-header {
     height: 100%;
+
+    .right-btn {
+      > a {
+        vertical-align: middle;
+        display: inline-block;
+        height: 54px;
+        line-height: 54px;
+        font-size: 16px;
+        text-align: center;
+        padding-left: 8px;
+        padding-right: 8px;
+      }
+    }
   }
   a {
     vertical-align: text-top;

@@ -1,15 +1,4 @@
-<div class="app-header">
-  <nav class="navbar navbar-default custom-header">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a href="/doctors">
-          <%= image_tag "users/title_icon_back_normal.png" %>
-        </a>
-        <a href="#"><%= @doctor.name %></a>
-      </div>
-    </div>
-  </nav>
-</div>
+<%= render "/frontend/common/nav", { title: @doctor.name, href: "/doctors" } %>
 
 
 <div class="doctor-detail">

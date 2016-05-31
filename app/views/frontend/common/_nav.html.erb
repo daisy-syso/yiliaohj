@@ -1,11 +1,22 @@
+<% href ||= "/"; %>
+<% is_list ||= false; %>
 <div class="app-header">
   <nav class="navbar navbar-default custom-header">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a href="javascript:history.back();">
+        <a id="back" href="<%= href %>">
           <%= image_tag "users/title_icon_back_normal.png" %>
         </a>
         <a href="javascript:void(0)" ><%= title %></a>
+
+        <% if is_list %>
+        <div class="right-btn pull-right">
+          <a class="search-btn" href="/searches">
+            <span class="glyphicon glyphicon-search"></span>
+          </a>
+          <a class="city-btn" href="#">无锡市</a>
+        </div>
+        <% end %>
       </div>
     </div>
   </nav>
