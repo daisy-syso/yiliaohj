@@ -12,11 +12,23 @@
 </div>
 
 <div class="confinement-center-detail page-detail">
-  <%= @buffet.price %> <a href="javascript:;">立即购买</a><hr>
+
+
   <div class="confinement-center-info page-info">
     <div class="confinement-center-cover page-cover">
       <img src="<%= fixed_image_url(@buffet) %>">
     </div>
+
+    <div class="buy-detail">
+      <span>
+        ￥<%= @buffet.price %>
+        <small>减少6800</small>
+      </span>
+      <div class="pull-right">
+        <a class="buy-btn" href="javascript:;">立即购买</a>
+      </div>
+    </div>
+
     <p class="confinement-center-name page-name"><%= @buffet.name %></p>
     </p>
   </div>
